@@ -1,0 +1,17 @@
+[package]
+name = "emulator_8086"
+version = "0.1.0"
+authors = ["Yashodhan Joshi"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "emulator_8086_lib"
+path = "src/lib/lib.rs"
+
+[[bin]]
+name = "emulator_8086"
+path = "src/bin.rs"
+
+[dependencies]
