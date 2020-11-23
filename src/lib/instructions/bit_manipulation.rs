@@ -1,0 +1,16 @@
+/*
+NOT
+AND
+OR
+XOR
+TEST
+
+SHL/SAL
+SHR
+SAR
+
+ROL
+ROR
+RCL
+RCR
+*/

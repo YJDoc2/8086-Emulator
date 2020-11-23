@@ -1,0 +1,17 @@
+/*
+MOV
+PUSH
+POP
+XCHG
+XLAT
+IN : Not Supported
+OUT : Not Supported
+LEA
+LDS
+LES
+LAHF
+SAHF
+PUSHF
+POPF
+
+*/
