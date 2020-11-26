@@ -1,0 +1,31 @@
+use crate::util::preprocessor_util as util;
+use crate::preprocessor_error;
+use lalrpop_util::ParseError;
+
+grammar<'s>(context:&'s mut util::Context,out:&'s mut Vec<String>);
+
+pub code:() = {
+    <n:num> =>{out.push(format!("{}",n));},
+    code <n:num> =>{out.push(format!("{}",n));},
+}
+
+num: u16 = {
+    <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
+        match u16::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
+        }
+    },
+    <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
+        match u16::from_str_radix(&n[2..],16){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
+        }
+    },
+    <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
+        match u16::from_str_radix(&n[2..],2){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
+        }
+    }
+}
