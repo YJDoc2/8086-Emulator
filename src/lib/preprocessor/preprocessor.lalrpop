@@ -4,28 +4,188 @@ use lalrpop_util::ParseError;
 
 grammar<'s>(context:&'s mut util::Context,out:&'s mut util::Output);
 
-pub code:() = {
-    <n:num> =>{out.code.push(format!("{}",n));},
-    code <n:num> =>{out.code.push(format!("{}",n));},
+pub Code:() = {
+    <n:word_num> =>{out.code.push(format!("{}",n));},
+    data_directives,
+    Code <n:word_num> =>{out.code.push(format!("{}",n));},
 }
 
-num: u16 = {
+// Collective of all data directives
+pub data_directives:() = {
+    set_directive,
+    db_directive,
+    dw_directive,
+    data_directives set_directive,
+    data_directives db_directive,
+    data_directives dw_directive,
+}
+
+// Set directive : used to set the DS value manually
+set_directive:() = {
+    r"(set|SET)" <n:word_num> => {
+        out.data.push(format!("set {}",n));
+    }
+}
+
+// DB directive
+db_directive:() = {
+    // Set single value with label
+    <start:@L> <l:label> r"(db|DB)" <n:byte_num> =>{
+        context.label_map.insert(l,(start as u16,context.data_counter));
+        out.data.push(format!("db {}",n));
+        // Increment the data counter
+        context.data_counter += 1;
+    },
+    // Set single value without label
+    r"(db|DB)" <n:byte_num> =>{
+        out.data.push(format!("db {}",n));
+        // Increment the data counter
+        context.data_counter += 1;
+    },
+    // Set array value initialized to 0 with label
+    <start:@L> <l:label> r"(db|DB)" "["<n:word_num>"]" =>{
+        context.label_map.insert(l,(start as u16,context.data_counter));
+        out.data.push(format!("db [{}]",n));
+        // Increment the data counter
+        context.data_counter += n;
+    },
+    // Set array value initialized to 0 without label
+    r"(db|DB)" "[" <n:word_num>"]" =>{
+        out.data.push(format!("db [{}]",n));
+        // Increment the data counter
+        context.data_counter += n;
+    },
+    // Set array value initialized to value with label
+    <start:@L> <l:label> r"(db|DB)" "["<n:word_num> ";" <v:byte_num>"]" =>{
+        context.label_map.insert(l,(start as u16,context.data_counter));
+        out.data.push(format!("db [{} ; {}]",n,v));
+        // Increment the data counter
+        context.data_counter += n;
+    },
+    // Set array value initialized to value without label
+    r"(db|DB)" "[" <n:word_num> ";" <v:byte_num> "]" =>{
+        out.data.push(format!("db [{} ; {}]",n,v));
+        // Increment the data counter
+        context.data_counter += n;
+    },
+}
+
+// DW directive
+dw_directive:() = {
+    // Set single value with label
+    <start:@L> <l:label> r"(dw|DW)" <n:word_num> =>{
+        context.label_map.insert(l,(start as u16,context.data_counter));
+        out.data.push(format!("dw {}",n));
+        // Increment the data counter
+        context.data_counter += 2;
+    },
+    // Set single value without label
+    r"(dw|DW)" <n:word_num> =>{
+        out.data.push(format!("dw {}",n));
+        // Increment the data counter
+        context.data_counter += 2;
+    },
+    // Set array value initialized to 0 with label
+    <start:@L> <l:label> r"(dw|DW)" "["<n:word_num>"]" =>{
+        context.label_map.insert(l,(start as u16,context.data_counter));
+        out.data.push(format!("dw [{}]",n));
+        // Increment the data counter
+        context.data_counter += 2*n;
+    },
+    // Set array value initialized to 0 without label
+    r"(dw|DW)" "[" <n:word_num>"]" =>{
+        out.data.push(format!("dw [{}]",n));
+        // Increment the data counter
+        context.data_counter += 2*n;
+    },
+    // Set array value initialized to value with label
+    <start:@L> <l:label> r"(dw|DW)" "["<n:word_num> ";" <v:word_num>"]" =>{
+        context.label_map.insert(l,(start as u16,context.data_counter));
+        out.data.push(format!("dw [{} ; {}]",n,v));
+        // Increment the data counter
+        context.data_counter += 2*n;
+    },
+    // Set array value initialized to value without label
+    r"(dw|DW)" "[" <n:word_num> ";" <v:word_num> "]" =>{
+        out.data.push(format!("dw [{} ; {}]",n,v));
+        // Increment the data counter
+        context.data_counter += 2*n;
+    },
+}
+
+
+
+// Low Level non-Terminals
+
+// Label
+// syntax : string immediately followed by a ':'
+label:String = {
+    <s:r"[_a-zA-Z][_a-zA-Z0-9]*:"> =>?{
+        match context.label_map.get(&s[0..s.len()-2]){
+            Some((pos,_)) => return preprocessor_error!(*pos as usize,*pos as usize+s.len(),s,"Label Already defined".to_owned()),
+            None => Ok(s[0..s.len()-2].to_owned())
+        }
+    }
+}
+
+
+// Used to denote a 16-bit number
+// can be a binary, decimal or hexadecimal number
+// all are converted to u16
+word_num: u16 = {
+    // Decimal
+
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u16::from_str_radix(n,10){
             Ok(v) => Ok(v),
             Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
+
+    // hexadecimal
     <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
         match u16::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v),
             Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
+
+    // Binary
     <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
         match u16::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v),
             Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
+        }
+    }
+}
+
+
+// Used to denote a 8-bit number
+// can be a binary, decimal or hexadecimal number
+// all are converted to u16
+byte_num: u8 = {
+    // Decimal
+
+    <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
+        match u8::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
+        }
+    },
+
+    // hexadecimal
+    <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
+        match u8::from_str_radix(&n[2..],16){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
+        }
+    },
+
+    // Binary
+    <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
+        match u8::from_str_radix(&n[2..],2){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
         }
     }
 }
