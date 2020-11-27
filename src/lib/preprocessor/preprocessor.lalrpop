@@ -1,14 +1,19 @@
 use crate::util::preprocessor_util as util;
+use util::LabelType;
 use crate::preprocessor_error;
 use lalrpop_util::ParseError;
+
+
 
 grammar<'s>(context:&'s mut util::Context,out:&'s mut util::Output);
 
 pub Code:() = {
-    <n:word_num> =>{out.code.push(format!("{}",n));},
     data_directives,
-    Code <n:word_num> =>{out.code.push(format!("{}",n));},
 }
+
+// ---------------------------------------------------------------------------------------------
+
+// Assembler Data Directives
 
 // Collective of all data directives
 pub data_directives:() = {
@@ -22,7 +27,7 @@ pub data_directives:() = {
 
 // Set directive : used to set the DS value manually
 set_directive:() = {
-    r"(set|SET)" <n:word_num> => {
+    r"(set|SET) " <n:word_num> => {
         out.data.push(format!("set {}",n));
     }
 }
@@ -30,40 +35,40 @@ set_directive:() = {
 // DB directive
 db_directive:() = {
     // Set single value with label
-    <start:@L> <l:label> r"(db|DB)" <n:byte_num> =>{
-        context.label_map.insert(l,(start as u16,context.data_counter));
+    <start:@L> <l:label> r"(db|DB) " <n:byte_num> =>{
+        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("db {}",n));
         // Increment the data counter
         context.data_counter += 1;
     },
     // Set single value without label
-    r"(db|DB)" <n:byte_num> =>{
+    r"(db|DB) " <n:byte_num> =>{
         out.data.push(format!("db {}",n));
         // Increment the data counter
         context.data_counter += 1;
     },
     // Set array value initialized to 0 with label
-    <start:@L> <l:label> r"(db|DB)" "["<n:word_num>"]" =>{
-        context.label_map.insert(l,(start as u16,context.data_counter));
+    <start:@L> <l:label> r"(db|DB) " "["<n:word_num>"]" =>{
+        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("db [{}]",n));
         // Increment the data counter
         context.data_counter += n;
     },
     // Set array value initialized to 0 without label
-    r"(db|DB)" "[" <n:word_num>"]" =>{
+    r"(db|DB) " "[" <n:word_num>"]" =>{
         out.data.push(format!("db [{}]",n));
         // Increment the data counter
         context.data_counter += n;
     },
     // Set array value initialized to value with label
-    <start:@L> <l:label> r"(db|DB)" "["<n:word_num> ";" <v:byte_num>"]" =>{
-        context.label_map.insert(l,(start as u16,context.data_counter));
+    <start:@L> <l:label> r"(db|DB) " "["<n:word_num> ";" <v:byte_num>"]" =>{
+        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("db [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += n;
     },
     // Set array value initialized to value without label
-    r"(db|DB)" "[" <n:word_num> ";" <v:byte_num> "]" =>{
+    r"(db|DB) " "[" <n:word_num> ";" <v:byte_num> "]" =>{
         out.data.push(format!("db [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += n;
@@ -73,46 +78,76 @@ db_directive:() = {
 // DW directive
 dw_directive:() = {
     // Set single value with label
-    <start:@L> <l:label> r"(dw|DW)" <n:word_num> =>{
-        context.label_map.insert(l,(start as u16,context.data_counter));
+    <start:@L> <l:label> r"(dw|DW) " <n:word_num> =>{
+        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("dw {}",n));
         // Increment the data counter
         context.data_counter += 2;
     },
     // Set single value without label
-    r"(dw|DW)" <n:word_num> =>{
+    r"(dw|DW) " <n:word_num> =>{
         out.data.push(format!("dw {}",n));
         // Increment the data counter
         context.data_counter += 2;
     },
     // Set array value initialized to 0 with label
-    <start:@L> <l:label> r"(dw|DW)" "["<n:word_num>"]" =>{
-        context.label_map.insert(l,(start as u16,context.data_counter));
+    <start:@L> <l:label> r"(dw|DW) " "["<n:word_num>"]" =>{
+        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("dw [{}]",n));
         // Increment the data counter
         context.data_counter += 2*n;
     },
     // Set array value initialized to 0 without label
-    r"(dw|DW)" "[" <n:word_num>"]" =>{
+    r"(dw|DW) " "[" <n:word_num>"]" =>{
         out.data.push(format!("dw [{}]",n));
         // Increment the data counter
         context.data_counter += 2*n;
     },
     // Set array value initialized to value with label
-    <start:@L> <l:label> r"(dw|DW)" "["<n:word_num> ";" <v:word_num>"]" =>{
-        context.label_map.insert(l,(start as u16,context.data_counter));
+    <start:@L> <l:label> r"(dw|DW) " "["<n:word_num> ";" <v:word_num>"]" =>{
+        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("dw [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += 2*n;
     },
     // Set array value initialized to value without label
-    r"(dw|DW)" "[" <n:word_num> ";" <v:word_num> "]" =>{
+    r"(dw|DW) " "[" <n:word_num> ";" <v:word_num> "]" =>{
         out.data.push(format!("dw [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += 2*n;
     },
 }
 
+// ---------------------------------------------------------------------------------------------
+
+// Assembler code Directives
+
+// TODO macro
+// 
+pub macro_def:() = {
+    "MACRO" <name:string> "(" <params:CommaSepList<string>> ")" "{" <r:raw_code> "}" =>{
+        println!("{}",r);
+
+    }
+}
+
+raw_code:String = {
+    string,
+    <r:raw_code> <s:string> => format!("{} {}",r,s),
+    <r:raw_code> ";" => format!("{};\n",r)
+}
+
+// TODO def procedure
+// TODO offset ?
+
+
+// ---------------------------------------------------------------------------------------------
+
+
+// Assembler opcodes
+
+
+// ---------------------------------------------------------------------------------------------
 
 
 // Low Level non-Terminals
@@ -122,7 +157,7 @@ dw_directive:() = {
 label:String = {
     <s:r"[_a-zA-Z][_a-zA-Z0-9]*:"> =>?{
         match context.label_map.get(&s[0..s.len()-2]){
-            Some((pos,_)) => return preprocessor_error!(*pos as usize,*pos as usize+s.len(),s,"Label Already defined".to_owned()),
+            Some((_,pos,_)) => return preprocessor_error!(*pos as usize,*pos as usize+s.len(),s,"Label Already defined".to_owned()),
             None => Ok(s[0..s.len()-2].to_owned())
         }
     }
@@ -187,5 +222,26 @@ byte_num: u8 = {
             Ok(v) => Ok(v),
             Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
         }
+    }
+}
+
+// ---------------------------------------------------------------------------------------------
+
+// Helpers
+
+CommaSepList<T>: Vec<T> = {
+    <v:(<T> ",")*> <e:T?> => match e {
+        None => v,
+        Some(e) => {
+            let mut v = v;
+            v.push(e);
+            v
+        }
+    }
+};
+
+string:String ={
+    <v:r"[_a-zA-Z][_a-zA-Z0-9]*"> =>{
+        v.to_owned()
     }
 }

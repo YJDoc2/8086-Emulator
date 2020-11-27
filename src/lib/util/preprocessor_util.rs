@@ -1,5 +1,10 @@
 use std::collections::HashMap;
 
+pub enum LabelType {
+    DATA,
+    CODE,
+}
+
 /// This will provide various needed data structures to store
 /// metadata about code to preprocessor
 /// label_map is for mapping label names to the (position in input ,position in output produced)
@@ -8,7 +13,7 @@ use std::collections::HashMap;
 #[derive(Default)]
 pub struct Context {
     pub data_counter: u16,
-    pub label_map: HashMap<String, (u16, u16)>,
+    pub label_map: HashMap<String, (LabelType, u16, u16)>,
     pub macro_map: HashMap<String, String>,
     pub source_map: HashMap<u16, u16>,
 }

@@ -1,3 +1,4 @@
+All lines MUST END with a semicolon
 directives
 
 data directives
