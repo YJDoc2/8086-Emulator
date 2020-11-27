@@ -38,3 +38,14 @@ impl LexerHelper {
         return (max as u16, self.newline_list[max - 1]);
     }
 }
+
+#[test]
+fn test_lexer_helper() {
+    let input = "5\nabc\ntest9";
+    let lh = LexerHelper::new(input);
+    assert_eq!(lh.get_newline_before(6), (2, 5)); // 2nd newline, at 5th position (0 based)
+
+    let input = "5\n\n5F\natestb";
+    let lh = LexerHelper::new(input);
+    assert_eq!(lh.get_newline_before(18), (3, 5)); // 3rd newline, at 5th position (0 based)
+}

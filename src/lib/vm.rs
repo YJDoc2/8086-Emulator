@@ -4,8 +4,9 @@ use std::boxed::Box;
 pub const MB: u32 = 1 * 1024 * 1024;
 
 // All these are arbitrary
-pub const DATA_SEG_BEGIN: u16 = 0x7000; // 28672
-pub const STACK_SEG_BEGIN: u16 = 0x1000; // 4096
+// Stack should be higher, as on x86 stack grows downwards
+pub const DATA_SEG_BEGIN: u16 = 0x1000; // 4096
+pub const STACK_SEG_BEGIN: u16 = 0x7000; // 28672
 
 // TODO what to use for mem
 pub struct VM {

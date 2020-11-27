@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 3122b5759eff36d5cbbda46ac7dd8ae6e9cee810ce76737c7ac1a8f4925dea
+// sha256: edc2ad46ef994477ea2dee18156f8d7aaf2b9bdd10f0254bda4b3c4cf558d
 use crate::util::preprocessor_util as util;
 use crate::preprocessor_error;
 use lalrpop_util::ParseError;
@@ -92,7 +92,7 @@ mod __parse__code {
     where 
     {
         context: &'s mut util::Context,
-        out: &'s mut Vec<String>,
+        out: &'s mut util::Output,
         input: &'input str,
         __phantom: ::std::marker::PhantomData<(&'input (), &'s ())>,
     }
@@ -242,7 +242,7 @@ mod __parse__code {
         >(
             &self,
             context: &'s mut util::Context,
-            out: &'s mut Vec<String>,
+            out: &'s mut util::Output,
             input: &'input str,
         ) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>>
         {
@@ -263,7 +263,7 @@ mod __parse__code {
         's,
     >(
         context: &'s mut util::Context,
-        out: &'s mut Vec<String>,
+        out: &'s mut util::Output,
         input: &'input str,
         __action: i8,
         __lookahead_start: Option<&usize>,
@@ -391,7 +391,7 @@ mod __parse__code {
         's,
     >(
         context: &'s mut util::Context,
-        out: &'s mut Vec<String>,
+        out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
         __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
@@ -410,7 +410,7 @@ mod __parse__code {
         's,
     >(
         context: &'s mut util::Context,
-        out: &'s mut Vec<String>,
+        out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
         __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
@@ -429,7 +429,7 @@ mod __parse__code {
         's,
     >(
         context: &'s mut util::Context,
-        out: &'s mut Vec<String>,
+        out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
         __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
@@ -449,7 +449,7 @@ mod __parse__code {
         's,
     >(
         context: &'s mut util::Context,
-        out: &'s mut Vec<String>,
+        out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
         __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
@@ -496,7 +496,7 @@ fn __action0<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
 ) -> ()
@@ -510,12 +510,12 @@ fn __action1<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     (_, n, _): (usize, u16, usize),
 ) -> ()
 {
-    {out.push(format!("{}",n));}
+    {out.code.push(format!("{}",n));}
 }
 
 #[allow(unused_variables)]
@@ -524,13 +524,13 @@ fn __action2<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, u16, usize),
 ) -> ()
 {
-    {out.push(format!("{}",n));}
+    {out.code.push(format!("{}",n));}
 }
 
 #[allow(unused_variables)]
@@ -539,7 +539,7 @@ fn __action3<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
@@ -560,7 +560,7 @@ fn __action4<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
@@ -581,7 +581,7 @@ fn __action5<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
@@ -602,7 +602,7 @@ fn __action6<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
@@ -617,7 +617,7 @@ fn __action7<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
@@ -632,7 +632,7 @@ fn __action8<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
@@ -664,7 +664,7 @@ fn __action9<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
@@ -696,7 +696,7 @@ fn __action10<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
@@ -728,7 +728,7 @@ fn __action11<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
 ) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
@@ -758,7 +758,7 @@ fn __action12<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
 ) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
@@ -788,7 +788,7 @@ fn __action13<
     's,
 >(
     context: &'s mut util::Context,
-    out: &'s mut Vec<String>,
+    out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
 ) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>

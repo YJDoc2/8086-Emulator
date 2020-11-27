@@ -2,11 +2,11 @@ use crate::util::preprocessor_util as util;
 use crate::preprocessor_error;
 use lalrpop_util::ParseError;
 
-grammar<'s>(context:&'s mut util::Context,out:&'s mut Vec<String>);
+grammar<'s>(context:&'s mut util::Context,out:&'s mut util::Output);
 
 pub code:() = {
-    <n:num> =>{out.push(format!("{}",n));},
-    code <n:num> =>{out.push(format!("{}",n));},
+    <n:num> =>{out.code.push(format!("{}",n));},
+    code <n:num> =>{out.code.push(format!("{}",n));},
 }
 
 num: u16 = {

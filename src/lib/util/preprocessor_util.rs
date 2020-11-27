@@ -7,6 +7,12 @@ pub struct Context {
     pub source_map: HashMap<u16, u16>,
 }
 
+#[derive(Default, Debug)]
+pub struct Output {
+    pub data: Vec<String>,
+    pub code: Vec<String>,
+}
+
 #[macro_export]
 macro_rules! preprocessor_error {
     (  $s:expr,$e:expr,$tok:expr,$err:expr ) => {{
