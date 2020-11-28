@@ -1,9 +1,16 @@
 use crate::util::preprocessor_util as util;
 use util::LabelType;
+use regex::{Regex,Captures};
 use crate::preprocessor_error;
 use lalrpop_util::ParseError;
 
-
+// NOTES
+// quote_ tokens are used for creating case ignoring names, as r"(capital case|small case)" generates ambiguity
+//      if not this, either manually implement both with same code, else try r"(capital case|small case) " (with space)
+//      but that can have issues as well
+//
+// name_string is a string that can be used for macro, function or label name, must start with _ or alphabet
+// general_string is string that accepts nam_string, number, spaces, and square brackets [] 
 
 grammar<'s>(context:&'s mut util::Context,out:&'s mut util::Output);
 
@@ -27,114 +34,177 @@ pub data_directives:() = {
 
 // Set directive : used to set the DS value manually
 set_directive:() = {
-    r"(set|SET) " <n:word_num> => {
+    quote_set <n:word_num> => {
         out.data.push(format!("set {}",n));
     }
+}
+
+quote_set:()={
+    "set",
+    "SET"
 }
 
 // DB directive
 db_directive:() = {
     // Set single value with label
-    <start:@L> <l:label> r"(db|DB) " <n:byte_num> =>{
+    <start:@L> <l:label> quote_db <n:byte_num> =>{
         context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("db {}",n));
         // Increment the data counter
         context.data_counter += 1;
     },
     // Set single value without label
-    r"(db|DB) " <n:byte_num> =>{
+    quote_db <n:byte_num> =>{
         out.data.push(format!("db {}",n));
         // Increment the data counter
         context.data_counter += 1;
     },
     // Set array value initialized to 0 with label
-    <start:@L> <l:label> r"(db|DB) " "["<n:word_num>"]" =>{
+    <start:@L> <l:label> quote_db "["<n:word_num>"]" =>{
         context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("db [{}]",n));
         // Increment the data counter
         context.data_counter += n;
     },
     // Set array value initialized to 0 without label
-    r"(db|DB) " "[" <n:word_num>"]" =>{
+    quote_db "[" <n:word_num>"]" =>{
         out.data.push(format!("db [{}]",n));
         // Increment the data counter
         context.data_counter += n;
     },
     // Set array value initialized to value with label
-    <start:@L> <l:label> r"(db|DB) " "["<n:word_num> ";" <v:byte_num>"]" =>{
+    <start:@L> <l:label> quote_db "["<n:word_num> ";" <v:byte_num>"]" =>{
         context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("db [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += n;
     },
     // Set array value initialized to value without label
-    r"(db|DB) " "[" <n:word_num> ";" <v:byte_num> "]" =>{
+    quote_db "[" <n:word_num> ";" <v:byte_num> "]" =>{
         out.data.push(format!("db [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += n;
     },
+}
+
+quote_db:() = {
+    "DB",
+    "db",
 }
 
 // DW directive
 dw_directive:() = {
     // Set single value with label
-    <start:@L> <l:label> r"(dw|DW) " <n:word_num> =>{
+    <start:@L> <l:label> quote_dw <n:word_num> =>{
         context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("dw {}",n));
         // Increment the data counter
         context.data_counter += 2;
     },
     // Set single value without label
-    r"(dw|DW) " <n:word_num> =>{
+    quote_dw <n:word_num> =>{
         out.data.push(format!("dw {}",n));
         // Increment the data counter
         context.data_counter += 2;
     },
     // Set array value initialized to 0 with label
-    <start:@L> <l:label> r"(dw|DW) " "["<n:word_num>"]" =>{
+    <start:@L> <l:label> quote_dw "["<n:word_num>"]" =>{
         context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("dw [{}]",n));
         // Increment the data counter
         context.data_counter += 2*n;
     },
     // Set array value initialized to 0 without label
-    r"(dw|DW) " "[" <n:word_num>"]" =>{
+    quote_dw "[" <n:word_num>"]" =>{
         out.data.push(format!("dw [{}]",n));
         // Increment the data counter
         context.data_counter += 2*n;
     },
     // Set array value initialized to value with label
-    <start:@L> <l:label> r"(dw|DW) " "["<n:word_num> ";" <v:word_num>"]" =>{
+    <start:@L> <l:label> quote_dw "["<n:word_num> ";" <v:word_num>"]" =>{
         context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("dw [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += 2*n;
     },
     // Set array value initialized to value without label
-    r"(dw|DW) " "[" <n:word_num> ";" <v:word_num> "]" =>{
+    quote_dw "[" <n:word_num> ";" <v:word_num> "]" =>{
         out.data.push(format!("dw [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += 2*n;
     },
 }
 
+quote_dw:() = {
+    "dw",
+    "DW"
+}
+
+
 // ---------------------------------------------------------------------------------------------
 
 // Assembler code Directives
 
-// TODO macro
-// 
-pub macro_def:() = {
-    "MACRO" <name:string> "(" <params:CommaSepList<string>> ")" "{" <r:raw_code> "}" =>{
-        println!("{}",r);
+// Collective of all code directives
+pub code_directives:() = {
+    macro_def,
+    macro_use,
+    code_directives macro_def,
+    code_directives macro_use,
+}
 
+// As lalrpop does not support optional token, and makes it an ambiguity error 
+// if we use r"(MACRO|macro)" we will have to use this double declaration :(
+// Closing bracket is counted and removed in raw_code
+pub macro_def:() = {
+    quote_macro <name:name_string> "(" <params:CommaSepList<name_string>> ")" "{" <r:raw_code> =>{
+        let mut r = r.clone();
+        // TODO Maybe optimise this later
+        // maybe try making single regex of all params and replace, somehow
+        for (i,p) in params.iter().enumerate(){
+            let pat = format!(r"\b{}\b",p);
+            let re = Regex::new(&pat).unwrap();
+            r = re.replace_all(&r,|caps:&Captures|{
+                format!("{{{}}}",i)
+            }).to_string();
+        }
+        context.macro_map.insert(name,r);
     }
 }
 
+quote_macro:()={
+    "MACRO",
+    "macro"
+}
+
 raw_code:String = {
-    string,
-    <r:raw_code> <s:string> => format!("{} {}",r,s),
-    <r:raw_code> ";" => format!("{};\n",r)
+    <s:r"[_a-zA-Z0-9 \[\]]*}"> =>s[0..s.len()-2].to_owned()
+}
+
+macro_use:() = {
+    <start:@L> <l:r"[_a-zA-Z][_a-zA-Z0-9]*"> "(" <params:CommaSepList<general_string>> ")" <end:@R> =>? {
+        match context.macro_map.get(l){
+            Some(value)=>{
+                let mut r = value.clone();
+                // TODO Maybe optimise this later
+                // maybe try making single regex of all params and replace, somehow
+                for (i,p) in params.iter().enumerate(){
+                    let pat = format!("{{{}}}",i);
+                    r = r.replace(&pat,&p);
+                }
+                let p = CodeParser::new();
+                let o = p.parse(context,out,&r);
+                match o{
+                    Ok(_)=>Ok(()),
+                    Err(e)=>{
+                        // TODO better format error, maybe send the error position in formatted string as well?
+                        preprocessor_error!(start,end,l,"Error in macro expansion".to_owned())
+                    }
+                }
+            },
+            None => preprocessor_error!(start as usize,start +l.len(),l,"Macro not defined".to_owned()),
+        }
+    }
 }
 
 // TODO def procedure
@@ -240,8 +310,12 @@ CommaSepList<T>: Vec<T> = {
     }
 };
 
-string:String ={
+name_string:String ={
     <v:r"[_a-zA-Z][_a-zA-Z0-9]*"> =>{
         v.to_owned()
     }
+}
+general_string:String = {
+    name_string,
+    <n:word_num> =>format!("{}",n)
 }

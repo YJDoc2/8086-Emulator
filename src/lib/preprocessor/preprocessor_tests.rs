@@ -35,3 +35,22 @@ fn test_data_directives() {
     let o = p.parse(&mut ctx, &mut out, "test: DB [5;6]");
     assert!(o.is_ok());
 }
+
+#[test]
+fn test_macro_directives() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::code_directivesParser::new();
+    let o = p.parse(&mut ctx, &mut out, "macro mcname (a) { DB [a] }\nmcname(5)");
+    assert!(o.is_ok());
+    assert_eq!(out.data.len(), 1);
+    out.clear();
+    ctx.clear();
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "macro mcname (a) { DB [a] }\nmcname(hello)",
+    );
+    assert!(o.is_err());
+    assert_eq!(out.data.len(), 0);
+}
