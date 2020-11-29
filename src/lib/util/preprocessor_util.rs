@@ -1,8 +1,24 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 pub enum LabelType {
     DATA,
     CODE,
+}
+
+pub struct Label {
+    pub r#type: LabelType,
+    pub source_position: u16,
+    pub map: u16,
+}
+
+impl Label {
+    pub fn new(t: LabelType, pos: u16, map: u16) -> Self {
+        Label {
+            r#type: t,
+            source_position: pos,
+            map: map,
+        }
+    }
 }
 
 /// This will provide various needed data structures to store
@@ -13,9 +29,11 @@ pub enum LabelType {
 #[derive(Default)]
 pub struct Context {
     pub data_counter: u16,
-    pub label_map: HashMap<String, (LabelType, u16, u16)>,
+    pub label_map: HashMap<String, Label>,
     pub macro_map: HashMap<String, String>,
     pub source_map: HashMap<u16, u16>,
+    pub fn_set: HashSet<String>,
+    pub undefined_labels: HashSet<String>,
 }
 
 impl Context {

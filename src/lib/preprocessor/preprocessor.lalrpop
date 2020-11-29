@@ -1,5 +1,5 @@
 use crate::util::preprocessor_util as util;
-use util::LabelType;
+use util::{Label,LabelType};
 use regex::{Regex,Captures};
 use crate::preprocessor_error;
 use lalrpop_util::ParseError;
@@ -16,6 +16,9 @@ grammar<'s>(context:&'s mut util::Context,out:&'s mut util::Output);
 
 pub Code:() = {
     data_directives,
+    code_directives,
+    opcodes,
+    Code opcodes
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -48,7 +51,7 @@ quote_set:()={
 db_directive:() = {
     // Set single value with label
     <start:@L> <l:label> quote_db <n:byte_num> =>{
-        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
+        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("db {}",n));
         // Increment the data counter
         context.data_counter += 1;
@@ -61,7 +64,7 @@ db_directive:() = {
     },
     // Set array value initialized to 0 with label
     <start:@L> <l:label> quote_db "["<n:word_num>"]" =>{
-        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
+        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("db [{}]",n));
         // Increment the data counter
         context.data_counter += n;
@@ -74,7 +77,7 @@ db_directive:() = {
     },
     // Set array value initialized to value with label
     <start:@L> <l:label> quote_db "["<n:word_num> ";" <v:byte_num>"]" =>{
-        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
+        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("db [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += n;
@@ -96,7 +99,7 @@ quote_db:() = {
 dw_directive:() = {
     // Set single value with label
     <start:@L> <l:label> quote_dw <n:word_num> =>{
-        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
+        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("dw {}",n));
         // Increment the data counter
         context.data_counter += 2;
@@ -109,7 +112,7 @@ dw_directive:() = {
     },
     // Set array value initialized to 0 with label
     <start:@L> <l:label> quote_dw "["<n:word_num>"]" =>{
-        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
+        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("dw [{}]",n));
         // Increment the data counter
         context.data_counter += 2*n;
@@ -122,7 +125,7 @@ dw_directive:() = {
     },
     // Set array value initialized to value with label
     <start:@L> <l:label> quote_dw "["<n:word_num> ";" <v:word_num>"]" =>{
-        context.label_map.insert(l,(LabelType::DATA,start as u16,context.data_counter));
+        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         out.data.push(format!("dw [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += 2*n;
@@ -215,6 +218,228 @@ macro_use:() = {
 
 
 // Assembler opcodes
+opcodes:()={
+    control,
+    transfer
+}
+
+
+// ----------------------------------
+// Transfer Instructions
+
+transfer:() = {
+    call,
+    ret,
+    jmps_loops,
+}
+
+
+call:() = {
+    <start:@L> quote_call <n:name_string> <end:@R> =>?{
+        if !context.fn_set.contains(&n){
+            return preprocessor_error!(start,end,"",format!("\'call\' can be only used with procedures, {} is not a procedure",n));
+        }else{
+            out.code.push(format!("call {}",n));
+            return Ok(());
+        }
+    },
+}
+quote_call:()={
+    "CALL",
+    "call"
+}
+
+// Ret should be defined directly inside function definition
+ret:() = {
+    <start:@L> quote_ret <end:@R> =>?{
+        preprocessor_error!(start,end,"ret","\'ret\' should be only used inside procedures".to_owned())
+    }
+}
+
+quote_ret:() = {
+    "RET",
+    "ret"
+}
+
+// TODO support int ?
+int:() = {
+    <start:@L> quote_int <n:byte_num> <end:@R> =>?{
+        preprocessor_error!(start,end,"int","\'int\' is not supported".to_owned())
+    }
+}
+
+quote_int:() = {
+    "INT",
+    "int"
+}
+
+into_iret:() = {
+    <start:@L> <q:quote_into_iret> <end:@R> =>?{
+        preprocessor_error!(start,end,"",format!("\'{}\' is not supported",q))
+    }
+}
+
+quote_into_iret:String = {
+    "INTO" => "into".to_owned(),
+    "into" => "into".to_owned(),
+    "IRET" => "iret".to_owned(),
+    "iret" => "iret".to_owned(),
+}
+
+
+// All jumps and loops are combined in single, as they have same syntax
+jmps_loops:() = {
+    <start:@L> <q:quote_jmps_loops> <n:name_string><end:@R> =>{
+        out.code.push(format!("{} {}",q,n));
+        if !context.label_map.contains_key(&n){
+            context.undefined_labels.insert(n);
+        }
+    }
+}
+
+quote_jmps_loops:String = {
+    "JMP" => "jmp".to_owned(),
+    "jmp" => "jmp".to_owned(),
+    "JA" => "ja".to_owned(),
+    "ja" => "ja".to_owned(),
+    "JNBE" => "jnbe".to_owned(),
+    "jnbe" => "jnbe".to_owned(),
+    "JAE" => "jae".to_owned(),
+    "jae" => "jae".to_owned(),
+    "JNB" => "jnb".to_owned(),
+    "jnb" => "jnb".to_owned(),
+    "JB" => "jb".to_owned(),
+    "jb" => "jb".to_owned(),
+    "JNAE" => "jnae".to_owned(),
+    "jnae" => "jnae".to_owned(),
+    "JBE" => "jbe".to_owned(),
+    "jbe" => "jbe".to_owned(),
+    "JNA" => "jna".to_owned(),
+    "jna" => "jna".to_owned(),
+    "JC" => "jc".to_owned(),
+    "jc" => "jc".to_owned(),
+    "JE" => "je".to_owned(),
+    "je" => "je".to_owned(),
+    "JZ" => "jz".to_owned(),
+    "jz" => "jz".to_owned(),
+    "JG" => "jg".to_owned(),
+    "jg" => "jg".to_owned(),
+    "JNLE" => "jnle".to_owned(),
+    "jnle" => "jnle".to_owned(),
+    "JGE" => "jge".to_owned(),
+    "jge" => "jge".to_owned(),
+    "JNL" => "jnl".to_owned(),
+    "jnl" => "jnl".to_owned(),
+    "JL" => "jl".to_owned(),
+    "jl" => "jl".to_owned(),
+    "JNGE" => "jnge".to_owned(),
+    "jnge" => "jnge".to_owned(),
+    "JLE" => "jle".to_owned(),
+    "jle" => "jle".to_owned(),
+    "JNG" => "jng".to_owned(),
+    "jng" => "jng".to_owned(),
+    "JNC" => "jnc".to_owned(),
+    "jnc" => "jnc".to_owned(),
+    "JNE" => "jne".to_owned(),
+    "jne" => "jne".to_owned(),
+    "JNZ" => "jnz".to_owned(),
+    "jnz" => "jnz".to_owned(),
+    "JNO" => "jno".to_owned(),
+    "jno" => "jno".to_owned(),
+    "JNP" => "jnp".to_owned(),
+    "jnp" => "jnp".to_owned(),
+    "JPO" => "jpo".to_owned(),
+    "jpo" => "jpo".to_owned(),
+    "JNS" => "jns".to_owned(),
+    "jns" => "jns".to_owned(),
+    "JO" => "jo".to_owned(),
+    "jo" => "jo".to_owned(),
+    "JP" => "jp".to_owned(),
+    "jp" => "jp".to_owned(),
+    "JPE" => "jpe".to_owned(),
+    "jpe" => "jpe".to_owned(),
+    "JS" => "js".to_owned(),
+    "js" => "js".to_owned(),
+    "LOOP" => "loop".to_owned(),
+    "loop" => "loop".to_owned(),
+    "LOOPE" => "loope".to_owned(),
+    "loope" => "loope".to_owned(),
+    "LOOPZ" => "loopz".to_owned(),
+    "loopz" => "loopz".to_owned(),
+    "LOOPNE" => "loopne".to_owned(),
+    "loopne" => "loopne".to_owned(),
+    "LOOPNZ" => "loopnz".to_owned(),
+    "loopnz" => "loopnz".to_owned(),
+    "JCXZ" => "jcxz".to_owned(),
+    "jcxz" => "jcxz".to_owned(),
+}
+
+// ----------------------------------
+// Control Instructions
+
+control:()={
+    ctc,
+    clc,
+    cmc,
+    std,
+    cld,
+    sti,
+    cli,
+    hlt,
+    wait,
+    esc,
+    lock,
+    nop
+}
+
+ctc:()={
+    "CTC" =>{out.code.push("ctc".to_owned());},
+    "ctc" =>{out.code.push("ctc".to_owned());}
+}
+clc:()={
+    "CLC" =>{out.code.push("clc".to_owned());},
+    "clc" =>{out.code.push("clc".to_owned());}
+}
+cmc:()={
+    "CMC" =>{out.code.push("cmc".to_owned());},
+    "cmc" =>{out.code.push("cmc".to_owned());}
+}
+std:()={
+    "STD" =>{out.code.push("std".to_owned());},
+    "std" =>{out.code.push("std".to_owned());}
+}
+cld:()={
+    "CLD" =>{out.code.push("cld".to_owned());},
+    "cld" =>{out.code.push("cld".to_owned());}
+}
+sti:()={
+    "STI" =>{out.code.push("sti".to_owned());},
+    "sti" =>{out.code.push("sti".to_owned());}
+}
+cli:()={
+    "CLI" =>{out.code.push("cli".to_owned());},
+    "cli" =>{out.code.push("cli".to_owned());}
+}
+hlt:()={
+    "HLT" =>{out.code.push("hlt".to_owned());},
+    "hlt" =>{out.code.push("hlt".to_owned());}
+}
+wait:()={
+    <start:@L> "WAIT" =>?preprocessor_error!(start,start+4,"WAIT","\'wait\' is not supported.".to_owned()),
+    <start:@L> "wait" =>?preprocessor_error!(start,start+4,"wait","\'wait\' is not supported.".to_owned())
+}
+esc:()={
+    <start:@L> "ESC" =>?preprocessor_error!(start,start+3,"ESC","\'esc\' is not supported.".to_owned()),
+    <start:@L> "esc" =>?preprocessor_error!(start,start+3,"esc","\'esc\' is not supported.".to_owned())
+}
+lock:()={
+    <start:@L> "LOCK" =>?preprocessor_error!(start,start+4,"LOCK","\'lock\' is not supported.".to_owned()),
+    <start:@L> "lock" =>?preprocessor_error!(start,start+4,"lock","\'lock\' is not supported.".to_owned())
+}
+nop:()={
+    <start:@L> "NOP" =>,
+    <start:@L> "nop" =>
+}
 
 
 // ---------------------------------------------------------------------------------------------
@@ -227,7 +452,7 @@ macro_use:() = {
 label:String = {
     <s:r"[_a-zA-Z][_a-zA-Z0-9]*:"> =>?{
         match context.label_map.get(&s[0..s.len()-2]){
-            Some((_,pos,_)) => return preprocessor_error!(*pos as usize,*pos as usize+s.len(),s,"Label Already defined".to_owned()),
+            Some(l) => return preprocessor_error!(l.source_position as usize,l.source_position as usize+s.len(),s,"Label Already defined".to_owned()),
             None => Ok(s[0..s.len()-2].to_owned())
         }
     }
