@@ -54,3 +54,31 @@ fn test_macro_directives() {
     assert!(o.is_err());
     assert_eq!(out.data.len(), 0);
 }
+
+#[test]
+fn test_control_opcode() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "ctc CMC HLT");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 3);
+    out.clear();
+    ctx.clear();
+    let o = p.parse(&mut ctx, &mut out, "ESC LOCK");
+    assert!(o.is_err());
+}
+
+#[test]
+fn test_transfer_opcode() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "JMP test JGE go");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 2);
+    out.clear();
+    ctx.clear();
+    let o = p.parse(&mut ctx, &mut out, "RET INTO");
+    assert!(o.is_err());
+}
