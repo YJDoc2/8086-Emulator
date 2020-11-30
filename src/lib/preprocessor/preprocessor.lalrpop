@@ -160,7 +160,7 @@ pub code_directives:() = {
 // if we use r"(MACRO|macro)" we will have to use this double declaration :(
 // Closing bracket is counted and removed in raw_code
 pub macro_def:() = {
-    quote_macro <name:name_string> "(" <params:CommaSepList<name_string>> ")" "{"  <s:r"[_a-zA-Z0-9 \[\]]*}"> =>{
+    quote_macro <name:name_string> "(" <params:CommaSepList<name_string>> ")" "->"  <s:r"[_a-zA-Z0-9 \[\]]*<-"> =>{
         let mut r =s[0..s.len()-2].to_owned();
         // TODO Maybe optimise this later
         // maybe try making single regex of all params and replace, somehow
