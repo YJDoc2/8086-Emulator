@@ -21,6 +21,86 @@ impl Label {
     }
 }
 
+/// This is helper structure to create source map
+/// the source_last and output_next contains last and next entries respectively for source and output code
+/// the lock is used to lock from changing the source_last, in cases like macro expansions
+/// Not meant for multi threaded use
+/// Please read documentation of add_entry method
+#[derive(Default)]
+pub struct SourceMapper {
+    source_last: usize,
+    output_next: usize,
+    lock: u16,
+    source_map: HashMap<usize, usize>,
+}
+
+impl SourceMapper {
+    /// create a new SourceMapper
+    pub fn new() -> Self {
+        SourceMapper::default()
+    }
+
+    /// increment the lock count
+    pub fn lock_source(&mut self) {
+        self.lock += 1;
+    }
+
+    /// decrement the lock count
+    pub fn unlock_source(&mut self) {
+        self.lock -= 1;
+    }
+
+    /// consume the instance and return source map
+    pub fn get_source_map(self) -> HashMap<usize, usize> {
+        return self.source_map;
+    }
+
+    /// Adds a output line number -> source char number entry
+    /// as the output line number will alway increment by 1, as we are using vector to store it,
+    /// this directly increments the output_next by 1 with every entry
+    /// This takes in source_char, but if the lock is non-zero i.e.
+    /// the lock_source is called, it adds entry of output_next -> source_last
+    /// if lock value is zero, it sets the source_last to the source_char,
+    /// and adds entry of output_next -> source_char
+    /// output_next is always incremented by 1
+    pub fn add_entry(&mut self, source_char: usize) {
+        let source = if self.lock != 0 {
+            self.source_last
+        } else {
+            self.source_last = source_char;
+            source_char
+        };
+        self.source_map.insert(self.output_next, source);
+        self.output_next += 1;
+    }
+}
+#[test]
+fn test_source_mapper() {
+    let mut sm = SourceMapper::new();
+    sm.add_entry(5); // 0
+    sm.add_entry(10); // 1
+    assert_eq!(sm.lock, 0);
+    sm.lock_source();
+    assert_eq!(sm.lock, 1);
+    sm.add_entry(16); // 2
+    sm.add_entry(20); // 3
+    sm.lock_source();
+    assert_eq!(sm.lock, 2);
+    sm.add_entry(23); // 4
+    sm.unlock_source();
+    assert_eq!(sm.lock, 1);
+    sm.unlock_source();
+    assert_eq!(sm.lock, 0);
+    sm.add_entry(15); // 5
+    let t = sm.get_source_map();
+    assert_eq!(t.get(&0).unwrap(), &5);
+    assert_eq!(t.get(&1).unwrap(), &10);
+    assert_eq!(t.get(&2).unwrap(), &10);
+    assert_eq!(t.get(&3).unwrap(), &10);
+    assert_eq!(t.get(&4).unwrap(), &10);
+    assert_eq!(t.get(&5).unwrap(), &15);
+}
+
 /// This will provide various needed data structures to store
 /// metadata about code to preprocessor
 /// label_map is for mapping label names to the (position in input ,position in output produced)
