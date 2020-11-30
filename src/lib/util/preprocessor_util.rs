@@ -55,6 +55,25 @@ impl SourceMapper {
         return self.source_map;
     }
 
+    /// Used to Set the source_last manually, should not be used unless absolutely required,
+    /// intended to used for macros, because the source_last at the line of macro invocation will still be pointing
+    /// to previous line, and as macro calls the lock, it will map all next entries to the previous line,
+    /// so this is used to set the source_last manually
+    pub fn set_source(&mut self, source_char: usize) {
+        if self.lock != 0 {
+            return;
+        } else {
+            self.source_last = source_char;
+        }
+    }
+
+    /// Helper function to clear and set source mapper to default
+    pub fn clear(&mut self) {
+        self.lock = 0;
+        self.source_last = 0;
+        self.output_next = 0;
+        self.source_map.clear();
+    }
     /// Adds a output line number -> source char number entry
     /// as the output line number will alway increment by 1, as we are using vector to store it,
     /// this directly increments the output_next by 1 with every entry
@@ -111,7 +130,7 @@ pub struct Context {
     pub data_counter: u16,
     pub label_map: HashMap<String, Label>,
     pub macro_map: HashMap<String, String>,
-    pub source_map: HashMap<u16, u16>,
+    pub mapper: SourceMapper,
     pub fn_set: HashSet<String>,
     pub undefined_labels: HashSet<String>,
 }
@@ -121,7 +140,7 @@ impl Context {
         self.data_counter = 0;
         self.label_map.clear();
         self.macro_map.clear();
-        self.source_map.clear();
+        self.mapper.clear();
     }
 }
 // TODO add how both are used in the three stages

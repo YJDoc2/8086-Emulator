@@ -195,8 +195,12 @@ macro_use:() = {
                     let pat = format!("{{{}}}",i);
                     r = r.replace(&pat,&p);
                 }
+                
                 let p = CodeParser::new();
+                context.mapper.set_source(start);
+                context.mapper.lock_source();
                 let o = p.parse(context,out,&r);
+                context.mapper.unlock_source();
                 match o{
                     Ok(_)=>Ok(()),
                     Err(e)=>{
@@ -240,8 +244,10 @@ call:() = {
             return preprocessor_error!(start,end,"",format!("\'call\' can be only used with procedures, {} is not a procedure",n));
         }else{
             out.code.push(format!("call {}",n));
+            context.mapper.add_entry(start);
             return Ok(());
         }
+        
     },
 }
 quote_call:()={
@@ -291,9 +297,11 @@ quote_into_iret:String = {
 jmps_loops:() = {
     <start:@L> <q:quote_jmps_loops> <n:name_string><end:@R> =>{
         out.code.push(format!("{} {}",q,n));
+        context.mapper.add_entry(start);
         if !context.label_map.contains_key(&n){
             context.undefined_labels.insert(n);
         }
+        
     }
 }
 
@@ -393,36 +401,36 @@ control:()={
 }
 
 ctc:()={
-    "CTC" =>{out.code.push("ctc".to_owned());},
-    "ctc" =>{out.code.push("ctc".to_owned());}
+    <start:@L> "CTC" =>{out.code.push("ctc".to_owned());context.mapper.add_entry(start);},
+    <start:@L> "ctc" =>{out.code.push("ctc".to_owned());context.mapper.add_entry(start);}
 }
 clc:()={
-    "CLC" =>{out.code.push("clc".to_owned());},
-    "clc" =>{out.code.push("clc".to_owned());}
+    <start:@L> "CLC" =>{out.code.push("clc".to_owned());context.mapper.add_entry(start);},
+    <start:@L> "clc" =>{out.code.push("clc".to_owned());context.mapper.add_entry(start);}
 }
 cmc:()={
-    "CMC" =>{out.code.push("cmc".to_owned());},
-    "cmc" =>{out.code.push("cmc".to_owned());}
+    <start:@L> "CMC" =>{out.code.push("cmc".to_owned());context.mapper.add_entry(start);},
+    <start:@L> "cmc" =>{out.code.push("cmc".to_owned());context.mapper.add_entry(start);}
 }
 std:()={
-    "STD" =>{out.code.push("std".to_owned());},
-    "std" =>{out.code.push("std".to_owned());}
+    <start:@L> "STD" =>{out.code.push("std".to_owned());context.mapper.add_entry(start);},
+    <start:@L> "std" =>{out.code.push("std".to_owned());context.mapper.add_entry(start);}
 }
 cld:()={
-    "CLD" =>{out.code.push("cld".to_owned());},
-    "cld" =>{out.code.push("cld".to_owned());}
+    <start:@L> "CLD" =>{out.code.push("cld".to_owned());context.mapper.add_entry(start);},
+    <start:@L> "cld" =>{out.code.push("cld".to_owned());context.mapper.add_entry(start);}
 }
 sti:()={
-    "STI" =>{out.code.push("sti".to_owned());},
-    "sti" =>{out.code.push("sti".to_owned());}
+    <start:@L> "STI" =>{out.code.push("sti".to_owned());context.mapper.add_entry(start);},
+    <start:@L> "sti" =>{out.code.push("sti".to_owned());context.mapper.add_entry(start);}
 }
 cli:()={
-    "CLI" =>{out.code.push("cli".to_owned());},
-    "cli" =>{out.code.push("cli".to_owned());}
+    <start:@L> "CLI" =>{out.code.push("cli".to_owned());context.mapper.add_entry(start);},
+    <start:@L> "cli" =>{out.code.push("cli".to_owned());context.mapper.add_entry(start);}
 }
 hlt:()={
-    "HLT" =>{out.code.push("hlt".to_owned());},
-    "hlt" =>{out.code.push("hlt".to_owned());}
+    <start:@L> "HLT" =>{out.code.push("hlt".to_owned());context.mapper.add_entry(start);},
+    <start:@L> "hlt" =>{out.code.push("hlt".to_owned());context.mapper.add_entry(start);}
 }
 wait:()={
     <start:@L> "WAIT" =>?preprocessor_error!(start,start+4,"WAIT","\'wait\' is not supported.".to_owned()),

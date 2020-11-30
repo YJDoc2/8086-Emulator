@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: ba94c7a514df3048c6f286e64e71b369c1b328eff1a1f9588acfd0abd82eb
+// sha256: fad01340c6f7ef761896d5d8ba675c6ddff74e0c9bbe542347d5241d2b928d4
 use crate::util::preprocessor_util as util;
 use util::{Label,LabelType};
 use regex::{Regex,Captures};
@@ -1544,11 +1544,11 @@ mod __parse__Code {
                 __reduce27(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             28 => {
-                // byte_num = r#"[0-9]+"# => ActionFn(234);
+                // byte_num = r#"[0-9]+"# => ActionFn(250);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action234::<>(context, out, input, __sym0) {
+                let __nt = match super::__action250::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1556,11 +1556,11 @@ mod __parse__Code {
                 (1, 15)
             }
             29 => {
-                // byte_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(235);
+                // byte_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(251);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action235::<>(context, out, input, __sym0) {
+                let __nt = match super::__action251::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1568,11 +1568,11 @@ mod __parse__Code {
                 (1, 15)
             }
             30 => {
-                // byte_num = r#"0(b|B)[0-1]+"# => ActionFn(236);
+                // byte_num = r#"0(b|B)[0-1]+"# => ActionFn(252);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action236::<>(context, out, input, __sym0) {
+                let __nt = match super::__action252::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1580,13 +1580,13 @@ mod __parse__Code {
                 (1, 15)
             }
             31 => {
-                // call = quote_call, name_string => ActionFn(237);
+                // call = quote_call, name_string => ActionFn(253);
                 assert!(__symbols.len() >= 2);
                 let __sym1 = __pop_Variant1(__symbols);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym1.2.clone();
-                let __nt = match super::__action237::<>(context, out, input, __sym0, __sym1) {
+                let __nt = match super::__action253::<>(context, out, input, __sym0, __sym1) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1726,11 +1726,11 @@ mod __parse__Code {
                 __reduce75(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             76 => {
-                // esc = "ESC" => ActionFn(218);
+                // esc = "ESC" => ActionFn(228);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action218::<>(context, out, input, __sym0) {
+                let __nt = match super::__action228::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1738,11 +1738,11 @@ mod __parse__Code {
                 (1, 27)
             }
             77 => {
-                // esc = "esc" => ActionFn(219);
+                // esc = "esc" => ActionFn(229);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action219::<>(context, out, input, __sym0) {
+                let __nt = match super::__action229::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1768,13 +1768,13 @@ mod __parse__Code {
                 __reduce83(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             84 => {
-                // int = quote_int, byte_num => ActionFn(238);
+                // int = quote_int, byte_num => ActionFn(254);
                 assert!(__symbols.len() >= 2);
                 let __sym1 = __pop_Variant6(__symbols);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym1.2.clone();
-                let __nt = match super::__action238::<>(context, out, input, __sym0, __sym1) {
+                let __nt = match super::__action254::<>(context, out, input, __sym0, __sym1) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1782,11 +1782,11 @@ mod __parse__Code {
                 (2, 31)
             }
             85 => {
-                // into_iret = quote_into_iret => ActionFn(239);
+                // into_iret = quote_into_iret => ActionFn(255);
                 let __sym0 = __pop_Variant1(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action239::<>(context, out, input, __sym0) {
+                let __nt = match super::__action255::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1809,11 +1809,11 @@ mod __parse__Code {
                 (1, 34)
             }
             88 => {
-                // lock = "LOCK" => ActionFn(223);
+                // lock = "LOCK" => ActionFn(235);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action223::<>(context, out, input, __sym0) {
+                let __nt = match super::__action235::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1821,11 +1821,11 @@ mod __parse__Code {
                 (1, 35)
             }
             89 => {
-                // lock = "lock" => ActionFn(224);
+                // lock = "lock" => ActionFn(236);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action224::<>(context, out, input, __sym0) {
+                let __nt = match super::__action236::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -1836,7 +1836,7 @@ mod __parse__Code {
                 __reduce90(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             91 => {
-                // macro_use = r#"[_a-zA-Z][_a-zA-Z0-9]*"#, "(", CommaSepList<general_string>, ")" => ActionFn(241);
+                // macro_use = r#"[_a-zA-Z][_a-zA-Z0-9]*"#, "(", CommaSepList<general_string>, ")" => ActionFn(257);
                 assert!(__symbols.len() >= 4);
                 let __sym3 = __pop_Variant0(__symbols);
                 let __sym2 = __pop_Variant5(__symbols);
@@ -1844,7 +1844,7 @@ mod __parse__Code {
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym3.2.clone();
-                let __nt = match super::__action241::<>(context, out, input, __sym0, __sym1, __sym2, __sym3) {
+                let __nt = match super::__action257::<>(context, out, input, __sym0, __sym1, __sym2, __sym3) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -2152,11 +2152,11 @@ mod __parse__Code {
                 __reduce191(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             192 => {
-                // ret = quote_ret => ActionFn(242);
+                // ret = quote_ret => ActionFn(258);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action242::<>(context, out, input, __sym0) {
+                let __nt = match super::__action258::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -2188,11 +2188,11 @@ mod __parse__Code {
                 __reduce200(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             201 => {
-                // wait = "WAIT" => ActionFn(229);
+                // wait = "WAIT" => ActionFn(245);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action229::<>(context, out, input, __sym0) {
+                let __nt = match super::__action245::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -2200,11 +2200,11 @@ mod __parse__Code {
                 (1, 57)
             }
             202 => {
-                // wait = "wait" => ActionFn(230);
+                // wait = "wait" => ActionFn(246);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action230::<>(context, out, input, __sym0) {
+                let __nt = match super::__action246::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -2212,11 +2212,11 @@ mod __parse__Code {
                 (1, 57)
             }
             203 => {
-                // word_num = r#"[0-9]+"# => ActionFn(243);
+                // word_num = r#"[0-9]+"# => ActionFn(259);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action243::<>(context, out, input, __sym0) {
+                let __nt = match super::__action259::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -2224,11 +2224,11 @@ mod __parse__Code {
                 (1, 58)
             }
             204 => {
-                // word_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(244);
+                // word_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(260);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action244::<>(context, out, input, __sym0) {
+                let __nt = match super::__action260::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -2236,11 +2236,11 @@ mod __parse__Code {
                 (1, 58)
             }
             205 => {
-                // word_num = r#"0(b|B)[0-1]+"# => ActionFn(245);
+                // word_num = r#"0(b|B)[0-1]+"# => ActionFn(261);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action245::<>(context, out, input, __sym0) {
+                let __nt = match super::__action261::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -2703,11 +2703,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = general_string => ActionFn(246);
+        // CommaSepList<general_string> = general_string => ActionFn(262);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action246::<>(context, out, input, __sym0);
+        let __nt = super::__action262::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 9)
     }
@@ -2723,10 +2723,10 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> =  => ActionFn(247);
+        // CommaSepList<general_string> =  => ActionFn(263);
         let __start = __lookahead_start.cloned().or_else(|| __symbols.last().map(|s| s.2.clone())).unwrap_or_default();
         let __end = __start.clone();
-        let __nt = super::__action247::<>(context, out, input, &__start, &__end);
+        let __nt = super::__action263::<>(context, out, input, &__start, &__end);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (0, 9)
     }
@@ -2742,13 +2742,13 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = (<general_string> ",")+, general_string => ActionFn(248);
+        // CommaSepList<general_string> = (<general_string> ",")+, general_string => ActionFn(264);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action248::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action264::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (2, 9)
     }
@@ -2764,11 +2764,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = (<general_string> ",")+ => ActionFn(249);
+        // CommaSepList<general_string> = (<general_string> ",")+ => ActionFn(265);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action249::<>(context, out, input, __sym0);
+        let __nt = super::__action265::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 9)
     }
@@ -2784,11 +2784,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = name_string => ActionFn(250);
+        // CommaSepList<name_string> = name_string => ActionFn(266);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action250::<>(context, out, input, __sym0);
+        let __nt = super::__action266::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 10)
     }
@@ -2804,10 +2804,10 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> =  => ActionFn(251);
+        // CommaSepList<name_string> =  => ActionFn(267);
         let __start = __lookahead_start.cloned().or_else(|| __symbols.last().map(|s| s.2.clone())).unwrap_or_default();
         let __end = __start.clone();
-        let __nt = super::__action251::<>(context, out, input, &__start, &__end);
+        let __nt = super::__action267::<>(context, out, input, &__start, &__end);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (0, 10)
     }
@@ -2823,13 +2823,13 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = (<name_string> ",")+, name_string => ActionFn(252);
+        // CommaSepList<name_string> = (<name_string> ",")+, name_string => ActionFn(268);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action252::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action268::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (2, 10)
     }
@@ -2845,11 +2845,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = (<name_string> ",")+ => ActionFn(253);
+        // CommaSepList<name_string> = (<name_string> ",")+ => ActionFn(269);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action253::<>(context, out, input, __sym0);
+        let __nt = super::__action269::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 10)
     }
@@ -2925,11 +2925,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // clc = "CLC" => ActionFn(150);
+        // clc = "CLC" => ActionFn(212);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action150::<>(context, out, input, __sym0);
+        let __nt = super::__action212::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 17)
     }
@@ -2945,11 +2945,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // clc = "clc" => ActionFn(151);
+        // clc = "clc" => ActionFn(213);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action151::<>(context, out, input, __sym0);
+        let __nt = super::__action213::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 17)
     }
@@ -2965,11 +2965,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cld = "CLD" => ActionFn(156);
+        // cld = "CLD" => ActionFn(214);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action156::<>(context, out, input, __sym0);
+        let __nt = super::__action214::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 18)
     }
@@ -2985,11 +2985,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cld = "cld" => ActionFn(157);
+        // cld = "cld" => ActionFn(215);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action157::<>(context, out, input, __sym0);
+        let __nt = super::__action215::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 18)
     }
@@ -3005,11 +3005,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cli = "CLI" => ActionFn(160);
+        // cli = "CLI" => ActionFn(216);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action160::<>(context, out, input, __sym0);
+        let __nt = super::__action216::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 19)
     }
@@ -3025,11 +3025,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cli = "cli" => ActionFn(161);
+        // cli = "cli" => ActionFn(217);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action161::<>(context, out, input, __sym0);
+        let __nt = super::__action217::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 19)
     }
@@ -3045,11 +3045,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cmc = "CMC" => ActionFn(152);
+        // cmc = "CMC" => ActionFn(218);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action152::<>(context, out, input, __sym0);
+        let __nt = super::__action218::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 20)
     }
@@ -3065,11 +3065,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cmc = "cmc" => ActionFn(153);
+        // cmc = "cmc" => ActionFn(219);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action153::<>(context, out, input, __sym0);
+        let __nt = super::__action219::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 20)
     }
@@ -3409,11 +3409,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // ctc = "CTC" => ActionFn(148);
+        // ctc = "CTC" => ActionFn(220);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action148::<>(context, out, input, __sym0);
+        let __nt = super::__action220::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 23)
     }
@@ -3429,11 +3429,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // ctc = "ctc" => ActionFn(149);
+        // ctc = "ctc" => ActionFn(221);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action149::<>(context, out, input, __sym0);
+        let __nt = super::__action221::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 23)
     }
@@ -3575,14 +3575,14 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, byte_num => ActionFn(212);
+        // db_directive = label, quote_db, byte_num => ActionFn(222);
         assert!(__symbols.len() >= 3);
         let __sym2 = __pop_Variant6(__symbols);
         let __sym1 = __pop_Variant4(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym2.2.clone();
-        let __nt = super::__action212::<>(context, out, input, __sym0, __sym1, __sym2);
+        let __nt = super::__action222::<>(context, out, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (3, 25)
     }
@@ -3620,7 +3620,7 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, "[", word_num, "]" => ActionFn(213);
+        // db_directive = label, quote_db, "[", word_num, "]" => ActionFn(223);
         assert!(__symbols.len() >= 5);
         let __sym4 = __pop_Variant0(__symbols);
         let __sym3 = __pop_Variant8(__symbols);
@@ -3629,7 +3629,7 @@ mod __parse__Code {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym4.2.clone();
-        let __nt = super::__action213::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+        let __nt = super::__action223::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (5, 25)
     }
@@ -3669,7 +3669,7 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, "[", word_num, ";", byte_num, "]" => ActionFn(214);
+        // db_directive = label, quote_db, "[", word_num, ";", byte_num, "]" => ActionFn(224);
         assert!(__symbols.len() >= 7);
         let __sym6 = __pop_Variant0(__symbols);
         let __sym5 = __pop_Variant6(__symbols);
@@ -3680,7 +3680,7 @@ mod __parse__Code {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym6.2.clone();
-        let __nt = super::__action214::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
+        let __nt = super::__action224::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (7, 25)
     }
@@ -3722,14 +3722,14 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, word_num => ActionFn(215);
+        // dw_directive = label, quote_dw, word_num => ActionFn(225);
         assert!(__symbols.len() >= 3);
         let __sym2 = __pop_Variant8(__symbols);
         let __sym1 = __pop_Variant4(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym2.2.clone();
-        let __nt = super::__action215::<>(context, out, input, __sym0, __sym1, __sym2);
+        let __nt = super::__action225::<>(context, out, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (3, 26)
     }
@@ -3767,7 +3767,7 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, "[", word_num, "]" => ActionFn(216);
+        // dw_directive = label, quote_dw, "[", word_num, "]" => ActionFn(226);
         assert!(__symbols.len() >= 5);
         let __sym4 = __pop_Variant0(__symbols);
         let __sym3 = __pop_Variant8(__symbols);
@@ -3776,7 +3776,7 @@ mod __parse__Code {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym4.2.clone();
-        let __nt = super::__action216::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+        let __nt = super::__action226::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (5, 26)
     }
@@ -3816,7 +3816,7 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, "[", word_num, ";", word_num, "]" => ActionFn(217);
+        // dw_directive = label, quote_dw, "[", word_num, ";", word_num, "]" => ActionFn(227);
         assert!(__symbols.len() >= 7);
         let __sym6 = __pop_Variant0(__symbols);
         let __sym5 = __pop_Variant8(__symbols);
@@ -3827,7 +3827,7 @@ mod __parse__Code {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym6.2.clone();
-        let __nt = super::__action217::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
+        let __nt = super::__action227::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (7, 26)
     }
@@ -3948,11 +3948,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // hlt = "HLT" => ActionFn(162);
+        // hlt = "HLT" => ActionFn(230);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action162::<>(context, out, input, __sym0);
+        let __nt = super::__action230::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 30)
     }
@@ -3968,11 +3968,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // hlt = "hlt" => ActionFn(163);
+        // hlt = "hlt" => ActionFn(231);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action163::<>(context, out, input, __sym0);
+        let __nt = super::__action231::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 30)
     }
@@ -3988,13 +3988,13 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // jmps_loops = quote_jmps_loops, name_string => ActionFn(240);
+        // jmps_loops = quote_jmps_loops, name_string => ActionFn(256);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action240::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action256::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (2, 33)
     }
@@ -4096,11 +4096,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // nop = "NOP" => ActionFn(226);
+        // nop = "NOP" => ActionFn(238);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action226::<>(context, out, input, __sym0);
+        let __nt = super::__action238::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 40)
     }
@@ -4116,11 +4116,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // nop = "nop" => ActionFn(227);
+        // nop = "nop" => ActionFn(239);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action227::<>(context, out, input, __sym0);
+        let __nt = super::__action239::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 40)
     }
@@ -6058,11 +6058,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // std = "STD" => ActionFn(154);
+        // std = "STD" => ActionFn(241);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action154::<>(context, out, input, __sym0);
+        let __nt = super::__action241::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 54)
     }
@@ -6078,11 +6078,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // std = "std" => ActionFn(155);
+        // std = "std" => ActionFn(242);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action155::<>(context, out, input, __sym0);
+        let __nt = super::__action242::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 54)
     }
@@ -6098,11 +6098,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // sti = "STI" => ActionFn(158);
+        // sti = "STI" => ActionFn(243);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action158::<>(context, out, input, __sym0);
+        let __nt = super::__action243::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 55)
     }
@@ -6118,11 +6118,11 @@ mod __parse__Code {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // sti = "sti" => ActionFn(159);
+        // sti = "sti" => ActionFn(244);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action159::<>(context, out, input, __sym0);
+        let __nt = super::__action244::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 55)
     }
@@ -6940,11 +6940,11 @@ mod __parse__code_directives {
                 __reduce27(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             28 => {
-                // byte_num = r#"[0-9]+"# => ActionFn(234);
+                // byte_num = r#"[0-9]+"# => ActionFn(250);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action234::<>(context, out, input, __sym0) {
+                let __nt = match super::__action250::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -6952,11 +6952,11 @@ mod __parse__code_directives {
                 (1, 15)
             }
             29 => {
-                // byte_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(235);
+                // byte_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(251);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action235::<>(context, out, input, __sym0) {
+                let __nt = match super::__action251::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -6964,11 +6964,11 @@ mod __parse__code_directives {
                 (1, 15)
             }
             30 => {
-                // byte_num = r#"0(b|B)[0-1]+"# => ActionFn(236);
+                // byte_num = r#"0(b|B)[0-1]+"# => ActionFn(252);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action236::<>(context, out, input, __sym0) {
+                let __nt = match super::__action252::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -6976,13 +6976,13 @@ mod __parse__code_directives {
                 (1, 15)
             }
             31 => {
-                // call = quote_call, name_string => ActionFn(237);
+                // call = quote_call, name_string => ActionFn(253);
                 assert!(__symbols.len() >= 2);
                 let __sym1 = __pop_Variant1(__symbols);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym1.2.clone();
-                let __nt = match super::__action237::<>(context, out, input, __sym0, __sym1) {
+                let __nt = match super::__action253::<>(context, out, input, __sym0, __sym1) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7122,11 +7122,11 @@ mod __parse__code_directives {
                 __reduce75(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             76 => {
-                // esc = "ESC" => ActionFn(218);
+                // esc = "ESC" => ActionFn(228);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action218::<>(context, out, input, __sym0) {
+                let __nt = match super::__action228::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7134,11 +7134,11 @@ mod __parse__code_directives {
                 (1, 27)
             }
             77 => {
-                // esc = "esc" => ActionFn(219);
+                // esc = "esc" => ActionFn(229);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action219::<>(context, out, input, __sym0) {
+                let __nt = match super::__action229::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7164,13 +7164,13 @@ mod __parse__code_directives {
                 __reduce83(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             84 => {
-                // int = quote_int, byte_num => ActionFn(238);
+                // int = quote_int, byte_num => ActionFn(254);
                 assert!(__symbols.len() >= 2);
                 let __sym1 = __pop_Variant6(__symbols);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym1.2.clone();
-                let __nt = match super::__action238::<>(context, out, input, __sym0, __sym1) {
+                let __nt = match super::__action254::<>(context, out, input, __sym0, __sym1) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7178,11 +7178,11 @@ mod __parse__code_directives {
                 (2, 31)
             }
             85 => {
-                // into_iret = quote_into_iret => ActionFn(239);
+                // into_iret = quote_into_iret => ActionFn(255);
                 let __sym0 = __pop_Variant1(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action239::<>(context, out, input, __sym0) {
+                let __nt = match super::__action255::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7205,11 +7205,11 @@ mod __parse__code_directives {
                 (1, 34)
             }
             88 => {
-                // lock = "LOCK" => ActionFn(223);
+                // lock = "LOCK" => ActionFn(235);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action223::<>(context, out, input, __sym0) {
+                let __nt = match super::__action235::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7217,11 +7217,11 @@ mod __parse__code_directives {
                 (1, 35)
             }
             89 => {
-                // lock = "lock" => ActionFn(224);
+                // lock = "lock" => ActionFn(236);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action224::<>(context, out, input, __sym0) {
+                let __nt = match super::__action236::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7232,7 +7232,7 @@ mod __parse__code_directives {
                 __reduce90(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             91 => {
-                // macro_use = r#"[_a-zA-Z][_a-zA-Z0-9]*"#, "(", CommaSepList<general_string>, ")" => ActionFn(241);
+                // macro_use = r#"[_a-zA-Z][_a-zA-Z0-9]*"#, "(", CommaSepList<general_string>, ")" => ActionFn(257);
                 assert!(__symbols.len() >= 4);
                 let __sym3 = __pop_Variant0(__symbols);
                 let __sym2 = __pop_Variant5(__symbols);
@@ -7240,7 +7240,7 @@ mod __parse__code_directives {
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym3.2.clone();
-                let __nt = match super::__action241::<>(context, out, input, __sym0, __sym1, __sym2, __sym3) {
+                let __nt = match super::__action257::<>(context, out, input, __sym0, __sym1, __sym2, __sym3) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7548,11 +7548,11 @@ mod __parse__code_directives {
                 __reduce191(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             192 => {
-                // ret = quote_ret => ActionFn(242);
+                // ret = quote_ret => ActionFn(258);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action242::<>(context, out, input, __sym0) {
+                let __nt = match super::__action258::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7584,11 +7584,11 @@ mod __parse__code_directives {
                 __reduce200(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             201 => {
-                // wait = "WAIT" => ActionFn(229);
+                // wait = "WAIT" => ActionFn(245);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action229::<>(context, out, input, __sym0) {
+                let __nt = match super::__action245::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7596,11 +7596,11 @@ mod __parse__code_directives {
                 (1, 57)
             }
             202 => {
-                // wait = "wait" => ActionFn(230);
+                // wait = "wait" => ActionFn(246);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action230::<>(context, out, input, __sym0) {
+                let __nt = match super::__action246::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7608,11 +7608,11 @@ mod __parse__code_directives {
                 (1, 57)
             }
             203 => {
-                // word_num = r#"[0-9]+"# => ActionFn(243);
+                // word_num = r#"[0-9]+"# => ActionFn(259);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action243::<>(context, out, input, __sym0) {
+                let __nt = match super::__action259::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7620,11 +7620,11 @@ mod __parse__code_directives {
                 (1, 58)
             }
             204 => {
-                // word_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(244);
+                // word_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(260);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action244::<>(context, out, input, __sym0) {
+                let __nt = match super::__action260::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -7632,11 +7632,11 @@ mod __parse__code_directives {
                 (1, 58)
             }
             205 => {
-                // word_num = r#"0(b|B)[0-1]+"# => ActionFn(245);
+                // word_num = r#"0(b|B)[0-1]+"# => ActionFn(261);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action245::<>(context, out, input, __sym0) {
+                let __nt = match super::__action261::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -8099,11 +8099,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = general_string => ActionFn(246);
+        // CommaSepList<general_string> = general_string => ActionFn(262);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action246::<>(context, out, input, __sym0);
+        let __nt = super::__action262::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 9)
     }
@@ -8119,10 +8119,10 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> =  => ActionFn(247);
+        // CommaSepList<general_string> =  => ActionFn(263);
         let __start = __lookahead_start.cloned().or_else(|| __symbols.last().map(|s| s.2.clone())).unwrap_or_default();
         let __end = __start.clone();
-        let __nt = super::__action247::<>(context, out, input, &__start, &__end);
+        let __nt = super::__action263::<>(context, out, input, &__start, &__end);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (0, 9)
     }
@@ -8138,13 +8138,13 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = (<general_string> ",")+, general_string => ActionFn(248);
+        // CommaSepList<general_string> = (<general_string> ",")+, general_string => ActionFn(264);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action248::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action264::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (2, 9)
     }
@@ -8160,11 +8160,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = (<general_string> ",")+ => ActionFn(249);
+        // CommaSepList<general_string> = (<general_string> ",")+ => ActionFn(265);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action249::<>(context, out, input, __sym0);
+        let __nt = super::__action265::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 9)
     }
@@ -8180,11 +8180,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = name_string => ActionFn(250);
+        // CommaSepList<name_string> = name_string => ActionFn(266);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action250::<>(context, out, input, __sym0);
+        let __nt = super::__action266::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 10)
     }
@@ -8200,10 +8200,10 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> =  => ActionFn(251);
+        // CommaSepList<name_string> =  => ActionFn(267);
         let __start = __lookahead_start.cloned().or_else(|| __symbols.last().map(|s| s.2.clone())).unwrap_or_default();
         let __end = __start.clone();
-        let __nt = super::__action251::<>(context, out, input, &__start, &__end);
+        let __nt = super::__action267::<>(context, out, input, &__start, &__end);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (0, 10)
     }
@@ -8219,13 +8219,13 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = (<name_string> ",")+, name_string => ActionFn(252);
+        // CommaSepList<name_string> = (<name_string> ",")+, name_string => ActionFn(268);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action252::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action268::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (2, 10)
     }
@@ -8241,11 +8241,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = (<name_string> ",")+ => ActionFn(253);
+        // CommaSepList<name_string> = (<name_string> ",")+ => ActionFn(269);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action253::<>(context, out, input, __sym0);
+        let __nt = super::__action269::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 10)
     }
@@ -8321,11 +8321,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // clc = "CLC" => ActionFn(150);
+        // clc = "CLC" => ActionFn(212);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action150::<>(context, out, input, __sym0);
+        let __nt = super::__action212::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 17)
     }
@@ -8341,11 +8341,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // clc = "clc" => ActionFn(151);
+        // clc = "clc" => ActionFn(213);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action151::<>(context, out, input, __sym0);
+        let __nt = super::__action213::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 17)
     }
@@ -8361,11 +8361,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cld = "CLD" => ActionFn(156);
+        // cld = "CLD" => ActionFn(214);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action156::<>(context, out, input, __sym0);
+        let __nt = super::__action214::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 18)
     }
@@ -8381,11 +8381,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cld = "cld" => ActionFn(157);
+        // cld = "cld" => ActionFn(215);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action157::<>(context, out, input, __sym0);
+        let __nt = super::__action215::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 18)
     }
@@ -8401,11 +8401,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cli = "CLI" => ActionFn(160);
+        // cli = "CLI" => ActionFn(216);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action160::<>(context, out, input, __sym0);
+        let __nt = super::__action216::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 19)
     }
@@ -8421,11 +8421,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cli = "cli" => ActionFn(161);
+        // cli = "cli" => ActionFn(217);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action161::<>(context, out, input, __sym0);
+        let __nt = super::__action217::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 19)
     }
@@ -8441,11 +8441,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cmc = "CMC" => ActionFn(152);
+        // cmc = "CMC" => ActionFn(218);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action152::<>(context, out, input, __sym0);
+        let __nt = super::__action218::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 20)
     }
@@ -8461,11 +8461,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cmc = "cmc" => ActionFn(153);
+        // cmc = "cmc" => ActionFn(219);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action153::<>(context, out, input, __sym0);
+        let __nt = super::__action219::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 20)
     }
@@ -8805,11 +8805,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // ctc = "CTC" => ActionFn(148);
+        // ctc = "CTC" => ActionFn(220);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action148::<>(context, out, input, __sym0);
+        let __nt = super::__action220::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 23)
     }
@@ -8825,11 +8825,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // ctc = "ctc" => ActionFn(149);
+        // ctc = "ctc" => ActionFn(221);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action149::<>(context, out, input, __sym0);
+        let __nt = super::__action221::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 23)
     }
@@ -8971,14 +8971,14 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, byte_num => ActionFn(212);
+        // db_directive = label, quote_db, byte_num => ActionFn(222);
         assert!(__symbols.len() >= 3);
         let __sym2 = __pop_Variant6(__symbols);
         let __sym1 = __pop_Variant4(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym2.2.clone();
-        let __nt = super::__action212::<>(context, out, input, __sym0, __sym1, __sym2);
+        let __nt = super::__action222::<>(context, out, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (3, 25)
     }
@@ -9016,7 +9016,7 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, "[", word_num, "]" => ActionFn(213);
+        // db_directive = label, quote_db, "[", word_num, "]" => ActionFn(223);
         assert!(__symbols.len() >= 5);
         let __sym4 = __pop_Variant0(__symbols);
         let __sym3 = __pop_Variant8(__symbols);
@@ -9025,7 +9025,7 @@ mod __parse__code_directives {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym4.2.clone();
-        let __nt = super::__action213::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+        let __nt = super::__action223::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (5, 25)
     }
@@ -9065,7 +9065,7 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, "[", word_num, ";", byte_num, "]" => ActionFn(214);
+        // db_directive = label, quote_db, "[", word_num, ";", byte_num, "]" => ActionFn(224);
         assert!(__symbols.len() >= 7);
         let __sym6 = __pop_Variant0(__symbols);
         let __sym5 = __pop_Variant6(__symbols);
@@ -9076,7 +9076,7 @@ mod __parse__code_directives {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym6.2.clone();
-        let __nt = super::__action214::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
+        let __nt = super::__action224::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (7, 25)
     }
@@ -9118,14 +9118,14 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, word_num => ActionFn(215);
+        // dw_directive = label, quote_dw, word_num => ActionFn(225);
         assert!(__symbols.len() >= 3);
         let __sym2 = __pop_Variant8(__symbols);
         let __sym1 = __pop_Variant4(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym2.2.clone();
-        let __nt = super::__action215::<>(context, out, input, __sym0, __sym1, __sym2);
+        let __nt = super::__action225::<>(context, out, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (3, 26)
     }
@@ -9163,7 +9163,7 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, "[", word_num, "]" => ActionFn(216);
+        // dw_directive = label, quote_dw, "[", word_num, "]" => ActionFn(226);
         assert!(__symbols.len() >= 5);
         let __sym4 = __pop_Variant0(__symbols);
         let __sym3 = __pop_Variant8(__symbols);
@@ -9172,7 +9172,7 @@ mod __parse__code_directives {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym4.2.clone();
-        let __nt = super::__action216::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+        let __nt = super::__action226::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (5, 26)
     }
@@ -9212,7 +9212,7 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, "[", word_num, ";", word_num, "]" => ActionFn(217);
+        // dw_directive = label, quote_dw, "[", word_num, ";", word_num, "]" => ActionFn(227);
         assert!(__symbols.len() >= 7);
         let __sym6 = __pop_Variant0(__symbols);
         let __sym5 = __pop_Variant8(__symbols);
@@ -9223,7 +9223,7 @@ mod __parse__code_directives {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym6.2.clone();
-        let __nt = super::__action217::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
+        let __nt = super::__action227::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (7, 26)
     }
@@ -9344,11 +9344,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // hlt = "HLT" => ActionFn(162);
+        // hlt = "HLT" => ActionFn(230);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action162::<>(context, out, input, __sym0);
+        let __nt = super::__action230::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 30)
     }
@@ -9364,11 +9364,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // hlt = "hlt" => ActionFn(163);
+        // hlt = "hlt" => ActionFn(231);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action163::<>(context, out, input, __sym0);
+        let __nt = super::__action231::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 30)
     }
@@ -9384,13 +9384,13 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // jmps_loops = quote_jmps_loops, name_string => ActionFn(240);
+        // jmps_loops = quote_jmps_loops, name_string => ActionFn(256);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action240::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action256::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (2, 33)
     }
@@ -9492,11 +9492,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // nop = "NOP" => ActionFn(226);
+        // nop = "NOP" => ActionFn(238);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action226::<>(context, out, input, __sym0);
+        let __nt = super::__action238::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 40)
     }
@@ -9512,11 +9512,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // nop = "nop" => ActionFn(227);
+        // nop = "nop" => ActionFn(239);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action227::<>(context, out, input, __sym0);
+        let __nt = super::__action239::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 40)
     }
@@ -11454,11 +11454,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // std = "STD" => ActionFn(154);
+        // std = "STD" => ActionFn(241);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action154::<>(context, out, input, __sym0);
+        let __nt = super::__action241::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 54)
     }
@@ -11474,11 +11474,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // std = "std" => ActionFn(155);
+        // std = "std" => ActionFn(242);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action155::<>(context, out, input, __sym0);
+        let __nt = super::__action242::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 54)
     }
@@ -11494,11 +11494,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // sti = "STI" => ActionFn(158);
+        // sti = "STI" => ActionFn(243);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action158::<>(context, out, input, __sym0);
+        let __nt = super::__action243::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 55)
     }
@@ -11514,11 +11514,11 @@ mod __parse__code_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // sti = "sti" => ActionFn(159);
+        // sti = "sti" => ActionFn(244);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action159::<>(context, out, input, __sym0);
+        let __nt = super::__action244::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 55)
     }
@@ -12430,11 +12430,11 @@ mod __parse__data_directives {
                 __reduce27(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             28 => {
-                // byte_num = r#"[0-9]+"# => ActionFn(234);
+                // byte_num = r#"[0-9]+"# => ActionFn(250);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action234::<>(context, out, input, __sym0) {
+                let __nt = match super::__action250::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12442,11 +12442,11 @@ mod __parse__data_directives {
                 (1, 15)
             }
             29 => {
-                // byte_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(235);
+                // byte_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(251);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action235::<>(context, out, input, __sym0) {
+                let __nt = match super::__action251::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12454,11 +12454,11 @@ mod __parse__data_directives {
                 (1, 15)
             }
             30 => {
-                // byte_num = r#"0(b|B)[0-1]+"# => ActionFn(236);
+                // byte_num = r#"0(b|B)[0-1]+"# => ActionFn(252);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action236::<>(context, out, input, __sym0) {
+                let __nt = match super::__action252::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12466,13 +12466,13 @@ mod __parse__data_directives {
                 (1, 15)
             }
             31 => {
-                // call = quote_call, name_string => ActionFn(237);
+                // call = quote_call, name_string => ActionFn(253);
                 assert!(__symbols.len() >= 2);
                 let __sym1 = __pop_Variant1(__symbols);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym1.2.clone();
-                let __nt = match super::__action237::<>(context, out, input, __sym0, __sym1) {
+                let __nt = match super::__action253::<>(context, out, input, __sym0, __sym1) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12612,11 +12612,11 @@ mod __parse__data_directives {
                 __reduce75(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             76 => {
-                // esc = "ESC" => ActionFn(218);
+                // esc = "ESC" => ActionFn(228);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action218::<>(context, out, input, __sym0) {
+                let __nt = match super::__action228::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12624,11 +12624,11 @@ mod __parse__data_directives {
                 (1, 27)
             }
             77 => {
-                // esc = "esc" => ActionFn(219);
+                // esc = "esc" => ActionFn(229);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action219::<>(context, out, input, __sym0) {
+                let __nt = match super::__action229::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12654,13 +12654,13 @@ mod __parse__data_directives {
                 __reduce83(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             84 => {
-                // int = quote_int, byte_num => ActionFn(238);
+                // int = quote_int, byte_num => ActionFn(254);
                 assert!(__symbols.len() >= 2);
                 let __sym1 = __pop_Variant6(__symbols);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym1.2.clone();
-                let __nt = match super::__action238::<>(context, out, input, __sym0, __sym1) {
+                let __nt = match super::__action254::<>(context, out, input, __sym0, __sym1) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12668,11 +12668,11 @@ mod __parse__data_directives {
                 (2, 31)
             }
             85 => {
-                // into_iret = quote_into_iret => ActionFn(239);
+                // into_iret = quote_into_iret => ActionFn(255);
                 let __sym0 = __pop_Variant1(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action239::<>(context, out, input, __sym0) {
+                let __nt = match super::__action255::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12695,11 +12695,11 @@ mod __parse__data_directives {
                 (1, 34)
             }
             88 => {
-                // lock = "LOCK" => ActionFn(223);
+                // lock = "LOCK" => ActionFn(235);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action223::<>(context, out, input, __sym0) {
+                let __nt = match super::__action235::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12707,11 +12707,11 @@ mod __parse__data_directives {
                 (1, 35)
             }
             89 => {
-                // lock = "lock" => ActionFn(224);
+                // lock = "lock" => ActionFn(236);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action224::<>(context, out, input, __sym0) {
+                let __nt = match super::__action236::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -12722,7 +12722,7 @@ mod __parse__data_directives {
                 __reduce90(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             91 => {
-                // macro_use = r#"[_a-zA-Z][_a-zA-Z0-9]*"#, "(", CommaSepList<general_string>, ")" => ActionFn(241);
+                // macro_use = r#"[_a-zA-Z][_a-zA-Z0-9]*"#, "(", CommaSepList<general_string>, ")" => ActionFn(257);
                 assert!(__symbols.len() >= 4);
                 let __sym3 = __pop_Variant0(__symbols);
                 let __sym2 = __pop_Variant5(__symbols);
@@ -12730,7 +12730,7 @@ mod __parse__data_directives {
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym3.2.clone();
-                let __nt = match super::__action241::<>(context, out, input, __sym0, __sym1, __sym2, __sym3) {
+                let __nt = match super::__action257::<>(context, out, input, __sym0, __sym1, __sym2, __sym3) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -13038,11 +13038,11 @@ mod __parse__data_directives {
                 __reduce191(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             192 => {
-                // ret = quote_ret => ActionFn(242);
+                // ret = quote_ret => ActionFn(258);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action242::<>(context, out, input, __sym0) {
+                let __nt = match super::__action258::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -13074,11 +13074,11 @@ mod __parse__data_directives {
                 __reduce200(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             201 => {
-                // wait = "WAIT" => ActionFn(229);
+                // wait = "WAIT" => ActionFn(245);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action229::<>(context, out, input, __sym0) {
+                let __nt = match super::__action245::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -13086,11 +13086,11 @@ mod __parse__data_directives {
                 (1, 57)
             }
             202 => {
-                // wait = "wait" => ActionFn(230);
+                // wait = "wait" => ActionFn(246);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action230::<>(context, out, input, __sym0) {
+                let __nt = match super::__action246::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -13098,11 +13098,11 @@ mod __parse__data_directives {
                 (1, 57)
             }
             203 => {
-                // word_num = r#"[0-9]+"# => ActionFn(243);
+                // word_num = r#"[0-9]+"# => ActionFn(259);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action243::<>(context, out, input, __sym0) {
+                let __nt = match super::__action259::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -13110,11 +13110,11 @@ mod __parse__data_directives {
                 (1, 58)
             }
             204 => {
-                // word_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(244);
+                // word_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(260);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action244::<>(context, out, input, __sym0) {
+                let __nt = match super::__action260::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -13122,11 +13122,11 @@ mod __parse__data_directives {
                 (1, 58)
             }
             205 => {
-                // word_num = r#"0(b|B)[0-1]+"# => ActionFn(245);
+                // word_num = r#"0(b|B)[0-1]+"# => ActionFn(261);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action245::<>(context, out, input, __sym0) {
+                let __nt = match super::__action261::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -13589,11 +13589,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = general_string => ActionFn(246);
+        // CommaSepList<general_string> = general_string => ActionFn(262);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action246::<>(context, out, input, __sym0);
+        let __nt = super::__action262::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 9)
     }
@@ -13609,10 +13609,10 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> =  => ActionFn(247);
+        // CommaSepList<general_string> =  => ActionFn(263);
         let __start = __lookahead_start.cloned().or_else(|| __symbols.last().map(|s| s.2.clone())).unwrap_or_default();
         let __end = __start.clone();
-        let __nt = super::__action247::<>(context, out, input, &__start, &__end);
+        let __nt = super::__action263::<>(context, out, input, &__start, &__end);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (0, 9)
     }
@@ -13628,13 +13628,13 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = (<general_string> ",")+, general_string => ActionFn(248);
+        // CommaSepList<general_string> = (<general_string> ",")+, general_string => ActionFn(264);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action248::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action264::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (2, 9)
     }
@@ -13650,11 +13650,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = (<general_string> ",")+ => ActionFn(249);
+        // CommaSepList<general_string> = (<general_string> ",")+ => ActionFn(265);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action249::<>(context, out, input, __sym0);
+        let __nt = super::__action265::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 9)
     }
@@ -13670,11 +13670,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = name_string => ActionFn(250);
+        // CommaSepList<name_string> = name_string => ActionFn(266);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action250::<>(context, out, input, __sym0);
+        let __nt = super::__action266::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 10)
     }
@@ -13690,10 +13690,10 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> =  => ActionFn(251);
+        // CommaSepList<name_string> =  => ActionFn(267);
         let __start = __lookahead_start.cloned().or_else(|| __symbols.last().map(|s| s.2.clone())).unwrap_or_default();
         let __end = __start.clone();
-        let __nt = super::__action251::<>(context, out, input, &__start, &__end);
+        let __nt = super::__action267::<>(context, out, input, &__start, &__end);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (0, 10)
     }
@@ -13709,13 +13709,13 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = (<name_string> ",")+, name_string => ActionFn(252);
+        // CommaSepList<name_string> = (<name_string> ",")+, name_string => ActionFn(268);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action252::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action268::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (2, 10)
     }
@@ -13731,11 +13731,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = (<name_string> ",")+ => ActionFn(253);
+        // CommaSepList<name_string> = (<name_string> ",")+ => ActionFn(269);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action253::<>(context, out, input, __sym0);
+        let __nt = super::__action269::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 10)
     }
@@ -13811,11 +13811,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // clc = "CLC" => ActionFn(150);
+        // clc = "CLC" => ActionFn(212);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action150::<>(context, out, input, __sym0);
+        let __nt = super::__action212::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 17)
     }
@@ -13831,11 +13831,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // clc = "clc" => ActionFn(151);
+        // clc = "clc" => ActionFn(213);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action151::<>(context, out, input, __sym0);
+        let __nt = super::__action213::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 17)
     }
@@ -13851,11 +13851,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cld = "CLD" => ActionFn(156);
+        // cld = "CLD" => ActionFn(214);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action156::<>(context, out, input, __sym0);
+        let __nt = super::__action214::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 18)
     }
@@ -13871,11 +13871,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cld = "cld" => ActionFn(157);
+        // cld = "cld" => ActionFn(215);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action157::<>(context, out, input, __sym0);
+        let __nt = super::__action215::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 18)
     }
@@ -13891,11 +13891,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cli = "CLI" => ActionFn(160);
+        // cli = "CLI" => ActionFn(216);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action160::<>(context, out, input, __sym0);
+        let __nt = super::__action216::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 19)
     }
@@ -13911,11 +13911,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cli = "cli" => ActionFn(161);
+        // cli = "cli" => ActionFn(217);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action161::<>(context, out, input, __sym0);
+        let __nt = super::__action217::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 19)
     }
@@ -13931,11 +13931,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cmc = "CMC" => ActionFn(152);
+        // cmc = "CMC" => ActionFn(218);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action152::<>(context, out, input, __sym0);
+        let __nt = super::__action218::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 20)
     }
@@ -13951,11 +13951,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cmc = "cmc" => ActionFn(153);
+        // cmc = "cmc" => ActionFn(219);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action153::<>(context, out, input, __sym0);
+        let __nt = super::__action219::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 20)
     }
@@ -14295,11 +14295,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // ctc = "CTC" => ActionFn(148);
+        // ctc = "CTC" => ActionFn(220);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action148::<>(context, out, input, __sym0);
+        let __nt = super::__action220::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 23)
     }
@@ -14315,11 +14315,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // ctc = "ctc" => ActionFn(149);
+        // ctc = "ctc" => ActionFn(221);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action149::<>(context, out, input, __sym0);
+        let __nt = super::__action221::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 23)
     }
@@ -14461,14 +14461,14 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, byte_num => ActionFn(212);
+        // db_directive = label, quote_db, byte_num => ActionFn(222);
         assert!(__symbols.len() >= 3);
         let __sym2 = __pop_Variant6(__symbols);
         let __sym1 = __pop_Variant4(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym2.2.clone();
-        let __nt = super::__action212::<>(context, out, input, __sym0, __sym1, __sym2);
+        let __nt = super::__action222::<>(context, out, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (3, 25)
     }
@@ -14506,7 +14506,7 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, "[", word_num, "]" => ActionFn(213);
+        // db_directive = label, quote_db, "[", word_num, "]" => ActionFn(223);
         assert!(__symbols.len() >= 5);
         let __sym4 = __pop_Variant0(__symbols);
         let __sym3 = __pop_Variant8(__symbols);
@@ -14515,7 +14515,7 @@ mod __parse__data_directives {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym4.2.clone();
-        let __nt = super::__action213::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+        let __nt = super::__action223::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (5, 25)
     }
@@ -14555,7 +14555,7 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, "[", word_num, ";", byte_num, "]" => ActionFn(214);
+        // db_directive = label, quote_db, "[", word_num, ";", byte_num, "]" => ActionFn(224);
         assert!(__symbols.len() >= 7);
         let __sym6 = __pop_Variant0(__symbols);
         let __sym5 = __pop_Variant6(__symbols);
@@ -14566,7 +14566,7 @@ mod __parse__data_directives {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym6.2.clone();
-        let __nt = super::__action214::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
+        let __nt = super::__action224::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (7, 25)
     }
@@ -14608,14 +14608,14 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, word_num => ActionFn(215);
+        // dw_directive = label, quote_dw, word_num => ActionFn(225);
         assert!(__symbols.len() >= 3);
         let __sym2 = __pop_Variant8(__symbols);
         let __sym1 = __pop_Variant4(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym2.2.clone();
-        let __nt = super::__action215::<>(context, out, input, __sym0, __sym1, __sym2);
+        let __nt = super::__action225::<>(context, out, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (3, 26)
     }
@@ -14653,7 +14653,7 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, "[", word_num, "]" => ActionFn(216);
+        // dw_directive = label, quote_dw, "[", word_num, "]" => ActionFn(226);
         assert!(__symbols.len() >= 5);
         let __sym4 = __pop_Variant0(__symbols);
         let __sym3 = __pop_Variant8(__symbols);
@@ -14662,7 +14662,7 @@ mod __parse__data_directives {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym4.2.clone();
-        let __nt = super::__action216::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+        let __nt = super::__action226::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (5, 26)
     }
@@ -14702,7 +14702,7 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, "[", word_num, ";", word_num, "]" => ActionFn(217);
+        // dw_directive = label, quote_dw, "[", word_num, ";", word_num, "]" => ActionFn(227);
         assert!(__symbols.len() >= 7);
         let __sym6 = __pop_Variant0(__symbols);
         let __sym5 = __pop_Variant8(__symbols);
@@ -14713,7 +14713,7 @@ mod __parse__data_directives {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym6.2.clone();
-        let __nt = super::__action217::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
+        let __nt = super::__action227::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (7, 26)
     }
@@ -14834,11 +14834,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // hlt = "HLT" => ActionFn(162);
+        // hlt = "HLT" => ActionFn(230);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action162::<>(context, out, input, __sym0);
+        let __nt = super::__action230::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 30)
     }
@@ -14854,11 +14854,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // hlt = "hlt" => ActionFn(163);
+        // hlt = "hlt" => ActionFn(231);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action163::<>(context, out, input, __sym0);
+        let __nt = super::__action231::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 30)
     }
@@ -14874,13 +14874,13 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // jmps_loops = quote_jmps_loops, name_string => ActionFn(240);
+        // jmps_loops = quote_jmps_loops, name_string => ActionFn(256);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action240::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action256::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (2, 33)
     }
@@ -14982,11 +14982,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // nop = "NOP" => ActionFn(226);
+        // nop = "NOP" => ActionFn(238);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action226::<>(context, out, input, __sym0);
+        let __nt = super::__action238::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 40)
     }
@@ -15002,11 +15002,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // nop = "nop" => ActionFn(227);
+        // nop = "nop" => ActionFn(239);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action227::<>(context, out, input, __sym0);
+        let __nt = super::__action239::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 40)
     }
@@ -16944,11 +16944,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // std = "STD" => ActionFn(154);
+        // std = "STD" => ActionFn(241);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action154::<>(context, out, input, __sym0);
+        let __nt = super::__action241::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 54)
     }
@@ -16964,11 +16964,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // std = "std" => ActionFn(155);
+        // std = "std" => ActionFn(242);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action155::<>(context, out, input, __sym0);
+        let __nt = super::__action242::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 54)
     }
@@ -16984,11 +16984,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // sti = "STI" => ActionFn(158);
+        // sti = "STI" => ActionFn(243);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action158::<>(context, out, input, __sym0);
+        let __nt = super::__action243::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 55)
     }
@@ -17004,11 +17004,11 @@ mod __parse__data_directives {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // sti = "sti" => ActionFn(159);
+        // sti = "sti" => ActionFn(244);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action159::<>(context, out, input, __sym0);
+        let __nt = super::__action244::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 55)
     }
@@ -17738,11 +17738,11 @@ mod __parse__macro_def {
                 return Some(Ok(__nt));
             }
             28 => {
-                // byte_num = r#"[0-9]+"# => ActionFn(234);
+                // byte_num = r#"[0-9]+"# => ActionFn(250);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action234::<>(context, out, input, __sym0) {
+                let __nt = match super::__action250::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -17750,11 +17750,11 @@ mod __parse__macro_def {
                 (1, 15)
             }
             29 => {
-                // byte_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(235);
+                // byte_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(251);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action235::<>(context, out, input, __sym0) {
+                let __nt = match super::__action251::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -17762,11 +17762,11 @@ mod __parse__macro_def {
                 (1, 15)
             }
             30 => {
-                // byte_num = r#"0(b|B)[0-1]+"# => ActionFn(236);
+                // byte_num = r#"0(b|B)[0-1]+"# => ActionFn(252);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action236::<>(context, out, input, __sym0) {
+                let __nt = match super::__action252::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -17774,13 +17774,13 @@ mod __parse__macro_def {
                 (1, 15)
             }
             31 => {
-                // call = quote_call, name_string => ActionFn(237);
+                // call = quote_call, name_string => ActionFn(253);
                 assert!(__symbols.len() >= 2);
                 let __sym1 = __pop_Variant1(__symbols);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym1.2.clone();
-                let __nt = match super::__action237::<>(context, out, input, __sym0, __sym1) {
+                let __nt = match super::__action253::<>(context, out, input, __sym0, __sym1) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -17920,11 +17920,11 @@ mod __parse__macro_def {
                 __reduce75(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             76 => {
-                // esc = "ESC" => ActionFn(218);
+                // esc = "ESC" => ActionFn(228);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action218::<>(context, out, input, __sym0) {
+                let __nt = match super::__action228::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -17932,11 +17932,11 @@ mod __parse__macro_def {
                 (1, 27)
             }
             77 => {
-                // esc = "esc" => ActionFn(219);
+                // esc = "esc" => ActionFn(229);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action219::<>(context, out, input, __sym0) {
+                let __nt = match super::__action229::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -17962,13 +17962,13 @@ mod __parse__macro_def {
                 __reduce83(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             84 => {
-                // int = quote_int, byte_num => ActionFn(238);
+                // int = quote_int, byte_num => ActionFn(254);
                 assert!(__symbols.len() >= 2);
                 let __sym1 = __pop_Variant6(__symbols);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym1.2.clone();
-                let __nt = match super::__action238::<>(context, out, input, __sym0, __sym1) {
+                let __nt = match super::__action254::<>(context, out, input, __sym0, __sym1) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -17976,11 +17976,11 @@ mod __parse__macro_def {
                 (2, 31)
             }
             85 => {
-                // into_iret = quote_into_iret => ActionFn(239);
+                // into_iret = quote_into_iret => ActionFn(255);
                 let __sym0 = __pop_Variant1(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action239::<>(context, out, input, __sym0) {
+                let __nt = match super::__action255::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18003,11 +18003,11 @@ mod __parse__macro_def {
                 (1, 34)
             }
             88 => {
-                // lock = "LOCK" => ActionFn(223);
+                // lock = "LOCK" => ActionFn(235);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action223::<>(context, out, input, __sym0) {
+                let __nt = match super::__action235::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18015,11 +18015,11 @@ mod __parse__macro_def {
                 (1, 35)
             }
             89 => {
-                // lock = "lock" => ActionFn(224);
+                // lock = "lock" => ActionFn(236);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action224::<>(context, out, input, __sym0) {
+                let __nt = match super::__action236::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18030,7 +18030,7 @@ mod __parse__macro_def {
                 __reduce90(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             91 => {
-                // macro_use = r#"[_a-zA-Z][_a-zA-Z0-9]*"#, "(", CommaSepList<general_string>, ")" => ActionFn(241);
+                // macro_use = r#"[_a-zA-Z][_a-zA-Z0-9]*"#, "(", CommaSepList<general_string>, ")" => ActionFn(257);
                 assert!(__symbols.len() >= 4);
                 let __sym3 = __pop_Variant0(__symbols);
                 let __sym2 = __pop_Variant5(__symbols);
@@ -18038,7 +18038,7 @@ mod __parse__macro_def {
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym3.2.clone();
-                let __nt = match super::__action241::<>(context, out, input, __sym0, __sym1, __sym2, __sym3) {
+                let __nt = match super::__action257::<>(context, out, input, __sym0, __sym1, __sym2, __sym3) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18346,11 +18346,11 @@ mod __parse__macro_def {
                 __reduce191(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             192 => {
-                // ret = quote_ret => ActionFn(242);
+                // ret = quote_ret => ActionFn(258);
                 let __sym0 = __pop_Variant4(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action242::<>(context, out, input, __sym0) {
+                let __nt = match super::__action258::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18382,11 +18382,11 @@ mod __parse__macro_def {
                 __reduce200(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             201 => {
-                // wait = "WAIT" => ActionFn(229);
+                // wait = "WAIT" => ActionFn(245);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action229::<>(context, out, input, __sym0) {
+                let __nt = match super::__action245::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18394,11 +18394,11 @@ mod __parse__macro_def {
                 (1, 57)
             }
             202 => {
-                // wait = "wait" => ActionFn(230);
+                // wait = "wait" => ActionFn(246);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action230::<>(context, out, input, __sym0) {
+                let __nt = match super::__action246::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18406,11 +18406,11 @@ mod __parse__macro_def {
                 (1, 57)
             }
             203 => {
-                // word_num = r#"[0-9]+"# => ActionFn(243);
+                // word_num = r#"[0-9]+"# => ActionFn(259);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action243::<>(context, out, input, __sym0) {
+                let __nt = match super::__action259::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18418,11 +18418,11 @@ mod __parse__macro_def {
                 (1, 58)
             }
             204 => {
-                // word_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(244);
+                // word_num = r#"0(x|X)[0-9A-Fa-f]+"# => ActionFn(260);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action244::<>(context, out, input, __sym0) {
+                let __nt = match super::__action260::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18430,11 +18430,11 @@ mod __parse__macro_def {
                 (1, 58)
             }
             205 => {
-                // word_num = r#"0(b|B)[0-1]+"# => ActionFn(245);
+                // word_num = r#"0(b|B)[0-1]+"# => ActionFn(261);
                 let __sym0 = __pop_Variant0(__symbols);
                 let __start = __sym0.0.clone();
                 let __end = __sym0.2.clone();
-                let __nt = match super::__action245::<>(context, out, input, __sym0) {
+                let __nt = match super::__action261::<>(context, out, input, __sym0) {
                     Ok(v) => v,
                     Err(e) => return Some(Err(e)),
                 };
@@ -18897,11 +18897,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = general_string => ActionFn(246);
+        // CommaSepList<general_string> = general_string => ActionFn(262);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action246::<>(context, out, input, __sym0);
+        let __nt = super::__action262::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 9)
     }
@@ -18917,10 +18917,10 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> =  => ActionFn(247);
+        // CommaSepList<general_string> =  => ActionFn(263);
         let __start = __lookahead_start.cloned().or_else(|| __symbols.last().map(|s| s.2.clone())).unwrap_or_default();
         let __end = __start.clone();
-        let __nt = super::__action247::<>(context, out, input, &__start, &__end);
+        let __nt = super::__action263::<>(context, out, input, &__start, &__end);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (0, 9)
     }
@@ -18936,13 +18936,13 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = (<general_string> ",")+, general_string => ActionFn(248);
+        // CommaSepList<general_string> = (<general_string> ",")+, general_string => ActionFn(264);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action248::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action264::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (2, 9)
     }
@@ -18958,11 +18958,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<general_string> = (<general_string> ",")+ => ActionFn(249);
+        // CommaSepList<general_string> = (<general_string> ",")+ => ActionFn(265);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action249::<>(context, out, input, __sym0);
+        let __nt = super::__action265::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 9)
     }
@@ -18978,11 +18978,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = name_string => ActionFn(250);
+        // CommaSepList<name_string> = name_string => ActionFn(266);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action250::<>(context, out, input, __sym0);
+        let __nt = super::__action266::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 10)
     }
@@ -18998,10 +18998,10 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> =  => ActionFn(251);
+        // CommaSepList<name_string> =  => ActionFn(267);
         let __start = __lookahead_start.cloned().or_else(|| __symbols.last().map(|s| s.2.clone())).unwrap_or_default();
         let __end = __start.clone();
-        let __nt = super::__action251::<>(context, out, input, &__start, &__end);
+        let __nt = super::__action267::<>(context, out, input, &__start, &__end);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (0, 10)
     }
@@ -19017,13 +19017,13 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = (<name_string> ",")+, name_string => ActionFn(252);
+        // CommaSepList<name_string> = (<name_string> ",")+, name_string => ActionFn(268);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action252::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action268::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (2, 10)
     }
@@ -19039,11 +19039,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // CommaSepList<name_string> = (<name_string> ",")+ => ActionFn(253);
+        // CommaSepList<name_string> = (<name_string> ",")+ => ActionFn(269);
         let __sym0 = __pop_Variant2(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action253::<>(context, out, input, __sym0);
+        let __nt = super::__action269::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant5(__nt), __end));
         (1, 10)
     }
@@ -19119,11 +19119,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // clc = "CLC" => ActionFn(150);
+        // clc = "CLC" => ActionFn(212);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action150::<>(context, out, input, __sym0);
+        let __nt = super::__action212::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 17)
     }
@@ -19139,11 +19139,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // clc = "clc" => ActionFn(151);
+        // clc = "clc" => ActionFn(213);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action151::<>(context, out, input, __sym0);
+        let __nt = super::__action213::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 17)
     }
@@ -19159,11 +19159,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cld = "CLD" => ActionFn(156);
+        // cld = "CLD" => ActionFn(214);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action156::<>(context, out, input, __sym0);
+        let __nt = super::__action214::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 18)
     }
@@ -19179,11 +19179,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cld = "cld" => ActionFn(157);
+        // cld = "cld" => ActionFn(215);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action157::<>(context, out, input, __sym0);
+        let __nt = super::__action215::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 18)
     }
@@ -19199,11 +19199,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cli = "CLI" => ActionFn(160);
+        // cli = "CLI" => ActionFn(216);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action160::<>(context, out, input, __sym0);
+        let __nt = super::__action216::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 19)
     }
@@ -19219,11 +19219,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cli = "cli" => ActionFn(161);
+        // cli = "cli" => ActionFn(217);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action161::<>(context, out, input, __sym0);
+        let __nt = super::__action217::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 19)
     }
@@ -19239,11 +19239,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cmc = "CMC" => ActionFn(152);
+        // cmc = "CMC" => ActionFn(218);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action152::<>(context, out, input, __sym0);
+        let __nt = super::__action218::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 20)
     }
@@ -19259,11 +19259,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // cmc = "cmc" => ActionFn(153);
+        // cmc = "cmc" => ActionFn(219);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action153::<>(context, out, input, __sym0);
+        let __nt = super::__action219::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 20)
     }
@@ -19603,11 +19603,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // ctc = "CTC" => ActionFn(148);
+        // ctc = "CTC" => ActionFn(220);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action148::<>(context, out, input, __sym0);
+        let __nt = super::__action220::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 23)
     }
@@ -19623,11 +19623,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // ctc = "ctc" => ActionFn(149);
+        // ctc = "ctc" => ActionFn(221);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action149::<>(context, out, input, __sym0);
+        let __nt = super::__action221::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 23)
     }
@@ -19769,14 +19769,14 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, byte_num => ActionFn(212);
+        // db_directive = label, quote_db, byte_num => ActionFn(222);
         assert!(__symbols.len() >= 3);
         let __sym2 = __pop_Variant6(__symbols);
         let __sym1 = __pop_Variant4(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym2.2.clone();
-        let __nt = super::__action212::<>(context, out, input, __sym0, __sym1, __sym2);
+        let __nt = super::__action222::<>(context, out, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (3, 25)
     }
@@ -19814,7 +19814,7 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, "[", word_num, "]" => ActionFn(213);
+        // db_directive = label, quote_db, "[", word_num, "]" => ActionFn(223);
         assert!(__symbols.len() >= 5);
         let __sym4 = __pop_Variant0(__symbols);
         let __sym3 = __pop_Variant8(__symbols);
@@ -19823,7 +19823,7 @@ mod __parse__macro_def {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym4.2.clone();
-        let __nt = super::__action213::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+        let __nt = super::__action223::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (5, 25)
     }
@@ -19863,7 +19863,7 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db_directive = label, quote_db, "[", word_num, ";", byte_num, "]" => ActionFn(214);
+        // db_directive = label, quote_db, "[", word_num, ";", byte_num, "]" => ActionFn(224);
         assert!(__symbols.len() >= 7);
         let __sym6 = __pop_Variant0(__symbols);
         let __sym5 = __pop_Variant6(__symbols);
@@ -19874,7 +19874,7 @@ mod __parse__macro_def {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym6.2.clone();
-        let __nt = super::__action214::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
+        let __nt = super::__action224::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (7, 25)
     }
@@ -19916,14 +19916,14 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, word_num => ActionFn(215);
+        // dw_directive = label, quote_dw, word_num => ActionFn(225);
         assert!(__symbols.len() >= 3);
         let __sym2 = __pop_Variant8(__symbols);
         let __sym1 = __pop_Variant4(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym2.2.clone();
-        let __nt = super::__action215::<>(context, out, input, __sym0, __sym1, __sym2);
+        let __nt = super::__action225::<>(context, out, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (3, 26)
     }
@@ -19961,7 +19961,7 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, "[", word_num, "]" => ActionFn(216);
+        // dw_directive = label, quote_dw, "[", word_num, "]" => ActionFn(226);
         assert!(__symbols.len() >= 5);
         let __sym4 = __pop_Variant0(__symbols);
         let __sym3 = __pop_Variant8(__symbols);
@@ -19970,7 +19970,7 @@ mod __parse__macro_def {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym4.2.clone();
-        let __nt = super::__action216::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+        let __nt = super::__action226::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (5, 26)
     }
@@ -20010,7 +20010,7 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw_directive = label, quote_dw, "[", word_num, ";", word_num, "]" => ActionFn(217);
+        // dw_directive = label, quote_dw, "[", word_num, ";", word_num, "]" => ActionFn(227);
         assert!(__symbols.len() >= 7);
         let __sym6 = __pop_Variant0(__symbols);
         let __sym5 = __pop_Variant8(__symbols);
@@ -20021,7 +20021,7 @@ mod __parse__macro_def {
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym6.2.clone();
-        let __nt = super::__action217::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
+        let __nt = super::__action227::<>(context, out, input, __sym0, __sym1, __sym2, __sym3, __sym4, __sym5, __sym6);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (7, 26)
     }
@@ -20142,11 +20142,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // hlt = "HLT" => ActionFn(162);
+        // hlt = "HLT" => ActionFn(230);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action162::<>(context, out, input, __sym0);
+        let __nt = super::__action230::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 30)
     }
@@ -20162,11 +20162,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // hlt = "hlt" => ActionFn(163);
+        // hlt = "hlt" => ActionFn(231);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action163::<>(context, out, input, __sym0);
+        let __nt = super::__action231::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 30)
     }
@@ -20182,13 +20182,13 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // jmps_loops = quote_jmps_loops, name_string => ActionFn(240);
+        // jmps_loops = quote_jmps_loops, name_string => ActionFn(256);
         assert!(__symbols.len() >= 2);
         let __sym1 = __pop_Variant1(__symbols);
         let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym1.2.clone();
-        let __nt = super::__action240::<>(context, out, input, __sym0, __sym1);
+        let __nt = super::__action256::<>(context, out, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (2, 33)
     }
@@ -20290,11 +20290,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // nop = "NOP" => ActionFn(226);
+        // nop = "NOP" => ActionFn(238);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action226::<>(context, out, input, __sym0);
+        let __nt = super::__action238::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 40)
     }
@@ -20310,11 +20310,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // nop = "nop" => ActionFn(227);
+        // nop = "nop" => ActionFn(239);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action227::<>(context, out, input, __sym0);
+        let __nt = super::__action239::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 40)
     }
@@ -22252,11 +22252,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // std = "STD" => ActionFn(154);
+        // std = "STD" => ActionFn(241);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action154::<>(context, out, input, __sym0);
+        let __nt = super::__action241::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 54)
     }
@@ -22272,11 +22272,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // std = "std" => ActionFn(155);
+        // std = "std" => ActionFn(242);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action155::<>(context, out, input, __sym0);
+        let __nt = super::__action242::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 54)
     }
@@ -22292,11 +22292,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // sti = "STI" => ActionFn(158);
+        // sti = "STI" => ActionFn(243);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action158::<>(context, out, input, __sym0);
+        let __nt = super::__action243::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 55)
     }
@@ -22312,11 +22312,11 @@ mod __parse__macro_def {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // sti = "sti" => ActionFn(159);
+        // sti = "sti" => ActionFn(244);
         let __sym0 = __pop_Variant0(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
-        let __nt = super::__action159::<>(context, out, input, __sym0);
+        let __nt = super::__action244::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant4(__nt), __end));
         (1, 55)
     }
@@ -23261,8 +23261,12 @@ fn __action41<
                     let pat = format!("{{{}}}",i);
                     r = r.replace(&pat,&p);
                 }
+                
                 let p = CodeParser::new();
+                context.mapper.set_source(start);
+                context.mapper.lock_source();
                 let o = p.parse(context,out,&r);
+                context.mapper.unlock_source();
                 match o{
                     Ok(_)=>Ok(()),
                     Err(e)=>{
@@ -23365,8 +23369,10 @@ fn __action47<
             return preprocessor_error!(start,end,"",format!("\'call\' can be only used with procedures, {} is not a procedure",n));
         }else{
             out.code.push(format!("call {}",n));
+            context.mapper.add_entry(start);
             return Ok(());
         }
+        
     }
 }
 
@@ -23584,6 +23590,7 @@ fn __action61<
         if !context.label_map.contains_key(&n){
             context.undefined_labels.insert(n);
         }
+        context.mapper.add_entry(start);
     }
 }
 
@@ -24799,10 +24806,11 @@ fn __action148<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("ctc".to_owned());}
+    {out.code.push("ctc".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24813,10 +24821,11 @@ fn __action149<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("ctc".to_owned());}
+    {out.code.push("ctc".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24827,10 +24836,11 @@ fn __action150<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("clc".to_owned());}
+    {out.code.push("clc".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24841,10 +24851,11 @@ fn __action151<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("clc".to_owned());}
+    {out.code.push("clc".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24855,10 +24866,11 @@ fn __action152<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("cmc".to_owned());}
+    {out.code.push("cmc".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24869,10 +24881,11 @@ fn __action153<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("cmc".to_owned());}
+    {out.code.push("cmc".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24883,10 +24896,11 @@ fn __action154<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("std".to_owned());}
+    {out.code.push("std".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24897,10 +24911,11 @@ fn __action155<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("std".to_owned());}
+    {out.code.push("std".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24911,10 +24926,11 @@ fn __action156<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("cld".to_owned());}
+    {out.code.push("cld".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24925,10 +24941,11 @@ fn __action157<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("cld".to_owned());}
+    {out.code.push("cld".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24939,10 +24956,11 @@ fn __action158<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("sti".to_owned());}
+    {out.code.push("sti".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24953,10 +24971,11 @@ fn __action159<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("sti".to_owned());}
+    {out.code.push("sti".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24967,10 +24986,11 @@ fn __action160<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("cli".to_owned());}
+    {out.code.push("cli".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24981,10 +25001,11 @@ fn __action161<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("cli".to_owned());}
+    {out.code.push("cli".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -24995,10 +25016,11 @@ fn __action162<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("hlt".to_owned());}
+    {out.code.push("hlt".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -25009,10 +25031,11 @@ fn __action163<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, &'input str, usize),
+    (_, start, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
 ) -> ()
 {
-    {out.code.push("hlt".to_owned());}
+    {out.code.push("hlt".to_owned());context.mapper.add_entry(start);}
 }
 
 #[allow(unused_variables)]
@@ -25984,6 +26007,306 @@ fn __action212<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action150(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action213<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action151(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action214<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action156(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action215<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action157(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action216<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action160(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action217<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action161(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action218<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action152(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action219<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action153(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action220<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action148(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action221<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action149(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action222<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, (), usize),
     __2: (usize, u8, usize),
@@ -26011,7 +26334,7 @@ fn __action212<
 }
 
 #[allow(unused_variables)]
-fn __action213<
+fn __action223<
     'input,
     's,
 >(
@@ -26049,7 +26372,7 @@ fn __action213<
 }
 
 #[allow(unused_variables)]
-fn __action214<
+fn __action224<
     'input,
     's,
 >(
@@ -26091,7 +26414,7 @@ fn __action214<
 }
 
 #[allow(unused_variables)]
-fn __action215<
+fn __action225<
     'input,
     's,
 >(
@@ -26125,7 +26448,7 @@ fn __action215<
 }
 
 #[allow(unused_variables)]
-fn __action216<
+fn __action226<
     'input,
     's,
 >(
@@ -26163,7 +26486,7 @@ fn __action216<
 }
 
 #[allow(unused_variables)]
-fn __action217<
+fn __action227<
     'input,
     's,
 >(
@@ -26205,7 +26528,7 @@ fn __action217<
 }
 
 #[allow(unused_variables)]
-fn __action218<
+fn __action228<
     'input,
     's,
 >(
@@ -26235,7 +26558,7 @@ fn __action218<
 }
 
 #[allow(unused_variables)]
-fn __action219<
+fn __action229<
     'input,
     's,
 >(
@@ -26265,7 +26588,67 @@ fn __action219<
 }
 
 #[allow(unused_variables)]
-fn __action220<
+fn __action230<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action162(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action231<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action163(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action232<
     'input,
     's,
 >(
@@ -26299,7 +26682,7 @@ fn __action220<
 }
 
 #[allow(unused_variables)]
-fn __action221<
+fn __action233<
     'input,
     's,
 >(
@@ -26331,7 +26714,7 @@ fn __action221<
 }
 
 #[allow(unused_variables)]
-fn __action222<
+fn __action234<
     'input,
     's,
 >(
@@ -26365,7 +26748,7 @@ fn __action222<
 }
 
 #[allow(unused_variables)]
-fn __action223<
+fn __action235<
     'input,
     's,
 >(
@@ -26395,7 +26778,7 @@ fn __action223<
 }
 
 #[allow(unused_variables)]
-fn __action224<
+fn __action236<
     'input,
     's,
 >(
@@ -26425,7 +26808,7 @@ fn __action224<
 }
 
 #[allow(unused_variables)]
-fn __action225<
+fn __action237<
     'input,
     's,
 >(
@@ -26463,7 +26846,7 @@ fn __action225<
 }
 
 #[allow(unused_variables)]
-fn __action226<
+fn __action238<
     'input,
     's,
 >(
@@ -26493,7 +26876,7 @@ fn __action226<
 }
 
 #[allow(unused_variables)]
-fn __action227<
+fn __action239<
     'input,
     's,
 >(
@@ -26523,7 +26906,7 @@ fn __action227<
 }
 
 #[allow(unused_variables)]
-fn __action228<
+fn __action240<
     'input,
     's,
 >(
@@ -26555,7 +26938,127 @@ fn __action228<
 }
 
 #[allow(unused_variables)]
-fn __action229<
+fn __action241<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action154(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action242<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action155(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action243<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action158(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action244<
+    'input,
+    's,
+>(
+    context: &'s mut util::Context,
+    out: &'s mut util::Output,
+    input: &'input str,
+    __0: (usize, &'input str, usize),
+) -> ()
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
+    let __temp0 = __action185(
+        context,
+        out,
+        input,
+        &__start0,
+        &__end0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action159(
+        context,
+        out,
+        input,
+        __temp0,
+        __0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action245<
     'input,
     's,
 >(
@@ -26585,7 +27088,7 @@ fn __action229<
 }
 
 #[allow(unused_variables)]
-fn __action230<
+fn __action246<
     'input,
     's,
 >(
@@ -26615,7 +27118,7 @@ fn __action230<
 }
 
 #[allow(unused_variables)]
-fn __action231<
+fn __action247<
     'input,
     's,
 >(
@@ -26647,7 +27150,7 @@ fn __action231<
 }
 
 #[allow(unused_variables)]
-fn __action232<
+fn __action248<
     'input,
     's,
 >(
@@ -26679,7 +27182,7 @@ fn __action232<
 }
 
 #[allow(unused_variables)]
-fn __action233<
+fn __action249<
     'input,
     's,
 >(
@@ -26711,7 +27214,7 @@ fn __action233<
 }
 
 #[allow(unused_variables)]
-fn __action234<
+fn __action250<
     'input,
     's,
 >(
@@ -26741,7 +27244,7 @@ fn __action234<
 }
 
 #[allow(unused_variables)]
-fn __action235<
+fn __action251<
     'input,
     's,
 >(
@@ -26771,7 +27274,7 @@ fn __action235<
 }
 
 #[allow(unused_variables)]
-fn __action236<
+fn __action252<
     'input,
     's,
 >(
@@ -26801,7 +27304,7 @@ fn __action236<
 }
 
 #[allow(unused_variables)]
-fn __action237<
+fn __action253<
     'input,
     's,
 >(
@@ -26833,7 +27336,7 @@ fn __action237<
 }
 
 #[allow(unused_variables)]
-fn __action238<
+fn __action254<
     'input,
     's,
 >(
@@ -26854,7 +27357,7 @@ fn __action238<
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action220(
+    __action232(
         context,
         out,
         input,
@@ -26865,7 +27368,7 @@ fn __action238<
 }
 
 #[allow(unused_variables)]
-fn __action239<
+fn __action255<
     'input,
     's,
 >(
@@ -26885,7 +27388,7 @@ fn __action239<
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action221(
+    __action233(
         context,
         out,
         input,
@@ -26895,7 +27398,7 @@ fn __action239<
 }
 
 #[allow(unused_variables)]
-fn __action240<
+fn __action256<
     'input,
     's,
 >(
@@ -26916,7 +27419,7 @@ fn __action240<
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action222(
+    __action234(
         context,
         out,
         input,
@@ -26927,7 +27430,7 @@ fn __action240<
 }
 
 #[allow(unused_variables)]
-fn __action241<
+fn __action257<
     'input,
     's,
 >(
@@ -26950,7 +27453,7 @@ fn __action241<
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action225(
+    __action237(
         context,
         out,
         input,
@@ -26963,7 +27466,7 @@ fn __action241<
 }
 
 #[allow(unused_variables)]
-fn __action242<
+fn __action258<
     'input,
     's,
 >(
@@ -26983,7 +27486,7 @@ fn __action242<
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action228(
+    __action240(
         context,
         out,
         input,
@@ -26993,7 +27496,7 @@ fn __action242<
 }
 
 #[allow(unused_variables)]
-fn __action243<
+fn __action259<
     'input,
     's,
 >(
@@ -27013,7 +27516,7 @@ fn __action243<
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action231(
+    __action247(
         context,
         out,
         input,
@@ -27023,7 +27526,7 @@ fn __action243<
 }
 
 #[allow(unused_variables)]
-fn __action244<
+fn __action260<
     'input,
     's,
 >(
@@ -27043,7 +27546,7 @@ fn __action244<
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action232(
+    __action248(
         context,
         out,
         input,
@@ -27053,7 +27556,7 @@ fn __action244<
 }
 
 #[allow(unused_variables)]
-fn __action245<
+fn __action261<
     'input,
     's,
 >(
@@ -27073,7 +27576,7 @@ fn __action245<
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action233(
+    __action249(
         context,
         out,
         input,
@@ -27083,7 +27586,7 @@ fn __action245<
 }
 
 #[allow(unused_variables)]
-fn __action246<
+fn __action262<
     'input,
     's,
 >(
@@ -27111,7 +27614,7 @@ fn __action246<
 }
 
 #[allow(unused_variables)]
-fn __action247<
+fn __action263<
     'input,
     's,
 >(
@@ -27141,7 +27644,7 @@ fn __action247<
 }
 
 #[allow(unused_variables)]
-fn __action248<
+fn __action264<
     'input,
     's,
 >(
@@ -27171,7 +27674,7 @@ fn __action248<
 }
 
 #[allow(unused_variables)]
-fn __action249<
+fn __action265<
     'input,
     's,
 >(
@@ -27201,7 +27704,7 @@ fn __action249<
 }
 
 #[allow(unused_variables)]
-fn __action250<
+fn __action266<
     'input,
     's,
 >(
@@ -27229,7 +27732,7 @@ fn __action250<
 }
 
 #[allow(unused_variables)]
-fn __action251<
+fn __action267<
     'input,
     's,
 >(
@@ -27259,7 +27762,7 @@ fn __action251<
 }
 
 #[allow(unused_variables)]
-fn __action252<
+fn __action268<
     'input,
     's,
 >(
@@ -27289,7 +27792,7 @@ fn __action252<
 }
 
 #[allow(unused_variables)]
-fn __action253<
+fn __action269<
     'input,
     's,
 >(
