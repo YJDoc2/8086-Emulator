@@ -1,5 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
+#[derive(Copy, Clone)]
 pub enum LabelType {
     DATA,
     CODE,
@@ -18,6 +19,9 @@ impl Label {
             source_position: pos,
             map: map,
         }
+    }
+    pub fn get_type(&self) -> LabelType {
+        return self.r#type;
     }
 }
 

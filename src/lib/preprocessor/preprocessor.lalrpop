@@ -241,7 +241,7 @@ quote_proc:()={
     "DEF"
 }
 
-// TODO offset ?
+// Offset is along with num
 
 
 // ---------------------------------------------------------------------------------------------
@@ -485,9 +485,9 @@ nop:()={
 // syntax : string immediately followed by a ':'
 label:String = {
     <s:r"[_a-zA-Z][_a-zA-Z0-9]*:"> =>?{
-        match context.label_map.get(&s[0..s.len()-2]){
+        match context.label_map.get(&s[0..s.len()-1]){
             Some(l) => return preprocessor_error!(l.source_position as usize,l.source_position as usize+s.len(),s,"Label Already defined".to_owned()),
-            None => Ok(s[0..s.len()-2].to_owned())
+            None => Ok(s[0..s.len()-1].to_owned())
         }
     }
 }
@@ -520,7 +520,8 @@ word_num: u16 = {
             Ok(v) => Ok(v),
             Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
         }
-    }
+    },
+    offset
 }
 
 
@@ -529,7 +530,6 @@ word_num: u16 = {
 // all are converted to u16
 byte_num: u8 = {
     // Decimal
-
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u8::from_str_radix(n,10){
             Ok(v) => Ok(v),
@@ -551,7 +551,34 @@ byte_num: u8 = {
             Ok(v) => Ok(v),
             Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
         }
+    },
+    <start:@L> <o:offset> <end:@R> =>?{
+        if o > 255{
+            preprocessor_error!(start,end,"",format!("Offset is greater than 255"))
+        }else{
+            Ok(o as u8)
+        }
     }
+}
+
+
+offset:u16 = {
+    <start:@L> quote_offset  <n:name_string> <end:@R> =>?{
+        match context.label_map.get(&n){
+            Some(l)=>{
+                match l.get_type(){
+                    LabelType::CODE => {preprocessor_error!(start,end,"",format!("\'offset\' can be used only with data labels, {} is not a data label",n))}
+                    LabelType::DATA => {return Ok(l.map as u16);}
+                }
+            }
+            None => {preprocessor_error!(start,end,"",format!("Label {} is not declared.",n))}
+        }
+    }
+}
+
+quote_offset:() = {
+    "OFFSET",
+    "offset"
 }
 
 // ---------------------------------------------------------------------------------------------

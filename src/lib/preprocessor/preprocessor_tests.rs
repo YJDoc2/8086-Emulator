@@ -101,3 +101,18 @@ fn test_procedures() {
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 4); // One extra for added ret
 }
+
+#[test]
+fn test_offset() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "DB [5;0] name: DB [2] DB OFFSET name");
+    assert!(o.is_ok());
+    assert_eq!(out.data.len(), 3);
+    assert_eq!(out.data[2], "db 5");
+    out.clear();
+    ctx.clear();
+    let o = p.parse(&mut ctx, &mut out, "def f { STI CMC } DB offset f");
+    assert!(o.is_err());
+}

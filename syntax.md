@@ -15,5 +15,13 @@ DW \[num ; val] : sets num bytes to 16-bit value val (So total 2\*num bytes are 
 code directives
 
 MACROS : error reporting is still a bit wonky
-definition : MACRO name (params) { code }
+definition : MACRO name (params) -> code <-
 use : name (values)
+
+offset :
+use : offset name
+only supported for data labels
+
+functions
+definition : def name {code}
+By default a ret is added at end, for safety
