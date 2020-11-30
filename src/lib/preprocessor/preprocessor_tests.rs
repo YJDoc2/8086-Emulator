@@ -40,11 +40,11 @@ fn test_data_directives() {
 fn test_macro_directives() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::code_directivesParser::new();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
     let o = p.parse(
         &mut ctx,
         &mut out,
-        "macro mcname (a) -> DB [a] <-\nmcname(5)",
+        "macro mcname (a) ->DB [a]<- \nmcname(5)",
     );
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 1);
@@ -85,4 +85,19 @@ fn test_transfer_opcode() {
     ctx.clear();
     let o = p.parse(&mut ctx, &mut out, "RET INTO");
     assert!(o.is_err());
+}
+
+#[test]
+fn test_procedures() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "def f { STI CMC }");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 3); // One extra for added ret
+    out.clear();
+    ctx.clear();
+    let o = p.parse(&mut ctx, &mut out, "def f { STI CMC } CALL f");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 4); // One extra for added ret
 }

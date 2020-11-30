@@ -10,7 +10,7 @@ use lalrpop_util::ParseError;
 //      but that can have issues as well
 //
 // name_string is a string that can be used for macro, function or label name, must start with _ or alphabet
-// general_string is string that accepts nam_string, number, spaces, and square brackets [] 
+// general_string is string that accepts name_string, number, spaces, and square brackets [] 
 
 grammar<'s>(context:&'s mut util::Context,out:&'s mut util::Output);
 
@@ -18,7 +18,10 @@ pub Code:() = {
     data_directives,
     code_directives,
     opcodes,
-    Code opcodes
+    procedure,
+    Code code_directives,
+    Code opcodes,
+    Code procedure
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -152,8 +155,6 @@ quote_dw:() = {
 pub code_directives:() = {
     macro_def,
     macro_use,
-    code_directives macro_def,
-    code_directives macro_use,
 }
 
 // As lalrpop does not support optional token, and makes it an ambiguity error 
@@ -162,7 +163,6 @@ pub code_directives:() = {
 pub macro_def:() = {
     quote_macro <name:name_string> "(" <params:CommaSepList<name_string>> ")" "->"  <s:r"[_a-zA-Z0-9 \[\]]*<-"> =>{
         let mut r =s[0..s.len()-2].to_owned();
-        // TODO Maybe optimise this later
         // maybe try making single regex of all params and replace, somehow
         for (i,p) in params.iter().enumerate(){
             let pat = format!(r"\b{}\b",p);
@@ -212,6 +212,35 @@ macro_use:() = {
 }
 
 // TODO def procedure
+
+pub procedure:() = {
+    <start:@L> proc_def "{" proc_contents "}" <end:@R> =>{
+        out.code.push("ret".to_owned());
+        context.mapper.add_entry(end);
+    }
+}
+
+proc_def:() = {
+    <start:@L> quote_proc <n:name_string> <end:@R> =>? {
+        match context.fn_map.get(&n){
+            Some(_) => preprocessor_error!(start,end,"",format!("Procedure {} already declared",n)),
+            None => {context.fn_map.insert(n,out.code.len());Ok(())}
+        }
+    }
+}
+
+proc_contents:() = {
+    opcodes,
+    macro_use,
+    proc_contents opcodes,
+    proc_contents macro_use,
+}
+
+quote_proc:()={
+    "def",
+    "DEF"
+}
+
 // TODO offset ?
 
 
@@ -237,7 +266,7 @@ transfer:() = {
 
 call:() = {
     <start:@L> quote_call <n:name_string> <end:@R> =>?{
-        if !context.fn_set.contains(&n){
+        if !context.fn_map.contains_key(&n){
             return preprocessor_error!(start,end,"",format!("\'call\' can be only used with procedures, {} is not a procedure",n));
         }else{
             out.code.push(format!("call {}",n));
@@ -252,10 +281,10 @@ quote_call:()={
     "call"
 }
 
-// Ret should be defined directly inside function definition
 ret:() = {
-    <start:@L> quote_ret <end:@R> =>?{
-        preprocessor_error!(start,end,"ret","\'ret\' should be only used inside procedures".to_owned())
+    <start:@L> quote_ret <end:@R> =>{
+        out.code.push("ret".to_owned());
+        context.mapper.add_entry(start);        
     }
 }
 

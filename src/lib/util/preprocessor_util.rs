@@ -131,7 +131,7 @@ pub struct Context {
     pub label_map: HashMap<String, Label>,
     pub macro_map: HashMap<String, String>,
     pub mapper: SourceMapper,
-    pub fn_set: HashSet<String>,
+    pub fn_map: HashMap<String, usize>,
     pub undefined_labels: HashSet<String>,
 }
 
@@ -140,7 +140,9 @@ impl Context {
         self.data_counter = 0;
         self.label_map.clear();
         self.macro_map.clear();
+        self.fn_map.clear();
         self.mapper.clear();
+        self.undefined_labels.clear();
     }
 }
 // TODO add how both are used in the three stages
