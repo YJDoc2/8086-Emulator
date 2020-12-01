@@ -235,7 +235,7 @@ opcodes:()={
 
 bit_manipulation:() = {
     not,
-    and,
+    binary_logical
 }
 
  not:()={
@@ -262,67 +262,75 @@ quote_not:() = {
     "not"
 }
 
-
-and:() = {
+// Following Should work for all instructions that require params of type:
+// reg,reg
+// reg,mem
+// mem,reg
+// reg,immediate
+// mem,immediate
+binary_logical:() = {
     // reg,reg
-    <start:@L> quote_and <r1:gen_byte_reg> "," <r2:gen_byte_reg> =>{
-        out.code.push(format!("and {},{}",r1,r2));
+    <start:@L> <q:quote_binary_logical> <r1:gen_byte_reg> "," <r2:gen_byte_reg> =>{
+        out.code.push(format!("{} {},{}",q,r1,r2));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_and <r1:gen_word_reg> "," <r2:gen_word_reg> =>{
-        out.code.push(format!("and {},{}",r1,r2));
+    <start:@L> <q:quote_binary_logical> <r1:gen_word_reg> "," <r2:gen_word_reg> =>{
+        out.code.push(format!("{} {},{}",q,r1,r2));
         context.mapper.add_entry(start);
     },
     //reg,mem
-    <start:@L> quote_and <r:gen_byte_reg> "," quote_byte_length <m:memory_addr> =>{
-        out.code.push(format!("and {}, byte {}",r,m));
+    <start:@L> <q:quote_binary_logical> <r:gen_byte_reg> "," quote_byte_length <m:memory_addr> =>{
+        out.code.push(format!("{} {}, byte {}",q,r,m));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_and <r:gen_word_reg> "," quote_word_length <m:memory_addr> =>{
-        out.code.push(format!("and {}, word {}",r,m));
+    <start:@L> <q:quote_binary_logical> <r:gen_word_reg> "," quote_word_length <m:memory_addr> =>{
+        out.code.push(format!("{} {}, word {}",q,r,m));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_and <r:gen_byte_reg> "," <l:byte_label> =>{
-        out.code.push(format!("and {}, byte {}",r,l));
+    <start:@L> <q:quote_binary_logical> <r:gen_byte_reg> "," <l:byte_label> =>{
+        out.code.push(format!("{} {}, byte {}",q,r,l));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_and <r:gen_word_reg> "," <l:word_label> =>{
-        out.code.push(format!("and {},word {}",r,l));
+    <start:@L> <q:quote_binary_logical> <r:gen_word_reg> "," <l:word_label> =>{
+        out.code.push(format!("{} {},word {}",q,r,l));
         context.mapper.add_entry(start);
     },
     // mem,reg
-    <start:@L> quote_and quote_byte_length <m:memory_addr> "," <r:gen_byte_reg> =>{
-        out.code.push(format!("and byte {},{}",m,r));
+    <start:@L> <q:quote_binary_logical> quote_byte_length <m:memory_addr> "," <r:gen_byte_reg> =>{
+        out.code.push(format!("{} byte {},{}",q,m,r));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_and quote_word_length <m:memory_addr> "," <r:gen_word_reg> =>{
-        out.code.push(format!("and word {},{}",m,r));
+    <start:@L> <q:quote_binary_logical> quote_word_length <m:memory_addr> "," <r:gen_word_reg> =>{
+        out.code.push(format!("{} word {},{}",q,m,r));
         context.mapper.add_entry(start);
     },
     //reg , immediate
-    <start:@L> quote_and <r:gen_byte_reg> "," <n:byte_num> =>{
-        out.code.push(format!("and {},{}",r,n));
+    <start:@L> <q:quote_binary_logical> <r:gen_byte_reg> "," <n:byte_num> =>{
+        out.code.push(format!("{} {},{}",q,r,n));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_and <r:gen_word_reg> "," <n:word_num> =>{
-        out.code.push(format!("and {},{}",r,n));
+    <start:@L> <q:quote_binary_logical> <r:gen_word_reg> "," <n:word_num> =>{
+        out.code.push(format!("{} {},{}",q,r,n));
         context.mapper.add_entry(start);
     },
     // mem, immediate
-    <start:@L> quote_and quote_byte_length <m:memory_addr> "," <n:byte_num> =>{
-        out.code.push(format!("and byte {}, {}",m,n));
+    <start:@L> <q:quote_binary_logical> quote_byte_length <m:memory_addr> "," <n:byte_num> =>{
+        out.code.push(format!("{} byte {}, {}",q,m,n));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_and quote_word_length <m:memory_addr> "," <n:word_num> =>{
-        out.code.push(format!("and word {},{}",m,n));
+    <start:@L> <q:quote_binary_logical> quote_word_length <m:memory_addr> "," <n:word_num> =>{
+        out.code.push(format!("{} word {},{}",q,m,n));
         context.mapper.add_entry(start);
     },
     
 }
-
-quote_and:() = {
-    "AND",
-    "and"
+quote_binary_logical:String = {
+    "AND" => "and".to_owned(),
+    "and" => "and".to_owned(),
+    "OR" => "or".to_owned(),
+    "or" => "or".to_owned(),
+    "XOR" => "xor".to_owned(),
+    "xor" => "xor".to_owned(),
 }
 
 // ----------------------------------
