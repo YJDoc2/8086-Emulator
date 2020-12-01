@@ -4,7 +4,7 @@ pub fn main() {
     let mut ctx = lib::util::preprocessor_util::Context::default();
     let mut out = lib::util::preprocessor_util::Output::default();
     let p = lib::preprocessor::preprocessor::CodeParser::new();
-    let o = p.parse(&mut ctx, &mut out, "macro d (_) ->DB 5<- d(_)");
+    let o = p.parse(&mut ctx, &mut out, "l:DB [5] not byte l");
     println!("{:?}", o);
     println!("{:?}", out);
 }

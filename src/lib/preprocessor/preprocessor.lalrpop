@@ -226,9 +226,53 @@ quote_proc:()={
 // Assembler opcodes
 opcodes:()={
     control,
-    transfer
+    transfer,
+    bit_manipulation
 }
 
+// ----------------------------------
+// Bit Manipulation Instructions
+
+bit_manipulation:() = {
+    not
+}
+
+ not:()={
+    <start:@L> quote_not <r:gen_reg> =>{
+        out.code.push(format!("not {}",r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_not <m:memory_addr> =>{
+        out.code.push(format!("not {}",m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_not <l:quote_length> <n:name_string> <end:@R> =>?{
+        match context.label_map.get(&n){
+            None => {return preprocessor_error!(start,end,"",format!("Label {} not defined",n));},
+            Some(l) => {
+                match l.get_type() {
+                    LabelType::CODE => {return preprocessor_error!(start,end,"",format!("Cannot use Code label {} with \'not\'",n));}
+                    _ =>{}
+                }
+            } 
+        } 
+        out.code.push(format!("not {} {}",l,n));
+        context.mapper.add_entry(start);
+        Ok(())
+    }
+}
+
+quote_length:String = {
+    "BYTE" => "byte".to_owned(),
+    "byte" => "byte".to_owned(),
+    "WORD" => "word".to_owned(),
+    "word" => "word".to_owned()
+}
+
+quote_not:() = {
+    "NOT",
+    "not"
+}
 
 // ----------------------------------
 // Transfer Instructions
@@ -560,6 +604,81 @@ quote_offset:() = {
 // ---------------------------------------------------------------------------------------------
 
 // Helpers
+
+gen_reg:String = {
+    gen_byte_reg,
+    gen_word_reg
+}
+
+gen_byte_reg:String = {
+    "AH" => "ah".to_owned(),
+    "ah" => "ah".to_owned(),
+    "AL" => "al".to_owned(),
+    "al" => "al".to_owned(),
+    "BH" => "bh".to_owned(),
+    "bh" => "bh".to_owned(),
+    "BL" => "bl".to_owned(),
+    "bl" => "bl".to_owned(),
+    "CH" => "ch".to_owned(),
+    "ch" => "ch".to_owned(),
+    "CL" => "cl".to_owned(),
+    "cl" => "cl".to_owned(),
+    "DH" => "dh".to_owned(),
+    "dh" => "dh".to_owned(),
+    "DL" => "dl".to_owned(),
+    "dl" => "dl".to_owned(),
+}
+
+gen_word_reg:String = {
+    "AX" => "ax".to_owned(),
+    "ax" => "ax".to_owned(),
+    "BX" => "bx".to_owned(),
+    "bx" => "bx".to_owned(),
+    "CX" => "cx".to_owned(),
+    "cx" => "cx".to_owned(),
+    "DX" => "dx".to_owned(),
+    "dx" => "dx".to_owned(),
+}
+
+base_index_reg:String = {
+    base_reg,
+    index_reg
+}
+
+base_reg:String = {
+    "BX" => "bx".to_owned(),
+    "bx" => "bx".to_owned(),
+    "BP" => "bp".to_owned(),
+    "bp" => "bp".to_owned(),
+}
+
+index_reg:String = {
+    "SI" => "si".to_owned(),
+    "si" => "si".to_owned(),
+    "DI" => "di".to_owned(),
+    "di" => "di".to_owned(),
+}
+
+memory_addr:String = {
+    // direct addressing
+    "[" <n:word_num> "]" => format!("[{}]",n),
+    // Register Indirect
+    "[" <r:base_index_reg> "]" => format!("[{}]",r),
+    // Based
+    "[" <r:base_reg> "," <n:word_num> "]" => format!("[{},{}]",r,n),
+    // indexed
+    "[" <r:index_reg> "," <n:word_num> "]" => format!("[{},{}]",r,n),
+    //based indexed
+    "[" <b:base_reg> "," <i:index_reg> <k:("," <word_num>)?> "]" => {
+        match k{
+            Some(n) => format!("[{},{},{}]",b,i,n),
+            None => format!("[{},{},{}]",b,i,0),
+        }
+        
+    }
+
+}
+
 
 CommaSepList<T>: Vec<T> = {
     <v:(<T> ",")*> <e:T?> => match e {
