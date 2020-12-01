@@ -26,3 +26,15 @@ only supported for data labels
 functions
 definition : def name {code}
 By default a ret is added at end, for safety
+
+AND-type instructions : Verify once again
+and byte_reg,byte_reg
+and word_reg,word_reg
+and byte_reg,"byte" mem_addr
+and word_reg,"word" mem_addr
+and "byte" mem_addr , byte_reg
+and "word" mem_addr , word_reg
+and byte_reg,number
+and word_reg,number
+and "byte" mem_add, number
+and "word" mem_add, number

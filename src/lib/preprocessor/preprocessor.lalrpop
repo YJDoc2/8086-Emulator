@@ -227,14 +227,15 @@ quote_proc:()={
 opcodes:()={
     control,
     transfer,
-    bit_manipulation
+    bit_manipulation,
 }
 
 // ----------------------------------
 // Bit Manipulation Instructions
 
 bit_manipulation:() = {
-    not
+    not,
+    and,
 }
 
  not:()={
@@ -246,32 +247,82 @@ bit_manipulation:() = {
         out.code.push(format!("not {}",m));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_not <l:quote_length> <n:name_string> <end:@R> =>?{
-        match context.label_map.get(&n){
-            None => {return preprocessor_error!(start,end,"",format!("Label {} not defined",n));},
-            Some(l) => {
-                match l.get_type() {
-                    LabelType::CODE => {return preprocessor_error!(start,end,"",format!("Cannot use Code label {} with \'not\'",n));}
-                    _ =>{}
-                }
-            } 
-        } 
-        out.code.push(format!("not {} {}",l,n));
+    <start:@L> quote_not <m:word_label> =>{
+        out.code.push(format!("not word {}",m));
         context.mapper.add_entry(start);
-        Ok(())
-    }
-}
-
-quote_length:String = {
-    "BYTE" => "byte".to_owned(),
-    "byte" => "byte".to_owned(),
-    "WORD" => "word".to_owned(),
-    "word" => "word".to_owned()
+    },
+    <start:@L> quote_not <m:byte_label> =>{
+        out.code.push(format!("not byte {}",m));
+        context.mapper.add_entry(start);
+    },
 }
 
 quote_not:() = {
     "NOT",
     "not"
+}
+
+
+and:() = {
+    // reg,reg
+    <start:@L> quote_and <r1:gen_byte_reg> "," <r2:gen_byte_reg> =>{
+        out.code.push(format!("and {},{}",r1,r2));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_and <r1:gen_word_reg> "," <r2:gen_word_reg> =>{
+        out.code.push(format!("and {},{}",r1,r2));
+        context.mapper.add_entry(start);
+    },
+    //reg,mem
+    <start:@L> quote_and <r:gen_byte_reg> "," quote_byte_length <m:memory_addr> =>{
+        out.code.push(format!("and {}, byte {}",r,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_and <r:gen_word_reg> "," quote_word_length <m:memory_addr> =>{
+        out.code.push(format!("and {}, word {}",r,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_and <r:gen_byte_reg> "," <l:byte_label> =>{
+        out.code.push(format!("and {}, byte {}",r,l));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_and <r:gen_word_reg> "," <l:word_label> =>{
+        out.code.push(format!("and {},word {}",r,l));
+        context.mapper.add_entry(start);
+    },
+    // mem,reg
+    <start:@L> quote_and quote_byte_length <m:memory_addr> "," <r:gen_byte_reg> =>{
+        out.code.push(format!("and byte {},{}",m,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_and quote_word_length <m:memory_addr> "," <r:gen_word_reg> =>{
+        out.code.push(format!("and word {},{}",m,r));
+        context.mapper.add_entry(start);
+    },
+    //reg , immediate
+    <start:@L> quote_and <r:gen_byte_reg> "," <n:byte_num> =>{
+        out.code.push(format!("and {},{}",r,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_and <r:gen_word_reg> "," <n:word_num> =>{
+        out.code.push(format!("and {},{}",r,n));
+        context.mapper.add_entry(start);
+    },
+    // mem, immediate
+    <start:@L> quote_and quote_byte_length <m:memory_addr> "," <n:byte_num> =>{
+        out.code.push(format!("and byte {}, {}",m,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_and quote_word_length <m:memory_addr> "," <n:word_num> =>{
+        out.code.push(format!("and word {},{}",m,n));
+        context.mapper.add_entry(start);
+    },
+    
+}
+
+quote_and:() = {
+    "AND",
+    "and"
 }
 
 // ----------------------------------
@@ -674,9 +725,47 @@ memory_addr:String = {
             Some(n) => format!("[{},{},{}]",b,i,n),
             None => format!("[{},{},{}]",b,i,0),
         }
-        
-    }
+    },
+}
 
+byte_label:String = {
+    <start:@L> <l:quote_byte_length> <n:name_string> <end:@R> =>? {
+        match context.label_map.get(&n){
+            None => {return preprocessor_error!(start,end,"",format!("Label {} not defined",n));},
+            Some(l) => {
+                match l.get_type() {
+                    LabelType::CODE => {return preprocessor_error!(start,end,"",format!("Cannot use Code label {}  ",n));}
+                    _ =>{}
+                }
+            } 
+        } 
+        Ok(n)
+    }
+}
+
+word_label:String = {
+    <start:@L> <l:quote_word_length> <n:name_string> <end:@R> =>? {
+        match context.label_map.get(&n){
+            None => {return preprocessor_error!(start,end,"",format!("Label {} not defined",n));},
+            Some(l) => {
+                match l.get_type() {
+                    LabelType::CODE => {return preprocessor_error!(start,end,"",format!("Cannot use Code label {}  ",n));}
+                    _ =>{}
+                }
+            } 
+        } 
+        Ok(n)
+    }
+}
+
+quote_byte_length:String = {
+    "BYTE" => "byte".to_owned(),
+    "byte" => "byte".to_owned(),
+}
+
+quote_word_length:String = {
+    "WORD" => "word".to_owned(),
+    "word" => "word".to_owned(),
 }
 
 
