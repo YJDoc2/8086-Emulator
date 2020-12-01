@@ -17,6 +17,7 @@ code directives
 MACROS : error reporting is still a bit wonky
 definition : MACRO name (params) -> code <-
 use : name (values)
+macros must have params, for constant/static macro use \_ as param in both declaration and invocation
 
 offset :
 use : offset name

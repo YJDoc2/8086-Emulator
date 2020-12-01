@@ -10,7 +10,7 @@ use lalrpop_util::ParseError;
 //      but that can have issues as well
 //
 // name_string is a string that can be used for macro, function or label name, must start with _ or alphabet
-// general_string is string that accepts name_string, number, spaces, and square brackets [] 
+// general_string is string that accepts name_string, number
 
 grammar<'s>(context:&'s mut util::Context,out:&'s mut util::Output);
 
@@ -52,41 +52,29 @@ quote_set:()={
 
 // DB directive
 db_directive:() = {
-    // Set single value with label
-    <start:@L> <l:label> quote_db <n:byte_num> =>{
-        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+    // Set single value
+    <start:@L> <l:label?> quote_db <n:byte_num> =>{
+        if let Some(l) = l{
+            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+        }
         out.data.push(format!("db {}",n));
         // Increment the data counter
         context.data_counter += 1;
     },
-    // Set single value without label
-    quote_db <n:byte_num> =>{
-        out.data.push(format!("db {}",n));
-        // Increment the data counter
-        context.data_counter += 1;
-    },
-    // Set array value initialized to 0 with label
-    <start:@L> <l:label> quote_db "["<n:word_num>"]" =>{
-        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+    // Set array value initialized to 0
+    <start:@L> <l:label?> quote_db "["<n:word_num>"]" =>{
+        if let Some(l) =l{
+            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+        }
         out.data.push(format!("db [{}]",n));
         // Increment the data counter
         context.data_counter += n;
     },
-    // Set array value initialized to 0 without label
-    quote_db "[" <n:word_num>"]" =>{
-        out.data.push(format!("db [{}]",n));
-        // Increment the data counter
-        context.data_counter += n;
-    },
-    // Set array value initialized to value with label
-    <start:@L> <l:label> quote_db "["<n:word_num> ";" <v:byte_num>"]" =>{
-        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
-        out.data.push(format!("db [{} ; {}]",n,v));
-        // Increment the data counter
-        context.data_counter += n;
-    },
-    // Set array value initialized to value without label
-    quote_db "[" <n:word_num> ";" <v:byte_num> "]" =>{
+    // Set array value initialized to value
+    <start:@L> <l:label?> quote_db "["<n:word_num> ";" <v:byte_num>"]" =>{
+        if let Some(l) = l{
+            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+        }
         out.data.push(format!("db [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += n;
@@ -100,41 +88,29 @@ quote_db:() = {
 
 // DW directive
 dw_directive:() = {
-    // Set single value with label
-    <start:@L> <l:label> quote_dw <n:word_num> =>{
-        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+    // Set single value
+    <start:@L> <l:label?> quote_dw <n:word_num> =>{
+        if let Some(l) = l{
+            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+        }
         out.data.push(format!("dw {}",n));
         // Increment the data counter
         context.data_counter += 2;
     },
-    // Set single value without label
-    quote_dw <n:word_num> =>{
-        out.data.push(format!("dw {}",n));
-        // Increment the data counter
-        context.data_counter += 2;
-    },
-    // Set array value initialized to 0 with label
-    <start:@L> <l:label> quote_dw "["<n:word_num>"]" =>{
-        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+    // Set array value initialized to 0
+    <start:@L> <l:label?> quote_dw "["<n:word_num>"]" =>{
+        if let Some(l) = l{
+            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+        }
         out.data.push(format!("dw [{}]",n));
         // Increment the data counter
         context.data_counter += 2*n;
     },
-    // Set array value initialized to 0 without label
-    quote_dw "[" <n:word_num>"]" =>{
-        out.data.push(format!("dw [{}]",n));
-        // Increment the data counter
-        context.data_counter += 2*n;
-    },
-    // Set array value initialized to value with label
-    <start:@L> <l:label> quote_dw "["<n:word_num> ";" <v:word_num>"]" =>{
-        context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
-        out.data.push(format!("dw [{} ; {}]",n,v));
-        // Increment the data counter
-        context.data_counter += 2*n;
-    },
-    // Set array value initialized to value without label
-    quote_dw "[" <n:word_num> ";" <v:word_num> "]" =>{
+    // Set array value initialized to value
+    <start:@L> <l:label?> quote_dw "["<n:word_num> ";" <v:word_num>"]" =>{
+        if let Some(l) =l{
+            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+        }
         out.data.push(format!("dw [{} ; {}]",n,v));
         // Increment the data counter
         context.data_counter += 2*n;
