@@ -38,3 +38,7 @@ and byte_reg,number
 and word_reg,number
 and "byte" mem_add, number
 and "word" mem_add, number
+
+shifts supports immediate number of shift, even though 8086 does not
+
+labels with same names as opcode are not supported

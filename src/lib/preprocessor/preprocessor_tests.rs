@@ -78,7 +78,7 @@ fn test_transfer_opcode() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::CodeParser::new();
-    let o = p.parse(&mut ctx, &mut out, "JMP test JGE go");
+    let o = p.parse(&mut ctx, &mut out, "JMP _test JGE go");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
     out.clear();
@@ -115,4 +115,57 @@ fn test_offset() {
     ctx.clear();
     let o = p.parse(&mut ctx, &mut out, "def f { STI CMC } DB offset f");
     assert!(o.is_err());
+}
+
+#[test]
+fn test_not() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "NOT AX NOT [BX]");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 2);
+    out.clear();
+    ctx.clear();
+    let o = p.parse(&mut ctx, &mut out, "l:DB 5 NOT BYTE l");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 1);
+}
+
+#[test]
+fn test_binary_logical() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "AND AX,CX OR AL, BYTE [BX] XOR WORD [BP], AX",
+    );
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 3);
+
+    let o = p.parse(&mut ctx, &mut out, "OR AX,0x52");
+    assert!(o.is_ok());
+    let o = p.parse(&mut ctx, &mut out, "l:DB 8 OR BYTE l,0x52");
+    assert!(o.is_ok());
+
+    let o = p.parse(&mut ctx, &mut out, "OR AL,[BX]");
+    assert!(o.is_err());
+    let o = p.parse(&mut ctx, &mut out, "OR [BP],[BX]");
+    assert!(o.is_err());
+}
+
+#[test]
+fn test_shift_rotate() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "l:DB 6 SAL AX,5 SHL CX,CL SAR [BP],CL SHR BYTE l, 0b1101",
+    );
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 4);
 }
