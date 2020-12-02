@@ -1,5 +1,8 @@
 use std::collections::{HashMap, HashSet};
 
+// As we need this in preprocessor
+pub const MB: u32 = 1 * 1024 * 1024;
+
 #[derive(Copy, Clone)]
 pub enum LabelType {
     DATA,

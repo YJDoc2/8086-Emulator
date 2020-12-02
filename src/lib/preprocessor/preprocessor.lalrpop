@@ -1,8 +1,10 @@
 use crate::util::preprocessor_util as util;
-use util::{Label,LabelType};
+use util::{Label,LabelType,MB};
 use regex::{Regex,Captures};
 use crate::preprocessor_error;
 use lalrpop_util::ParseError;
+
+
 
 // NOTES
 // quote_ tokens are used for creating case ignoring names, as r"(capital case|small case)" generates ambiguity
@@ -19,9 +21,11 @@ pub Code:() = {
     code_directives,
     opcodes,
     procedure,
+    print_stmt,
     Code code_directives,
     Code opcodes,
-    Code procedure
+    Code procedure,
+    Code print_stmt,
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -219,6 +223,48 @@ quote_proc:()={
 
 // Offset is along with num
 
+print_stmt:() = {
+    <start:@L> quote_print quote_flags => {
+        out.code.push("print flags".to_owned());
+        context.mapper.add_entry(start);
+    },
+    <start:@L>  quote_print quote_reg => {
+        out.code.push("print reg".to_owned());
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_print quote_mem <s:raw_addr> "->" <e:raw_addr> => {
+        out.code.push(format!("print mem {} -> {}",s,e));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_print quote_mem <s:raw_addr> ":" <e:raw_addr> => {
+        out.code.push(format!("print mem {} : {}",s,e));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_print quote_mem  ":" <o:raw_addr> => {
+        out.code.push(format!("print mem : {}",o));
+        context.mapper.add_entry(start);
+    },
+}
+
+quote_print:() = {
+    "PRINT",
+    "print"
+}
+
+quote_flags:() = {
+    "FLAGS",
+    "flags"
+}
+
+quote_reg:() = {
+    "REG",
+    "reg"
+}
+
+quote_mem:() = {
+    "MEM",
+    "mem"
+}
 
 // ---------------------------------------------------------------------------------------------
 
@@ -710,6 +756,35 @@ byte_num: u8 = {
         }else{
             Ok(o as u8)
         }
+    }
+}
+
+raw_addr: u32 = {
+    // Decimal
+    <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
+        match u32::from_str_radix(n,10){
+            Ok(v) => Ok(v%MB),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-1048576".to_owned())
+        }
+    },
+
+    // hexadecimal
+    <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
+        match u32::from_str_radix(&n[2..],16){
+            Ok(v) => Ok(v%MB),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-1048576".to_owned())
+        }
+    },
+
+    // Binary
+    <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
+        match u32::from_str_radix(&n[2..],2){
+            Ok(v) => Ok(v%MB),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-1048576".to_owned())
+        }
+    },
+    <o:offset> =>{
+       o as u32
     }
 }
 

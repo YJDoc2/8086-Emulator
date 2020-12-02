@@ -42,3 +42,10 @@ and "word" mem_add, number
 shifts supports immediate number of shift, even though 8086 does not
 
 labels with same names as opcode are not supported
+
+print syntax
+print flags - print all flags
+print reg - print all registers (general , segment, offset)
+print mem start -> end - print memory starting from start, till end, both inclusive
+print mem start:offset - print offset bytes of memory from start, start inclusive
+print mem :offset - print offset bytes of memory starting from value in DS\*10H (similar to memory conversion done in 8086 )
