@@ -44,7 +44,7 @@ pub data_directives:() = {
 
 // Set directive : used to set the DS value manually
 set_directive:() = {
-    quote_set <n:word_num> => {
+    quote_set <n:u_word_num> => {
         out.data.push(format!("set {}",n));
     }
 }
@@ -57,7 +57,7 @@ quote_set:()={
 // DB directive
 db_directive:() = {
     // Set single value
-    <start:@L> <l:label?> quote_db <n:byte_num> =>{
+    <start:@L> <l:label?> quote_db <n:s_byte_num> =>{
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         }
@@ -66,7 +66,7 @@ db_directive:() = {
         context.data_counter += 1;
     },
     // Set array value initialized to 0
-    <start:@L> <l:label?> quote_db "["<n:word_num>"]" =>{
+    <start:@L> <l:label?> quote_db "["<n:u_word_num>"]" =>{
         if let Some(l) =l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         }
@@ -75,11 +75,11 @@ db_directive:() = {
         context.data_counter += n;
     },
     // Set array value initialized to value
-    <start:@L> <l:label?> quote_db "["<n:word_num> ";" <v:byte_num>"]" =>{
+    <start:@L> <l:label?> quote_db "["<v:s_byte_num> ";" <n:u_word_num>"]" =>{
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         }
-        out.data.push(format!("db [{} ; {}]",n,v));
+        out.data.push(format!("db [{} ; {}]",v,n));
         // Increment the data counter
         context.data_counter += n;
     },
@@ -93,7 +93,7 @@ quote_db:() = {
 // DW directive
 dw_directive:() = {
     // Set single value
-    <start:@L> <l:label?> quote_dw <n:word_num> =>{
+    <start:@L> <l:label?> quote_dw <n:s_word_num> =>{
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         }
@@ -102,7 +102,7 @@ dw_directive:() = {
         context.data_counter += 2;
     },
     // Set array value initialized to 0
-    <start:@L> <l:label?> quote_dw "["<n:word_num>"]" =>{
+    <start:@L> <l:label?> quote_dw "["<n:u_word_num>"]" =>{
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         }
@@ -111,11 +111,11 @@ dw_directive:() = {
         context.data_counter += 2*n;
     },
     // Set array value initialized to value
-    <start:@L> <l:label?> quote_dw "["<n:word_num> ";" <v:word_num>"]" =>{
+    <start:@L> <l:label?> quote_dw "["<v:s_word_num> ";" <n:u_word_num>"]" =>{
         if let Some(l) =l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         }
-        out.data.push(format!("dw [{} ; {}]",n,v));
+        out.data.push(format!("dw [{} ; {}]",v,n));
         // Increment the data counter
         context.data_counter += 2*n;
     },
@@ -352,28 +352,28 @@ binary_logical:() = {
         context.mapper.add_entry(start);
     },
     //reg , immediate
-    <start:@L> <q:quote_binary_logical> <r:gen_byte_reg> "," <n:byte_num> =>{
+    <start:@L> <q:quote_binary_logical> <r:gen_byte_reg> "," <n:u_byte_num> =>{
         out.code.push(format!("{} {},{}",q,r,n));
         context.mapper.add_entry(start);
     },
-    <start:@L> <q:quote_binary_logical> <r:gen_word_reg> "," <n:word_num> =>{
+    <start:@L> <q:quote_binary_logical> <r:gen_word_reg> "," <n:u_word_num> =>{
         out.code.push(format!("{} {},{}",q,r,n));
         context.mapper.add_entry(start);
     },
     // mem, immediate
-    <start:@L> <q:quote_binary_logical> quote_byte_length <m:memory_addr> "," <n:byte_num> =>{
+    <start:@L> <q:quote_binary_logical> quote_byte_length <m:memory_addr> "," <n:u_byte_num> =>{
         out.code.push(format!("{} byte {}, {}",q,m,n));
         context.mapper.add_entry(start);
     },
-    <start:@L> <q:quote_binary_logical> quote_word_length <m:memory_addr> "," <n:word_num> =>{
+    <start:@L> <q:quote_binary_logical> quote_word_length <m:memory_addr> "," <n:u_word_num> =>{
         out.code.push(format!("{} word {},{}",q,m,n));
         context.mapper.add_entry(start);
     },
-    <start:@L> <q:quote_binary_logical> <m:byte_label> "," <n:byte_num> =>{
+    <start:@L> <q:quote_binary_logical> <m:byte_label> "," <n:u_byte_num> =>{
         out.code.push(format!("{} byte {}, {}",q,m,n));
         context.mapper.add_entry(start);
     },
-    <start:@L> <q:quote_binary_logical>  <m:word_label> "," <n:word_num> =>{
+    <start:@L> <q:quote_binary_logical>  <m:word_label> "," <n:u_word_num> =>{
         out.code.push(format!("{} word {},{}",q,m,n));
         context.mapper.add_entry(start);
     },
@@ -393,7 +393,7 @@ quote_binary_logical:String = {
 
 shift_rotate:() = {
     // register
-    <start:@L> <q:quote_shift_rotate> <r:gen_reg> "," <n:byte_num> => {
+    <start:@L> <q:quote_shift_rotate> <r:gen_reg> "," <n:u_byte_num> => {
         out.code.push(format!("{} {},{}",q,r,n));
         context.mapper.add_entry(start);
     },
@@ -403,7 +403,7 @@ shift_rotate:() = {
     },
 
     // memory
-    <start:@L> <q:quote_shift_rotate> <m:memory_addr> "," <n:byte_num> => {
+    <start:@L> <q:quote_shift_rotate> <m:memory_addr> "," <n:u_byte_num> => {
         out.code.push(format!("{} {},{}",q,m,n));
         context.mapper.add_entry(start);
     },
@@ -412,12 +412,12 @@ shift_rotate:() = {
         context.mapper.add_entry(start);
     },
     // label
-    <start:@L> <q:quote_shift_rotate> <m:byte_label> "," <n:byte_num> => {
+    <start:@L> <q:quote_shift_rotate> <m:byte_label> "," <n:u_byte_num> => {
         out.code.push(format!("{} {},{}",q,m,n));
         context.mapper.add_entry(start);
     },
     // Support byte_nm only as anyway 256 will clear out the 16 bit number
-    <start:@L> <q:quote_shift_rotate> <m:word_label> "," <n:byte_num> => {
+    <start:@L> <q:quote_shift_rotate> <m:word_label> "," <n:u_byte_num> => {
         out.code.push(format!("{} {},{}",q,m,n));
         context.mapper.add_entry(start);
     },
@@ -493,7 +493,7 @@ quote_ret:() = {
 
 // TODO support int ?
 int:() = {
-    <start:@L> quote_int <n:byte_num> <end:@R> =>?{
+    <start:@L> quote_int <n:u_byte_num> <end:@R> =>?{
         preprocessor_error!(start,end,"int","\'int\' is not supported".to_owned())
     }
 }
@@ -694,7 +694,7 @@ label:String = {
 // Used to denote a 16-bit number
 // can be a binary, decimal or hexadecimal number
 // all are converted to u16
-word_num: u16 = {
+u_word_num: u16 = {
     // Decimal
 
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
@@ -726,7 +726,7 @@ word_num: u16 = {
 // Used to denote a 8-bit number
 // can be a binary, decimal or hexadecimal number
 // all are converted to u16
-byte_num: u8 = {
+u_byte_num: u8 = {
     // Decimal
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u8::from_str_radix(n,10){
@@ -758,6 +758,35 @@ byte_num: u8 = {
         }
     }
 }
+
+
+s_word_num: i16 = {
+    // Decimal
+
+    <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
+        match i16::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
+        }
+    },
+    <n:u_word_num> => n as i16
+}
+
+
+// Used to denote a 8-bit number
+// can be a binary, decimal or hexadecimal number
+// all are converted to u16
+s_byte_num: i8 = {
+    // Decimal
+    <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
+        match i8::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
+        }
+    },
+    <n:u_byte_num> => n as i8
+}
+
 
 raw_addr: u32 = {
     // Decimal
@@ -872,15 +901,15 @@ index_reg:String = {
 
 memory_addr:String = {
     // direct addressing
-    "[" <n:word_num> "]" => format!("[{}]",n),
+    "[" <n:u_word_num> "]" => format!("[{}]",n),
     // Register Indirect
     "[" <r:base_index_reg> "]" => format!("[{}]",r),
     // Based
-    "[" <r:base_reg> "," <n:word_num> "]" => format!("[{},{}]",r,n),
+    "[" <r:base_reg> "," <n:u_word_num> "]" => format!("[{},{}]",r,n),
     // indexed
-    "[" <r:index_reg> "," <n:word_num> "]" => format!("[{},{}]",r,n),
+    "[" <r:index_reg> "," <n:u_word_num> "]" => format!("[{},{}]",r,n),
     //based indexed
-    "[" <b:base_reg> "," <i:index_reg> <k:("," <word_num>)?> "]" => {
+    "[" <b:base_reg> "," <i:index_reg> <k:("," <u_word_num>)?> "]" => {
         match k{
             Some(n) => format!("[{},{},{}]",b,i,n),
             None => format!("[{},{},{}]",b,i,0),
@@ -947,5 +976,5 @@ name_string:String ={
 }
 general_string:String = {
     name_string,
-    <n:word_num> =>format!("{}",n)
+    <n:u_word_num> =>format!("{}",n)
 }

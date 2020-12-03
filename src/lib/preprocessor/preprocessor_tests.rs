@@ -107,7 +107,7 @@ fn test_offset() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::CodeParser::new();
-    let o = p.parse(&mut ctx, &mut out, "DB [5;0] name: DB [2] DB OFFSET name");
+    let o = p.parse(&mut ctx, &mut out, "DB [0;5] name: DB [2] DB OFFSET name");
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 3);
     assert_eq!(out.data[2], "db 5");

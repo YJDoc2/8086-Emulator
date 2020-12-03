@@ -4,13 +4,17 @@ data directives
 
 set number : sets the data segment value to given number
 
+num can be signed or unsigned, for decimal - sign is -ve, for hex and binary, use 1's complement negatives
+
 DB num : sets a 8-bit value
 DB \[num] : sets num bytes to 0
-DB \[num ; val] : sets num bytes to value val
+DB \[val ; num] : sets num bytes to value val
+DB OFFSET label
 
 DW num : sets 16-bit value
 DW \[num] : sets 2\*num bytes to 0
-DW \[num ; val] : sets num bytes to 16-bit value val (So total 2\*num bytes are set)
+DW \[val ; num] : sets num bytes to 16-bit value val (So total 2\*num bytes are set)
+DW OFFSET label
 
 code directives
 
