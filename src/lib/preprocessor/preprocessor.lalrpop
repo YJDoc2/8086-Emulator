@@ -274,6 +274,163 @@ opcodes:()={
     control,
     transfer,
     bit_manipulation,
+    arithmetic,
+}
+
+// ----------------------------------
+// Arithmetic Instructions
+arithmetic:() = {
+    binary_arithmetic,
+    unary_arithmetic,
+    singleton_arithmetic,
+}
+
+// Following Should work for all instructions that require params of type:
+// immediate is signed
+// reg,reg
+// reg,mem
+// mem,reg
+// reg,immediate
+// mem,immediate
+binary_arithmetic:() = {
+    // reg,reg
+    <start:@L> <q:quote_binary_arithmetic> <r1:gen_byte_reg> "," <r2:gen_byte_reg> =>{
+        out.code.push(format!("{} {},{}",q,r1,r2));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic> <r1:gen_word_reg> "," <r2:gen_word_reg> =>{
+        out.code.push(format!("{} {},{}",q,r1,r2));
+        context.mapper.add_entry(start);
+    },
+    //reg,mem
+    <start:@L> <q:quote_binary_arithmetic> <r:gen_byte_reg> "," quote_byte_length <m:memory_addr> =>{
+        out.code.push(format!("{} {}, byte {}",q,r,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic> <r:gen_word_reg> "," quote_word_length <m:memory_addr> =>{
+        out.code.push(format!("{} {}, word {}",q,r,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic> <r:gen_byte_reg> "," <l:byte_label> =>{
+        out.code.push(format!("{} {}, byte {}",q,r,l));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic> <r:gen_word_reg> "," <l:word_label> =>{
+        out.code.push(format!("{} {},word {}",q,r,l));
+        context.mapper.add_entry(start);
+    },
+    // mem,reg
+    <start:@L> <q:quote_binary_arithmetic> quote_byte_length <m:memory_addr> "," <r:gen_byte_reg> =>{
+        out.code.push(format!("{} byte {},{}",q,m,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic> quote_word_length <m:memory_addr> "," <r:gen_word_reg> =>{
+        out.code.push(format!("{} word {},{}",q,m,r));
+        context.mapper.add_entry(start);
+    },
+    //reg , immediate
+    <start:@L> <q:quote_binary_arithmetic> <r:gen_byte_reg> "," <n:s_byte_num> =>{
+        out.code.push(format!("{} {},{}",q,r,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic> <r:gen_word_reg> "," <n:s_word_num> =>{
+        out.code.push(format!("{} {},{}",q,r,n));
+        context.mapper.add_entry(start);
+    },
+    // mem, immediate
+    <start:@L> <q:quote_binary_arithmetic> quote_byte_length <m:memory_addr> "," <n:s_byte_num> =>{
+        out.code.push(format!("{} byte {}, {}",q,m,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic> quote_word_length <m:memory_addr> "," <n:s_word_num> =>{
+        out.code.push(format!("{} word {},{}",q,m,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic> <m:byte_label> "," <n:s_byte_num> =>{
+        out.code.push(format!("{} byte {}, {}",q,m,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic>  <m:word_label> "," <n:s_word_num> =>{
+        out.code.push(format!("{} word {},{}",q,m,n));
+        context.mapper.add_entry(start);
+    },
+}
+
+quote_binary_arithmetic:String = {
+    "ADD" => "add".to_owned(),
+    "add" => "add".to_owned(),
+    "ADC" => "adc".to_owned(),
+    "adc" => "adc".to_owned(),
+    "SUB" => "sub".to_owned(),
+    "sub" => "sub".to_owned(),
+    "SBB" => "sbb".to_owned(),
+    "sbb" => "sbb".to_owned(),
+    "CMP" => "cmp".to_owned(),
+    "cmp" => "cmp".to_owned(),
+}
+
+singleton_arithmetic:() = {
+    <start:@L> <q:quote_singleton_arithmetic> =>{
+        out.code.push(format!("{}",q));
+        context.mapper.add_entry(start);
+    },
+}
+
+quote_singleton_arithmetic:String = {
+    "AAA" => "aaa".to_owned(),
+    "aaa" => "aaa".to_owned(),
+    "AAD" => "aad".to_owned(),
+    "aad" => "aad".to_owned(),
+    "AAM" => "aam".to_owned(),
+    "aam" => "aam".to_owned(),
+    "AAS" => "aas".to_owned(),
+    "aas" => "aas".to_owned(),
+    "DAA" => "daa".to_owned(),
+    "daa" => "daa".to_owned(),
+    "DAS" => "das".to_owned(),
+    "das" => "das".to_owned(),
+    "CBW" => "cbw".to_owned(),
+    "cbw" => "cbw".to_owned(),
+    "CWD" => "cwd".to_owned(),
+    "cwd" => "cwd".to_owned(),
+}
+
+unary_arithmetic:() = {
+    <start:@L> <q:quote_unary_arithmetic> <r:gen_reg> =>{
+        out.code.push(format!("{} {}",q,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_unary_arithmetic> <m:memory_addr> =>{
+        out.code.push(format!("{} {}",q,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_unary_arithmetic> <l:byte_label> =>{
+        out.code.push(format!("{} byte {}",q,l));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_unary_arithmetic> <l:word_label> =>{
+        out.code.push(format!("{} word {}",q,l));
+        context.mapper.add_entry(start);
+    },
+}
+
+quote_unary_arithmetic:String = {
+    "DEC" => "dec".to_owned(),
+    "dec" => "dec".to_owned(),
+    "INC" => "inc".to_owned(),
+    "inc" => "inc".to_owned(),
+    "NEG" => "neg".to_owned(),
+    "neg" => "neg".to_owned(),
+    "MUL" => "mul".to_owned(),
+    "mul" => "mul".to_owned(),
+    "IMUL" => "imul".to_owned(),
+    "imul" => "imul".to_owned(),
+    "DIV" => "div".to_owned(),
+    "div" => "div".to_owned(),
+    "IDIV" => "idiv".to_owned(),
+    "idiv" => "idiv".to_owned(),
+
+
 }
 
 // ----------------------------------
@@ -310,6 +467,7 @@ quote_not:() = {
 }
 
 // Following Should work for all instructions that require params of type:
+// immediate is unsigned
 // reg,reg
 // reg,mem
 // mem,reg

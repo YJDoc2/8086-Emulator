@@ -184,3 +184,18 @@ fn test_print() {
     assert_eq!(out.data.len(), 2);
     assert_eq!(out.code.len(), 5);
 }
+
+#[test]
+fn test_arithmetic() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "l:DB [7;0] _t:DB 0 ADD AX , -5 IMUL CX DIV byte l DAA CBW",
+    );
+    assert!(o.is_ok());
+    assert_eq!(out.data.len(), 2);
+    assert_eq!(out.code.len(), 5);
+}
