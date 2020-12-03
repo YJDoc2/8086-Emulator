@@ -199,3 +199,17 @@ fn test_arithmetic() {
     assert_eq!(out.data.len(), 2);
     assert_eq!(out.code.len(), 5);
 }
+
+#[test]
+fn test_string_instructions() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "MOVS byte REP LODS word");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 2);
+    let o = p.parse(&mut ctx, &mut out, "MOVS byte REP LODS word rep cmps byte");
+    assert!(o.is_err());
+    let o = p.parse(&mut ctx, &mut out, "REPZ cmps byte");
+    assert!(o.is_ok());
+}

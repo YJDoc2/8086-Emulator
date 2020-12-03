@@ -275,6 +275,93 @@ opcodes:()={
     transfer,
     bit_manipulation,
     arithmetic,
+    string,
+}
+
+// ----------------------------------
+// String Instructions
+
+
+// TODO make better naming scheme
+string:() = {
+    <start:@L> <q:string_rep__opcode> => {
+        out.code.push(q);
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:string_rep_opcode> =>{
+        out.code.push(q);
+        context.mapper.add_entry(start);
+    },
+    string_rep,
+    string_rep_
+}
+
+string_rep:() = {
+    <start:@L> quote_rep <o:string_rep_opcode> =>{
+        out.code.push(format!("rep {}",o));
+        context.mapper.add_entry(start);
+    },
+}
+
+string_rep_:() ={
+    <start:@L> <q:quote_rep_> <o:string_rep__opcode> =>{
+        out.code.push(format!("{} {}",q,o));
+        context.mapper.add_entry(start);
+    },
+}
+
+quote_rep:() ={
+    "REP",
+    "rep"
+}
+
+quote_rep_:String={
+    "REPE" => "repz".to_owned(),
+    "repe" => "repz".to_owned(),
+    "REPZ" => "repz".to_owned(),
+    "repz" => "repz".to_owned(),
+
+    "REPNE" => "repnz".to_owned(),
+    "repne" => "repnz".to_owned(),
+    "REPNZ" => "repnz".to_owned(),
+    "repnz" => "repnz".to_owned(),
+}
+
+string_rep__opcode:String = {
+    <q:quote_string_rep_> quote_byte_length =>{
+        format!("{} byte",q)
+    },
+    <q:quote_string_rep_> quote_word_length =>{
+        format!("{} word",q)
+    },
+}
+
+string_rep_opcode:String = {
+    <q:quote_string_rep> quote_byte_length =>{
+        format!("{} byte",q)
+    },
+    <q:quote_string_rep> quote_word_length =>{
+        format!("{} word",q)
+    },
+}
+
+
+// Instructions used with REP(E/Z/NE/NZ)
+quote_string_rep_:String ={
+    "CMPS" => "cmps".to_owned(),
+    "cmps" => "cmps".to_owned(),
+    "SCAS" => "scas".to_owned(),
+    "scas" => "scas".to_owned(),
+}
+
+// Instructions used with REP
+quote_string_rep:String = {
+    "MOVS" => "movs".to_owned(),
+    "movs" => "movs".to_owned(),
+    "LODS" => "lods".to_owned(),
+    "lods" => "lods".to_owned(),
+    "STOS" => "stos".to_owned(),
+    "stos" => "stos".to_owned(),
 }
 
 // ----------------------------------

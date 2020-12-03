@@ -55,3 +55,8 @@ print mem start:offset - print offset bytes of memory from start, start inclusiv
 print mem :offset - print offset bytes of memory starting from value in DS\*10H (similar to memory conversion done in 8086 )
 
 i8086 manual : https://edge.edx.org/c4x/BITSPilani/EEE231/asset/8086_family_Users_Manual_1_.pdf
+
+movsb/movsw are not supported, as movs does the same work, and due to syntax not ambiguity is there
+
+REP supports movs, loads,stos
+REP(E/Z/NE/NZ) support cmps scas
