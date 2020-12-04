@@ -7,11 +7,10 @@ XLAT
 IN : Not Supported
 OUT : Not Supported
 LEA
-LDS
-LES
+LDS : Not Supported
+LES : Not Supported
 LAHF
 SAHF
 PUSHF
 POPF
-
 */

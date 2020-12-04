@@ -60,3 +60,9 @@ movsb/movsw are not supported, as movs does the same work, and due to syntax not
 
 REP supports movs, loads,stos
 REP(E/Z/NE/NZ) support cmps scas
+
+XLAT always takes base address of table from BX. the form in manual (XLAT source-table) allows source-table to documentation purpose label, indicating where the BX offset points, but XLAT always takes BX as offset, even if the label points to some other, hence that form is not supported here. https://www.felixcloutier.com/x86/xlat:xlatb
+
+push and pop only supports word label
+
+lds and les are not supported, as they are used to load/store a 32 bit pointer, which we don't support

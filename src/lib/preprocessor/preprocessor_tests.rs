@@ -213,3 +213,23 @@ fn test_string_instructions() {
     let o = p.parse(&mut ctx, &mut out, "REPZ cmps byte");
     assert!(o.is_ok());
 }
+
+#[test]
+fn test_data_transfer_unary() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "LAHF popf");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 2);
+}
+
+#[test]
+fn test_data_transfer_load() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "LAHF popf");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 2);
+}

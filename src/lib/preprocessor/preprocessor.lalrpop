@@ -276,6 +276,321 @@ opcodes:()={
     bit_manipulation,
     arithmetic,
     string,
+    data_transfer,
+}
+
+// ----------------------------------
+// Data Transfer Instructions
+
+data_transfer:() = {
+    unary_data_transfer,
+    xchg,
+    op_in,
+    op_out,
+    pop,
+    push,
+    load_ptr,
+    lea,
+    mov
+}
+
+mov:() ={
+    // reg,reg
+    <start:@L> quote_mov <r1:gen_byte_reg> "," <r2:gen_byte_reg> =>{
+        out.code.push(format!("mov {},{}",r1,r2));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov <r1:gen_word_reg> "," <r2:gen_word_reg> =>{
+        out.code.push(format!("mov {},{}",r1,r2));
+        context.mapper.add_entry(start);
+    },
+    
+    //reg,mem
+    <start:@L> quote_mov <r:gen_byte_reg> "," quote_byte_length <m:memory_addr> =>{
+        out.code.push(format!("mov {}, byte {}",r,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov <r:gen_word_reg> "," quote_word_length <m:memory_addr> =>{
+        out.code.push(format!("mov {}, word {}",r,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov <r:gen_byte_reg> "," <l:byte_label> =>{
+        out.code.push(format!("mov {}, byte {}",r,l));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov <r:gen_word_reg> "," <l:word_label> =>{
+        out.code.push(format!("mov {},word {}",r,l));
+        context.mapper.add_entry(start);
+    },
+
+    // mem,reg
+    <start:@L> quote_mov quote_byte_length <m:memory_addr> "," <r:gen_byte_reg> =>{
+        out.code.push(format!("mov byte {},{}",m,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov quote_word_length <m:memory_addr> "," <r:gen_word_reg> =>{
+        out.code.push(format!("mov word {},{}",m,r));
+        context.mapper.add_entry(start);
+    },
+
+    <start:@L> quote_mov  <l:byte_label> "," <r:gen_byte_reg> =>{
+        out.code.push(format!("mov byte {},{}",l,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov  <l:word_label> "," <r:gen_word_reg> =>{
+        out.code.push(format!("mov word {},{}",l,r));
+        context.mapper.add_entry(start);
+    },
+
+    //reg , immediate
+    <start:@L> quote_mov <r:gen_byte_reg> "," <n:s_byte_num> =>{
+        out.code.push(format!("mov {},{}",r,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov <r:gen_word_reg> "," <n:s_word_num> =>{
+        out.code.push(format!("mov {},{}",r,n));
+        context.mapper.add_entry(start);
+    },
+
+    // mem, immediate
+    <start:@L> quote_mov quote_byte_length <m:memory_addr> "," <n:s_byte_num> =>{
+        out.code.push(format!("mov byte {}, {}",m,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov quote_word_length <m:memory_addr> "," <n:s_word_num> =>{
+        out.code.push(format!("mov word {},{}",m,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov <m:byte_label> "," <n:s_byte_num> =>{
+        out.code.push(format!("mov byte {}, {}",m,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov  <m:word_label> "," <n:s_word_num> =>{
+        out.code.push(format!("mov word {},{}",m,n));
+        context.mapper.add_entry(start);
+    },
+
+    // seg-reg , reg
+    <start:@L> quote_mov  <sr:seg_reg> "," <r:gen_word_reg> =>{
+        out.code.push(format!("mov {},{}",sr,r));
+        context.mapper.add_entry(start);
+    },
+
+    //reg, seg-reg
+    <start:@L> quote_mov <r:gen_word_reg>  ","  <sr:seg_reg>  =>{
+        out.code.push(format!("mov {},{}",r,sr));
+        context.mapper.add_entry(start);
+    },
+
+    // seg-reg , mem
+    <start:@L> quote_mov quote_word_length <m:memory_addr> "," <sr:seg_reg> =>{
+        out.code.push(format!("mov word {},{}",m,sr));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov  <l:word_label> "," <sr:seg_reg> =>{
+        out.code.push(format!("mov word {},{}",l,sr));
+        context.mapper.add_entry(start);
+    },
+
+    // mem, seg-reg
+
+    <start:@L> quote_mov  <sr:seg_reg> "," quote_word_length <m:memory_addr> =>{
+        out.code.push(format!("mov {}, word {}",sr,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_mov <sr:seg_reg> "," <l:word_label>=>{
+        out.code.push(format!("mov {}, word {}",sr,l));
+        context.mapper.add_entry(start);
+    },
+}
+
+seg_reg:String={
+    "ES" => "es".to_owned(),
+    "es" => "es".to_owned(),
+    "DS" => "ds".to_owned(),
+    "ds" => "ds".to_owned(),
+    "SS" => "ss".to_owned(),
+    "ss" => "ss".to_owned(),
+    "CS" => "cs".to_owned(),
+    "cs" => "cs".to_owned(),
+    
+}
+
+
+quote_mov:() ={
+    "MOV",
+    "mov",
+}
+
+unary_data_transfer:() = {
+    <start:@L> <q:quote_unary_transfer> => {
+        out.code.push(q);
+        context.mapper.add_entry(start);
+    },
+}
+
+quote_unary_transfer:String ={
+    "LAHF" => "lahf".to_owned(),
+    "lahf" => "lahf".to_owned(),
+    "SAHF" => "sahf".to_owned(),
+    "sahf" => "sahf".to_owned(),
+    "PUSHF" => "pushf".to_owned(),
+    "pushf" => "pushf".to_owned(),
+    "POPF" => "popf".to_owned(),
+    "popf" => "popf".to_owned(),
+    "XLAT" => "xlat".to_owned(),
+    "xlat" => "xlat".to_owned(),
+}
+
+xchg:() = {
+    // reg, reg
+    <start:@L> <q:quote_xchg> <r1:gen_byte_reg> "," <r2:gen_byte_reg>  => {
+        out.code.push(format!("xchg {} ,{}",r1,r2));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_xchg> <r1:gen_word_reg> "," <r2:gen_word_reg>  => {
+        out.code.push(format!("xchg {} ,{}",r1,r2));
+        context.mapper.add_entry(start);
+    },
+    // mem, reg
+    <start:@L> <q:quote_xchg> quote_byte_length <m:memory_addr> "," <r:gen_byte_reg>  => {
+        out.code.push(format!("xchg byte {} ,{}",m,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_xchg> quote_word_length <m:memory_addr> "," <r:gen_word_reg>  => {
+        out.code.push(format!("xchg word {} ,{}",m,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_xchg> <l:byte_label> "," <r:gen_byte_reg>  => {
+        out.code.push(format!("xchg byte {} ,{}",l,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_xchg> <l:word_label> "," <r:gen_byte_reg>  => {
+        out.code.push(format!("xchg byte {} ,{}",l,r));
+        context.mapper.add_entry(start);
+    },
+    
+}
+
+quote_xchg:() = {
+    "XCHG",
+    "xchg",
+}
+
+// even tough in has operand type accumulator,byte num or accumulator,dx 
+// as it is not supported anyway, this accepts all general registers
+op_in:() = {
+    <start:@L> quote_in gen_byte_reg "," u_byte_num =>? preprocessor_error!(start,start+2,"","\'in\' is not supported.".to_owned()),
+    <start:@L> quote_in gen_byte_reg "," gen_byte_reg =>? preprocessor_error!(start,start+2,"","\'in\' is not supported.".to_owned()),
+}
+
+op_out:() = {
+    <start:@L> quote_out u_byte_num "," gen_byte_reg =>? preprocessor_error!(start,start+2,"","\'in\' is not supported.".to_owned()),
+    <start:@L> quote_out gen_byte_reg "," gen_byte_reg =>? preprocessor_error!(start,start+2,"","\'in\' is not supported.".to_owned()),
+}
+
+quote_in:() ={
+    "IN",
+    "in",
+}
+
+quote_out:() ={
+    "OUT",
+    "out",
+}
+
+pop:() ={
+    // reg, seg-reg
+    <start:@L> <q:quote_pop> <r:pop_reg> => {
+        out.code.push(format!("pop {}",r));
+        context.mapper.add_entry(start);
+    },
+    // mem
+    <start:@L> <q:quote_pop> <m:memory_addr> => {
+        out.code.push(format!("pop {}",m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_pop> <l:word_label> => {
+        out.code.push(format!("pop {}",l));
+        context.mapper.add_entry(start);
+    },
+}
+
+quote_pop:() ={
+    "POP",
+    "pop",
+}
+
+push:() = {
+    // reg, seg-reg
+    // registers for push is registers of pop + cs
+    <start:@L> <q:quote_push> <r:pop_reg> => {
+        out.code.push(format!("push {}",r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_push> cs_reg => {
+        out.code.push(format!("push cs"));
+        context.mapper.add_entry(start);
+    },
+    // mem
+    <start:@L> <q:quote_push> <m:memory_addr> => {
+        out.code.push(format!("push {}",m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_push> <l:word_label> => {
+        out.code.push(format!("push {}",l));
+        context.mapper.add_entry(start);
+    },
+
+}
+
+pop_reg:String ={
+    gen_word_reg,
+    index_reg,
+    "ES" => "es".to_owned(),
+    "es" => "es".to_owned(),
+    "DS" => "ds".to_owned(),
+    "ds" => "ds".to_owned(),
+    "SS" => "ss".to_owned(),
+    "ss" => "ss".to_owned(),
+}
+
+cs_reg:() = {
+    "CS",
+    "cs",
+}
+
+quote_push:() ={
+    "PUSH",
+    "push",
+}
+
+// even though lds and les only support 16 bit register, as we don't support them, this supports all registers
+load_ptr:() ={
+    <start:@L> <q:quote_load_ptr> gen_reg "," <m:memory_addr> =>? preprocessor_error!(start,start+3,"",format!("\'{}\' is not supported",q)),
+}
+
+quote_load_ptr:String ={
+    "LDS" => "lds".to_owned(),
+    "lds" => "lds".to_owned(),
+    "LES" => "les".to_owned(),
+    "les" => "les".to_owned(),
+}
+
+lea:() = {
+    <start:@L> <q:quote_lea> <r:gen_word_reg> "," <m:memory_addr> =>{
+        out.code.push(format!("lea {} , {}",r,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_lea> <r:gen_word_reg> "," <l:word_label> =>{
+        out.code.push(format!("lea {} , word {}",r,l));
+        context.mapper.add_entry(start);
+    }
+}
+
+quote_lea:() ={
+    "LEA",
+    "lea",
 }
 
 // ----------------------------------
@@ -413,6 +728,14 @@ binary_arithmetic:() = {
     },
     <start:@L> <q:quote_binary_arithmetic> quote_word_length <m:memory_addr> "," <r:gen_word_reg> =>{
         out.code.push(format!("{} word {},{}",q,m,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic>  <l:byte_label> "," <r:gen_byte_reg> =>{
+        out.code.push(format!("{} byte {},{}",q,l,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_arithmetic> <l:word_label> "," <r:gen_word_reg> =>{
+        out.code.push(format!("{} word {},{}",q,l,r));
         context.mapper.add_entry(start);
     },
     //reg , immediate
