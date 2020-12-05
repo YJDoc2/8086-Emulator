@@ -465,8 +465,8 @@ xchg:() = {
         out.code.push(format!("xchg byte {} ,{}",l,r));
         context.mapper.add_entry(start);
     },
-    <start:@L> <q:quote_xchg> <l:word_label> "," <r:gen_byte_reg>  => {
-        out.code.push(format!("xchg byte {} ,{}",l,r));
+    <start:@L> <q:quote_xchg> <l:word_label> "," <r:gen_word_reg>  => {
+        out.code.push(format!("xchg word {} ,{}",l,r));
         context.mapper.add_entry(start);
     },
     
@@ -578,8 +578,8 @@ quote_load_ptr:String ={
 }
 
 lea:() = {
-    <start:@L> <q:quote_lea> <r:gen_word_reg> "," <m:memory_addr> =>{
-        out.code.push(format!("lea {} , {}",r,m));
+    <start:@L> <q:quote_lea> <r:gen_word_reg> "," quote_word_length <m:memory_addr> =>{
+        out.code.push(format!("lea {} , word {}",r,m));
         context.mapper.add_entry(start);
     },
     <start:@L> <q:quote_lea> <r:gen_word_reg> "," <l:word_label> =>{

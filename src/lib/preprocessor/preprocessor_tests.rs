@@ -219,9 +219,9 @@ fn test_data_transfer_unary() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::CodeParser::new();
-    let o = p.parse(&mut ctx, &mut out, "LAHF popf");
+    let o = p.parse(&mut ctx, &mut out, "LAHF popf xlat");
     assert!(o.is_ok());
-    assert_eq!(out.code.len(), 2);
+    assert_eq!(out.code.len(), 3);
 }
 
 #[test]
@@ -229,7 +229,72 @@ fn test_data_transfer_load() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::CodeParser::new();
-    let o = p.parse(&mut ctx, &mut out, "LAHF popf");
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "l:DW 0 LEA AX , word l lea dx , word [SI,7]",
+    );
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
+    let o = p.parse(&mut ctx, &mut out, "LES");
+    assert!(o.is_err());
+    let o = p.parse(&mut ctx, &mut out, "LDS");
+    assert!(o.is_err());
+}
+
+#[test]
+fn test_data_transfer_push_pop() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "l:DW [5;7] push CS push word l");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 2);
+    out.clear();
+    ctx.clear();
+    let o = p.parse(&mut ctx, &mut out, "l:DW [5;7] pop ES pop word l");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 2);
+    out.clear();
+    ctx.clear();
+    let o = p.parse(&mut ctx, &mut out, "pop CS");
+    assert!(o.is_err());
+}
+
+#[test]
+fn test_data_transfer_xchg_in_out() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(&mut ctx, &mut out, "l:DW 5 xchg AL,CL xchg word l, DX");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 2);
+    out.clear();
+    ctx.clear();
+    let o = p.parse(&mut ctx, &mut out, "in AX,0x51");
+    assert!(o.is_err());
+    let o = p.parse(&mut ctx, &mut out, "out 0x51,AX");
+    assert!(o.is_err());
+}
+
+#[test]
+fn test_data_transfer_mov() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "l:DW 5 mov AX,CX mov DL,CL mov DX,word l",
+    );
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 3);
+    out.clear();
+    ctx.clear();
+
+    let o = p.parse(&mut ctx, &mut out, "l:DW 5 mov word l, 0x5FFF");
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 1);
+    out.clear();
+    ctx.clear();
 }
