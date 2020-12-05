@@ -83,6 +83,19 @@ db_directive:() = {
         // Increment the data counter
         context.data_counter += n;
     },
+    // set string
+    <start:@L> <l:label?> quote_db <q:r#""[[:ascii:]]*""#> <end:@R> =>?{
+        if q.len() > (u16::MAX-10) as usize{ // 10 is arbitrary
+            return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",u16::MAX-10));
+        }
+        if let Some(l) = l{
+            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+        }
+        out.data.push(format!("db {}",q));
+        // Increment the data counter
+        context.data_counter += (q.len()-2) as u16; // -2 for the quotes
+        Ok(())
+    },
 }
 
 quote_db:() = {
@@ -118,6 +131,19 @@ dw_directive:() = {
         out.data.push(format!("dw [{} ; {}]",v,n));
         // Increment the data counter
         context.data_counter += 2*n;
+    },
+    //set string
+    <start:@L> <l:label?> quote_dw <q:r#""[[:ascii:]]*""#> <end:@R> =>?{
+        if q.len() > ((u16::MAX/2)-10) as usize { // 10 is arbitrary
+            return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",(u16::MAX/2)-10));
+        }
+        if let Some(l) = l{
+            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+        }
+        out.data.push(format!("dw {}",q));
+        // Increment the data counter
+        context.data_counter += (2*(q.len()-2)) as u16; // -2 for the quotes
+        Ok(())
     },
 }
 
@@ -1069,7 +1095,14 @@ quote_ret:() = {
 // TODO support int ?
 int:() = {
     <start:@L> quote_int <n:u_byte_num> <end:@R> =>?{
-        preprocessor_error!(start,end,"\'int\' is not supported".to_owned())
+        if n==3 || n == 0x10 || n == 0x21{
+            out.code.push(format!("int {}",n));
+            context.mapper.add_entry(start);
+            Ok(())
+        }else{
+            preprocessor_error!(start,end,"\'int\' only supports 0x3,0x10 and 0x21".to_owned())
+        }
+        
     }
 }
 

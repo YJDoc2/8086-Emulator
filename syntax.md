@@ -10,11 +10,13 @@ DB num : sets a 8-bit value
 DB \[num] : sets num bytes to 0
 DB \[val ; num] : sets num bytes to value val
 DB OFFSET label
+DB "ascii string" : keep string size less tha 65525 characters, otherwise label mapping will be incorrect
 
 DW num : sets 16-bit value
 DW \[num] : sets 2\*num bytes to 0
 DW \[val ; num] : sets num bytes to 16-bit value val (So total 2\*num bytes are set)
 DW OFFSET label
+DW "ascii string" : keep string size less than 32758 characters, otherwise label mapping will be incorrect
 
 code directives
 
@@ -66,3 +68,8 @@ XLAT always takes base address of table from BX. the form in manual (XLAT source
 push and pop only supports word label
 
 lds and les are not supported, as they are used to load/store a 32 bit pointer, which we don't support
+
+Only int 3H,10H, and 21H are supported
+In 10H : value of AH allowed are : 0AH,13H
+IN 21H : value of AH allowed are : 1H,2H,0AH
+ALL OF THESE WILL BUFFER INPUT, depending on the interpreter driver
