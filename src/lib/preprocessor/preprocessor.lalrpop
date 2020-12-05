@@ -16,12 +16,17 @@ use lalrpop_util::ParseError;
 
 grammar<'s>(context:&'s mut util::Context,out:&'s mut util::Output);
 
-pub Code:() = {
-    data_directives,
+pub Preprocessor:() ={
+    data_directives? Code? =>()
+}
+
+Code:() = {
     code_directives,
+    label,
     opcodes,
     procedure,
     print_stmt,
+    Code label opcodes,
     Code code_directives,
     Code opcodes,
     Code procedure,
@@ -33,7 +38,7 @@ pub Code:() = {
 // Assembler Data Directives
 
 // Collective of all data directives
-pub data_directives:() = {
+data_directives:() = {
     set_directive,
     db_directive,
     dw_directive,
@@ -67,7 +72,7 @@ db_directive:() = {
     },
     // Set array value initialized to 0
     <start:@L> <l:label?> quote_db "["<n:u_word_num>"]" =>{
-        if let Some(l) =l{
+        if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         }
         out.data.push(format!("db [{}]",n));
@@ -125,7 +130,7 @@ dw_directive:() = {
     },
     // Set array value initialized to value
     <start:@L> <l:label?> quote_dw "["<v:s_word_num> ";" <n:u_word_num>"]" =>{
-        if let Some(l) =l{
+        if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
         }
         out.data.push(format!("dw [{} ; {}]",v,n));
@@ -199,7 +204,7 @@ macro_use:() = {
                     r = r.replace(&pat,&p);
                 }
                 
-                let p = CodeParser::new();
+                let p = PreprocessorParser::new();
                 context.mapper.set_source(start);
                 context.mapper.lock_source();
                 let o = p.parse(context,out,&r);
@@ -207,17 +212,16 @@ macro_use:() = {
                 match o{
                     Ok(_)=>Ok(()),
                     Err(e)=>{
-                        let error = match e {
-                            ParseError::UnrecognizedToken{token: (ref start, ref token, ref end),ref expected}=>{
-                                if token.1 == "" {
-                                    format!("{}",expected[0])
-                                }else{
-                                    format!("Unexpected Token {}",token)
-                                }
-                            },
-                            _ => format!("{}",e)
+                        let error = if let ParseError::UnrecognizedToken{token: (ref start, ref token, ref end),ref expected} = e{
+                            if token.1 == "" {
+                                format!("{}",expected[0])
+                            }else{
+                                format!("Unexpected Token {}",token)
+                            }
+                        }else{
+                            format!("{}",e)
                         };
-                        preprocessor_error!(start,end,format!("Error in Macro Expansion :\nExpanded Macro : {}\nError: {}",r,""))
+                        preprocessor_error!(start,end,format!("Error in Macro Expansion :\nExpanded Macro : {}\nError: {}",r,error))
                     }
                 }
             },
@@ -300,7 +304,6 @@ quote_mem:() = {
 }
 
 // ---------------------------------------------------------------------------------------------
-
 
 // Assembler opcodes
 opcodes:()={
@@ -1274,10 +1277,13 @@ nop:()={
 // Label
 // syntax : string immediately followed by a ':'
 label:String = {
-    <s:r"[_a-zA-Z][_a-zA-Z0-9]*:"> =>?{
+    <start:@L> <s:r"[_a-zA-Z][_a-zA-Z0-9]*:"> =>?{
         match context.label_map.get(&s[0..s.len()-1]){
             Some(l) => return preprocessor_error!(l.source_position as usize,l.source_position as usize+s.len(),format!("Label {} Already defined",s)),
-            None => Ok(s[0..s.len()-1].to_owned())
+            None => {
+                context.label_map.insert(s[0..s.len()-1].to_owned(),Label::new(LabelType::CODE,start as u16,out.code.len() as u16));
+                Ok(s[0..s.len()-1].to_owned())
+            }
         }
     }
 }

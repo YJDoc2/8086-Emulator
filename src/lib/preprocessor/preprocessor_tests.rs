@@ -5,7 +5,7 @@ use super::preprocessor;
 fn test_data_directives() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = preprocessor::data_directivesParser::new();
+    let p = preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "set 0x45 set 6");
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 2);
@@ -40,7 +40,7 @@ fn test_data_directives() {
 fn test_macro_directives() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(
         &mut ctx,
         &mut out,
@@ -63,7 +63,7 @@ fn test_macro_directives() {
 fn test_control_opcode() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "ctc CMC HLT");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 3);
@@ -77,7 +77,7 @@ fn test_control_opcode() {
 fn test_transfer_opcode() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "JMP _test JGE go");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
@@ -91,7 +91,7 @@ fn test_transfer_opcode() {
 fn test_procedures() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "def f { STI CMC }");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 3); // One extra for added ret
@@ -106,7 +106,7 @@ fn test_procedures() {
 fn test_offset() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "DB [0;5] name: DB [2] DB OFFSET name");
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 3);
@@ -121,7 +121,7 @@ fn test_offset() {
 fn test_not() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "NOT AX NOT [BX]");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
@@ -136,7 +136,7 @@ fn test_not() {
 fn test_binary_logical() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(
         &mut ctx,
         &mut out,
@@ -160,7 +160,7 @@ fn test_binary_logical() {
 fn test_shift_rotate() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(
         &mut ctx,
         &mut out,
@@ -174,7 +174,7 @@ fn test_shift_rotate() {
 fn test_print() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(
         &mut ctx,
         &mut out,
@@ -189,7 +189,7 @@ fn test_print() {
 fn test_arithmetic() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(
         &mut ctx,
         &mut out,
@@ -204,7 +204,7 @@ fn test_arithmetic() {
 fn test_string_instructions() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "MOVS byte REP LODS word");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
@@ -218,7 +218,7 @@ fn test_string_instructions() {
 fn test_data_transfer_unary() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "LAHF popf xlat");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 3);
@@ -228,7 +228,7 @@ fn test_data_transfer_unary() {
 fn test_data_transfer_load() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(
         &mut ctx,
         &mut out,
@@ -246,7 +246,7 @@ fn test_data_transfer_load() {
 fn test_data_transfer_push_pop() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "l:DW [5;7] push CS push word l");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
@@ -265,7 +265,7 @@ fn test_data_transfer_push_pop() {
 fn test_data_transfer_xchg_in_out() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "l:DW 5 xchg AL,CL xchg word l, DX");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
@@ -281,7 +281,7 @@ fn test_data_transfer_xchg_in_out() {
 fn test_data_transfer_mov() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
-    let p = crate::preprocessor::preprocessor::CodeParser::new();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(
         &mut ctx,
         &mut out,

@@ -3,12 +3,13 @@ use std::collections::{HashMap, HashSet};
 // As we need this in preprocessor
 pub const MB: u32 = 1 * 1024 * 1024;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub enum LabelType {
     DATA,
     CODE,
 }
 
+#[derive(Debug)]
 pub struct Label {
     pub r#type: LabelType,
     pub source_position: u16,
