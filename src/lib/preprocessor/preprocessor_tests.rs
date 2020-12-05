@@ -298,3 +298,35 @@ fn test_data_transfer_mov() {
     out.clear();
     ctx.clear();
 }
+
+#[test]
+fn test_macro() {
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "MACRO a(_)-> c(_) <- MACRO b(_) ->c(_)<- macro c(_) ->a(_)b(_)<- c(_)",
+    );
+    assert!(o.is_err());
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "MACRO a(q)-> ADD AX,q <- MACRO b(k,q) -> k (q)<- b(b,5)",
+    );
+    assert!(o.is_err());
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "MACRO a(q)-> ADD AX,q <- MACRO b(k) ->a(k)<- b(5)",
+    );
+    assert!(o.is_ok());
+
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "MACRO a(q)-> ADD AX,q <- MACRO b(k,q) -> k (q)<- b(a,5)",
+    );
+    assert!(o.is_ok());
+}

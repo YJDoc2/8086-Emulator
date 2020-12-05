@@ -172,7 +172,7 @@ code_directives:() = {
 // if we use r"(MACRO|macro)" we will have to use this double declaration :(
 // Closing bracket is counted and removed in raw_code
 macro_def:() = {
-    quote_macro <name:name_string> "(" <params:CommaSepList<name_string>> ")" "->"  <s:r"[_a-zA-Z0-9 \[\]]*<-"> =>{
+    quote_macro <name:name_string> "(" <params:CommaSepList<name_string>> ")" "->" <s:r"[_a-zA-Z0-9\[\]\(\), ]*<-"> =>{
         let mut r =s[0..s.len()-2].to_owned();
         // maybe try making single regex of all params and replace, somehow
         for (i,p) in params.iter().enumerate(){
@@ -203,12 +203,18 @@ macro_use:() = {
                     let pat = format!("{{{}}}",i);
                     r = r.replace(&pat,&p);
                 }
-                
+                if context.macro_nesting_counter.contains(l) {
+                    return preprocessor_error!(start,end,"Recursive macros are not allowed".to_owned());
+                }else{
+                    context.macro_nesting_counter.insert(l.to_string());
+                }
                 let p = PreprocessorParser::new();
                 context.mapper.set_source(start);
+                
                 context.mapper.lock_source();
                 let o = p.parse(context,out,&r);
                 context.mapper.unlock_source();
+                context.macro_nesting_counter.remove(l);
                 match o{
                     Ok(_)=>Ok(()),
                     Err(e)=>{

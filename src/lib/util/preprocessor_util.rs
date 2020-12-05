@@ -135,6 +135,7 @@ fn test_source_mapper() {
 /// source_map does reverse mapping of line number in output to in original code
 #[derive(Default)]
 pub struct Context {
+    pub macro_nesting_counter: HashSet<String>,
     pub data_counter: u16,
     pub label_map: HashMap<String, Label>,
     pub macro_map: HashMap<String, String>,

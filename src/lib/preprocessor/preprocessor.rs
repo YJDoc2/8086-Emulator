@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 918af3575bc37a55587aec7af8a12e7e61ffbbcc9cbfa48aa53368623f076
+// sha256: 44a1a3fc3625901bfdd53f5bc1d241dc1b9f347defa199bcf9e1ae9c9607c
 use crate::util::preprocessor_util as util;
 use util::{Label,LabelType,MB};
 use regex::{Regex,Captures};
@@ -3458,7 +3458,7 @@ mod ___parse___Preprocessor {
             r###"r#"0(b|B)[0-1]+"#"###,
             r###"r#"0(x|X)[0-9A-Fa-f]+"#"###,
             r###"r#"[0-9]+"#"###,
-            r###"r#"[_a-zA-Z0-9 \\[\\]]*<-"#"###,
+            r###"r#"[_a-zA-Z0-9\\[\\]\\(\\), ]*<-"#"###,
             r###"r#"[_a-zA-Z][_a-zA-Z0-9]*"#"###,
             r###"r#"[_a-zA-Z][_a-zA-Z0-9]*:"#"###,
         ];
@@ -9439,7 +9439,7 @@ mod ___parse___Preprocessor {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // macro_def = quote_macro, name_string, "(", CommaSepList<name_string>, ")", "->", r#"[_a-zA-Z0-9 \\[\\]]*<-"# => ActionFn(35);
+        // macro_def = quote_macro, name_string, "(", CommaSepList<name_string>, ")", "->", r#"[_a-zA-Z0-9\\[\\]\\(\\), ]*<-"# => ActionFn(35);
         assert!(___symbols.len() >= 7);
         let ___sym6 = ___pop_Variant0(___symbols);
         let ___sym5 = ___pop_Variant0(___symbols);
@@ -16946,7 +16946,7 @@ mod ___intern_token {
             ("^(0(b|B)[0-1]+)", false),
             ("^(0(x|X)[0-9A-Fa-f]+)", false),
             ("^([0-9]+)", false),
-            ("^([ 0-9A-\\[\\]_a-z]*<\\-)", false),
+            ("^([ \\(-\\),0-9A-\\[\\]_a-z]*<\\-)", false),
             ("^([A-Z_a-z][0-9A-Z_a-z]*)", false),
             ("^([A-Z_a-z][0-9A-Z_a-z]*:)", false),
             ("^(\\()", false),
@@ -17940,12 +17940,18 @@ fn ___action38<
                     let pat = format!("{{{}}}",i);
                     r = r.replace(&pat,&p);
                 }
-                
+                if context.macro_nesting_counter.contains(l) {
+                    return preprocessor_error!(start,end,"Recursive macros are not allowed".to_owned());
+                }else{
+                    context.macro_nesting_counter.insert(l.to_string());
+                }
                 let p = PreprocessorParser::new();
                 context.mapper.set_source(start);
+                
                 context.mapper.lock_source();
                 let o = p.parse(context,out,&r);
                 context.mapper.unlock_source();
+                context.macro_nesting_counter.remove(l);
                 match o{
                     Ok(_)=>Ok(()),
                     Err(e)=>{

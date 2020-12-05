@@ -20,10 +20,13 @@ DW "ascii string" : keep string size less than 32758 characters, otherwise label
 
 code directives
 
-MACROS : error reporting is still a bit wonky
+MACROS :
 definition : MACRO name (params) -> code <-
 use : name (values)
 macros must have params, for constant/static macro use \_ as param in both declaration and invocation
+self referential (direct or indirect) macros are not allowed.
+for passing macro name to macro for invocation, make sure to leave space between param name and brackets :
+MACRO a(q)-> ADD AX,q <- MACRO b(k,q) -> k **this space** (q)<- b(a,5)
 
 offset :
 use : offset name
