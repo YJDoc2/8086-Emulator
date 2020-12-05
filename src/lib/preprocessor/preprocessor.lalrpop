@@ -132,7 +132,7 @@ quote_dw:() = {
 // Assembler code Directives
 
 // Collective of all code directives
-pub code_directives:() = {
+code_directives:() = {
     macro_def,
     macro_use,
 }
@@ -140,7 +140,7 @@ pub code_directives:() = {
 // As lalrpop does not support optional token, and makes it an ambiguity error 
 // if we use r"(MACRO|macro)" we will have to use this double declaration :(
 // Closing bracket is counted and removed in raw_code
-pub macro_def:() = {
+macro_def:() = {
     quote_macro <name:name_string> "(" <params:CommaSepList<name_string>> ")" "->"  <s:r"[_a-zA-Z0-9 \[\]]*<-"> =>{
         let mut r =s[0..s.len()-2].to_owned();
         // maybe try making single regex of all params and replace, somehow
@@ -182,18 +182,26 @@ macro_use:() = {
                     Ok(_)=>Ok(()),
                     Err(e)=>{
                         // TODO better format error, maybe send the error position in formatted string as well?
-                        preprocessor_error!(start,end,l,"Error in macro expansion".to_owned())
+                        let error = match e {
+                            ParseError::UnrecognizedToken{token: (ref start, ref token, ref end),ref expected}=>{
+                                if token.1 == "" {
+                                    format!("{}",expected[0])
+                                }else{
+                                    format!("Unexpected Token {}",token)
+                                }
+                            },
+                            _ => format!("{}",e)
+                        };
+                        preprocessor_error!(start,end,format!("Error in Macro Expansion :\nExpanded Macro : {}\nError: {}",r,""))
                     }
                 }
             },
-            None => preprocessor_error!(start as usize,start +l.len(),l,"Macro not defined".to_owned()),
+            None => preprocessor_error!(start as usize,start +l.len(),"Macro not defined".to_owned()),
         }
     }
 }
 
-// TODO def procedure
-
-pub procedure:() = {
+procedure:() = {
     <start:@L> proc_def "{" proc_contents "}" <end:@R> =>{
         out.code.push("ret".to_owned());
         context.mapper.add_entry(end);
@@ -203,7 +211,7 @@ pub procedure:() = {
 proc_def:() = {
     <start:@L> quote_proc <n:name_string> <end:@R> =>? {
         match context.fn_map.get(&n){
-            Some(_) => preprocessor_error!(start,end,"",format!("Procedure {} already declared",n)),
+            Some(_) => preprocessor_error!(start,end,format!("Procedure {} already declared",n)),
             None => {context.fn_map.insert(n,out.code.len());Ok(())}
         }
     }
@@ -480,13 +488,13 @@ quote_xchg:() = {
 // even tough in has operand type accumulator,byte num or accumulator,dx 
 // as it is not supported anyway, this accepts all general registers
 op_in:() = {
-    <start:@L> quote_in gen_byte_reg "," u_byte_num =>? preprocessor_error!(start,start+2,"","\'in\' is not supported.".to_owned()),
-    <start:@L> quote_in gen_byte_reg "," gen_byte_reg =>? preprocessor_error!(start,start+2,"","\'in\' is not supported.".to_owned()),
+    <start:@L> quote_in gen_byte_reg "," u_byte_num =>? preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned()),
+    <start:@L> quote_in gen_byte_reg "," gen_byte_reg =>? preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned()),
 }
 
 op_out:() = {
-    <start:@L> quote_out u_byte_num "," gen_byte_reg =>? preprocessor_error!(start,start+2,"","\'in\' is not supported.".to_owned()),
-    <start:@L> quote_out gen_byte_reg "," gen_byte_reg =>? preprocessor_error!(start,start+2,"","\'in\' is not supported.".to_owned()),
+    <start:@L> quote_out u_byte_num "," gen_byte_reg =>? preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned()),
+    <start:@L> quote_out gen_byte_reg "," gen_byte_reg =>? preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned()),
 }
 
 quote_in:() ={
@@ -567,7 +575,7 @@ quote_push:() ={
 
 // even though lds and les only support 16 bit register, as we don't support them, this supports all registers
 load_ptr:() ={
-    <start:@L> <q:quote_load_ptr> gen_reg "," <m:memory_addr> =>? preprocessor_error!(start,start+3,"",format!("\'{}\' is not supported",q)),
+    <start:@L> <q:quote_load_ptr> gen_reg "," <m:memory_addr> =>? preprocessor_error!(start,start+3,format!("\'{}\' is not supported",q)),
 }
 
 quote_load_ptr:String ={
@@ -1033,7 +1041,7 @@ transfer:() = {
 call:() = {
     <start:@L> quote_call <n:name_string> <end:@R> =>?{
         if !context.fn_map.contains_key(&n){
-            return preprocessor_error!(start,end,"",format!("\'call\' can be only used with procedures, {} is not a procedure",n));
+            return preprocessor_error!(start,end,format!("\'call\' can be only used with procedures, {} is not a procedure",n));
         }else{
             out.code.push(format!("call {}",n));
             context.mapper.add_entry(start);
@@ -1062,7 +1070,7 @@ quote_ret:() = {
 // TODO support int ?
 int:() = {
     <start:@L> quote_int <n:u_byte_num> <end:@R> =>?{
-        preprocessor_error!(start,end,"int","\'int\' is not supported".to_owned())
+        preprocessor_error!(start,end,"\'int\' is not supported".to_owned())
     }
 }
 
@@ -1073,7 +1081,7 @@ quote_int:() = {
 
 into_iret:() = {
     <start:@L> <q:quote_into_iret> <end:@R> =>?{
-        preprocessor_error!(start,end,"",format!("\'{}\' is not supported",q))
+        preprocessor_error!(start,end,format!("\'{}\' is not supported",q))
     }
 }
 
@@ -1225,16 +1233,16 @@ hlt:()={
     <start:@L> "hlt" =>{out.code.push("hlt".to_owned());context.mapper.add_entry(start);}
 }
 wait:()={
-    <start:@L> "WAIT" =>?preprocessor_error!(start,start+4,"WAIT","\'wait\' is not supported.".to_owned()),
-    <start:@L> "wait" =>?preprocessor_error!(start,start+4,"wait","\'wait\' is not supported.".to_owned())
+    <start:@L> "WAIT" =>?preprocessor_error!(start,start+4,"\'wait\' is not supported.".to_owned()),
+    <start:@L> "wait" =>?preprocessor_error!(start,start+4,"\'wait\' is not supported.".to_owned())
 }
 esc:()={
-    <start:@L> "ESC" =>?preprocessor_error!(start,start+3,"ESC","\'esc\' is not supported.".to_owned()),
-    <start:@L> "esc" =>?preprocessor_error!(start,start+3,"esc","\'esc\' is not supported.".to_owned())
+    <start:@L> "ESC" =>?preprocessor_error!(start,start+3,"\'esc\' is not supported.".to_owned()),
+    <start:@L> "esc" =>?preprocessor_error!(start,start+3,"\'esc\' is not supported.".to_owned())
 }
 lock:()={
-    <start:@L> "LOCK" =>?preprocessor_error!(start,start+4,"LOCK","\'lock\' is not supported.".to_owned()),
-    <start:@L> "lock" =>?preprocessor_error!(start,start+4,"lock","\'lock\' is not supported.".to_owned())
+    <start:@L> "LOCK" =>?preprocessor_error!(start,start+4,"\'lock\' is not supported.".to_owned()),
+    <start:@L> "lock" =>?preprocessor_error!(start,start+4,"\'lock\' is not supported.".to_owned())
 }
 nop:()={
     <start:@L> "NOP" =>,
@@ -1252,7 +1260,7 @@ nop:()={
 label:String = {
     <s:r"[_a-zA-Z][_a-zA-Z0-9]*:"> =>?{
         match context.label_map.get(&s[0..s.len()-1]){
-            Some(l) => return preprocessor_error!(l.source_position as usize,l.source_position as usize+s.len(),s,"Label Already defined".to_owned()),
+            Some(l) => return preprocessor_error!(l.source_position as usize,l.source_position as usize+s.len(),format!("Label {} Already defined",s)),
             None => Ok(s[0..s.len()-1].to_owned())
         }
     }
@@ -1268,7 +1276,7 @@ u_word_num: u16 = {
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
 
@@ -1276,7 +1284,7 @@ u_word_num: u16 = {
     <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
         match u16::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
 
@@ -1284,7 +1292,7 @@ u_word_num: u16 = {
     <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
         match u16::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
     offset
@@ -1299,7 +1307,7 @@ u_byte_num: u8 = {
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
 
@@ -1307,7 +1315,7 @@ u_byte_num: u8 = {
     <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
         match u8::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
 
@@ -1315,12 +1323,12 @@ u_byte_num: u8 = {
     <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
         match u8::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
     <start:@L> <o:offset> <end:@R> =>?{
         if o > 255{
-            preprocessor_error!(start,end,"",format!("Offset is greater than 255"))
+            preprocessor_error!(start,end,format!("Offset is greater than 255"))
         }else{
             Ok(o as u8)
         }
@@ -1334,7 +1342,7 @@ s_word_num: i16 = {
     <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
         match i16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
     <n:u_word_num> => n as i16
@@ -1349,7 +1357,7 @@ s_byte_num: i8 = {
     <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
         match i8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
     <n:u_byte_num> => n as i8
@@ -1361,7 +1369,7 @@ raw_addr: u32 = {
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u32::from_str_radix(n,10){
             Ok(v) => Ok(v%MB),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-1048576".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
         }
     },
 
@@ -1369,7 +1377,7 @@ raw_addr: u32 = {
     <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
         match u32::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v%MB),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-1048576".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
         }
     },
 
@@ -1377,7 +1385,7 @@ raw_addr: u32 = {
     <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
         match u32::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v%MB),
-            Err(_) => preprocessor_error!(start,end,n,"Invalid Value, must be between 0-1048576".to_owned())
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
         }
     },
     <o:offset> =>{
@@ -1391,11 +1399,11 @@ offset:u16 = {
         match context.label_map.get(&n){
             Some(l)=>{
                 match l.get_type(){
-                    LabelType::CODE => {preprocessor_error!(start,end,"",format!("\'offset\' can be used only with data labels, {} is not a data label",n))}
+                    LabelType::CODE => {preprocessor_error!(start,end,format!("\'offset\' can be used only with data labels, {} is not a data label",n))}
                     LabelType::DATA => {return Ok(l.map as u16);}
                 }
             }
-            None => {preprocessor_error!(start,end,"",format!("Label {} is not declared.",n))}
+            None => {preprocessor_error!(start,end,format!("Label {} is not declared.",n))}
         }
     }
 }
@@ -1488,10 +1496,10 @@ memory_addr:String = {
 byte_label:String = {
     <start:@L> <l:quote_byte_length> <n:name_string> <end:@R> =>? {
         match context.label_map.get(&n){
-            None => {return preprocessor_error!(start,end,"",format!("Label {} not defined",n));},
+            None => {return preprocessor_error!(start,end,format!("Label {} not defined",n));},
             Some(l) => {
                 match l.get_type() {
-                    LabelType::CODE => {return preprocessor_error!(start,end,"",format!("Cannot use Code label {}  ",n));}
+                    LabelType::CODE => {return preprocessor_error!(start,end,format!("Cannot use Code label {}",n));}
                     _ =>{}
                 }
             } 
@@ -1503,10 +1511,10 @@ byte_label:String = {
 word_label:String = {
     <start:@L> <l:quote_word_length> <n:name_string> <end:@R> =>? {
         match context.label_map.get(&n){
-            None => {return preprocessor_error!(start,end,"",format!("Label {} not defined",n));},
+            None => {return preprocessor_error!(start,end,format!("Label {} not defined",n));},
             Some(l) => {
                 match l.get_type() {
-                    LabelType::CODE => {return preprocessor_error!(start,end,"",format!("Cannot use Code label {}  ",n));}
+                    LabelType::CODE => {return preprocessor_error!(start,end,format!("Cannot use Code label {}  ",n));}
                     _ =>{}
                 }
             } 
@@ -1542,6 +1550,7 @@ name_string:String ={
         v.to_owned()
     }
 }
+
 general_string:String = {
     name_string,
     <n:u_word_num> =>format!("{}",n)

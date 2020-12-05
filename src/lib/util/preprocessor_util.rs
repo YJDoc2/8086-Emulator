@@ -178,9 +178,9 @@ impl Output {
 /// err : Error String
 #[macro_export]
 macro_rules! preprocessor_error {
-    (  $s:expr,$e:expr,$tok:expr,$err:expr ) => {{
+    (  $s:expr,$e:expr,$err:expr ) => {{
         Err(ParseError::UnrecognizedToken {
-            token: ($s, Token($tok.len(), $tok), $e),
+            token: ($s, Token(0, ""), $e),
             expected: vec![$err],
         })
     }};
