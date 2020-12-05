@@ -181,7 +181,6 @@ macro_use:() = {
                 match o{
                     Ok(_)=>Ok(()),
                     Err(e)=>{
-                        // TODO better format error, maybe send the error position in formatted string as well?
                         let error = match e {
                             ParseError::UnrecognizedToken{token: (ref start, ref token, ref end),ref expected}=>{
                                 if token.1 == "" {
@@ -1186,64 +1185,48 @@ quote_jmps_loops:String = {
 // Control Instructions
 
 control:()={
-    ctc,
-    clc,
-    cmc,
-    std,
-    cld,
-    sti,
-    cli,
-    hlt,
-    wait,
-    esc,
-    lock,
+    control_supported,
+    control_unsupported
     nop
 }
 
-ctc:()={
-    <start:@L> "CTC" =>{out.code.push("ctc".to_owned());context.mapper.add_entry(start);},
-    <start:@L> "ctc" =>{out.code.push("ctc".to_owned());context.mapper.add_entry(start);}
+control_supported:() ={
+    <start:@L> <q:quote_control_supported> =>{out.code.push(format!("{}",q));context.mapper.add_entry(start);},
 }
-clc:()={
-    <start:@L> "CLC" =>{out.code.push("clc".to_owned());context.mapper.add_entry(start);},
-    <start:@L> "clc" =>{out.code.push("clc".to_owned());context.mapper.add_entry(start);}
+
+quote_control_supported:String = {
+    "CTC" => "ctc".to_owned(),
+    "ctc" => "ctc".to_owned(),
+    "CLC" => "clc".to_owned(),
+    "clc" => "clc".to_owned(),
+    "CMC" => "cmc".to_owned(),
+    "cmc" => "cmc".to_owned(),
+    "STD" => "std".to_owned(),
+    "std" => "std".to_owned(),
+    "CLD" => "cld".to_owned(),
+    "cld" => "cld".to_owned(),
+    "STI" => "sti".to_owned(),
+    "sti" => "sti".to_owned(),
+    "CLI" => "cli".to_owned(),
+    "cli" => "cli".to_owned(),
+    "HLT" => "hlt".to_owned(),
+    "hlt" => "hlt".to_owned(),
+
 }
-cmc:()={
-    <start:@L> "CMC" =>{out.code.push("cmc".to_owned());context.mapper.add_entry(start);},
-    <start:@L> "cmc" =>{out.code.push("cmc".to_owned());context.mapper.add_entry(start);}
+
+control_unsupported:() ={
+    <start:@L> <q:quote_control_unsuppoted> <end:@R> =>?preprocessor_error!(start,end,format!("\'{}\' is not supported.",q)),
 }
-std:()={
-    <start:@L> "STD" =>{out.code.push("std".to_owned());context.mapper.add_entry(start);},
-    <start:@L> "std" =>{out.code.push("std".to_owned());context.mapper.add_entry(start);}
+
+quote_control_unsuppoted:String ={
+    "WAIT" => "wait".to_owned(),
+    "wait" => "wait".to_owned(),
+    "ESC" => "esc".to_owned(),
+    "esc" => "esc".to_owned(),
+    "LOCK" => "lock".to_owned(),
+    "lock" => "lock".to_owned(),
 }
-cld:()={
-    <start:@L> "CLD" =>{out.code.push("cld".to_owned());context.mapper.add_entry(start);},
-    <start:@L> "cld" =>{out.code.push("cld".to_owned());context.mapper.add_entry(start);}
-}
-sti:()={
-    <start:@L> "STI" =>{out.code.push("sti".to_owned());context.mapper.add_entry(start);},
-    <start:@L> "sti" =>{out.code.push("sti".to_owned());context.mapper.add_entry(start);}
-}
-cli:()={
-    <start:@L> "CLI" =>{out.code.push("cli".to_owned());context.mapper.add_entry(start);},
-    <start:@L> "cli" =>{out.code.push("cli".to_owned());context.mapper.add_entry(start);}
-}
-hlt:()={
-    <start:@L> "HLT" =>{out.code.push("hlt".to_owned());context.mapper.add_entry(start);},
-    <start:@L> "hlt" =>{out.code.push("hlt".to_owned());context.mapper.add_entry(start);}
-}
-wait:()={
-    <start:@L> "WAIT" =>?preprocessor_error!(start,start+4,"\'wait\' is not supported.".to_owned()),
-    <start:@L> "wait" =>?preprocessor_error!(start,start+4,"\'wait\' is not supported.".to_owned())
-}
-esc:()={
-    <start:@L> "ESC" =>?preprocessor_error!(start,start+3,"\'esc\' is not supported.".to_owned()),
-    <start:@L> "esc" =>?preprocessor_error!(start,start+3,"\'esc\' is not supported.".to_owned())
-}
-lock:()={
-    <start:@L> "LOCK" =>?preprocessor_error!(start,start+4,"\'lock\' is not supported.".to_owned()),
-    <start:@L> "lock" =>?preprocessor_error!(start,start+4,"\'lock\' is not supported.".to_owned())
-}
+
 nop:()={
     <start:@L> "NOP" =>,
     <start:@L> "nop" =>
