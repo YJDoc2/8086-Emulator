@@ -64,7 +64,7 @@ fn test_control_opcode() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-    let o = p.parse(&mut ctx, &mut out, "ctc CMC HLT");
+    let o = p.parse(&mut ctx, &mut out, "stc CMC HLT");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 3);
     out.clear();

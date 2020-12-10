@@ -1237,8 +1237,8 @@ control_supported:() ={
 }
 
 quote_control_supported:String = {
-    "CTC" => "ctc".to_owned(),
-    "ctc" => "ctc".to_owned(),
+    "STC" => "stc".to_owned(),
+    "stc" => "stc".to_owned(),
     "CLC" => "clc".to_owned(),
     "clc" => "clc".to_owned(),
     "CMC" => "cmc".to_owned(),
