@@ -1,5 +1,5 @@
 #[allow(unused_imports)]
-use crate::data_parser::data_parser;
+use super::data_parser;
 #[allow(unused_imports)]
 use crate::vm::VM;
 

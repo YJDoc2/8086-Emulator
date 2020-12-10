@@ -1,9 +1,9 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 7c7a04051184dd3c4e2a62ff94478d7654c36352f159e8bfb45ac333772403c
+// sha256: cd8bd1871ae51c927dddc06edf6eb464aa058a2ac6a41901ad524b8ed5b445
 use crate::util::interpreter_util::{Context,State};
+use crate::util::flag_util::*;
+use crate::arch::FLAG_CARRY;
 use crate::vm::VM;
-use crate::preprocessor_error;
-use lalrpop_util::ParseError;
 #[allow(unused_extern_crates)]
 extern crate lalrpop_util as __lalrpop_util;
 #[allow(unused_imports)]
@@ -14,9 +14,9 @@ mod __parse__Interpreter {
     #![allow(non_snake_case, non_camel_case_types, unused_mut, unused_variables, unused_imports, unused_parens)]
 
     use crate::util::interpreter_util::{Context,State};
+    use crate::util::flag_util::*;
+    use crate::arch::FLAG_CARRY;
     use crate::vm::VM;
-    use crate::preprocessor_error;
-    use lalrpop_util::ParseError;
     #[allow(unused_extern_crates)]
     extern crate lalrpop_util as __lalrpop_util;
     #[allow(unused_imports)]
@@ -30,14 +30,30 @@ mod __parse__Interpreter {
     }
     const __ACTION: &[i8] = &[
         // State 0
-        3,
+        4, 5, 6, 7, 8, 9, 10, 11,
         // State 1
-        0,
+        0, 0, 0, 0, 0, 0, 0, 0,
         // State 2
-        0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        // State 3
+        0, 0, 0, 0, 0, 0, 0, 0,
+        // State 4
+        0, 0, 0, 0, 0, 0, 0, 0,
+        // State 5
+        0, 0, 0, 0, 0, 0, 0, 0,
+        // State 6
+        0, 0, 0, 0, 0, 0, 0, 0,
+        // State 7
+        0, 0, 0, 0, 0, 0, 0, 0,
+        // State 8
+        0, 0, 0, 0, 0, 0, 0, 0,
+        // State 9
+        0, 0, 0, 0, 0, 0, 0, 0,
+        // State 10
+        0, 0, 0, 0, 0, 0, 0, 0,
     ];
     fn __action(state: i8, integer: usize) -> i8 {
-        __ACTION[(state as usize) * 1 + integer]
+        __ACTION[(state as usize) * 8 + integer]
     }
     const __EOF_ACTION: &[i8] = &[
         // State 0
@@ -46,16 +62,40 @@ mod __parse__Interpreter {
         -2,
         // State 2
         -1,
+        // State 3
+        -4,
+        // State 4
+        -7,
+        // State 5
+        -9,
+        // State 6
+        -5,
+        // State 7
+        -10,
+        // State 8
+        -3,
+        // State 9
+        -6,
+        // State 10
+        -8,
     ];
     fn __goto(state: i8, nt: usize) -> i8 {
         match nt {
             0 => 1,
+            2 => 2,
             _ => 0,
         }
     }
     fn __expected_tokens(__state: i8) -> Vec<::std::string::String> {
         const __TERMINAL: &[&str] = &[
-            r###""""###,
+            r###""clc""###,
+            r###""cld""###,
+            r###""cli""###,
+            r###""cmc""###,
+            r###""hlt""###,
+            r###""stc""###,
+            r###""std""###,
+            r###""sti""###,
         ];
         __TERMINAL.iter().enumerate().filter_map(|(index, terminal)| {
             let next_state = __action(__state, index);
@@ -70,7 +110,7 @@ mod __parse__Interpreter {
     where 
     {
         vm: &'__2 mut VM,
-        context: &'s mut Context,
+        context: &'s Context,
         input: &'input str,
         __phantom: ::std::marker::PhantomData<(&'input (), &'s ())>,
     }
@@ -110,7 +150,7 @@ mod __parse__Interpreter {
 
         #[inline]
         fn error_action(&self, state: i8) -> i8 {
-            __action(state, 1 - 1)
+            __action(state, 8 - 1)
         }
 
         #[inline]
@@ -177,6 +217,13 @@ mod __parse__Interpreter {
     {
         match *__token {
             Token(0, _) if true => Some(0),
+            Token(1, _) if true => Some(1),
+            Token(2, _) if true => Some(2),
+            Token(3, _) if true => Some(3),
+            Token(4, _) if true => Some(4),
+            Token(5, _) if true => Some(5),
+            Token(6, _) if true => Some(6),
+            Token(7, _) if true => Some(7),
             _ => None,
         }
     }
@@ -190,8 +237,8 @@ mod __parse__Interpreter {
     ) -> __Symbol<'input>
     {
         match __token_index {
-            0 => match __token {
-                Token(0, __tok0) if true => __Symbol::Variant0(__tok0),
+            0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 => match __token {
+                Token(0, __tok0) | Token(1, __tok0) | Token(2, __tok0) | Token(3, __tok0) | Token(4, __tok0) | Token(5, __tok0) | Token(6, __tok0) | Token(7, __tok0) if true => __Symbol::Variant0(__tok0),
                 _ => unreachable!(),
             },
             _ => unreachable!(),
@@ -218,7 +265,7 @@ mod __parse__Interpreter {
         >(
             &self,
             vm: &mut VM,
-            context: &'s mut Context,
+            context: &'s Context,
             input: &'input str,
         ) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>>
         {
@@ -239,7 +286,7 @@ mod __parse__Interpreter {
         's,
     >(
         vm: &mut VM,
-        context: &'s mut Context,
+        context: &'s Context,
         input: &'input str,
         __action: i8,
         __lookahead_start: Option<&usize>,
@@ -259,6 +306,30 @@ mod __parse__Interpreter {
                 let __end = __sym0.2.clone();
                 let __nt = super::__action0::<>(vm, context, input, __sym0);
                 return Some(Ok(__nt));
+            }
+            2 => {
+                __reduce2(vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+            }
+            3 => {
+                __reduce3(vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+            }
+            4 => {
+                __reduce4(vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+            }
+            5 => {
+                __reduce5(vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+            }
+            6 => {
+                __reduce6(vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+            }
+            7 => {
+                __reduce7(vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+            }
+            8 => {
+                __reduce8(vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+            }
+            9 => {
+                __reduce9(vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             _ => panic!("invalid action code {}", __action)
         };
@@ -300,20 +371,180 @@ mod __parse__Interpreter {
         's,
     >(
         vm: &mut VM,
-        context: &'s mut Context,
+        context: &'s Context,
         input: &'input str,
         __lookahead_start: Option<&usize>,
         __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // Interpreter = "" => ActionFn(1);
-        let __sym0 = __pop_Variant0(__symbols);
+        // Interpreter = control => ActionFn(1);
+        let __sym0 = __pop_Variant1(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
         let __nt = super::__action1::<>(vm, context, input, __sym0);
         __symbols.push((__start, __Symbol::Variant1(__nt), __end));
         (1, 0)
+    }
+    pub(crate) fn __reduce2<
+        'input,
+        's,
+    >(
+        vm: &mut VM,
+        context: &'s Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // control = "stc" => ActionFn(2);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action2::<>(vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant1(__nt), __end));
+        (1, 2)
+    }
+    pub(crate) fn __reduce3<
+        'input,
+        's,
+    >(
+        vm: &mut VM,
+        context: &'s Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // control = "clc" => ActionFn(3);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action3::<>(vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant1(__nt), __end));
+        (1, 2)
+    }
+    pub(crate) fn __reduce4<
+        'input,
+        's,
+    >(
+        vm: &mut VM,
+        context: &'s Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // control = "cmc" => ActionFn(4);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action4::<>(vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant1(__nt), __end));
+        (1, 2)
+    }
+    pub(crate) fn __reduce5<
+        'input,
+        's,
+    >(
+        vm: &mut VM,
+        context: &'s Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // control = "std" => ActionFn(5);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action5::<>(vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant1(__nt), __end));
+        (1, 2)
+    }
+    pub(crate) fn __reduce6<
+        'input,
+        's,
+    >(
+        vm: &mut VM,
+        context: &'s Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // control = "cld" => ActionFn(6);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action6::<>(vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant1(__nt), __end));
+        (1, 2)
+    }
+    pub(crate) fn __reduce7<
+        'input,
+        's,
+    >(
+        vm: &mut VM,
+        context: &'s Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // control = "sti" => ActionFn(7);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action7::<>(vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant1(__nt), __end));
+        (1, 2)
+    }
+    pub(crate) fn __reduce8<
+        'input,
+        's,
+    >(
+        vm: &mut VM,
+        context: &'s Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // control = "cli" => ActionFn(8);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action8::<>(vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant1(__nt), __end));
+        (1, 2)
+    }
+    pub(crate) fn __reduce9<
+        'input,
+        's,
+    >(
+        vm: &mut VM,
+        context: &'s Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // control = "hlt" => ActionFn(9);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action9::<>(vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant1(__nt), __end));
+        (1, 2)
     }
 }
 pub use self::__parse__Interpreter::InterpreterParser;
@@ -321,16 +552,23 @@ pub use self::__parse__Interpreter::InterpreterParser;
 mod __intern_token {
     #![allow(unused_imports)]
     use crate::util::interpreter_util::{Context,State};
+    use crate::util::flag_util::*;
+    use crate::arch::FLAG_CARRY;
     use crate::vm::VM;
-    use crate::preprocessor_error;
-    use lalrpop_util::ParseError;
     #[allow(unused_extern_crates)]
     extern crate lalrpop_util as __lalrpop_util;
     #[allow(unused_imports)]
     use self::__lalrpop_util::state_machine as __state_machine;
     pub fn new_builder() -> __lalrpop_util::lexer::MatcherBuilder {
         let __strs: &[(&str, bool)] = &[
-            ("^()", false),
+            ("^(clc)", false),
+            ("^(cld)", false),
+            ("^(cli)", false),
+            ("^(cmc)", false),
+            ("^(hlt)", false),
+            ("^(stc)", false),
+            ("^(std)", false),
+            ("^(sti)", false),
             (r"^(\s*)", true),
         ];
         __lalrpop_util::lexer::MatcherBuilder::new(__strs.iter().copied()).unwrap()
@@ -344,7 +582,7 @@ fn __action0<
     's,
 >(
     vm: &mut VM,
-    context: &'s mut Context,
+    context: &'s Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
 ) -> State
@@ -358,12 +596,124 @@ fn __action1<
     's,
 >(
     vm: &mut VM,
-    context: &'s mut Context,
+    context: &'s Context,
+    input: &'input str,
+    (_, __0, _): (usize, State, usize),
+) -> State
+{
+    __0
+}
+
+#[allow(unused_variables)]
+fn __action2<
+    'input,
+    's,
+>(
+    vm: &mut VM,
+    context: &'s Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
 ) -> State
 {
-    State::NEXT
+    {set_flag(&mut vm.arch.flag,Flags::CARRY); State::NEXT}
+}
+
+#[allow(unused_variables)]
+fn __action3<
+    'input,
+    's,
+>(
+    vm: &mut VM,
+    context: &'s Context,
+    input: &'input str,
+    (_, __0, _): (usize, &'input str, usize),
+) -> State
+{
+    {unset_flag(&mut vm.arch.flag,Flags::CARRY); State::NEXT}
+}
+
+#[allow(unused_variables)]
+fn __action4<
+    'input,
+    's,
+>(
+    vm: &mut VM,
+    context: &'s Context,
+    input: &'input str,
+    (_, __0, _): (usize, &'input str, usize),
+) -> State
+{
+    {if (vm.arch.flag & FLAG_CARRY) != 0 {vm.arch.flag &= !FLAG_CARRY}else{vm.arch.flag |= FLAG_CARRY}; State::NEXT}
+}
+
+#[allow(unused_variables)]
+fn __action5<
+    'input,
+    's,
+>(
+    vm: &mut VM,
+    context: &'s Context,
+    input: &'input str,
+    (_, __0, _): (usize, &'input str, usize),
+) -> State
+{
+    {set_flag(&mut vm.arch.flag,Flags::DIRECTION); State::NEXT}
+}
+
+#[allow(unused_variables)]
+fn __action6<
+    'input,
+    's,
+>(
+    vm: &mut VM,
+    context: &'s Context,
+    input: &'input str,
+    (_, __0, _): (usize, &'input str, usize),
+) -> State
+{
+    {unset_flag(&mut vm.arch.flag,Flags::DIRECTION); State::NEXT}
+}
+
+#[allow(unused_variables)]
+fn __action7<
+    'input,
+    's,
+>(
+    vm: &mut VM,
+    context: &'s Context,
+    input: &'input str,
+    (_, __0, _): (usize, &'input str, usize),
+) -> State
+{
+    {set_flag(&mut vm.arch.flag,Flags::INTERRUPT); State::NEXT}
+}
+
+#[allow(unused_variables)]
+fn __action8<
+    'input,
+    's,
+>(
+    vm: &mut VM,
+    context: &'s Context,
+    input: &'input str,
+    (_, __0, _): (usize, &'input str, usize),
+) -> State
+{
+    {unset_flag(&mut vm.arch.flag,Flags::INTERRUPT); State::NEXT}
+}
+
+#[allow(unused_variables)]
+fn __action9<
+    'input,
+    's,
+>(
+    vm: &mut VM,
+    context: &'s Context,
+    input: &'input str,
+    (_, __0, _): (usize, &'input str, usize),
+) -> State
+{
+    State::HALT
 }
 
 pub trait __ToTriple<'input, 's, > {

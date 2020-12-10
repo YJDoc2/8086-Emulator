@@ -1,10 +1,30 @@
 use crate::util::interpreter_util::{Context,State};
+use crate::util::flag_util::*;
+use crate::arch::FLAG_CARRY;
 use crate::vm::VM;
-use crate::preprocessor_error;
-use lalrpop_util::ParseError;
+//use crate::preprocessor_error;
+//use lalrpop_util::ParseError;
 
-grammar<'s>(vm:&mut VM,context:&'s mut Context);
+grammar<'s>(vm:&mut VM,context:&'s Context);
 
 pub Interpreter:State = {
-   "" => State::NEXT, 
+   control,
+    //transfer,
+    //bit_manipulation,
+    //arithmetic,
+    //string,
+    //data_transfer,
+}
+
+// ----------------------------------
+// Control Instructions
+control:State={
+   "stc" => {set_flag(&mut vm.arch.flag,Flags::CARRY); State::NEXT},
+   "clc" => {unset_flag(&mut vm.arch.flag,Flags::CARRY); State::NEXT},
+   "cmc" => {if (vm.arch.flag & FLAG_CARRY) != 0 {vm.arch.flag &= !FLAG_CARRY}else{vm.arch.flag |= FLAG_CARRY}; State::NEXT},
+   "std" => {set_flag(&mut vm.arch.flag,Flags::DIRECTION); State::NEXT},
+   "cld" => {unset_flag(&mut vm.arch.flag,Flags::DIRECTION); State::NEXT},
+   "sti" => {set_flag(&mut vm.arch.flag,Flags::INTERRUPT); State::NEXT},
+   "cli" => {unset_flag(&mut vm.arch.flag,Flags::INTERRUPT); State::NEXT},
+   "hlt" => State::HALT,
 }

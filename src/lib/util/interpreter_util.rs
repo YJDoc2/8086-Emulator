@@ -3,9 +3,10 @@ use std::collections::HashMap;
 
 /// This Is supposed to be used as return from interpretation of single instruction
 /// and should be used by driver to decide next step
+#[derive(PartialEq, Eq, Debug)]
 pub enum State {
     /// HLT will indicate that interpretation is to be stopped
-    HLT,
+    HALT,
     /// For print type statement, interpreter will just pass this
     /// state back, and the driver should take appropriate action
     PRINT,
