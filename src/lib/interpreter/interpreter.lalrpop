@@ -1,0 +1,10 @@
+use crate::util::interpreter_util::{Context,State};
+use crate::vm::VM;
+use crate::preprocessor_error;
+use lalrpop_util::ParseError;
+
+grammar<'s>(vm:&mut VM,context:&'s mut Context);
+
+pub Interpreter:State = {
+   "" => State::NEXT, 
+}
