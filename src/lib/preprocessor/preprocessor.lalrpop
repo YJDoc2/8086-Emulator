@@ -64,7 +64,7 @@ db_directive:() = {
     // Set single value
     <start:@L> <l:label?> quote_db <n:s_byte_num> =>{
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("db {}",n));
         // Increment the data counter
@@ -73,7 +73,7 @@ db_directive:() = {
     // Set array value initialized to 0
     <start:@L> <l:label?> quote_db "["<n:u_word_num>"]" =>{
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("db [{}]",n));
         // Increment the data counter
@@ -82,7 +82,7 @@ db_directive:() = {
     // Set array value initialized to value
     <start:@L> <l:label?> quote_db "["<v:s_byte_num> ";" <n:u_word_num>"]" =>{
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("db [{} ; {}]",v,n));
         // Increment the data counter
@@ -94,7 +94,7 @@ db_directive:() = {
             return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",u16::MAX-10));
         }
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("db {}",q));
         // Increment the data counter
@@ -113,7 +113,7 @@ dw_directive:() = {
     // Set single value
     <start:@L> <l:label?> quote_dw <n:s_word_num> =>{
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("dw {}",n));
         // Increment the data counter
@@ -122,7 +122,7 @@ dw_directive:() = {
     // Set array value initialized to 0
     <start:@L> <l:label?> quote_dw "["<n:u_word_num>"]" =>{
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("dw [{}]",n));
         // Increment the data counter
@@ -131,7 +131,7 @@ dw_directive:() = {
     // Set array value initialized to value
     <start:@L> <l:label?> quote_dw "["<v:s_word_num> ";" <n:u_word_num>"]" =>{
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("dw [{} ; {}]",v,n));
         // Increment the data counter
@@ -143,7 +143,7 @@ dw_directive:() = {
             return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",(u16::MAX/2)-10));
         }
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("dw {}",q));
         // Increment the data counter
@@ -1287,7 +1287,7 @@ label:String = {
         match context.label_map.get(&s[0..s.len()-1]){
             Some(l) => return preprocessor_error!(l.source_position as usize,l.source_position as usize+s.len(),format!("Label {} Already defined",s)),
             None => {
-                context.label_map.insert(s[0..s.len()-1].to_owned(),Label::new(LabelType::CODE,start as u16,out.code.len() as u16));
+                context.label_map.insert(s[0..s.len()-1].to_owned(),Label::new(LabelType::CODE,start,out.code.len()));
                 Ok(s[0..s.len()-1].to_owned())
             }
         }

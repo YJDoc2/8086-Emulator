@@ -12,12 +12,12 @@ pub enum LabelType {
 #[derive(Debug)]
 pub struct Label {
     pub r#type: LabelType,
-    pub source_position: u16,
-    pub map: u16,
+    pub source_position: usize,
+    pub map: usize,
 }
 
 impl Label {
-    pub fn new(t: LabelType, pos: u16, map: u16) -> Self {
+    pub fn new(t: LabelType, pos: usize, map: usize) -> Self {
         Label {
             r#type: t,
             source_position: pos,

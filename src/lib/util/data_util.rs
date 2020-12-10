@@ -1,4 +1,6 @@
 const LOWER_BYTE: i16 = 255;
+
+#[inline]
 pub fn separate_bytes(val: i16) -> (u8, u8) {
     let lb = (val & LOWER_BYTE) as u8;
     let hb = ((val & !LOWER_BYTE) >> 8) as u8;

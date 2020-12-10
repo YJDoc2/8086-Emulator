@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 44a1a3fc3625901bfdd53f5bc1d241dc1b9f347defa199bcf9e1ae9c9607c
+// sha256: d7f6a9e99645171519b3c2ccebf7d3e3ce5303e89917288ad2fa4ba12feaf5
 use crate::util::preprocessor_util as util;
 use util::{Label,LabelType,MB};
 use regex::{Regex,Captures};
@@ -17573,7 +17573,7 @@ fn ___action21<
 {
     {
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("db {}",n));
         // Increment the data counter
@@ -17599,7 +17599,7 @@ fn ___action22<
 {
     {
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("db [{}]",n));
         // Increment the data counter
@@ -17627,7 +17627,7 @@ fn ___action23<
 {
     {
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("db [{} ; {}]",v,n));
         // Increment the data counter
@@ -17655,7 +17655,7 @@ fn ___action24<
             return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",u16::MAX-10));
         }
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("db {}",q));
         // Increment the data counter
@@ -17708,7 +17708,7 @@ fn ___action27<
 {
     {
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("dw {}",n));
         // Increment the data counter
@@ -17734,7 +17734,7 @@ fn ___action28<
 {
     {
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("dw [{}]",n));
         // Increment the data counter
@@ -17762,7 +17762,7 @@ fn ___action29<
 {
     {
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("dw [{} ; {}]",v,n));
         // Increment the data counter
@@ -17790,7 +17790,7 @@ fn ___action30<
             return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",(u16::MAX/2)-10));
         }
         if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start as u16,context.data_counter));
+            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
         out.data.push(format!("dw {}",q));
         // Increment the data counter
@@ -24237,7 +24237,7 @@ fn ___action433<
         match context.label_map.get(&s[0..s.len()-1]){
             Some(l) => return preprocessor_error!(l.source_position as usize,l.source_position as usize+s.len(),format!("Label {} Already defined",s)),
             None => {
-                context.label_map.insert(s[0..s.len()-1].to_owned(),Label::new(LabelType::CODE,start as u16,out.code.len() as u16));
+                context.label_map.insert(s[0..s.len()-1].to_owned(),Label::new(LabelType::CODE,start,out.code.len()));
                 Ok(s[0..s.len()-1].to_owned())
             }
         }
