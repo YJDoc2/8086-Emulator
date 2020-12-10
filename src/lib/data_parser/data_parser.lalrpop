@@ -1,0 +1,149 @@
+use crate::util::{address::*,data_util::separate_bytes};
+use crate::vm::VM;
+use crate::preprocessor_error;
+use lalrpop_util::ParseError;
+
+grammar<'s>(vm: &'s mut VM, counter:&mut usize);
+
+pub Data:() ={
+    set,
+    db,
+    dw,
+}
+// Set directive : used to set the DS value manually
+set:() = {
+    "set" <n:u_word_num> => {
+        vm.arch.ds = n;
+        *counter =0;
+    }
+}
+
+db:() = {
+    "db" <n:s_byte_num> =>{ 
+        let addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        vm.mem[addr] = n as u8;
+        *counter += 1;
+    },
+    
+    "db" "["<n:u_word_num>"]" =>{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        for _ in 0..n{
+            vm.mem[addr] = 0;
+            addr = inc_addr(addr,1);
+        }
+        *counter += n as usize;
+    },
+    
+    "db" "["<v:s_byte_num> ";" <n:u_word_num>"]" =>{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        for _ in 0..n{
+            vm.mem[addr] = v as u8;
+            addr = inc_addr(addr,1);
+        }
+        *counter += n as usize;
+    },
+    
+    "db" <q:r#""[[:ascii:]]*""#> =>{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        // the slice skips the quotes
+        for i in (&q[1..q.len()-1]).bytes(){
+            vm.mem[addr] = i;
+            addr =inc_addr(addr,1);
+        }
+        *counter += q.len();
+    },
+}
+
+
+dw:() = {  
+    "dw" <n:s_word_num> =>{
+        let addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        let (hb,lb) = separate_bytes(n); 
+        vm.mem[addr] = lb;
+        vm.mem[inc_addr(addr,1)] = hb;
+        *counter += 2 as usize;
+    },
+    
+    "dw" "["<n:u_word_num>"]" =>{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        for _ in 0..2*n{
+            vm.mem[addr] = 0;
+            addr = inc_addr(addr,1);
+        }
+        *counter += 2*n as usize;
+    },
+
+    "dw" "["<v:s_word_num> ";" <n:u_word_num>"]" =>{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        let (hb,lb) = separate_bytes(v); 
+        for _ in 0..n{
+            vm.mem[addr] = lb;
+            addr = inc_addr(addr,1);
+            vm.mem[addr] = hb;
+            addr = inc_addr(addr,1);
+        }
+        *counter += 2*n as usize;
+    },
+    
+    "dw" <q:r#""[[:ascii:]]*""#> =>{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        // the slice skips the quotes
+        for i in (&q[1..q.len()-1]).bytes(){
+            vm.mem[addr] = 0;
+            addr = inc_addr(addr,1);
+            vm.mem[addr] = i;
+            addr = inc_addr(addr,1);
+        }
+        *counter += q.len();
+    },
+}
+
+
+
+u_word_num: u16 = {
+    <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
+        match u16::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+        }
+    },
+}
+
+
+
+u_byte_num: u8 = {
+    // Decimal
+    <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
+        match u8::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+        }
+    },
+}
+
+
+s_word_num: i16 = {
+    <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
+        match i16::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+        }
+    },
+    <n:u_word_num> => n as i16
+}
+
+
+// Used to denote a 8-bit number
+// can be a binary, decimal or hexadecimal number
+// all are converted to u16
+s_byte_num: i8 = {
+    <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
+        match i8::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+        }
+    },
+    <n:u_byte_num> => n as i8
+}
+
+

@@ -1,3 +1,5 @@
+Comments are not yet supported
+Data is stored in little endian format, lower byte first
 directives
 
 data directives

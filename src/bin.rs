@@ -1,16 +1,14 @@
 use emulator_8086_lib as lib;
 
 pub fn main() {
-    let mut ctx = lib::util::preprocessor_util::Context::default();
-    let mut out = lib::util::preprocessor_util::Output::default();
-    let p = lib::preprocessor::preprocessor::PreprocessorParser::new();
-    let o = p.parse(
-        &mut ctx,
-        &mut out,
-        "MACRO a(q)-> ADD AX,q <- MACRO b(k,q) -> k (q)<- b(b,5)",
+    let mut vm = lib::vm::VM::new();
+    let mut ctr = 0;
+    let p = lib::data_parser::data_parser::DataParser::new();
+    let _ = p.parse(&mut vm, &mut ctr, "set 4352");
+    let o = p.parse(&mut vm, &mut ctr, "dw \"ABCD\"");
+    println!("{:?}", o);
+    println!(
+        "{:?}",
+        &vm.mem[(vm.arch.ds as usize) * 0x10..(vm.arch.ds as usize) * 0x10 + 10],
     );
-    if let Err(e) = o {
-        println!("{}", e);
-    }
-    println!("{:?}", out);
 }
