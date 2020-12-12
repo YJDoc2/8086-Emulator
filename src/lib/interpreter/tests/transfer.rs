@@ -491,3 +491,26 @@ fn test_loopne() {
     assert_eq!(o.unwrap(), State::NEXT);
     assert_eq!(vm.arch.cx, u16::MAX);
 }
+
+#[test]
+fn test_int() {
+    let (mut vm, mut context, p) = setup();
+
+    let o = p.parse(1, &mut vm, &mut context, "int 3");
+    assert!(o.is_ok());
+    assert_eq!(o.unwrap(), State::INT(3));
+
+    let o = p.parse(1, &mut vm, &mut context, "int 16");
+    assert!(o.is_ok());
+    assert_eq!(o.unwrap(), State::INT(0x10));
+
+    let o = p.parse(1, &mut vm, &mut context, "int 33");
+    assert!(o.is_ok());
+    assert_eq!(o.unwrap(), State::INT(0x21));
+
+    let o = p.parse(1, &mut vm, &mut context, "int 10");
+    assert!(o.is_err());
+
+    let o = p.parse(1, &mut vm, &mut context, "int 15");
+    assert!(o.is_err());
+}

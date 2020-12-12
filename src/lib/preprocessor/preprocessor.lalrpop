@@ -1069,6 +1069,7 @@ transfer:() = {
     call,
     ret,
     jmps_loops,
+    int,
 }
 
 
@@ -1101,7 +1102,6 @@ quote_ret:() = {
     "ret"
 }
 
-// TODO support int ?
 int:() = {
     <start:@L> quote_int <n:u_byte_num> <end:@R> =>?{
         if n==3 || n == 0x10 || n == 0x21{
@@ -1111,7 +1111,6 @@ int:() = {
         }else{
             error!(start,end,"\'int\' only supports 0x3,0x10 and 0x21".to_owned())
         }
-        
     }
 }
 

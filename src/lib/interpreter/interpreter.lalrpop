@@ -26,6 +26,7 @@ transfer:State = {
    call,
    ret,
    jumps_loops,
+   int,
 }
 
 
@@ -147,9 +148,16 @@ jumps_condition:bool = {
    },
 }
 
-
-
-
+int:State = {
+   <start:@L> "int" <n:u_byte_num> <end:@R> =>?{
+        if n==3 || n == 0x10 || n == 0x21{
+            Ok(State::INT(n))
+        }else{
+            error!(start,end,format!("Internal Error : int does not support {}",n))
+        }
+        
+    }
+}
 
 
 // ----------------------------------
@@ -165,10 +173,19 @@ control:State={
    "hlt" => State::HALT,
 }
 
-
+// ----------------------------------
 // Helpers
 name_string:String ={
     <v:r"[_a-zA-Z][_a-zA-Z0-9]*"> =>{
         v.to_owned()
     }
+}
+
+u_byte_num: u8 = {
+    <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
+        match u8::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+        }
+    },
 }
