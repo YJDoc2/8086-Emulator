@@ -81,3 +81,5 @@ ALL OF THESE WILL BUFFER INPUT, depending on the interpreter driver
 
 For CALL, unlike real 8086 no ip/cs is pushed on stack, instead it is maintained internally
 Similarly for RET no pop is done
+
+Conditions for jumps in 8086 family manual seemed incorrect, so have used from : https://css.csail.mit.edu/6.858/2014/readings/i386/Jcc.htm
