@@ -1,9 +1,9 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 82d98eb4504d231c9cfefcd6e62d4f9ecd23a708aad4c87fa7d8a1cd6ff9
+// sha256: 4068237e2286c9a33687fdebf44d1db9febd0106a53ebe9e82d273d2f67f4a8
 use crate::util::preprocessor_util as util;
 use util::{Label,LabelType,MB};
 use regex::{Regex,Captures};
-use crate::preprocessor_error;
+use crate::error;
 use lalrpop_util::ParseError;
 #[allow(unused_extern_crates)]
 extern crate lalrpop_util as ___lalrpop_util;
@@ -17,7 +17,7 @@ mod ___parse___Preprocessor {
     use crate::util::preprocessor_util as util;
     use util::{Label,LabelType,MB};
     use regex::{Regex,Captures};
-    use crate::preprocessor_error;
+    use crate::error;
     use lalrpop_util::ParseError;
     #[allow(unused_extern_crates)]
     extern crate lalrpop_util as ___lalrpop_util;
@@ -16933,7 +16933,7 @@ mod ___intern_token {
     use crate::util::preprocessor_util as util;
     use util::{Label,LabelType,MB};
     use regex::{Regex,Captures};
-    use crate::preprocessor_error;
+    use crate::error;
     use lalrpop_util::ParseError;
     #[allow(unused_extern_crates)]
     extern crate lalrpop_util as ___lalrpop_util;
@@ -17652,7 +17652,7 @@ fn ___action24<
 {
     {
         if q.len() > (u16::MAX-10) as usize{ // 10 is arbitrary
-            return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",u16::MAX-10));
+            return error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",u16::MAX-10));
         }
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
@@ -17787,7 +17787,7 @@ fn ___action30<
 {
     {
         if q.len() > ((u16::MAX/2)-10) as usize { // 10 is arbitrary
-            return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",(u16::MAX/2)-10));
+            return error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",(u16::MAX/2)-10));
         }
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
@@ -17941,7 +17941,7 @@ fn ___action38<
                     r = r.replace(&pat,&p);
                 }
                 if context.macro_nesting_counter.contains(l) {
-                    return preprocessor_error!(start,end,"Recursive macros are not allowed".to_owned());
+                    return error!(start,end,"Recursive macros are not allowed".to_owned());
                 }else{
                     context.macro_nesting_counter.insert(l.to_string());
                 }
@@ -17964,11 +17964,11 @@ fn ___action38<
                         }else{
                             format!("{}",e)
                         };
-                        preprocessor_error!(start,end,format!("Error in Macro Expansion :\nExpanded Macro : {}\nError: {}",r,error))
+                        error!(start,end,format!("Error in Macro Expansion :\nExpanded Macro : {}\nError: {}",r,error))
                     }
                 }
             },
-            None => preprocessor_error!(start as usize,start +l.len(),"Macro not defined".to_owned()),
+            None => error!(start as usize,start +l.len(),"Macro not defined".to_owned()),
         }
     }
 }
@@ -18011,7 +18011,7 @@ fn ___action40<
 {
     {
         match context.fn_map.get(&n){
-            Some(_) => preprocessor_error!(start,end,format!("Procedure {} already declared",n)),
+            Some(_) => error!(start,end,format!("Procedure {} already declared",n)),
             None => {context.fn_map.insert(n,out.code.len());Ok(())}
         }
     }
@@ -19467,7 +19467,7 @@ fn ___action126<
     (_, _, _): (usize, u8, usize),
 ) -> Result<(),___lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
-    preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned())
+    error!(start,start+2,"\'in\' is not supported.".to_owned())
 }
 
 #[allow(unused_variables)]
@@ -19485,7 +19485,7 @@ fn ___action127<
     (_, _, _): (usize, String, usize),
 ) -> Result<(),___lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
-    preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned())
+    error!(start,start+2,"\'in\' is not supported.".to_owned())
 }
 
 #[allow(unused_variables)]
@@ -19503,7 +19503,7 @@ fn ___action128<
     (_, _, _): (usize, String, usize),
 ) -> Result<(),___lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
-    preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned())
+    error!(start,start+2,"\'in\' is not supported.".to_owned())
 }
 
 #[allow(unused_variables)]
@@ -19521,7 +19521,7 @@ fn ___action129<
     (_, _, _): (usize, String, usize),
 ) -> Result<(),___lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
-    preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned())
+    error!(start,start+2,"\'in\' is not supported.".to_owned())
 }
 
 #[allow(unused_variables)]
@@ -19924,7 +19924,7 @@ fn ___action155<
     (_, m, _): (usize, String, usize),
 ) -> Result<(),___lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
-    preprocessor_error!(start,start+3,format!("\'{}\' is not supported",q))
+    error!(start,start+3,format!("\'{}\' is not supported",q))
 }
 
 #[allow(unused_variables)]
@@ -22550,7 +22550,7 @@ fn ___action316<
 {
     {
         if !context.fn_map.contains_key(&n){
-            return preprocessor_error!(start,end,format!("\'call\' can be only used with procedures, {} is not a procedure",n));
+            return error!(start,end,format!("\'call\' can be only used with procedures, {} is not a procedure",n));
         }else{
             out.code.push(format!("call {}",n));
             context.mapper.add_entry(start);
@@ -22655,7 +22655,7 @@ fn ___action322<
             context.mapper.add_entry(start);
             Ok(())
         }else{
-            preprocessor_error!(start,end,"\'int\' only supports 0x3,0x10 and 0x21".to_owned())
+            error!(start,end,"\'int\' only supports 0x3,0x10 and 0x21".to_owned())
         }
         
     }
@@ -22703,7 +22703,7 @@ fn ___action325<
 ) -> Result<(),___lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
     {
-        preprocessor_error!(start,end,format!("\'{}\' is not supported",q))
+        error!(start,end,format!("\'{}\' is not supported",q))
     }
 }
 
@@ -24104,7 +24104,7 @@ fn ___action424<
     (_, end, _): (usize, usize, usize),
 ) -> Result<(),___lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
-    preprocessor_error!(start,end,format!("\'{}\' is not supported.",q))
+    error!(start,end,format!("\'{}\' is not supported.",q))
 }
 
 #[allow(unused_variables)]
@@ -24235,7 +24235,7 @@ fn ___action433<
 {
     {
         match context.label_map.get(&s[0..s.len()-1]){
-            Some(l) => return preprocessor_error!(l.source_position as usize,l.source_position as usize+s.len(),format!("Label {} Already defined",s)),
+            Some(l) => return error!(l.source_position as usize,l.source_position as usize+s.len(),format!("Label {} Already defined",s)),
             None => {
                 context.label_map.insert(s[0..s.len()-1].to_owned(),Label::new(LabelType::CODE,start,out.code.len()));
                 Ok(s[0..s.len()-1].to_owned())
@@ -24260,7 +24260,7 @@ fn ___action434<
     {
         match u16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     }
 }
@@ -24281,7 +24281,7 @@ fn ___action435<
     {
         match u16::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     }
 }
@@ -24302,7 +24302,7 @@ fn ___action436<
     {
         match u16::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     }
 }
@@ -24337,7 +24337,7 @@ fn ___action438<
     {
         match u8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     }
 }
@@ -24358,7 +24358,7 @@ fn ___action439<
     {
         match u8::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     }
 }
@@ -24379,7 +24379,7 @@ fn ___action440<
     {
         match u8::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     }
 }
@@ -24399,7 +24399,7 @@ fn ___action441<
 {
     {
         if o > 255{
-            preprocessor_error!(start,end,format!("Offset is greater than 255"))
+            error!(start,end,format!("Offset is greater than 255"))
         }else{
             Ok(o as u8)
         }
@@ -24422,7 +24422,7 @@ fn ___action442<
     {
         match i16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     }
 }
@@ -24457,7 +24457,7 @@ fn ___action444<
     {
         match i8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     }
 }
@@ -24492,7 +24492,7 @@ fn ___action446<
     {
         match u32::from_str_radix(n,10){
             Ok(v) => Ok(v%MB),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
         }
     }
 }
@@ -24513,7 +24513,7 @@ fn ___action447<
     {
         match u32::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v%MB),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
         }
     }
 }
@@ -24534,7 +24534,7 @@ fn ___action448<
     {
         match u32::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v%MB),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
         }
     }
 }
@@ -24573,11 +24573,11 @@ fn ___action450<
         match context.label_map.get(&n){
             Some(l)=>{
                 match l.get_type(){
-                    LabelType::CODE => {preprocessor_error!(start,end,format!("\'offset\' can be used only with data labels, {} is not a data label",n))}
+                    LabelType::CODE => {error!(start,end,format!("\'offset\' can be used only with data labels, {} is not a data label",n))}
                     LabelType::DATA => {return Ok(l.map as u16);}
                 }
             }
-            None => {preprocessor_error!(start,end,format!("Label {} is not declared.",n))}
+            None => {error!(start,end,format!("Label {} is not declared.",n))}
         }
     }
 }
@@ -25236,10 +25236,10 @@ fn ___action495<
 {
     {
         match context.label_map.get(&n){
-            None => {return preprocessor_error!(start,end,format!("Label {} not defined",n));},
+            None => {return error!(start,end,format!("Label {} not defined",n));},
             Some(l) => {
                 match l.get_type() {
-                    LabelType::CODE => {return preprocessor_error!(start,end,format!("Cannot use Code label {}",n));}
+                    LabelType::CODE => {return error!(start,end,format!("Cannot use Code label {}",n));}
                     _ =>{}
                 }
             } 
@@ -25264,10 +25264,10 @@ fn ___action496<
 {
     {
         match context.label_map.get(&n){
-            None => {return preprocessor_error!(start,end,format!("Label {} not defined",n));},
+            None => {return error!(start,end,format!("Label {} not defined",n));},
             Some(l) => {
                 match l.get_type() {
-                    LabelType::CODE => {return preprocessor_error!(start,end,format!("Cannot use Code label {}  ",n));}
+                    LabelType::CODE => {return error!(start,end,format!("Cannot use Code label {}  ",n));}
                     _ =>{}
                 }
             } 

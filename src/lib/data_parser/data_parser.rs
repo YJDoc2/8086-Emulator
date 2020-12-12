@@ -1,8 +1,8 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 9b6c31b0bf72a54afc439e902327363152cafa2c57e6235e436301cf9356d68
+// sha256: 4c7eba6aacc4d3ee797c478322755879b9dc14f8c2fa79153956dd4a9714a5
 use crate::util::{address::*,data_util::separate_bytes};
 use crate::vm::VM;
-use crate::preprocessor_error;
+use crate::error;
 use lalrpop_util::ParseError;
 #[allow(unused_extern_crates)]
 extern crate lalrpop_util as __lalrpop_util;
@@ -15,7 +15,7 @@ mod __parse__Data {
 
     use crate::util::{address::*,data_util::separate_bytes};
     use crate::vm::VM;
-    use crate::preprocessor_error;
+    use crate::error;
     use lalrpop_util::ParseError;
     #[allow(unused_extern_crates)]
     extern crate lalrpop_util as __lalrpop_util;
@@ -963,7 +963,7 @@ mod __intern_token {
     #![allow(unused_imports)]
     use crate::util::{address::*,data_util::separate_bytes};
     use crate::vm::VM;
-    use crate::preprocessor_error;
+    use crate::error;
     use lalrpop_util::ParseError;
     #[allow(unused_extern_crates)]
     extern crate lalrpop_util as __lalrpop_util;
@@ -1268,7 +1268,7 @@ fn __action13<
     {
         match u16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     }
 }
@@ -1289,7 +1289,7 @@ fn __action14<
     {
         match u8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     }
 }
@@ -1310,7 +1310,7 @@ fn __action15<
     {
         match i16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     }
 }
@@ -1345,7 +1345,7 @@ fn __action17<
     {
         match i8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     }
 }

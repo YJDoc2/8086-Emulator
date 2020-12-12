@@ -179,7 +179,7 @@ impl Output {
 /// tok : actual token &str
 /// err : Error String
 #[macro_export]
-macro_rules! preprocessor_error {
+macro_rules! error {
     (  $s:expr,$e:expr,$err:expr ) => {{
         Err(ParseError::UnrecognizedToken {
             token: ($s, Token(0, ""), $e),

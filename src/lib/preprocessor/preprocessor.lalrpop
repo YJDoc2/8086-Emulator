@@ -1,7 +1,7 @@
 use crate::util::preprocessor_util as util;
 use util::{Label,LabelType,MB};
 use regex::{Regex,Captures};
-use crate::preprocessor_error;
+use crate::error;
 use lalrpop_util::ParseError;
 
 
@@ -91,7 +91,7 @@ db_directive:() = {
     // set string
     <start:@L> <l:label?> quote_db <q:r#""[[:ascii:]]*""#> <end:@R> =>?{
         if q.len() > (u16::MAX-10) as usize{ // 10 is arbitrary
-            return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",u16::MAX-10));
+            return error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",u16::MAX-10));
         }
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
@@ -140,7 +140,7 @@ dw_directive:() = {
     //set string
     <start:@L> <l:label?> quote_dw <q:r#""[[:ascii:]]*""#> <end:@R> =>?{
         if q.len() > ((u16::MAX/2)-10) as usize { // 10 is arbitrary
-            return preprocessor_error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",(u16::MAX/2)-10));
+            return error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",(u16::MAX/2)-10));
         }
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
@@ -204,7 +204,7 @@ macro_use:() = {
                     r = r.replace(&pat,&p);
                 }
                 if context.macro_nesting_counter.contains(l) {
-                    return preprocessor_error!(start,end,"Recursive macros are not allowed".to_owned());
+                    return error!(start,end,"Recursive macros are not allowed".to_owned());
                 }else{
                     context.macro_nesting_counter.insert(l.to_string());
                 }
@@ -227,11 +227,11 @@ macro_use:() = {
                         }else{
                             format!("{}",e)
                         };
-                        preprocessor_error!(start,end,format!("Error in Macro Expansion :\nExpanded Macro : {}\nError: {}",r,error))
+                        error!(start,end,format!("Error in Macro Expansion :\nExpanded Macro : {}\nError: {}",r,error))
                     }
                 }
             },
-            None => preprocessor_error!(start as usize,start +l.len(),"Macro not defined".to_owned()),
+            None => error!(start as usize,start +l.len(),"Macro not defined".to_owned()),
         }
     }
 }
@@ -246,7 +246,7 @@ procedure:() = {
 proc_def:() = {
     <start:@L> quote_proc <n:name_string> <end:@R> =>? {
         match context.fn_map.get(&n){
-            Some(_) => preprocessor_error!(start,end,format!("Procedure {} already declared",n)),
+            Some(_) => error!(start,end,format!("Procedure {} already declared",n)),
             None => {context.fn_map.insert(n,out.code.len());Ok(())}
         }
     }
@@ -522,13 +522,13 @@ quote_xchg:() = {
 // even tough in has operand type accumulator,byte num or accumulator,dx 
 // as it is not supported anyway, this accepts all general registers
 op_in:() = {
-    <start:@L> quote_in gen_byte_reg "," u_byte_num =>? preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned()),
-    <start:@L> quote_in gen_byte_reg "," gen_byte_reg =>? preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned()),
+    <start:@L> quote_in gen_byte_reg "," u_byte_num =>? error!(start,start+2,"\'in\' is not supported.".to_owned()),
+    <start:@L> quote_in gen_byte_reg "," gen_byte_reg =>? error!(start,start+2,"\'in\' is not supported.".to_owned()),
 }
 
 op_out:() = {
-    <start:@L> quote_out u_byte_num "," gen_byte_reg =>? preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned()),
-    <start:@L> quote_out gen_byte_reg "," gen_byte_reg =>? preprocessor_error!(start,start+2,"\'in\' is not supported.".to_owned()),
+    <start:@L> quote_out u_byte_num "," gen_byte_reg =>? error!(start,start+2,"\'in\' is not supported.".to_owned()),
+    <start:@L> quote_out gen_byte_reg "," gen_byte_reg =>? error!(start,start+2,"\'in\' is not supported.".to_owned()),
 }
 
 quote_in:() ={
@@ -609,7 +609,7 @@ quote_push:() ={
 
 // even though lds and les only support 16 bit register, as we don't support them, this supports all registers
 load_ptr:() ={
-    <start:@L> <q:quote_load_ptr> gen_reg "," <m:memory_addr> =>? preprocessor_error!(start,start+3,format!("\'{}\' is not supported",q)),
+    <start:@L> <q:quote_load_ptr> gen_reg "," <m:memory_addr> =>? error!(start,start+3,format!("\'{}\' is not supported",q)),
 }
 
 quote_load_ptr:String ={
@@ -1075,7 +1075,7 @@ transfer:() = {
 call:() = {
     <start:@L> quote_call <n:name_string> <end:@R> =>?{
         if !context.fn_map.contains_key(&n){
-            return preprocessor_error!(start,end,format!("\'call\' can be only used with procedures, {} is not a procedure",n));
+            return error!(start,end,format!("\'call\' can be only used with procedures, {} is not a procedure",n));
         }else{
             out.code.push(format!("call {}",n));
             context.mapper.add_entry(start);
@@ -1109,7 +1109,7 @@ int:() = {
             context.mapper.add_entry(start);
             Ok(())
         }else{
-            preprocessor_error!(start,end,"\'int\' only supports 0x3,0x10 and 0x21".to_owned())
+            error!(start,end,"\'int\' only supports 0x3,0x10 and 0x21".to_owned())
         }
         
     }
@@ -1122,7 +1122,7 @@ quote_int:() = {
 
 into_iret:() = {
     <start:@L> <q:quote_into_iret> <end:@R> =>?{
-        preprocessor_error!(start,end,format!("\'{}\' is not supported",q))
+        error!(start,end,format!("\'{}\' is not supported",q))
     }
 }
 
@@ -1257,7 +1257,7 @@ quote_control_supported:String = {
 }
 
 control_unsupported:() ={
-    <start:@L> <q:quote_control_unsuppoted> <end:@R> =>?preprocessor_error!(start,end,format!("\'{}\' is not supported.",q)),
+    <start:@L> <q:quote_control_unsuppoted> <end:@R> =>?error!(start,end,format!("\'{}\' is not supported.",q)),
 }
 
 quote_control_unsuppoted:String ={
@@ -1285,7 +1285,7 @@ nop:()={
 label:String = {
     <start:@L> <s:r"[_a-zA-Z][_a-zA-Z0-9]*:"> =>?{
         match context.label_map.get(&s[0..s.len()-1]){
-            Some(l) => return preprocessor_error!(l.source_position as usize,l.source_position as usize+s.len(),format!("Label {} Already defined",s)),
+            Some(l) => return error!(l.source_position as usize,l.source_position as usize+s.len(),format!("Label {} Already defined",s)),
             None => {
                 context.label_map.insert(s[0..s.len()-1].to_owned(),Label::new(LabelType::CODE,start,out.code.len()));
                 Ok(s[0..s.len()-1].to_owned())
@@ -1304,7 +1304,7 @@ u_word_num: u16 = {
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
 
@@ -1312,7 +1312,7 @@ u_word_num: u16 = {
     <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
         match u16::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
 
@@ -1320,7 +1320,7 @@ u_word_num: u16 = {
     <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
         match u16::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
     offset
@@ -1335,7 +1335,7 @@ u_byte_num: u8 = {
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
 
@@ -1343,7 +1343,7 @@ u_byte_num: u8 = {
     <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
         match u8::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
 
@@ -1351,12 +1351,12 @@ u_byte_num: u8 = {
     <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
         match u8::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
     <start:@L> <o:offset> <end:@R> =>?{
         if o > 255{
-            preprocessor_error!(start,end,format!("Offset is greater than 255"))
+            error!(start,end,format!("Offset is greater than 255"))
         }else{
             Ok(o as u8)
         }
@@ -1370,7 +1370,7 @@ s_word_num: i16 = {
     <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
         match i16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
     <n:u_word_num> => n as i16
@@ -1385,7 +1385,7 @@ s_byte_num: i8 = {
     <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
         match i8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
     <n:u_byte_num> => n as i8
@@ -1397,7 +1397,7 @@ raw_addr: u32 = {
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u32::from_str_radix(n,10){
             Ok(v) => Ok(v%MB),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
         }
     },
 
@@ -1405,7 +1405,7 @@ raw_addr: u32 = {
     <start:@L> <n:r"0(x|X)[0-9A-Fa-f]+"> <end:@R> =>? {
         match u32::from_str_radix(&n[2..],16){
             Ok(v) => Ok(v%MB),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
         }
     },
 
@@ -1413,7 +1413,7 @@ raw_addr: u32 = {
     <start:@L> <n:r"0(b|B)[0-1]+"> <end:@R> =>? {
         match u32::from_str_radix(&n[2..],2){
             Ok(v) => Ok(v%MB),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
         }
     },
     <o:offset> =>{
@@ -1427,11 +1427,11 @@ offset:u16 = {
         match context.label_map.get(&n){
             Some(l)=>{
                 match l.get_type(){
-                    LabelType::CODE => {preprocessor_error!(start,end,format!("\'offset\' can be used only with data labels, {} is not a data label",n))}
+                    LabelType::CODE => {error!(start,end,format!("\'offset\' can be used only with data labels, {} is not a data label",n))}
                     LabelType::DATA => {return Ok(l.map as u16);}
                 }
             }
-            None => {preprocessor_error!(start,end,format!("Label {} is not declared.",n))}
+            None => {error!(start,end,format!("Label {} is not declared.",n))}
         }
     }
 }
@@ -1524,10 +1524,10 @@ memory_addr:String = {
 byte_label:String = {
     <start:@L> <l:quote_byte_length> <n:name_string> <end:@R> =>? {
         match context.label_map.get(&n){
-            None => {return preprocessor_error!(start,end,format!("Label {} not defined",n));},
+            None => {return error!(start,end,format!("Label {} not defined",n));},
             Some(l) => {
                 match l.get_type() {
-                    LabelType::CODE => {return preprocessor_error!(start,end,format!("Cannot use Code label {}",n));}
+                    LabelType::CODE => {return error!(start,end,format!("Cannot use Code label {}",n));}
                     _ =>{}
                 }
             } 
@@ -1539,10 +1539,10 @@ byte_label:String = {
 word_label:String = {
     <start:@L> <l:quote_word_length> <n:name_string> <end:@R> =>? {
         match context.label_map.get(&n){
-            None => {return preprocessor_error!(start,end,format!("Label {} not defined",n));},
+            None => {return error!(start,end,format!("Label {} not defined",n));},
             Some(l) => {
                 match l.get_type() {
-                    LabelType::CODE => {return preprocessor_error!(start,end,format!("Cannot use Code label {}  ",n));}
+                    LabelType::CODE => {return error!(start,end,format!("Cannot use Code label {}  ",n));}
                     _ =>{}
                 }
             } 

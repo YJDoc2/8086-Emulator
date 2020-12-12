@@ -1,6 +1,6 @@
 use crate::util::{address::*,data_util::separate_bytes};
 use crate::vm::VM;
-use crate::preprocessor_error;
+use crate::error;
 use lalrpop_util::ParseError;
 
 grammar<'s>(vm: &'s mut VM, counter:&mut usize);
@@ -104,7 +104,7 @@ u_word_num: u16 = {
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
 }
@@ -116,7 +116,7 @@ u_byte_num: u8 = {
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
 }
@@ -126,7 +126,7 @@ s_word_num: i16 = {
     <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
         match i16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     },
     <n:u_word_num> => n as i16
@@ -140,7 +140,7 @@ s_byte_num: i8 = {
     <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
         match i8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => preprocessor_error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     },
     <n:u_byte_num> => n as i8

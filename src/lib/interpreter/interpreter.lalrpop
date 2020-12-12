@@ -2,7 +2,7 @@ use crate::util::interpreter_util::{Context,State};
 use crate::util::flag_util::*;
 use crate::arch::FLAG_CARRY;
 use crate::vm::VM;
-//use crate::preprocessor_error;
+//use crate::error;
 //use lalrpop_util::ParseError;
 
 grammar<'s>(vm:&mut VM,context:&'s Context);
