@@ -1,5 +1,5 @@
 #[allow(unused_imports)]
-use super::interpreter;
+use crate::interpreter::interpreter;
 #[allow(unused_imports)]
 use crate::util::flag_util::*;
 #[allow(unused_imports)]

@@ -1,2 +1,2 @@
 pub mod interpreter;
-mod interpreter_tests;
+mod tests;
