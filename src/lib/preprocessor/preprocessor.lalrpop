@@ -1149,78 +1149,116 @@ jmps_loops:() = {
 quote_jmps_loops:String = {
     "JMP" => "jmp".to_owned(),
     "jmp" => "jmp".to_owned(),
+
+    // ja and jnbe both are same for execution
     "JA" => "ja".to_owned(),
     "ja" => "ja".to_owned(),
-    "JNBE" => "jnbe".to_owned(),
-    "jnbe" => "jnbe".to_owned(),
+    "JNBE" => "ja".to_owned(),
+    "jnbe" => "ja".to_owned(),
+
+    // jae and jnb are same for execution
     "JAE" => "jae".to_owned(),
     "jae" => "jae".to_owned(),
-    "JNB" => "jnb".to_owned(),
-    "jnb" => "jnb".to_owned(),
+    "JNB" => "jae".to_owned(),
+    "jnb" => "jae".to_owned(),
+
+    // jb and jnae are same for execution
     "JB" => "jb".to_owned(),
     "jb" => "jb".to_owned(),
-    "JNAE" => "jnae".to_owned(),
-    "jnae" => "jnae".to_owned(),
+    "JNAE" => "jb".to_owned(),
+    "jnae" => "jb".to_owned(),
+
+    // jbe and jna are same for execution
     "JBE" => "jbe".to_owned(),
     "jbe" => "jbe".to_owned(),
     "JNA" => "jna".to_owned(),
     "jna" => "jna".to_owned(),
+
+
     "JC" => "jc".to_owned(),
     "jc" => "jc".to_owned(),
+
+    // je and jz are same for execution
     "JE" => "je".to_owned(),
     "je" => "je".to_owned(),
-    "JZ" => "jz".to_owned(),
-    "jz" => "jz".to_owned(),
+    "JZ" => "je".to_owned(),
+    "jz" => "je".to_owned(),
+
+    // jg and jnle are same for execution
     "JG" => "jg".to_owned(),
     "jg" => "jg".to_owned(),
-    "JNLE" => "jnle".to_owned(),
-    "jnle" => "jnle".to_owned(),
+    "JNLE" => "jg".to_owned(),
+    "jnle" => "jg".to_owned(),
+
+    // jge and jnl are same in execution
     "JGE" => "jge".to_owned(),
     "jge" => "jge".to_owned(),
-    "JNL" => "jnl".to_owned(),
-    "jnl" => "jnl".to_owned(),
+    "JNL" => "jge".to_owned(),
+    "jnl" => "jge".to_owned(),
+
+    // jl and jnge are same in execution
     "JL" => "jl".to_owned(),
     "jl" => "jl".to_owned(),
-    "JNGE" => "jnge".to_owned(),
-    "jnge" => "jnge".to_owned(),
+    "JNGE" => "jl".to_owned(),
+    "jnge" => "jl".to_owned(),
+
+    // jle and jng are same in execution
     "JLE" => "jle".to_owned(),
     "jle" => "jle".to_owned(),
-    "JNG" => "jng".to_owned(),
-    "jng" => "jng".to_owned(),
+    "JNG" => "jle".to_owned(),
+    "jng" => "jle".to_owned(),
+
     "JNC" => "jnc".to_owned(),
     "jnc" => "jnc".to_owned(),
+
+    // jne and jnz are same in execution
     "JNE" => "jne".to_owned(),
     "jne" => "jne".to_owned(),
-    "JNZ" => "jnz".to_owned(),
-    "jnz" => "jnz".to_owned(),
+    "JNZ" => "jne".to_owned(),
+    "jnz" => "jne".to_owned(),
+    
     "JNO" => "jno".to_owned(),
     "jno" => "jno".to_owned(),
+
+    // jnp and jpo are same in execution
     "JNP" => "jnp".to_owned(),
     "jnp" => "jnp".to_owned(),
-    "JPO" => "jpo".to_owned(),
-    "jpo" => "jpo".to_owned(),
+    "JPO" => "jnp".to_owned(),
+    "jpo" => "jnp".to_owned(),
+
+
     "JNS" => "jns".to_owned(),
     "jns" => "jns".to_owned(),
     "JO" => "jo".to_owned(),
     "jo" => "jo".to_owned(),
+
+    // jp and jpe are same in execution
     "JP" => "jp".to_owned(),
     "jp" => "jp".to_owned(),
-    "JPE" => "jpe".to_owned(),
-    "jpe" => "jpe".to_owned(),
+    "JPE" => "jp".to_owned(),
+    "jpe" => "jp".to_owned(),
+
+
     "JS" => "js".to_owned(),
     "js" => "js".to_owned(),
-    "LOOP" => "loop".to_owned(),
-    "loop" => "loop".to_owned(),
-    "LOOPE" => "loope".to_owned(),
-    "loope" => "loope".to_owned(),
-    "LOOPZ" => "loopz".to_owned(),
-    "loopz" => "loopz".to_owned(),
-    "LOOPNE" => "loopne".to_owned(),
-    "loopne" => "loopne".to_owned(),
-    "LOOPNZ" => "loopnz".to_owned(),
-    "loopnz" => "loopnz".to_owned(),
+
     "JCXZ" => "jcxz".to_owned(),
     "jcxz" => "jcxz".to_owned(),
+
+    "LOOP" => "loop".to_owned(),
+    "loop" => "loop".to_owned(),
+
+    // loope and loopz are same in execution
+    "LOOPE" => "loope".to_owned(),
+    "loope" => "loope".to_owned(),
+    "LOOPZ" => "loope".to_owned(),
+    "loopz" => "loope".to_owned(),
+
+    // loopne and loopnz are same in execution
+    "LOOPNE" => "loopne".to_owned(),
+    "loopne" => "loopne".to_owned(),
+    "LOOPNZ" => "loopne".to_owned(),
+    "loopnz" => "loopne".to_owned(),   
 }
 
 // ----------------------------------

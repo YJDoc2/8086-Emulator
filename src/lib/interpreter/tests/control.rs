@@ -13,42 +13,42 @@ fn test_control_instructions() {
     let mut context = Context::default();
     let p = interpreter::InterpreterParser::new();
 
-    let o = p.parse(&mut vm, &mut context, "stc");
+    let o = p.parse(1, &mut vm, &mut context, "stc");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
     assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
 
-    let o = p.parse(&mut vm, &mut context, "clc");
+    let o = p.parse(1, &mut vm, &mut context, "clc");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
     assert!(!get_flag_state(vm.arch.flag, Flags::CARRY));
 
-    let o = p.parse(&mut vm, &mut context, "cmc");
+    let o = p.parse(1, &mut vm, &mut context, "cmc");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
     assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
 
-    let o = p.parse(&mut vm, &mut context, "std");
+    let o = p.parse(1, &mut vm, &mut context, "std");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
     assert!(get_flag_state(vm.arch.flag, Flags::DIRECTION));
 
-    let o = p.parse(&mut vm, &mut context, "cld");
+    let o = p.parse(1, &mut vm, &mut context, "cld");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
     assert!(!get_flag_state(vm.arch.flag, Flags::DIRECTION));
 
-    let o = p.parse(&mut vm, &mut context, "sti");
+    let o = p.parse(1, &mut vm, &mut context, "sti");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
     assert!(get_flag_state(vm.arch.flag, Flags::INTERRUPT));
 
-    let o = p.parse(&mut vm, &mut context, "cli");
+    let o = p.parse(1, &mut vm, &mut context, "cli");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
     assert!(!get_flag_state(vm.arch.flag, Flags::DIRECTION));
 
-    let o = p.parse(&mut vm, &mut context, "hlt");
+    let o = p.parse(1, &mut vm, &mut context, "hlt");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::HALT);
 }

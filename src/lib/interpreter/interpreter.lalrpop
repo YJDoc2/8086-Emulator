@@ -1,20 +1,156 @@
 use crate::util::interpreter_util::{Context,State};
+use crate::util::preprocessor_util::LabelType;
 use crate::util::flag_util::*;
 use crate::arch::FLAG_CARRY;
 use crate::vm::VM;
-//use crate::error;
-//use lalrpop_util::ParseError;
+use crate::error;
+use lalrpop_util::ParseError;
 
-grammar<'s>(vm:&mut VM,context:&'s Context);
+grammar<'s>(current:usize,vm:&mut VM,context:&'s mut Context);
 
 pub Interpreter:State = {
    control,
-    //transfer,
+   transfer,
     //bit_manipulation,
     //arithmetic,
     //string,
     //data_transfer,
 }
+
+
+
+// ----------------------------------
+// Transfer Instructions
+
+transfer:State = {
+   call,
+   ret,
+   jumps_loops,
+}
+
+
+call:State = {
+    <start:@L> "call" <n:name_string> <end:@R> =>?{
+       match context.fn_map.get(&n){
+         Some(pos) => {context.call_stack.push(current); Ok(State::JMP(*pos)) },
+         None => error!(start,end,format!("Internal Error : call to undefined procedure {}",n))
+       }
+    },
+}
+
+ret:State = {
+   <start:@L> "ret" <end:@R> =>?{
+      match context.call_stack.pop() {
+         Some(p) => {Ok(State::JMP(p))},
+         None => error!(start,end,"Error : ret is encountered without corresponding call".to_owned())
+      }
+   },
+}
+
+jumps_loops:State = {
+    <start:@L> <take:jumps_condition> <n:name_string> <end:@R> =>?{
+       match context.label_map.get(&n){
+
+          Some(l) => {
+
+             match l.get_type(){
+               
+               LabelType::DATA => error!(start,end,format!("Internal Error : jump to data type label {}",n)),
+               
+               LabelType::CODE => {
+                  if take {
+                     Ok(State::JMP(l.map))
+                  }else{
+                     Ok(State::NEXT)
+                  }
+               }
+             }
+          }
+          // No label found
+          None => error!(start,end,format!("Internal Error : jump to undefined label {}",n))
+       }
+    }
+}
+
+jumps_condition:bool = { 
+   // unconditional
+   "jmp" => true,
+
+   // cf = 0 and zf = 0
+   "ja" => !get_flag_state(vm.arch.flag,Flags::CARRY) && !get_flag_state(vm.arch.flag,Flags::ZERO),
+   
+   // cf = 0
+   "jae" => !get_flag_state(vm.arch.flag,Flags::CARRY),
+   
+   //cf = 1
+   "jb" => get_flag_state(vm.arch.flag,Flags::CARRY),
+   
+   // cf =1 or zf = 1
+   "jbe" => get_flag_state(vm.arch.flag,Flags::CARRY) || get_flag_state(vm.arch.flag,Flags::ZERO),
+   
+   // cf = 1
+   "jc" => get_flag_state(vm.arch.flag,Flags::CARRY),
+   
+   // zf = 1
+   "je" => get_flag_state(vm.arch.flag,Flags::ZERO),
+   
+   // sf = of and zf = 0
+   "jg" => !get_flag_state(vm.arch.flag,Flags::ZERO) && get_flag_state(vm.arch.flag,Flags::SIGN) == get_flag_state(vm.arch.flag,Flags::OVERFLOW),
+   
+   // sf = of
+   "jge" => get_flag_state(vm.arch.flag,Flags::SIGN) == get_flag_state(vm.arch.flag,Flags::OVERFLOW),
+
+   // sf != of
+   "jl" => get_flag_state(vm.arch.flag,Flags::SIGN) != get_flag_state(vm.arch.flag,Flags::OVERFLOW),
+   
+   // sf != of and zf = 1
+   "jle" => get_flag_state(vm.arch.flag,Flags::ZERO) && get_flag_state(vm.arch.flag,Flags::SIGN) != get_flag_state(vm.arch.flag,Flags::OVERFLOW),
+   
+   // cf = 0
+   "jnc" => !get_flag_state(vm.arch.flag,Flags::CARRY),
+   
+   // zf = 0
+   "jne" => !get_flag_state(vm.arch.flag,Flags::ZERO),
+   
+   // of = 0
+   "jno" => !get_flag_state(vm.arch.flag,Flags::OVERFLOW),
+   
+   // pf = 0
+   "jnp" => !get_flag_state(vm.arch.flag,Flags::PARITY),
+   
+   // sf = 0
+   "jns" => !get_flag_state(vm.arch.flag,Flags::SIGN),
+   
+   // of = 1
+   "jo" => get_flag_state(vm.arch.flag,Flags::OVERFLOW),
+   
+   // pf = 1 
+   "jp" => get_flag_state(vm.arch.flag,Flags::PARITY),
+   
+   // sf = 1
+   "js" => get_flag_state(vm.arch.flag,Flags::SIGN),
+   
+   // CX = 0
+   "jcxz" => vm.arch.cx == 0,  
+   
+   "loop" => {
+      vm.arch.cx -= 1;
+      vm.arch.cx != 0
+   },
+   "loope" => {
+      vm.arch.cx -= 1;
+      vm.arch.cx != 0 && get_flag_state(vm.arch.flag,Flags::ZERO)
+   },
+   "loopne" => {
+      vm.arch.cx -= 1;
+      vm.arch.cx != 0 && !get_flag_state(vm.arch.flag,Flags::ZERO)
+   },
+}
+
+
+
+
+
 
 // ----------------------------------
 // Control Instructions
@@ -27,4 +163,12 @@ control:State={
    "sti" => {set_flag(&mut vm.arch.flag,Flags::INTERRUPT); State::NEXT},
    "cli" => {unset_flag(&mut vm.arch.flag,Flags::INTERRUPT); State::NEXT},
    "hlt" => State::HALT,
+}
+
+
+// Helpers
+name_string:String ={
+    <v:r"[_a-zA-Z][_a-zA-Z0-9]*"> =>{
+        v.to_owned()
+    }
 }

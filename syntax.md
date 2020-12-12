@@ -78,3 +78,6 @@ Only int 3H,10H, and 21H are supported
 In 10H : value of AH allowed are : 0AH,13H
 IN 21H : value of AH allowed are : 1H,2H,0AH
 ALL OF THESE WILL BUFFER INPUT, depending on the interpreter driver
+
+For CALL, unlike real 8086 no ip/cs is pushed on stack, instead it is maintained internally
+Similarly for RET no pop is done

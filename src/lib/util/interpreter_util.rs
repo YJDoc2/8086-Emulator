@@ -23,8 +23,10 @@ pub enum State {
 /// fn_map, mapping function name to the position in code Vec provided by preprocessor
 /// label_map mapping label name to Label struct
 /// Both of these are to be taken from Context of preprocessor
+/// call_stack is used internally for keeping  track of return locations in case of stack smashing
 #[derive(Default)]
 pub struct Context {
     pub fn_map: HashMap<String, usize>,
     pub label_map: HashMap<String, Label>,
+    pub call_stack: Vec<usize>,
 }
