@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: a0f392c8d6adaf198aba24ca11b0fbbea2458beb6d2af62554928e2d419ce1e
+// sha256: 53395680aaaa92f242229d1a5ae237173b56c834d7d52c8bfed7728d8a52b
 use crate::util::interpreter_util::{Context,State};
 use crate::util::preprocessor_util::LabelType;
 use crate::util::flag_util::*;
@@ -2099,7 +2099,7 @@ fn __action29<
 ) -> bool
 {
     {
-      vm.arch.cx -= 1;
+      vm.arch.cx = (vm.arch.cx as i32 -1) as u16;
       vm.arch.cx != 0
    }
 }
@@ -2117,7 +2117,7 @@ fn __action30<
 ) -> bool
 {
     {
-      vm.arch.cx -= 1;
+      vm.arch.cx = (vm.arch.cx as i32 -1) as u16;
       vm.arch.cx != 0 && get_flag_state(vm.arch.flag,Flags::ZERO)
    }
 }
@@ -2135,7 +2135,7 @@ fn __action31<
 ) -> bool
 {
     {
-      vm.arch.cx -= 1;
+      vm.arch.cx = (vm.arch.cx as i32 -1) as u16;
       vm.arch.cx != 0 && !get_flag_state(vm.arch.flag,Flags::ZERO)
    }
 }

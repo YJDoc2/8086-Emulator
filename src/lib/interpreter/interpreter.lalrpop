@@ -134,15 +134,15 @@ jumps_condition:bool = {
    "jcxz" => vm.arch.cx == 0,  
    
    "loop" => {
-      vm.arch.cx -= 1;
+      vm.arch.cx = (vm.arch.cx as i32 -1) as u16;
       vm.arch.cx != 0
    },
    "loope" => {
-      vm.arch.cx -= 1;
+      vm.arch.cx = (vm.arch.cx as i32 -1) as u16;
       vm.arch.cx != 0 && get_flag_state(vm.arch.flag,Flags::ZERO)
    },
    "loopne" => {
-      vm.arch.cx -= 1;
+      vm.arch.cx = (vm.arch.cx as i32 -1) as u16;
       vm.arch.cx != 0 && !get_flag_state(vm.arch.flag,Flags::ZERO)
    },
 }
