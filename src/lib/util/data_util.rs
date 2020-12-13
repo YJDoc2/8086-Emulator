@@ -112,3 +112,21 @@ pub fn get_word_reg_mut(vm: &mut VM, reg: WordReg) -> &mut u16 {
         WordReg::DX => &mut vm.arch.dx,
     }
 }
+
+pub fn get_word_reg_val(vm: &VM, reg: WordReg) -> u16 {
+    match reg {
+        WordReg::AX => vm.arch.ax,
+        WordReg::BX => vm.arch.bx,
+        WordReg::CX => vm.arch.cx,
+        WordReg::DX => vm.arch.dx,
+    }
+}
+
+pub fn set_word_reg_val(vm: &mut VM, reg: WordReg, val: u16) {
+    match reg {
+        WordReg::AX => vm.arch.ax = val,
+        WordReg::BX => vm.arch.bx = val,
+        WordReg::CX => vm.arch.cx = val,
+        WordReg::DX => vm.arch.dx = val,
+    }
+}

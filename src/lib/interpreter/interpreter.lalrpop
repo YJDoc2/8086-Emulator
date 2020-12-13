@@ -24,8 +24,8 @@ pub Interpreter:State = {
 // Bit Manipulation Instructions
 
 bit_manipulation:() = {
-   not,
-    //binary_logical,
+    not,
+    binary_logical,
     //shift_rotate,
 }
 
@@ -67,50 +67,100 @@ bit_manipulation:() = {
 binary_logical:() = {
     // reg,reg
     <start:@L> <f:byte_binary_logical> <r1:byte_reg> "," <r2:byte_reg> =>{
-        
+        let dest = get_byte_reg(vm,r1);
+        let src = get_byte_reg(vm,r2);
+        let res = f(vm,dest,src);
+        set_byte_reg(vm,r1,res);
     },
-    <start:@L> <q:word_binary_logical> <r1:word_reg> "," <r2:word_reg> =>{
-        
+    <start:@L> <f:word_binary_logical> <r1:word_reg> "," <r2:word_reg> =>{
+        // as f requires mut , we cannot use get_word_reg_val
+        // so first take both values and set destination value
+        let dest = get_word_reg_val(vm,r1);
+        let src = get_word_reg_val(vm,r2);
+        let res = f(vm,dest,src);
+        set_word_reg_val(vm,r1,res);
     },
     //reg,mem
     <start:@L> <f:byte_binary_logical> <r:byte_reg> "," "byte" <m:memory_addr> =>{
-        
+        let dest = get_byte_reg(vm,r);
+        let src = vm.mem[m];
+        let res = f(vm,dest,src);
+        set_byte_reg(vm,r,res);
     },
-    <start:@L> <q:word_binary_logical> <r:word_reg> "," "word" <m:memory_addr> =>{
-        
+    <start:@L> <f:word_binary_logical> <r:word_reg> "," "word" <m:memory_addr> =>{
+        let dest = get_word_reg_val(vm,r);
+        let src = vm.mem[m] as u16 | vm.mem[inc_addr(m,1)] as u16;
+        let res = f(vm,dest,src);
+        set_word_reg_val(vm,r,res);
     },
-    <start:@L> <f:byte_binary_logical> <r:byte_reg> "," <l:byte_label> =>{
-        
+    <start:@L> <f:byte_binary_logical> <r:byte_reg> "," <m:byte_label> =>{
+        let dest = get_byte_reg(vm,r);
+        let src = vm.mem[m];
+        let res = f(vm,dest,src);
+        set_byte_reg(vm,r,res);
     },
-    <start:@L> <q:word_binary_logical> <r:word_reg> "," <l:word_label> =>{
-        
+    <start:@L> <f:word_binary_logical> <r:word_reg> "," <m:word_label> =>{
+        let dest = get_word_reg_val(vm,r);
+        let src = vm.mem[m] as u16 |vm.mem[inc_addr(m,1)] as u16;
+        let res = f(vm,dest,src);
+        set_word_reg_val(vm,r,res);
     },
     // mem,reg
     <start:@L> <f:byte_binary_logical> "byte" <m:memory_addr> "," <r:byte_reg> =>{
-        
+        let dest = vm.mem[m];
+        let src = get_byte_reg(vm,r);
+        let res = f(vm,dest,src);
+        vm.mem[m] = res;
     },
-    <start:@L> <q:word_binary_logical> "word" <m:memory_addr> "," <r:word_reg> =>{
-        
+    <start:@L> <f:word_binary_logical> "word" <m:memory_addr> "," <r:word_reg> =>{
+        let dest = vm.mem[m] as u16 | vm.mem[inc_addr(m,1)] as u16;
+        let src = get_word_reg_val(vm,r);
+        let res = f(vm,dest,src);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
     },
     //reg , immediate
     <start:@L> <f:byte_binary_logical> <r:byte_reg> "," <n:u_byte_num> =>{
-        
+        let dest = get_byte_reg(vm,r);
+        let src = n;
+        let res = f(vm,dest,src);
+        set_byte_reg(vm,r,res);
     },
-    <start:@L> <q:word_binary_logical> <r:word_reg> "," <n:u_word_num> =>{
-        
+    <start:@L> <f:word_binary_logical> <r:word_reg> "," <n:u_word_num> =>{
+        let dest = get_word_reg_val(vm,r);
+        let src = n;
+        let res = f(vm,dest,src);
+        set_word_reg_val(vm,r,res);
     },
     // mem, immediate
     <start:@L> <f:byte_binary_logical> "byte" <m:memory_addr> "," <n:u_byte_num> =>{
-        
+        let dest = vm.mem[m];
+        let src = n;
+        let res = f(vm,dest,src);
+        vm.mem[m] = res;
     },
-    <start:@L> <q:word_binary_logical> "word" <m:memory_addr> "," <n:u_word_num> =>{
-        
+    <start:@L> <f:word_binary_logical> "word" <m:memory_addr> "," <n:u_word_num> =>{
+        let dest = vm.mem[m] as u16 | vm.mem[inc_addr(m,1)] as u16;
+        let src = n;
+        let res = f(vm,dest,src);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
     },
     <start:@L> <f:byte_binary_logical> <m:byte_label> "," <n:u_byte_num> =>{
-        
+        let dest = vm.mem[m];
+        let src = n;
+        let res = f(vm,dest,src);
+        vm.mem[m] = res;
     },
-    <start:@L> <q:word_binary_logical>  <m:word_label> "," <n:u_word_num> =>{
-        
+    <start:@L> <f:word_binary_logical>  <m:word_label> "," <n:u_word_num> =>{
+        let dest = vm.mem[m] as u16 | vm.mem[inc_addr(m,1)] as u16;
+        let src = n;
+        let res = f(vm,dest,src);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
     },
 }
 
