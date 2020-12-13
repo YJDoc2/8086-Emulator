@@ -899,8 +899,12 @@ bit_manipulation:() = {
         out.code.push(format!("not {}",r));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_not <m:memory_addr> =>{
-        out.code.push(format!("not {}",m));
+    <start:@L> quote_not quote_byte_length <m:memory_addr> =>{
+        out.code.push(format!("not byte {}",m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> quote_not quote_word_length <m:memory_addr> =>{
+        out.code.push(format!("not word {}",m));
         context.mapper.add_entry(start);
     },
     <start:@L> quote_not <m:word_label> =>{
@@ -1546,11 +1550,11 @@ memory_addr:String = {
     // Register Indirect
     "[" <r:base_index_reg> "]" => format!("[{}]",r),
     // Based
-    "[" <r:base_reg> "," <n:u_word_num> "]" => format!("[{},{}]",r,n),
+    "[" <r:base_reg> "," <n:s_word_num> "]" => format!("[{},{}]",r,n),
     // indexed
-    "[" <r:index_reg> "," <n:u_word_num> "]" => format!("[{},{}]",r,n),
+    "[" <r:index_reg> "," <n:s_word_num> "]" => format!("[{},{}]",r,n),
     //based indexed
-    "[" <b:base_reg> "," <i:index_reg> <k:("," <u_word_num>)?> "]" => {
+    "[" <b:base_reg> "," <i:index_reg> <k:("," <s_word_num>)?> "]" => {
         match k{
             Some(n) => format!("[{},{},{}]",b,i,n),
             None => format!("[{},{},{}]",b,i,0),
@@ -1565,7 +1569,7 @@ byte_label:String = {
             Some(l) => {
                 match l.get_type() {
                     LabelType::CODE => {return error!(start,end,format!("Cannot use Code label {}",n));}
-                    _ =>{}
+                    LabelType::DATA =>{}
                 }
             } 
         } 
@@ -1580,7 +1584,7 @@ word_label:String = {
             Some(l) => {
                 match l.get_type() {
                     LabelType::CODE => {return error!(start,end,format!("Cannot use Code label {}  ",n));}
-                    _ =>{}
+                    LabelType::DATA =>{}
                 }
             } 
         } 

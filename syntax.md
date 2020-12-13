@@ -83,3 +83,5 @@ For CALL, unlike real 8086 no ip/cs is pushed on stack, instead it is maintained
 Similarly for RET no pop is done
 
 Conditions for jumps in 8086 family manual seemed incorrect, so have used from : https://css.csail.mit.edu/6.858/2014/readings/i386/Jcc.htm
+
+Segment override is not supported in memory addressing

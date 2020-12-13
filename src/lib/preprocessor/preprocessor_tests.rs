@@ -122,9 +122,11 @@ fn test_not() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-    let o = p.parse(&mut ctx, &mut out, "NOT AX NOT [BX]");
+    let o = p.parse(&mut ctx, &mut out, "NOT AX NOT byte [BX]");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
+    let o = p.parse(&mut ctx, &mut out, "NOT byte [BP,SI] not word [bx,DI,-6]");
+    assert!(o.is_ok());
     out.clear();
     ctx.clear();
     let o = p.parse(&mut ctx, &mut out, "l:DB 5 NOT BYTE l");

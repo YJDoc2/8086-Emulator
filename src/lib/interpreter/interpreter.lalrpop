@@ -1,6 +1,8 @@
 use crate::util::interpreter_util::{Context,State};
 use crate::util::preprocessor_util::LabelType;
 use crate::util::flag_util::*;
+use crate::util::data_util::*;
+use crate::util::address::*;
 use crate::arch::FLAG_CARRY;
 use crate::vm::VM;
 use crate::error;
@@ -11,13 +13,56 @@ grammar<'s>(current:usize,vm:&mut VM,context:&'s mut Context);
 pub Interpreter:State = {
    control,
    transfer,
-    //bit_manipulation,
+   bit_manipulation => State::NEXT,
     //arithmetic,
     //string,
     //data_transfer,
 }
 
 
+// ----------------------------------
+// Bit Manipulation Instructions
+
+bit_manipulation:() = {
+   not,
+    //binary_logical,
+    //shift_rotate,
+}
+
+ not:()={
+   "not" <r:byte_reg> =>{
+      let v = get_byte_reg(vm,r);
+      set_byte_reg(vm,r,!v);
+   },
+   "not" <r:word_reg> =>{
+      let v = get_word_reg_mut(vm,r);
+      *v = !*v;
+   },
+
+   "not" "byte" <m:memory_addr> =>{
+      vm.mem[m] = !vm.mem[m];
+   },
+
+   "not" "word" <m:memory_addr> =>{
+      let mut temp:u16 = vm.mem[m] as u16;
+      temp |= (vm.mem[inc_addr(m,1)] as u16) << 8;
+      temp = !temp;
+      let (hb,lb) = separate_bytes(temp as i16);
+      vm.mem[m] = lb;
+      vm.mem[inc_addr(m,1)] = hb;
+   },
+   "not" <m:byte_label> =>{
+      vm.mem[m] = !vm.mem[m];
+   },
+   "not" <m:word_label> =>{
+      let mut temp:u16 = vm.mem[m] as u16;
+      temp |= (vm.mem[inc_addr(m,1)] as u16) << 8;
+      temp = !temp;
+      let (hb,lb) = separate_bytes(temp as i16);
+      vm.mem[m] = lb;
+      vm.mem[inc_addr(m,1)] = hb;
+   },
+}
 
 // ----------------------------------
 // Transfer Instructions
@@ -175,6 +220,22 @@ control:State={
 
 // ----------------------------------
 // Helpers
+
+memory_addr:usize = {
+    // direct addressing
+    "[" <n:u_word_num> "]" => Address::calculate_from_offset(vm.arch.ds,n),
+    // Register Indirect
+    "[" <r:base_index_reg_addr> "]" => r,
+    // Based
+    "[" <r:base_reg_addr> "," <n:s_word_num> "]" => make_valid_address((r as i32 + n as i32) as usize),
+    // indexed
+    "[" <r:index_reg_val> "," <n:s_word_num> "]" => make_valid_address((Address::calculate_from_offset(vm.arch.ds,r) as i32 + n as i32) as usize),
+    //based indexed
+    "[" <b:base_reg_addr> "," <i:index_reg_val> "," <k:s_word_num> "]" => make_valid_address(((b+i) as i32 + k as i32) as usize),
+    
+}
+
+
 name_string:String ={
     <v:r"[_a-zA-Z][_a-zA-Z0-9]*"> =>{
         v.to_owned()
@@ -185,7 +246,105 @@ u_byte_num: u8 = {
     <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
         match u8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between 0-255".to_owned())
         }
     },
+}
+
+u_word_num: u16 = {
+    <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
+        match u16::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between 0-65535".to_owned())
+        }
+    },
+}
+
+s_word_num: i16 = {
+    <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
+        match i16::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between 0-65535".to_owned())
+        }
+    },
+    <n:u_word_num> => n as i16
+}
+
+
+byte_reg:ByteReg = {
+    
+    "ah" => ByteReg::AH,
+    
+    "al" => ByteReg::AL,
+    
+    "bh" => ByteReg::BH,
+    
+    "bl" => ByteReg::BL,
+    
+    "ch" => ByteReg::CH,
+    
+    reg_cl,
+    
+    "dh" => ByteReg::DH,
+    
+    "dl" => ByteReg::DL,
+}
+
+reg_cl:ByteReg = {
+    "cl" => ByteReg::CL,
+}
+
+word_reg:WordReg = {
+    
+    "ax" => WordReg::AX,
+    
+    "bx" => WordReg::BX,
+    
+    "cx" => WordReg::CX,
+    
+    "dx" => WordReg::DX,
+}
+
+
+base_index_reg_addr:usize = {
+   base_reg_addr,
+   <v:index_reg_val> => Address::calculate_from_offset(vm.arch.ds,v),
+}
+
+base_reg_addr:usize = {
+   "bx" => Address::calculate_from_offset(vm.arch.ds,vm.arch.bx),
+   "bp" => Address::calculate_from_offset(vm.arch.ss,vm.arch.bp),
+}
+
+index_reg_val:usize = {
+   "si" => vm.arch.si as usize,
+   "di" => vm.arch.di as usize,
+}
+
+byte_label:usize = {
+    <start:@L> "byte" <n:name_string> <end:@R> =>? {
+        match context.label_map.get(&n){
+            None => {return error!(start,end,format!("Internal Error : Label {} not defined",n));},
+            Some(l) => {
+                match l.get_type() {
+                    LabelType::CODE => {return error!(start,end,format!("Internal Error : Cannot use Code label {}",n));}
+                    LabelType::DATA =>{return Ok(Address::calculate_from_offset(vm.arch.ds,l.map));}
+                }
+            } 
+        } 
+    }
+}
+
+word_label:usize = {
+    <start:@L> "word" <n:name_string> <end:@R> =>? {
+        match context.label_map.get(&n){
+            None => {return error!(start,end,format!("Internal Error : Label {} not defined",n));},
+            Some(l) => {
+                match l.get_type() {
+                    LabelType::CODE => {return error!(start,end,format!("Internal Error : Cannot use Code label {}  ",n));}
+                    LabelType::DATA =>{return Ok(Address::calculate_from_offset(vm.arch.ds,l.map));}
+                }
+            } 
+        } 
+    }
 }
