@@ -85,3 +85,4 @@ Similarly for RET no pop is done
 Conditions for jumps in 8086 family manual seemed incorrect, so have used from : https://css.csail.mit.edu/6.858/2014/readings/i386/Jcc.htm
 
 Segment override is not supported in memory addressing
+For memory addressing explanation check : https://www.ic.unicamp.br/~celio/mc404s2-03/addr_modes/intel_addr.html
