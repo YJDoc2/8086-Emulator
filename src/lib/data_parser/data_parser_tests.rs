@@ -8,9 +8,15 @@ fn test_db_number() {
     let mut vm = VM::new();
     let mut ctr = 0;
     let p = data_parser::DataParser::new();
+
     let o = p.parse(&mut vm, &mut ctr, "db 5");
     assert!(o.is_ok());
     assert_eq!(vm.mem[vm.arch.ds as usize * 0x10], 5);
+
+    ctr = 0;
+    let o = p.parse(&mut vm, &mut ctr, "db -1");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[vm.arch.ds as usize * 0x10], 255);
 
     // First test for numbered array, so we can check if non-numbered array actually zeros the memory
     ctr = 0;
@@ -57,6 +63,12 @@ fn test_dw_number() {
         &vm.mem[vm.arch.ds as usize * 0x10..vm.arch.ds as usize * 0x10 + 3],
         &[205, 171, 0]
     );
+
+    ctr = 0;
+    let o = p.parse(&mut vm, &mut ctr, "dw -1");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[vm.arch.ds as usize * 0x10], 255);
+    assert_eq!(vm.mem[vm.arch.ds as usize * 0x10 + 1], 255);
 
     // First test for numbered array, so we can check if non-numbered array actually zeros the memory
     ctr = 0;
