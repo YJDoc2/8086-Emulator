@@ -1025,12 +1025,20 @@ shift_rotate:() = {
     },
 
     // memory
-    <start:@L> <q:quote_shift_rotate> <m:memory_addr> "," <n:u_byte_num> => {
-        out.code.push(format!("{} {},{}",q,m,n));
+    <start:@L> <q:quote_shift_rotate> quote_byte_length <m:memory_addr> "," <n:u_byte_num> => {
+        out.code.push(format!("{} byte {},{}",q,m,n));
         context.mapper.add_entry(start);
     },
-    <start:@L> <q:quote_shift_rotate> <m:memory_addr> "," reg_cl => {
-        out.code.push(format!("{} {},cl",q,m));
+    <start:@L> <q:quote_shift_rotate> quote_byte_length <m:memory_addr> "," reg_cl => {
+        out.code.push(format!("{} byte {},cl",q,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_shift_rotate> quote_word_length <m:memory_addr> "," <n:u_byte_num> => {
+        out.code.push(format!("{} word {},{}",q,m,n));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_shift_rotate> quote_word_length <m:memory_addr> "," reg_cl => {
+        out.code.push(format!("{} word {},cl",q,m));
         context.mapper.add_entry(start);
     },
     // label
@@ -1038,7 +1046,7 @@ shift_rotate:() = {
         out.code.push(format!("{} {},{}",q,m,n));
         context.mapper.add_entry(start);
     },
-    // Support byte_nm only as anyway 256 will clear out the 16 bit number
+    // Support byte_num only as anyway 256 will clear out the 16 bit number
     <start:@L> <q:quote_shift_rotate> <m:word_label> "," <n:u_byte_num> => {
         out.code.push(format!("{} {},{}",q,m,n));
         context.mapper.add_entry(start);

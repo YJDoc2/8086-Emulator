@@ -26,7 +26,7 @@ pub Interpreter:State = {
 bit_manipulation:() = {
     not,
     binary_logical,
-    //shift_rotate,
+    shift_rotate,
 }
 
  not:()={
@@ -376,6 +376,111 @@ word_binary_logical:Box<dyn Fn(&mut VM, u16, u16) -> u16> = {
             }
             return dest;
         })
+    },
+}
+
+
+shift_rotate:() = {
+    // register
+    <start:@L> <f:byte_shift_rotate> <r:byte_reg> "," <n:u_byte_num> => {
+        
+    },
+    <start:@L> <f:byte_shift_rotate> <r:byte_reg> "," reg_cl => {
+        
+    },
+
+    <start:@L> <f:word_shift_rotate> <r:word_reg> "," <n:u_byte_num> => {
+        
+    },
+    <start:@L> <f:word_shift_rotate> <r:word_reg> "," reg_cl => {
+        
+    },
+
+    // memory
+    <start:@L> <f:byte_shift_rotate> "byte" <m:memory_addr> "," <n:u_byte_num> => {
+        
+    },
+    <start:@L> <f:byte_shift_rotate> "byte" <m:memory_addr> "," reg_cl => {
+        
+    },
+    <start:@L> <f:word_shift_rotate> "word" <m:memory_addr> "," <n:u_byte_num> => {
+        
+    },
+    <start:@L> <f:word_shift_rotate> "word" <m:memory_addr> "," reg_cl => {
+        
+    },
+    // label
+    <start:@L> <f:byte_shift_rotate> <m:byte_label> "," <n:u_byte_num> => {
+        
+    },
+    // Support byte_nm only as anyway 256 will clear out the 16 bit number
+    <start:@L> <f:word_shift_rotate> <m:word_label> "," <n:u_byte_num> => {
+        
+    },
+    <start:@L> <f:byte_shift_rotate> <m:byte_label> "," reg_cl => {
+        
+    },
+    <start:@L> <f:word_shift_rotate> <m:word_label> "," reg_cl => {
+        
+    },
+}
+
+byte_shift_rotate:Box<dyn Fn(&mut VM, u8, u8) -> u8>  = {
+    "sal" => {
+        Box::new(|vm,val,num|{0})
+    },
+    "sar" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "shr" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "rol" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "ror" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "rcl" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "rcr" => {
+        Box::new(|vm,val,num|{0})
+    },
+}
+
+word_shift_rotate:Box<dyn Fn(&mut VM, u16, u16) -> u16>  = {
+    
+    "sal" => {
+        Box::new(|vm,val,num|{0})
+    },
+    "sar" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "shr" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "rol" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "ror" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "rcl" => {
+        Box::new(|vm,val,num|{0})
+    },
+    
+    "rcr" => {
+        Box::new(|vm,val,num|{0})
     },
 }
 
