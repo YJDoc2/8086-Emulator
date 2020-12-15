@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 4427f2ff18d8d53d7e807588dd442ecdf76e3cbefda85ffe3d356597e8dc4
+// sha256: 3f3abcf2b8c57e9d4203d17ad9395ec4eb3fb7fdad452e35bc09ab361ee398
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
 use crate::util::flag_util::*;
@@ -5927,7 +5927,44 @@ fn __action49<
 ) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
 {
     {
-        Box::new(|vm,val,num|{0})
+        Box::new(|vm,val,num|{
+            let res:u8;
+            if num > 9 {
+                // kind of optimization, as shifting byte number more than 8 times, it will become zero
+                res = 0;
+                unset_flag(&mut vm.arch.flag,Flags::CARRY);
+            }else{
+                let t = (val as u16) << num;
+                if t & 1 << 8 == 1 << 8{
+                    set_flag(&mut vm.arch.flag,Flags::CARRY);
+                }else{
+                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
+                }
+                res = t as u8;
+                if val & 1<<7 == res & 1 << 7 { // if sign bit is same as next bit
+                    unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
+                }else{
+                    set_flag(&mut vm.arch.flag,Flags::OVERFLOW);
+                }
+            }
+            
+            if res >= 1<<7 {
+                set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
+            }
+            if res == 0 {
+                set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
+            }
+            if has_even_parity(res as u16){
+                set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
+            }
+            return res;
+        })
     }
 }
 
@@ -5944,7 +5981,49 @@ fn __action50<
 ) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
 {
     {
-        Box::new(|vm,val,num|{0})
+        Box::new(|vm,val,num|{
+            let mut res:u8;
+            
+            let msb = val & 1<<7;
+
+            if num > 9 {
+                // kind of optimization, as shifting byte number more than 8 times, it will become zero
+                if msb !=0{
+                    res = u8::MAX;
+                    set_flag(&mut vm.arch.flag,Flags::CARRY);
+                }else{
+                    res = 0;
+                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
+                }
+            }else{
+                res = val;
+                for _ in 0..num{
+                    res = (res >> 1) | msb;
+                }
+                if res & 1 == 1 {
+                    set_flag(&mut vm.arch.flag,Flags::CARRY);
+                }else{
+                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
+                }
+            }
+            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW); // always clear overflow
+            if res >= 1<<7 {
+                set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
+            }
+            if res == 0 {
+                set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
+            }
+            if has_even_parity(res as u16){
+                set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
+            }
+            return res;
+        })
     }
 }
 
@@ -5961,7 +6040,43 @@ fn __action51<
 ) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
 {
     {
-        Box::new(|vm,val,num|{0})
+        Box::new(|vm,val,num|{
+            let res:u8;
+            if num > 9 {
+                // kind of optimization, as shifting byte number more than 8 times, it will become zero
+                res = 0;
+            }else{
+                if val & 1<<7 == 0 { // if sign bit retains its value
+                    unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
+                }else{
+                    set_flag(&mut vm.arch.flag,Flags::OVERFLOW);
+                }
+                
+                let t = (val as u16) >> num;
+                if t & 1 == 1 {
+                    set_flag(&mut vm.arch.flag,Flags::CARRY);
+                }else{
+                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
+                }
+                res = t as u8;
+            }
+            if res >= 1<<7 {
+                set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
+            }
+            if res == 0 {
+                set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
+            }
+            if has_even_parity(res as u16){
+                set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
+            }
+            return res;
+        })
     }
 }
 
