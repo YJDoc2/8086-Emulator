@@ -965,6 +965,14 @@ binary_logical:() = {
         out.code.push(format!("{} word {},{}",q,m,r));
         context.mapper.add_entry(start);
     },
+    <start:@L> <q:quote_binary_logical>  <l:byte_label> "," <r:gen_byte_reg> =>{
+        out.code.push(format!("{} byte {},{}",q,l,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_binary_logical> <l:word_label> "," <r:gen_word_reg> =>{
+        out.code.push(format!("{} word {},{}",q,l,r));
+        context.mapper.add_entry(start);
+    },
     //reg , immediate
     <start:@L> <q:quote_binary_logical> <r:gen_byte_reg> "," <n:u_byte_num> =>{
         out.code.push(format!("{} {},{}",q,r,n));

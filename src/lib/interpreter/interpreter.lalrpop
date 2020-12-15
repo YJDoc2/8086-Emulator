@@ -89,7 +89,7 @@ binary_logical:() = {
     },
     <start:@L> <f:word_binary_logical> <r:word_reg> "," "word" <m:memory_addr> =>{
         let dest = get_word_reg_val(vm,r);
-        let src = vm.mem[m] as u16 | vm.mem[inc_addr(m,1)] as u16;
+        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
         let res = f(vm,dest,src);
         set_word_reg_val(vm,r,res);
     },
@@ -101,7 +101,7 @@ binary_logical:() = {
     },
     <start:@L> <f:word_binary_logical> <r:word_reg> "," <m:word_label> =>{
         let dest = get_word_reg_val(vm,r);
-        let src = vm.mem[m] as u16 |vm.mem[inc_addr(m,1)] as u16;
+        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
         let res = f(vm,dest,src);
         set_word_reg_val(vm,r,res);
     },
@@ -113,7 +113,21 @@ binary_logical:() = {
         vm.mem[m] = res;
     },
     <start:@L> <f:word_binary_logical> "word" <m:memory_addr> "," <r:word_reg> =>{
-        let dest = vm.mem[m] as u16 | vm.mem[inc_addr(m,1)] as u16;
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let src = get_word_reg_val(vm,r);
+        let res = f(vm,dest,src);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+    <start:@L> <f:byte_binary_logical>  <m:byte_label> "," <r:byte_reg> =>{
+        let dest = vm.mem[m];
+        let src = get_byte_reg(vm,r);
+        let res = f(vm,dest,src);
+        vm.mem[m] = res;
+    },
+    <start:@L> <f:word_binary_logical> <m:word_label> "," <r:word_reg> =>{
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
         let src = get_word_reg_val(vm,r);
         let res = f(vm,dest,src);
         let (hb,lb) = separate_bytes(res as i16);
@@ -141,7 +155,7 @@ binary_logical:() = {
         vm.mem[m] = res;
     },
     <start:@L> <f:word_binary_logical> "word" <m:memory_addr> "," <n:u_word_num> =>{
-        let dest = vm.mem[m] as u16 | vm.mem[inc_addr(m,1)] as u16;
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
         let src = n;
         let res = f(vm,dest,src);
         let (hb,lb) = separate_bytes(res as i16);
@@ -155,7 +169,7 @@ binary_logical:() = {
         vm.mem[m] = res;
     },
     <start:@L> <f:word_binary_logical>  <m:word_label> "," <n:u_word_num> =>{
-        let dest = vm.mem[m] as u16 | vm.mem[inc_addr(m,1)] as u16;
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
         let src = n;
         let res = f(vm,dest,src);
         let (hb,lb) = separate_bytes(res as i16);
@@ -173,12 +187,18 @@ byte_binary_logical:Box<dyn Fn(&mut VM, u8, u8) -> u8> = {
             let res = dest & source;
             if res >= 1<<7 {
                 set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
             }
             if res ==0 {
                 set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
             }
             if has_even_parity(res as u16){
                 set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
             }
             return res;
         })
@@ -187,17 +207,23 @@ byte_binary_logical:Box<dyn Fn(&mut VM, u8, u8) -> u8> = {
         Box::new(|vm:&mut VM,dest:u8,source:u8| {
             unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
             unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
+
             let res = dest | source;
             
             if res >= 1<<7 {
                 set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
             }
             if res ==0 {
                 set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
             }
             if has_even_parity(res as u16){
                 set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
             }
             return res;
         })
@@ -208,14 +234,21 @@ byte_binary_logical:Box<dyn Fn(&mut VM, u8, u8) -> u8> = {
             unset_flag(&mut vm.arch.flag,Flags::CARRY);
             
             let res = dest ^ source;
+            
             if res >= 1<<7 {
                 set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
             }
             if res ==0 {
                 set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
             }
             if has_even_parity(res as u16){
                 set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
             }
             return res;
         })
@@ -228,12 +261,18 @@ byte_binary_logical:Box<dyn Fn(&mut VM, u8, u8) -> u8> = {
             let res = dest & source;
             if res >= 1<<7 {
                 set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
             }
             if res ==0 {
                 set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
             }
             if has_even_parity(res as u16){
                 set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
             }
             return dest;
         })
@@ -249,12 +288,18 @@ word_binary_logical:Box<dyn Fn(&mut VM, u16, u16) -> u16> = {
             let res = dest & source;
             if res >= 1<<15 {
                 set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
             }
             if res == 0 {
                 set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
             }
             if has_even_parity(res){
                 set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
             }
             return res;
         })
@@ -267,12 +312,18 @@ word_binary_logical:Box<dyn Fn(&mut VM, u16, u16) -> u16> = {
             let res = dest | source;
             if res >= 1<<15 {
                 set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
             }
             if res == 0 {
                 set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
             }
             if has_even_parity(res){
                 set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
             }
             return res;
         })
@@ -283,14 +334,21 @@ word_binary_logical:Box<dyn Fn(&mut VM, u16, u16) -> u16> = {
             unset_flag(&mut vm.arch.flag,Flags::CARRY);
             
             let res = dest ^ source;
+
             if res >= 1<<15 {
                 set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
             }
             if res == 0 {
                 set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
             }
             if has_even_parity(res){
                 set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
             }
             return res;
         })
@@ -303,12 +361,18 @@ word_binary_logical:Box<dyn Fn(&mut VM, u16, u16) -> u16> = {
             let res = dest & source;
             if res >= 1<<15 {
                 set_flag(&mut vm.arch.flag,Flags::SIGN);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::SIGN);
             }
             if res == 0 {
                 set_flag(&mut vm.arch.flag,Flags::ZERO);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::ZERO);
             }
             if has_even_parity(res){
                 set_flag(&mut vm.arch.flag,Flags::PARITY);
+            }else{
+                unset_flag(&mut vm.arch.flag,Flags::PARITY);
             }
             return dest;
         })

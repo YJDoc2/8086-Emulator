@@ -1,6 +1,8 @@
 #[allow(unused_imports)]
 use crate::interpreter::interpreter;
 #[allow(unused_imports)]
+use crate::util::data_util::*;
+#[allow(unused_imports)]
 use crate::util::flag_util::*;
 #[allow(unused_imports)]
 use crate::util::interpreter_util::*;
@@ -90,4 +92,164 @@ fn test_not() {
     assert_eq!(vm.mem[stack_base + 2], 255);
     assert_eq!(vm.mem[stack_base + 3], 255);
     assert_eq!(vm.mem[stack_base + 4], 0);
+}
+
+#[test]
+fn test_binary_logical() {
+    let mut vm = VM::new();
+    let mut context = Context::default();
+    let p = interpreter::InterpreterParser::new();
+    context
+        .label_map
+        .insert("l1".to_owned(), Label::new(LabelType::DATA, 0, 0));
+    context
+        .label_map
+        .insert("l2".to_owned(), Label::new(LabelType::DATA, 0, 2));
+
+    let base = vm.arch.ds as usize * 0x10;
+
+    const V1: u8 = 155;
+    const V2: u8 = 122;
+    const V3: u16 = 0xF0F0;
+
+    vm.mem[base] = V1;
+    vm.mem[base + 1] = V2;
+    vm.mem[base + 2] = V2;
+    vm.mem[base + 3] = V1;
+
+    vm.arch.ax = V3; // 0x F0F0
+    vm.arch.cx = !V3; // 0x 0F0F
+
+    // reg,reg
+    let o = p.parse(1, &mut vm, &mut context, "or al,cl");
+    assert!(o.is_ok());
+    assert_eq!(o.unwrap(), State::NEXT);
+    assert_eq!(get_byte_reg(&vm, ByteReg::AL), 0xFF);
+    assert_eq!(get_byte_reg(&vm, ByteReg::AH), 0xF0);
+    assert_eq!(get_byte_reg(&vm, ByteReg::CL), 0x0F);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    // ax = 0x F0FF
+    // cx = 0x 0F0F
+    let o = p.parse(1, &mut vm, &mut context, "and cx,ax");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.ax, 0xF0FF);
+    assert_eq!(vm.arch.cx, 0xF);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    // ax = 0x F0FF
+    // cx = 0x 000F
+    let o = p.parse(1, &mut vm, &mut context, "xor cx,cx");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.cx, 0);
+    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    // reg , mem
+    vm.arch.ax = V3; // 0x F0F0
+    vm.arch.cx = !V3; // 0x 0F0F
+
+    let o = p.parse(1, &mut vm, &mut context, "or cl, byte [0]");
+    assert!(o.is_ok());
+    assert_eq!(get_byte_reg(&vm, ByteReg::CL), 0xF | V1);
+    assert_eq!(vm.mem[base], V1);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    let o = p.parse(1, &mut vm, &mut context, "xor ax, word l1");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.ax, 0xF0F0 ^ 0x7A9B);
+    assert_eq!(vm.mem[base], V1);
+    assert_eq!(vm.mem[base + 1], V2);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    // mem , reg
+    vm.arch.ax = V3; // 0x F0F0
+    vm.arch.cx = !V3; // 0x 0F0F
+
+    let o = p.parse(1, &mut vm, &mut context, "and byte [0],cl");
+    assert!(o.is_ok());
+    assert_eq!(get_byte_reg(&vm, ByteReg::CL), 0x0F);
+    assert_eq!(vm.mem[base], V1 & 0x0F);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    let o = p.parse(1, &mut vm, &mut context, "xor word l2 ,ax");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.ax, V3);
+    assert_eq!(vm.mem[base + 2], V2 ^ 0xF0);
+    assert_eq!(vm.mem[base + 3], V1 ^ 0xF0);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    // reg , imm
+    let o = p.parse(1, &mut vm, &mut context, "and al,15");
+    assert!(o.is_ok());
+    assert_eq!(get_byte_reg(&vm, ByteReg::AL), 0x00);
+    assert_eq!(get_byte_reg(&vm, ByteReg::AH), 0xF0);
+    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    let o = p.parse(1, &mut vm, &mut context, "or cx,20303"); //0x 4F4F
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.cx, 0x0F0F | 0x4F4F);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    // mem, imm
+    vm.mem[base] = V1;
+    vm.mem[base + 1] = V2;
+    vm.mem[base + 2] = V2;
+    vm.mem[base + 3] = V1;
+
+    let o = p.parse(1, &mut vm, &mut context, "and byte [bx],15");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], 155 & 15);
+    assert_eq!(vm.mem[base + 1], 122);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    let o = p.parse(1, &mut vm, &mut context, "xor word l2 ,20303"); // 0x 4F4F
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base + 2], V2 ^ 0x4F);
+    assert_eq!(vm.mem[base + 3], V1 ^ 0x4F);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    // test instruction
+
+    vm.arch.ax = V3; // 0x F0F0
+    vm.arch.cx = !V3; // 0x F0F0
+    vm.mem[base] = V1;
+    vm.mem[base + 1] = V2;
+
+    let o = p.parse(1, &mut vm, &mut context, "test cx,ax");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.ax, V3);
+    assert_eq!(vm.arch.cx, !V3);
+    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    let o = p.parse(1, &mut vm, &mut context, "test word [bx],15");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], V1);
+    assert_eq!(vm.mem[base + 1], V2);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
 }
