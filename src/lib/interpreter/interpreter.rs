@@ -1,7 +1,8 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 3f3abcf2b8c57e9d4203d17ad9395ec4eb3fb7fdad452e35bc09ab361ee398
+// sha256: dfedf07177fa312c45f9f47329ca8e88de9a01bd0465fadde533a4a9eddd24
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
+use crate::instructions::bit_manipulation::*;
 use crate::util::flag_util::*;
 use crate::util::data_util::*;
 use crate::util::address::*;
@@ -20,6 +21,7 @@ mod __parse__Interpreter {
 
     use crate::util::interpreter_util::*;
     use crate::util::preprocessor_util::LabelType;
+    use crate::instructions::bit_manipulation::*;
     use crate::util::flag_util::*;
     use crate::util::data_util::*;
     use crate::util::address::*;
@@ -39,14 +41,14 @@ mod __parse__Interpreter {
         Variant1(usize),
         Variant2(State),
         Variant3(()),
-        Variant4(Box<dyn Fn(&mut VM, u8, u8) -> u8>),
+        Variant4(ByteOp),
         Variant5(ByteReg),
         Variant6(bool),
         Variant7(String),
         Variant8(i16),
         Variant9(u8),
         Variant10(u16),
-        Variant11(Box<dyn Fn(&mut VM, u16, u16) -> u16>),
+        Variant11(WordOp),
         Variant12(WordReg),
     }
     const __ACTION: &[i16] = &[
@@ -1714,22 +1716,11 @@ mod __parse__Interpreter {
             _ => __symbol_type_mismatch()
         }
     }
-    fn __pop_Variant11<
-      'input,
-    >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
-    ) -> (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize)
-     {
-        match __symbols.pop() {
-            Some((__l, __Symbol::Variant11(__v), __r)) => (__l, __v, __r),
-            _ => __symbol_type_mismatch()
-        }
-    }
     fn __pop_Variant4<
       'input,
     >(
         __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
-    ) -> (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize)
+    ) -> (usize, ByteOp, usize)
      {
         match __symbols.pop() {
             Some((__l, __Symbol::Variant4(__v), __r)) => (__l, __v, __r),
@@ -1766,6 +1757,17 @@ mod __parse__Interpreter {
      {
         match __symbols.pop() {
             Some((__l, __Symbol::Variant7(__v), __r)) => (__l, __v, __r),
+            _ => __symbol_type_mismatch()
+        }
+    }
+    fn __pop_Variant11<
+      'input,
+    >(
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+    ) -> (usize, WordOp, usize)
+     {
+        match __symbols.pop() {
+            Some((__l, __Symbol::Variant11(__v), __r)) => (__l, __v, __r),
             _ => __symbol_type_mismatch()
         }
     }
@@ -4635,6 +4637,7 @@ mod __intern_token {
     #![allow(unused_imports)]
     use crate::util::interpreter_util::*;
     use crate::util::preprocessor_util::LabelType;
+    use crate::instructions::bit_manipulation::*;
     use crate::util::flag_util::*;
     use crate::util::data_util::*;
     use crate::util::address::*;
@@ -4961,7 +4964,7 @@ fn __action13<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, r1, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, ByteReg, usize),
@@ -4985,7 +4988,7 @@ fn __action14<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, r1, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, WordReg, usize),
@@ -5011,7 +5014,7 @@ fn __action15<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5036,7 +5039,7 @@ fn __action16<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5061,7 +5064,7 @@ fn __action17<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
@@ -5085,7 +5088,7 @@ fn __action18<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
@@ -5109,7 +5112,7 @@ fn __action19<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5134,7 +5137,7 @@ fn __action20<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5161,7 +5164,7 @@ fn __action21<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
@@ -5185,7 +5188,7 @@ fn __action22<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
@@ -5211,7 +5214,7 @@ fn __action23<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
@@ -5235,7 +5238,7 @@ fn __action24<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
@@ -5259,7 +5262,7 @@ fn __action25<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5284,7 +5287,7 @@ fn __action26<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5311,7 +5314,7 @@ fn __action27<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
@@ -5335,7 +5338,7 @@ fn __action28<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
@@ -5361,31 +5364,10 @@ fn __action29<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm:&mut VM,dest:u8,source:u8| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest & source;
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res ==0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_and
     }
 }
 
@@ -5399,32 +5381,10 @@ fn __action30<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm:&mut VM,dest:u8,source:u8| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-
-            let res = dest | source;
-            
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res ==0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_or
     }
 }
 
@@ -5438,32 +5398,10 @@ fn __action31<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm:&mut VM,dest:u8,source:u8| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest ^ source;
-            
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res ==0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_xor
     }
 }
 
@@ -5477,31 +5415,10 @@ fn __action32<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm:&mut VM,dest:u8,source:u8| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest & source;
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res ==0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return dest;
-        })
+        byte_test
     }
 }
 
@@ -5515,31 +5432,10 @@ fn __action33<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm:&mut VM,dest:u16,source:u16| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest & source;
-            if res >= 1<<15 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        word_and
     }
 }
 
@@ -5553,31 +5449,10 @@ fn __action34<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm:&mut VM,dest:u16,source:u16| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest | source;
-            if res >= 1<<15 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        word_or
     }
 }
 
@@ -5591,32 +5466,10 @@ fn __action35<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm:&mut VM,dest:u16,source:u16| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest ^ source;
-
-            if res >= 1<<15 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        word_xor
     }
 }
 
@@ -5630,31 +5483,10 @@ fn __action36<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm:&mut VM,dest:u16,source:u16| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest & source;
-            if res >= 1<<15 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return dest;
-        })
+        word_test
     }
 }
 
@@ -5668,7 +5500,7 @@ fn __action37<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
@@ -5689,7 +5521,7 @@ fn __action38<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
@@ -5710,7 +5542,7 @@ fn __action39<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
@@ -5731,7 +5563,7 @@ fn __action40<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
@@ -5752,7 +5584,7 @@ fn __action41<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5774,7 +5606,7 @@ fn __action42<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5796,7 +5628,7 @@ fn __action43<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5818,7 +5650,7 @@ fn __action44<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -5840,7 +5672,7 @@ fn __action45<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
@@ -5861,7 +5693,7 @@ fn __action46<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
@@ -5882,7 +5714,7 @@ fn __action47<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    (_, f, _): (usize, ByteOp, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
@@ -5903,7 +5735,7 @@ fn __action48<
     context: &'s mut Context,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    (_, f, _): (usize, WordOp, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
@@ -5924,47 +5756,10 @@ fn __action49<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm,val,num|{
-            let res:u8;
-            if num > 9 {
-                // kind of optimization, as shifting byte number more than 8 times, it will become zero
-                res = 0;
-                unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            }else{
-                let t = (val as u16) << num;
-                if t & 1 << 8 == 1 << 8{
-                    set_flag(&mut vm.arch.flag,Flags::CARRY);
-                }else{
-                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
-                }
-                res = t as u8;
-                if val & 1<<7 == res & 1 << 7 { // if sign bit is same as next bit
-                    unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-                }else{
-                    set_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-                }
-            }
-            
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_sal
     }
 }
 
@@ -5978,52 +5773,10 @@ fn __action50<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm,val,num|{
-            let mut res:u8;
-            
-            let msb = val & 1<<7;
-
-            if num > 9 {
-                // kind of optimization, as shifting byte number more than 8 times, it will become zero
-                if msb !=0{
-                    res = u8::MAX;
-                    set_flag(&mut vm.arch.flag,Flags::CARRY);
-                }else{
-                    res = 0;
-                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
-                }
-            }else{
-                res = val;
-                for _ in 0..num{
-                    res = (res >> 1) | msb;
-                }
-                if res & 1 == 1 {
-                    set_flag(&mut vm.arch.flag,Flags::CARRY);
-                }else{
-                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
-                }
-            }
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW); // always clear overflow
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_sar
     }
 }
 
@@ -6037,46 +5790,10 @@ fn __action51<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm,val,num|{
-            let res:u8;
-            if num > 9 {
-                // kind of optimization, as shifting byte number more than 8 times, it will become zero
-                res = 0;
-            }else{
-                if val & 1<<7 == 0 { // if sign bit retains its value
-                    unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-                }else{
-                    set_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-                }
-                
-                let t = (val as u16) >> num;
-                if t & 1 == 1 {
-                    set_flag(&mut vm.arch.flag,Flags::CARRY);
-                }else{
-                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
-                }
-                res = t as u8;
-            }
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_shr
     }
 }
 
@@ -6090,10 +5807,10 @@ fn __action52<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        byte_placeholder
     }
 }
 
@@ -6107,10 +5824,10 @@ fn __action53<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        byte_placeholder
     }
 }
 
@@ -6124,10 +5841,10 @@ fn __action54<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        byte_placeholder
     }
 }
 
@@ -6141,10 +5858,10 @@ fn __action55<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u8, u8) -> u8>
+) -> ByteOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        byte_placeholder
     }
 }
 
@@ -6158,10 +5875,10 @@ fn __action56<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     }
 }
 
@@ -6175,10 +5892,10 @@ fn __action57<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     }
 }
 
@@ -6192,10 +5909,10 @@ fn __action58<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     }
 }
 
@@ -6209,10 +5926,10 @@ fn __action59<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     }
 }
 
@@ -6226,10 +5943,10 @@ fn __action60<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     }
 }
 
@@ -6243,10 +5960,10 @@ fn __action61<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     }
 }
 
@@ -6260,10 +5977,10 @@ fn __action62<
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> Box<dyn Fn(&mut VM, u16, u16) -> u16>
+) -> WordOp
 {
     {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     }
 }
 
@@ -7483,7 +7200,7 @@ fn __action135<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
@@ -7522,7 +7239,7 @@ fn __action136<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
@@ -7561,7 +7278,7 @@ fn __action137<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
@@ -7602,7 +7319,7 @@ fn __action138<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
@@ -7643,7 +7360,7 @@ fn __action139<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
@@ -7682,7 +7399,7 @@ fn __action140<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
@@ -7721,7 +7438,7 @@ fn __action141<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
@@ -7762,7 +7479,7 @@ fn __action142<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
@@ -7803,7 +7520,7 @@ fn __action143<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
@@ -7842,7 +7559,7 @@ fn __action144<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
@@ -7881,7 +7598,7 @@ fn __action145<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
@@ -7920,7 +7637,7 @@ fn __action146<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
@@ -7959,7 +7676,7 @@ fn __action147<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
@@ -8000,7 +7717,7 @@ fn __action148<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
@@ -8041,7 +7758,7 @@ fn __action149<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
@@ -8080,7 +7797,7 @@ fn __action150<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
@@ -8337,7 +8054,7 @@ fn __action157<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
@@ -8376,7 +8093,7 @@ fn __action158<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
@@ -8415,7 +8132,7 @@ fn __action159<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
@@ -8454,7 +8171,7 @@ fn __action160<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
@@ -8493,7 +8210,7 @@ fn __action161<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
@@ -8534,7 +8251,7 @@ fn __action162<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
@@ -8575,7 +8292,7 @@ fn __action163<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
@@ -8616,7 +8333,7 @@ fn __action164<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
@@ -8657,7 +8374,7 @@ fn __action165<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
@@ -8696,7 +8413,7 @@ fn __action166<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
@@ -8735,7 +8452,7 @@ fn __action167<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u8, u8) -> u8>, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
@@ -8774,7 +8491,7 @@ fn __action168<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, Box<dyn Fn(&mut VM, u16, u16) -> u16>, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),

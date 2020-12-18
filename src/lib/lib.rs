@@ -1,8 +1,8 @@
 pub mod arch;
 pub mod data_parser;
-pub mod preprocessor;
-
+pub mod instructions;
 pub mod interpreter;
+pub mod preprocessor;
 pub mod util;
 pub mod vm;
 

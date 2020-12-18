@@ -1,5 +1,6 @@
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
+use crate::instructions::bit_manipulation::*;
 use crate::util::flag_util::*;
 use crate::util::data_util::*;
 use crate::util::address::*;
@@ -178,204 +179,33 @@ binary_logical:() = {
     },
 }
 
-byte_binary_logical:Box<dyn Fn(&mut VM, u8, u8) -> u8> = {
+byte_binary_logical:ByteOp = {
     "and" => {
-        Box::new(|vm:&mut VM,dest:u8,source:u8| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest & source;
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res ==0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_and
     },
     "or" => {
-        Box::new(|vm:&mut VM,dest:u8,source:u8| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-
-            let res = dest | source;
-            
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res ==0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_or
     },
     "xor" => {
-        Box::new(|vm:&mut VM,dest:u8,source:u8| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest ^ source;
-            
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res ==0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_xor
     },
     "test" => {
-        Box::new(|vm:&mut VM,dest:u8,source:u8| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest & source;
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res ==0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return dest;
-        })
+        byte_test
     },
 }
 
-word_binary_logical:Box<dyn Fn(&mut VM, u16, u16) -> u16> = {
+word_binary_logical:WordOp = {
     "and" => {
-        Box::new(|vm:&mut VM,dest:u16,source:u16| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest & source;
-            if res >= 1<<15 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        word_and
     },
     "or" => {
-        Box::new(|vm:&mut VM,dest:u16,source:u16| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest | source;
-            if res >= 1<<15 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        word_or
     },
     "xor" => {
-        Box::new(|vm:&mut VM,dest:u16,source:u16| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest ^ source;
-
-            if res >= 1<<15 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        word_xor
     },
     "test" => {
-        Box::new(|vm:&mut VM,dest:u16,source:u16| {
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-            unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            
-            let res = dest & source;
-            if res >= 1<<15 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return dest;
-        })
+        word_test
     },
 }
 
@@ -425,177 +255,62 @@ shift_rotate:() = {
     },
 }
 
-byte_shift_rotate:Box<dyn Fn(&mut VM, u8, u8) -> u8>  = {
+byte_shift_rotate:ByteOp = {
     "sal" => {
-        Box::new(|vm,val,num|{
-            let res:u8;
-            if num > 9 {
-                // kind of optimization, as shifting byte number more than 8 times, it will become zero
-                res = 0;
-                unset_flag(&mut vm.arch.flag,Flags::CARRY);
-            }else{
-                let t = (val as u16) << num;
-                if t & 1 << 8 == 1 << 8{
-                    set_flag(&mut vm.arch.flag,Flags::CARRY);
-                }else{
-                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
-                }
-                res = t as u8;
-                if val & 1<<7 == res & 1 << 7 { // if sign bit is same as next bit
-                    unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-                }else{
-                    set_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-                }
-            }
-            
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_sal
     },
     "sar" => {
-        Box::new(|vm,val,num|{
-            let mut res:u8;
-            
-            let msb = val & 1<<7;
-
-            if num > 9 {
-                // kind of optimization, as shifting byte number more than 8 times, it will become zero
-                if msb !=0{
-                    res = u8::MAX;
-                    set_flag(&mut vm.arch.flag,Flags::CARRY);
-                }else{
-                    res = 0;
-                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
-                }
-            }else{
-                res = val;
-                for _ in 0..num{
-                    res = (res >> 1) | msb;
-                }
-                if res & 1 == 1 {
-                    set_flag(&mut vm.arch.flag,Flags::CARRY);
-                }else{
-                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
-                }
-            }
-            unset_flag(&mut vm.arch.flag,Flags::OVERFLOW); // always clear overflow
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_sar
     },
     
     "shr" => {
-        Box::new(|vm,val,num|{
-            let res:u8;
-            if num > 9 {
-                // kind of optimization, as shifting byte number more than 8 times, it will become zero
-                res = 0;
-            }else{
-                if val & 1<<7 == 0 { // if sign bit retains its value
-                    unset_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-                }else{
-                    set_flag(&mut vm.arch.flag,Flags::OVERFLOW);
-                }
-                
-                let t = (val as u16) >> num;
-                if t & 1 == 1 {
-                    set_flag(&mut vm.arch.flag,Flags::CARRY);
-                }else{
-                    unset_flag(&mut vm.arch.flag,Flags::CARRY);
-                }
-                res = t as u8;
-            }
-            if res >= 1<<7 {
-                set_flag(&mut vm.arch.flag,Flags::SIGN);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::SIGN);
-            }
-            if res == 0 {
-                set_flag(&mut vm.arch.flag,Flags::ZERO);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::ZERO);
-            }
-            if has_even_parity(res as u16){
-                set_flag(&mut vm.arch.flag,Flags::PARITY);
-            }else{
-                unset_flag(&mut vm.arch.flag,Flags::PARITY);
-            }
-            return res;
-        })
+        byte_shr
     },
     
     "rol" => {
-        Box::new(|vm,val,num|{0})
+        byte_placeholder
     },
     
     "ror" => {
-        Box::new(|vm,val,num|{0})
+        byte_placeholder
     },
     
     "rcl" => {
-        Box::new(|vm,val,num|{0})
+        byte_placeholder
     },
     
     "rcr" => {
-        Box::new(|vm,val,num|{0})
+        byte_placeholder
     },
 }
 
-word_shift_rotate:Box<dyn Fn(&mut VM, u16, u16) -> u16>  = {
+word_shift_rotate:WordOp  = {
     
     "sal" => {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     },
     "sar" => {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     },
     
     "shr" => {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     },
     
     "rol" => {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     },
     
     "ror" => {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     },
     
     "rcl" => {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     },
     
     "rcr" => {
-        Box::new(|vm,val,num|{0})
+        word_placeholder
     },
 }
 

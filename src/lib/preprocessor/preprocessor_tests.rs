@@ -166,7 +166,7 @@ fn test_shift_rotate() {
     let o = p.parse(
         &mut ctx,
         &mut out,
-        "l:DB 6 SAL AX,5 SHL CX,CL SAR [BP],CL SHR BYTE l, 0b1101",
+        "l:DB 6 SAL AX,5 SHL CX,CL SAR byte [BP],CL SHR BYTE l, 0b1101",
     );
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 4);
