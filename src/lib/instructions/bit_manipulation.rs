@@ -309,9 +309,9 @@ pub fn byte_shr(vm: &mut VM, val: u8, num: u8) -> u8 {
 
 pub fn byte_rol(vm: &mut VM, val: u8, num: u8) -> u8 {
     let num = num % 8;
-    let part = u8::MAX << num;
+    let part = u8::MAX << (8 - num);
     let sep = val & part;
-    let ret = val << num | sep >> 8 - num;
+    let ret = val << num | sep >> (8 - num);
     if ret & 1 == 1 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
@@ -327,9 +327,9 @@ pub fn byte_rol(vm: &mut VM, val: u8, num: u8) -> u8 {
 
 pub fn byte_ror(vm: &mut VM, val: u8, num: u8) -> u8 {
     let num = num % 8;
-    let part = u8::MAX >> num;
+    let part = u8::MAX >> (8 - num);
     let sep = val & part;
-    let ret = val >> num | sep << 8 - num;
+    let ret = val >> num | sep << (8 - num);
     if ret & 1 << 7 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
@@ -508,9 +508,9 @@ pub fn word_shr(vm: &mut VM, val: u16, num: u16) -> u16 {
 
 pub fn word_rol(vm: &mut VM, val: u16, num: u16) -> u16 {
     let num = num % 16;
-    let part = u16::MAX << num;
+    let part = u16::MAX << (16 - num);
     let sep = val & part;
-    let ret = val << num | sep >> 16 - num;
+    let ret = val << num | sep >> (16 - num);
     if ret & 1 == 1 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
@@ -526,9 +526,9 @@ pub fn word_rol(vm: &mut VM, val: u16, num: u16) -> u16 {
 
 pub fn word_ror(vm: &mut VM, val: u16, num: u16) -> u16 {
     let num = num % 16;
-    let part = u16::MAX >> num;
+    let part = u16::MAX >> (16 - num);
     let sep = val & part;
-    let ret = val >> num | sep << 16 - num;
+    let ret = val >> num | sep << (16 - num);
     if ret & 1 << 15 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
