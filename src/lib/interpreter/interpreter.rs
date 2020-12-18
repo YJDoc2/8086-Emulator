@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: dfedf07177fa312c45f9f47329ca8e88de9a01bd0465fadde533a4a9eddd24
+// sha256: e5955a422fd5c39c6ed1596d8db5db363f8bfddeb39ee99988ae564f7cc6cd
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
 use crate::instructions::bit_manipulation::*;
@@ -682,7 +682,7 @@ mod __parse__Interpreter {
         // State 138
         -119,
         // State 139
-        -112,
+        -111,
         // State 140
         -110,
         // State 141
@@ -702,7 +702,7 @@ mod __parse__Interpreter {
         // State 148
         -113,
         // State 149
-        -111,
+        -112,
         // State 150
         -105,
         // State 151
@@ -4169,12 +4169,12 @@ mod __parse__Interpreter {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // shift_rotate = word_shift_rotate, word_label, ",", u_byte_num => ActionFn(166);
+        // shift_rotate = byte_shift_rotate, byte_label, ",", reg_cl => ActionFn(166);
         assert!(__symbols.len() >= 4);
-        let __sym3 = __pop_Variant9(__symbols);
+        let __sym3 = __pop_Variant5(__symbols);
         let __sym2 = __pop_Variant0(__symbols);
         let __sym1 = __pop_Variant1(__symbols);
-        let __sym0 = __pop_Variant11(__symbols);
+        let __sym0 = __pop_Variant4(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym3.2.clone();
         let __nt = super::__action166::<>(current, vm, context, input, __sym0, __sym1, __sym2, __sym3);
@@ -4194,12 +4194,12 @@ mod __parse__Interpreter {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // shift_rotate = byte_shift_rotate, byte_label, ",", reg_cl => ActionFn(167);
+        // shift_rotate = word_shift_rotate, word_label, ",", u_byte_num => ActionFn(167);
         assert!(__symbols.len() >= 4);
-        let __sym3 = __pop_Variant5(__symbols);
+        let __sym3 = __pop_Variant9(__symbols);
         let __sym2 = __pop_Variant0(__symbols);
         let __sym1 = __pop_Variant1(__symbols);
-        let __sym0 = __pop_Variant4(__symbols);
+        let __sym0 = __pop_Variant11(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym3.2.clone();
         let __nt = super::__action167::<>(current, vm, context, input, __sym0, __sym1, __sym2, __sym3);
@@ -5503,11 +5503,13 @@ fn __action37<
     (_, f, _): (usize, ByteOp, usize),
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
-    (_, n, _): (usize, u8, usize),
+    (_, num, _): (usize, u8, usize),
 ) -> ()
 {
     {
-        
+        let dest = get_byte_reg(vm,r);
+        let res = f(vm,dest,num);
+        set_byte_reg(vm,r,res);
     }
 }
 
@@ -5528,7 +5530,10 @@ fn __action38<
 ) -> ()
 {
     {
-        
+        let dest = get_byte_reg(vm,r);
+        let num = get_byte_reg(vm,ByteReg::CL);
+        let res = f(vm,dest,num);
+        set_byte_reg(vm,r,res);
     }
 }
 
@@ -5545,11 +5550,13 @@ fn __action39<
     (_, f, _): (usize, WordOp, usize),
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
-    (_, n, _): (usize, u8, usize),
+    (_, num, _): (usize, u8, usize),
 ) -> ()
 {
     {
-        
+        let dest = get_word_reg_val(vm,r);
+        let res = f(vm,dest,num as u16);
+        set_word_reg_val(vm,r,res);
     }
 }
 
@@ -5570,7 +5577,10 @@ fn __action40<
 ) -> ()
 {
     {
-        
+        let dest = get_word_reg_val(vm,r);
+        let num = get_byte_reg(vm,ByteReg::CL);
+        let res = f(vm,dest,num as u16);
+        set_word_reg_val(vm,r,res);
     }
 }
 
@@ -5588,11 +5598,13 @@ fn __action41<
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
-    (_, n, _): (usize, u8, usize),
+    (_, num, _): (usize, u8, usize),
 ) -> ()
 {
     {
-        
+        let dest = vm.mem[m];
+        let res = f(vm,dest,num);
+        vm.mem[m] = res;
     }
 }
 
@@ -5614,7 +5626,10 @@ fn __action42<
 ) -> ()
 {
     {
-        
+        let dest = vm.mem[m];
+        let num = get_byte_reg(vm,ByteReg::CL);
+        let res = f(vm,dest,num);
+        vm.mem[m] = res;
     }
 }
 
@@ -5632,11 +5647,15 @@ fn __action43<
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
-    (_, n, _): (usize, u8, usize),
+    (_, num, _): (usize, u8, usize),
 ) -> ()
 {
     {
-        
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let res = f(vm,dest,num as u16);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
     }
 }
 
@@ -5658,7 +5677,12 @@ fn __action44<
 ) -> ()
 {
     {
-        
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let num = get_byte_reg(vm,ByteReg::CL);
+        let res = f(vm,dest,num as u16);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
     }
 }
 
@@ -5675,37 +5699,18 @@ fn __action45<
     (_, f, _): (usize, ByteOp, usize),
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
-    (_, n, _): (usize, u8, usize),
+    (_, num, _): (usize, u8, usize),
 ) -> ()
 {
     {
-        
+        let dest = vm.mem[m];
+        let res = f(vm,dest,num);
+        vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
 fn __action46<
-    'input,
-    's,
->(
-    current: usize,
-    vm: &mut VM,
-    context: &'s mut Context,
-    input: &'input str,
-    (_, start, _): (usize, usize, usize),
-    (_, f, _): (usize, WordOp, usize),
-    (_, m, _): (usize, usize, usize),
-    (_, _, _): (usize, &'input str, usize),
-    (_, n, _): (usize, u8, usize),
-) -> ()
-{
-    {
-        
-    }
-}
-
-#[allow(unused_variables)]
-fn __action47<
     'input,
     's,
 >(
@@ -5721,7 +5726,35 @@ fn __action47<
 ) -> ()
 {
     {
-        
+        let dest = vm.mem[m];
+        let num = get_byte_reg(vm,ByteReg::CL);
+        let res = f(vm,dest,num);
+        vm.mem[m] = res;
+    }
+}
+
+#[allow(unused_variables)]
+fn __action47<
+    'input,
+    's,
+>(
+    current: usize,
+    vm: &mut VM,
+    context: &'s mut Context,
+    input: &'input str,
+    (_, start, _): (usize, usize, usize),
+    (_, f, _): (usize, WordOp, usize),
+    (_, m, _): (usize, usize, usize),
+    (_, _, _): (usize, &'input str, usize),
+    (_, num, _): (usize, u8, usize),
+) -> ()
+{
+    {
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let res = f(vm,dest,num as u16);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
     }
 }
 
@@ -5742,7 +5775,12 @@ fn __action48<
 ) -> ()
 {
     {
-        
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let num = get_byte_reg(vm,ByteReg::CL);
+        let res = f(vm,dest,num as u16);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
     }
 }
 
@@ -5810,7 +5848,7 @@ fn __action52<
 ) -> ByteOp
 {
     {
-        byte_placeholder
+        byte_rol
     }
 }
 
@@ -5827,7 +5865,7 @@ fn __action53<
 ) -> ByteOp
 {
     {
-        byte_placeholder
+        byte_ror
     }
 }
 
@@ -5844,7 +5882,7 @@ fn __action54<
 ) -> ByteOp
 {
     {
-        byte_placeholder
+        byte_rcl
     }
 }
 
@@ -5861,7 +5899,7 @@ fn __action55<
 ) -> ByteOp
 {
     {
-        byte_placeholder
+        byte_rcr
     }
 }
 
@@ -5878,7 +5916,7 @@ fn __action56<
 ) -> WordOp
 {
     {
-        word_placeholder
+        word_sal
     }
 }
 
@@ -5895,7 +5933,7 @@ fn __action57<
 ) -> WordOp
 {
     {
-        word_placeholder
+        word_sar
     }
 }
 
@@ -5912,7 +5950,7 @@ fn __action58<
 ) -> WordOp
 {
     {
-        word_placeholder
+        word_shr
     }
 }
 
@@ -5929,7 +5967,7 @@ fn __action59<
 ) -> WordOp
 {
     {
-        word_placeholder
+        word_rol
     }
 }
 
@@ -5946,7 +5984,7 @@ fn __action60<
 ) -> WordOp
 {
     {
-        word_placeholder
+        word_ror
     }
 }
 
@@ -5963,7 +6001,7 @@ fn __action61<
 ) -> WordOp
 {
     {
-        word_placeholder
+        word_rcl
     }
 }
 
@@ -5980,7 +6018,7 @@ fn __action62<
 ) -> WordOp
 {
     {
-        word_placeholder
+        word_rcr
     }
 }
 
@@ -8413,10 +8451,10 @@ fn __action166<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, WordOp, usize),
+    __0: (usize, ByteOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
-    __3: (usize, u8, usize),
+    __3: (usize, ByteReg, usize),
 ) -> ()
 {
     let __start0 = __0.0.clone();
@@ -8452,10 +8490,10 @@ fn __action167<
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
-    __0: (usize, ByteOp, usize),
+    __0: (usize, WordOp, usize),
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
-    __3: (usize, ByteReg, usize),
+    __3: (usize, u8, usize),
 ) -> ()
 {
     let __start0 = __0.0.clone();

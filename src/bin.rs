@@ -1,5 +1,7 @@
 use emulator_8086_lib as lib;
 #[allow(unused_imports)]
+use lib::instructions::bit_manipulation::*;
+#[allow(unused_imports)]
 use lib::util::data_util::*;
 use lib::util::preprocessor_util::{Label, LabelType};
 pub fn main() {
