@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 41b4af1984f64b3822a376c46c088f17ce8e143e3d4c92d3979be0ce2e77
+// sha256: 12dd26ba4dda78a39dec7280d0f46f67e3cc6b99b673efc3eb5fea19693d6f
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
 use crate::instructions::{bit_manipulation::*,string::*};
@@ -5369,9 +5369,9 @@ fn __action7<
             vm.arch.cx = vm.arch.cx -1;
             if vm.arch.flag & FLAG_ZERO !=0 {
                 // zero flag is set
-                return State::NEXT;
-            }else{
                 return State::REPEAT;
+            }else{
+                return State::NEXT;
             }            
         }
     }
@@ -5397,9 +5397,9 @@ fn __action8<
             vm.arch.cx = vm.arch.cx -1;
             if vm.arch.flag & FLAG_ZERO == 0 {
                 // zero flag is not set
-                return State::NEXT;
-            }else{
                 return State::REPEAT;
+            }else{
+                return State::NEXT;
             }            
         }
     }

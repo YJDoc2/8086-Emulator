@@ -38,6 +38,7 @@ string:State = {
         }
     },
 
+    // repeat while zero
     "repz" string_instructions => {
         if vm.arch.cx == 0{
             return State::NEXT;
@@ -45,12 +46,13 @@ string:State = {
             vm.arch.cx = vm.arch.cx -1;
             if vm.arch.flag & FLAG_ZERO !=0 {
                 // zero flag is set
-                return State::NEXT;
-            }else{
                 return State::REPEAT;
+            }else{
+                return State::NEXT;
             }            
         }
     },
+    // repeat while not zero
     "repnz" string_instructions => {
         if vm.arch.cx == 0{
             return State::NEXT;
@@ -58,9 +60,9 @@ string:State = {
             vm.arch.cx = vm.arch.cx -1;
             if vm.arch.flag & FLAG_ZERO == 0 {
                 // zero flag is not set
-                return State::NEXT;
-            }else{
                 return State::REPEAT;
+            }else{
+                return State::NEXT;
             }            
         }
     },

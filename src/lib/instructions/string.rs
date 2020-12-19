@@ -235,7 +235,7 @@ pub fn cmps_word(vm: &mut VM) {
 pub fn scas_byte(vm: &mut VM) {
     let df = get_flag_state(vm.arch.flag, Flags::DIRECTION);
     // byte 1
-    let src_addr = Address::calculate_from_offset(vm.arch.ds, vm.arch.si);
+    let src_addr = Address::calculate_from_offset(vm.arch.ds, vm.arch.di);
     let src = vm.mem[src_addr];
     let dest = get_byte_reg(vm, ByteReg::AL);
     if df {
@@ -262,14 +262,14 @@ pub fn scas_byte(vm: &mut VM) {
 pub fn scas_word(vm: &mut VM) {
     let df = get_flag_state(vm.arch.flag, Flags::DIRECTION);
     // byte 1
-    let src_addr = Address::calculate_from_offset(vm.arch.ds, vm.arch.si);
+    let src_addr = Address::calculate_from_offset(vm.arch.ds, vm.arch.di);
     let src = vm.mem[src_addr];
     if df {
         vm.arch.di = (vm.arch.di as i32 - 1) as u16;
     } else {
         vm.arch.di = (vm.arch.di as u32 + 1) as u16;
     }
-    let src_addr = Address::calculate_from_offset(vm.arch.ds, vm.arch.si);
+    let src_addr = Address::calculate_from_offset(vm.arch.ds, vm.arch.di);
     let src = src as u16 | (vm.mem[src_addr] as u16) << 8;
     if df {
         vm.arch.di = (vm.arch.di as i32 - 1) as u16;
