@@ -33,7 +33,7 @@ pub fn byte_and(vm: &mut VM, dest: u8, source: u8) -> u8 {
         &mut vm.arch.flag,
         res >= 1 << 7,
         res == 0,
-        has_even_parity(res as u16),
+        has_even_parity(res),
     );
     return res;
 }
@@ -46,7 +46,7 @@ pub fn byte_or(vm: &mut VM, dest: u8, source: u8) -> u8 {
         &mut vm.arch.flag,
         res >= 1 << 7,
         res == 0,
-        has_even_parity(res as u16),
+        has_even_parity(res),
     );
 
     return res;
@@ -60,7 +60,7 @@ pub fn byte_xor(vm: &mut VM, dest: u8, source: u8) -> u8 {
         &mut vm.arch.flag,
         res >= 1 << 7,
         res == 0,
-        has_even_parity(res as u16),
+        has_even_parity(res),
     );
     return res;
 }
@@ -73,7 +73,7 @@ pub fn byte_test(vm: &mut VM, dest: u8, source: u8) -> u8 {
         &mut vm.arch.flag,
         res >= 1 << 7,
         res == 0,
-        has_even_parity(res as u16),
+        has_even_parity(res),
     );
     return dest;
 }
@@ -86,7 +86,7 @@ pub fn word_and(vm: &mut VM, dest: u16, source: u16) -> u16 {
         &mut vm.arch.flag,
         res >= 1 << 15,
         res == 0,
-        has_even_parity(res),
+        has_even_parity(res as u8),
     );
     return res;
 }
@@ -99,7 +99,7 @@ pub fn word_or(vm: &mut VM, dest: u16, source: u16) -> u16 {
         &mut vm.arch.flag,
         res >= 1 << 15,
         res == 0,
-        has_even_parity(res),
+        has_even_parity(res as u8),
     );
     return res;
 }
@@ -112,7 +112,7 @@ pub fn word_xor(vm: &mut VM, dest: u16, source: u16) -> u16 {
         &mut vm.arch.flag,
         res >= 1 << 15,
         res == 0,
-        has_even_parity(res),
+        has_even_parity(res as u8),
     );
     return res;
 }
@@ -125,7 +125,7 @@ pub fn word_test(vm: &mut VM, dest: u16, source: u16) -> u16 {
         &mut vm.arch.flag,
         res >= 1 << 15,
         res == 0,
-        has_even_parity(res),
+        has_even_parity(res as u8),
     );
     return dest;
 }
@@ -157,7 +157,7 @@ pub fn byte_sal(vm: &mut VM, val: u8, num: u8) -> u8 {
         &mut vm.arch.flag,
         res >= 1 << 7,
         res == 0,
-        has_even_parity(res as u16),
+        has_even_parity(res),
     );
     return res;
 }
@@ -189,7 +189,7 @@ pub fn byte_sar(vm: &mut VM, val: u8, num: u8) -> u8 {
         &mut vm.arch.flag,
         res >= 1 << 7,
         res == 0,
-        has_even_parity(res as u16),
+        has_even_parity(res),
     );
     return res;
 }
@@ -218,7 +218,7 @@ pub fn byte_shr(vm: &mut VM, val: u8, num: u8) -> u8 {
         &mut vm.arch.flag,
         res >= 1 << 7,
         res == 0,
-        has_even_parity(res as u16),
+        has_even_parity(res),
     );
     return res;
 }
@@ -320,7 +320,7 @@ pub fn word_sal(vm: &mut VM, val: u16, num: u16) -> u16 {
         &mut vm.arch.flag,
         res >= 1 << 15,
         res == 0,
-        has_even_parity(res),
+        has_even_parity(res as u8),
     );
     return res;
 }
@@ -351,7 +351,7 @@ pub fn word_sar(vm: &mut VM, val: u16, num: u16) -> u16 {
         &mut vm.arch.flag,
         res >= 1 << 15,
         res == 0,
-        has_even_parity(res),
+        has_even_parity(res as u8),
     );
     return res;
 }
@@ -380,7 +380,7 @@ pub fn word_shr(vm: &mut VM, val: u16, num: u16) -> u16 {
         &mut vm.arch.flag,
         res >= 1 << 15,
         res == 0,
-        has_even_parity(res),
+        has_even_parity(res as u8),
     );
     return res;
 }

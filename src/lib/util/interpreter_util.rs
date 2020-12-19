@@ -17,6 +17,8 @@ pub enum State {
     NEXT,
     /// For interrupts
     INT(u8),
+    /// For string repeats
+    REPEAT,
 }
 
 /// Context for Interpreter
@@ -32,10 +34,9 @@ pub struct Context {
 }
 
 /// Helper function to check if number has even parity
-pub fn has_even_parity(v: u16) -> bool {
+pub fn has_even_parity(v: u8) -> bool {
     // uses the trick from here : https://stackoverflow.com/questions/21617970/how-to-check-if-value-has-even-parity-of-bits-or-odd
     let mut val = v;
-    val ^= val >> 8;
     val ^= val >> 4;
     val ^= val >> 2;
     val ^= val >> 1;
@@ -45,6 +46,6 @@ pub fn has_even_parity(v: u16) -> bool {
 #[test]
 fn test_even_parity() {
     assert!(has_even_parity(3));
-    assert!(!has_even_parity(0b11011010_u16));
-    assert!(has_even_parity(0b11011011_u16));
+    assert!(!has_even_parity(0b11011010));
+    assert!(has_even_parity(0b11011011));
 }

@@ -1,23 +1,90 @@
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
-use crate::instructions::bit_manipulation::*;
+use crate::instructions::{bit_manipulation::*,string::*};
 use crate::util::flag_util::*;
 use crate::util::data_util::*;
 use crate::util::address::*;
-use crate::arch::FLAG_CARRY;
+use crate::arch::{FLAG_CARRY,FLAG_ZERO};
 use crate::vm::VM;
 use crate::error;
 use lalrpop_util::ParseError;
 
+// TODO add print 
+
 grammar<'s>(current:usize,vm:&mut VM,context:&'s mut Context);
 
 pub Interpreter:State = {
-   control,
-   transfer,
-   bit_manipulation => State::NEXT,
+    control,
+    transfer,
+    bit_manipulation => State::NEXT,
     //arithmetic,
-    //string,
+    string,
     //data_transfer,
+}
+
+// ----------------------------------
+// String Instructions
+
+
+
+string:State = {
+    string_instructions => State::NEXT,
+    "rep" string_instructions => {
+        if vm.arch.cx == 0{
+            return State::NEXT;
+        }else{
+            vm.arch.cx = vm.arch.cx -1;
+            return State::REPEAT;
+        }
+    },
+
+    "repz" string_instructions => {
+        if vm.arch.cx == 0{
+            return State::NEXT;
+        }else{
+            vm.arch.cx = vm.arch.cx -1;
+            if vm.arch.flag & FLAG_ZERO !=0 {
+                // zero flag is set
+                return State::NEXT;
+            }else{
+                return State::REPEAT;
+            }            
+        }
+    },
+    "repnz" string_instructions => {
+        if vm.arch.cx == 0{
+            return State::NEXT;
+        }else{
+            vm.arch.cx = vm.arch.cx -1;
+            if vm.arch.flag & FLAG_ZERO == 0 {
+                // zero flag is not set
+                return State::NEXT;
+            }else{
+                return State::REPEAT;
+            }            
+        }
+    },
+}
+
+
+
+
+
+string_instructions:() = {
+    "movs" "byte" => movs_byte(vm),
+    "movs" "word" => movs_word(vm),
+
+    "lods" "byte"=> loads_byte(vm),
+    "lods" "word"=> loads_word(vm),
+
+    "stos" "byte" => stos_byte(vm),
+    "stos" "word" => stos_word(vm),
+
+    "cmps" "byte" => cmps_byte(vm),
+    "cmps" "word" => cmps_word(vm),
+
+    "scas" "byte" => scas_byte(vm),
+    "scas" "word" => scas_word(vm),
 }
 
 

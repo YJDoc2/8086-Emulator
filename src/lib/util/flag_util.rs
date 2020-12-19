@@ -91,3 +91,15 @@ fn test_unset_flag() {
     unset_flag(&mut reg, Flags::AUX_CARRY);
     assert_eq!(get_flag_state(reg, Flags::AUX_CARRY), false);
 }
+
+#[inline]
+pub fn is_aux_borrow(op1: u8, op2: u8) -> bool {
+    let t1 = op1 & 0b1111;
+    let t2 = op2 & 0b1111;
+    return t1 < t2;
+}
+
+#[inline]
+pub fn is_borrow(op1: u8, op2: u8) -> bool {
+    return op1 < op2;
+}

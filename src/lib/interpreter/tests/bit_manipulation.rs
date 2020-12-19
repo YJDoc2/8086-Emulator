@@ -169,7 +169,7 @@ fn test_binary_logical() {
     assert_eq!(vm.mem[base + 1], V2);
     assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
     assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
-    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
 
     // mem , reg
     vm.arch.ax = V3; // 0x F0F0
@@ -190,7 +190,7 @@ fn test_binary_logical() {
     assert_eq!(vm.mem[base + 3], V1 ^ 0xF0);
     assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
     assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
-    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
 
     // reg , imm
     let o = p.parse(1, &mut vm, &mut context, "and al,15");
@@ -206,7 +206,7 @@ fn test_binary_logical() {
     assert_eq!(vm.arch.cx, 0x0F0F | 0x4F4F);
     assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
     assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
-    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
 
     // mem, imm
     vm.mem[base] = V1;
@@ -315,7 +315,7 @@ fn test_shifts() {
     assert_eq!(vm.mem[base + 3], 0b10000000);
     assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
     assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
-    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY)); // only lower 8 bytes are considered for parity
 }
 
 #[test]
