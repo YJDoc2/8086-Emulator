@@ -225,78 +225,74 @@ pub fn byte_shr(vm: &mut VM, val: u8, num: u8) -> u8 {
 
 pub fn byte_rol(vm: &mut VM, val: u8, num: u8) -> u8 {
     let num = num % 8;
-    let part = u8::MAX << (8 - num);
-    let sep = val & part;
-    let ret = val << num | sep >> (8 - num);
-    if ret & 1 == 1 {
+    let res = val << num | val >> (8 - num);
+    if res & 1 == 1 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
     }
-    if val & 1 << 7 == ret & 1 << 7 {
+    if val & 1 << 7 == res & 1 << 7 {
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    ret
+    return res;
 }
 
 pub fn byte_ror(vm: &mut VM, val: u8, num: u8) -> u8 {
     let num = num % 8;
-    let part = u8::MAX >> (8 - num);
-    let sep = val & part;
-    let ret = val >> num | sep << (8 - num);
-    if ret & 1 << 7 != 0 {
+    let res = val >> num | val << (8 - num);
+    if res & 1 << 7 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
     }
-    if val & 1 << 7 == ret & 1 << 7 {
+    if val & 1 << 7 == res & 1 << 7 {
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    ret
+    return res;
 }
 
 pub fn byte_rcl(vm: &mut VM, val: u8, num: u8) -> u8 {
     let num = num % 9;
-    let v = val as u16 | (vm.arch.flag & FLAG_CARRY) << 8;
-    let part = u16::MAX << num;
-    let sep = v & part;
-    let ret = v << num | sep >> 9 - num;
-    if ret & 1 << 8 != 0 {
+    let v = val as u16 | (vm.arch.flag & FLAG_CARRY) << 8; // add carry as the 9th bit
+    let mask = u16::MAX << num;
+    let rotated_part = v & mask;
+    let res = v << num | rotated_part >> 9 - num;
+    if res & 1 << 8 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
     }
-    let ret = ret as u8;
-    if val & 1 << 7 == ret & 1 << 7 {
+    let res = res as u8;
+    if val & 1 << 7 == res & 1 << 7 {
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    ret
+    return res;
 }
 
 pub fn byte_rcr(vm: &mut VM, val: u8, num: u8) -> u8 {
     let num = num % 9;
-    let v = val as u16 | (vm.arch.flag & FLAG_CARRY) << 8;
-    let part = u16::MAX >> num;
-    let sep = v & part;
-    let ret = v >> num | sep << 9 - num;
-    if ret & 1 << 8 != 0 {
+    let v = val as u16 | (vm.arch.flag & FLAG_CARRY) << 8; // add carry as the 9th bit
+    let mask = u16::MAX >> num;
+    let rotated_part = v & mask;
+    let res = v >> num | rotated_part << 9 - num;
+    if res & 1 << 8 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
     }
-    let ret = ret as u8;
-    if val & 1 << 7 == ret & 1 << 7 {
+    let res = res as u8;
+    if val & 1 << 7 == res & 1 << 7 {
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    ret
+    return res;
 }
 
 pub fn word_sal(vm: &mut VM, val: u16, num: u16) -> u16 {
@@ -391,76 +387,72 @@ pub fn word_shr(vm: &mut VM, val: u16, num: u16) -> u16 {
 
 pub fn word_rol(vm: &mut VM, val: u16, num: u16) -> u16 {
     let num = num % 16;
-    let part = u16::MAX << (16 - num);
-    let sep = val & part;
-    let ret = val << num | sep >> (16 - num);
-    if ret & 1 == 1 {
+    let res = val << num | val >> (16 - num);
+    if res & 1 == 1 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
     }
-    if val & 1 << 15 == ret & 1 << 15 {
+    if val & 1 << 15 == res & 1 << 15 {
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    ret
+    return res;
 }
 
 pub fn word_ror(vm: &mut VM, val: u16, num: u16) -> u16 {
     let num = num % 16;
-    let part = u16::MAX >> (16 - num);
-    let sep = val & part;
-    let ret = val >> num | sep << (16 - num);
-    if ret & 1 << 15 != 0 {
+    let res = val >> num | val << (16 - num);
+    if res & 1 << 15 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
     }
-    if val & 1 << 15 == ret & 1 << 15 {
+    if val & 1 << 15 == res & 1 << 15 {
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    ret
+    return res;
 }
 
 pub fn word_rcl(vm: &mut VM, val: u16, num: u16) -> u16 {
     let num = num % 17;
     let v = val as u32 | ((vm.arch.flag & FLAG_CARRY) as u32) << 16;
-    let part = u32::MAX << num;
-    let sep = v & part;
-    let ret = v << num | sep >> 17 - num;
-    if ret & 1 << 16 != 0 {
+    let mask = u32::MAX << num;
+    let rotated_part = v & mask;
+    let res = v << num | rotated_part >> 17 - num;
+    if res & 1 << 16 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
     }
-    let ret = ret as u16;
-    if val & 1 << 15 == ret & 1 << 15 {
+    let res = res as u16;
+    if val & 1 << 15 == res & 1 << 15 {
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    ret
+    return res;
 }
 
 pub fn word_rcr(vm: &mut VM, val: u16, num: u16) -> u16 {
     let num = num % 17;
     let v = val as u32 | ((vm.arch.flag & FLAG_CARRY) as u32) << 16;
-    let part = u32::MAX >> num;
-    let sep = v & part;
-    let ret = v >> num | sep << 17 - num;
-    if ret & 1 << 16 != 0 {
+    let mask = u32::MAX >> num;
+    let rotated_part = v & mask;
+    let res = v >> num | rotated_part << 17 - num;
+    if res & 1 << 16 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
     }
-    let ret = ret as u16;
-    if val & 1 << 15 == ret & 1 << 15 {
+    let res = res as u16;
+    if val & 1 << 15 == res & 1 << 15 {
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    ret
+    return res;
 }

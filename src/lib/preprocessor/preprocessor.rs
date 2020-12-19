@@ -1,7 +1,8 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: ead5991de66694b186dbf2bbdfde0cef7e31cec5e8f61e6aa4d1b4a2f9c20f2
+// sha256: 787db10f44f6fea7de509884a344f27ab7dacbeb5ac7fdd9d401df41716d
 use crate::util::preprocessor_util as util;
-use util::{Label,LabelType,MB};
+use util::{Label,LabelType};
+use crate::vm::MB;
 use regex::{Regex,Captures};
 use crate::error;
 use lalrpop_util::ParseError;
@@ -15,7 +16,8 @@ mod ___parse___Preprocessor {
     #![allow(non_snake_case, non_camel_case_types, unused_mut, unused_variables, unused_imports, unused_parens)]
 
     use crate::util::preprocessor_util as util;
-    use util::{Label,LabelType,MB};
+    use util::{Label,LabelType};
+    use crate::vm::MB;
     use regex::{Regex,Captures};
     use crate::error;
     use lalrpop_util::ParseError;
@@ -17170,7 +17172,8 @@ pub use self::___parse___Preprocessor::PreprocessorParser;
 mod ___intern_token {
     #![allow(unused_imports)]
     use crate::util::preprocessor_util as util;
-    use util::{Label,LabelType,MB};
+    use util::{Label,LabelType};
+    use crate::vm::MB;
     use regex::{Regex,Captures};
     use crate::error;
     use lalrpop_util::ParseError;

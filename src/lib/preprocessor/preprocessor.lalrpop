@@ -1,5 +1,6 @@
 use crate::util::preprocessor_util as util;
-use util::{Label,LabelType,MB};
+use util::{Label,LabelType};
+use crate::vm::MB;
 use regex::{Regex,Captures};
 use crate::error;
 use lalrpop_util::ParseError;
