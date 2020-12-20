@@ -3,9 +3,6 @@ use crate::util::flag_util::*;
 use crate::util::interpreter_util::*;
 use crate::vm::VM;
 
-pub type ByteOp = fn(&mut VM, u8, u8) -> u8;
-pub type WordOp = fn(&mut VM, u16, u16) -> u16;
-
 #[inline]
 fn set_flag_helper(flag: &mut u16, sign: bool, zero: bool, parity: bool) {
     if sign {

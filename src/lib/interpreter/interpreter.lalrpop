@@ -1,6 +1,6 @@
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
-use crate::instructions::{bit_manipulation::*,string::*};
+use crate::instructions::{bit_manipulation::*,string::*,arithmetic::*};
 use crate::util::flag_util::*;
 use crate::util::data_util::*;
 use crate::util::address::*;
@@ -17,15 +17,279 @@ pub Interpreter:State = {
     control,
     transfer,
     bit_manipulation => State::NEXT,
-    //arithmetic,
+    arithmetic,
     string,
     //data_transfer,
 }
 
 // ----------------------------------
+// Arithmetic Instructions
+arithmetic:State = {
+    binary_arithmetic => State::NEXT,
+    unary_arithmetic,
+    singleton_arithmetic => State::NEXT,
+}
+
+binary_arithmetic:() = {
+    // reg,reg
+    <start:@L> <f:byte_binary_arithmetic> <r1:byte_reg> "," <r2:byte_reg> =>{
+        let dest = get_byte_reg(vm,r1);
+        let src = get_byte_reg(vm,r2);
+        let res = f(vm,dest,src);
+        set_byte_reg(vm,r1,res);
+        
+    },
+    <start:@L> <f:word_binary_arithmetic> <r1:word_reg> "," <r2:word_reg> =>{
+        let dest = get_word_reg_val(vm,r1);
+        let src = get_word_reg_val(vm,r2);
+        let res = f(vm,dest,src);
+        set_word_reg_val(vm,r1,res);
+    },
+    //reg,mem
+    <start:@L> <f:byte_binary_arithmetic> <r:byte_reg> "," "byte" <m:memory_addr> =>{
+        let dest = get_byte_reg(vm,r);
+        let src = vm.mem[m];
+        let res = f(vm,dest,src);
+        set_byte_reg(vm,r,res);
+    },
+    <start:@L> <f:word_binary_arithmetic> <r:word_reg> "," "word" <m:memory_addr> =>{
+        let dest = get_word_reg_val(vm,r);
+        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let res = f(vm,dest,src);
+        set_word_reg_val(vm,r,res);
+    },
+    <start:@L> <f:byte_binary_arithmetic> <r:byte_reg> "," <m:byte_label> =>{
+         let dest = get_byte_reg(vm,r);
+        let src = vm.mem[m];
+        let res = f(vm,dest,src);
+        set_byte_reg(vm,r,res);
+    },
+    <start:@L> <f:word_binary_arithmetic> <r:word_reg> "," <m:word_label> =>{
+        let dest = get_word_reg_val(vm,r);
+        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let res = f(vm,dest,src);
+        set_word_reg_val(vm,r,res);
+    },
+    // mem,reg
+    <start:@L> <f:byte_binary_arithmetic> "byte" <m:memory_addr> "," <r:byte_reg> =>{
+        let dest = vm.mem[m];
+        let src = get_byte_reg(vm,r);
+        let res = f(vm,dest,src);
+        vm.mem[m] = res;
+    },
+    <start:@L> <f:word_binary_arithmetic> "word" <m:memory_addr> "," <r:word_reg> =>{
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let src = get_word_reg_val(vm,r);
+        let res = f(vm,dest,src);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+    <start:@L> <f:byte_binary_arithmetic> <m:byte_label> "," <r:byte_reg> =>{
+        let dest = vm.mem[m];
+        let src = get_byte_reg(vm,r);
+        let res = f(vm,dest,src);
+        vm.mem[m] = res;
+    },
+    <start:@L> <f:word_binary_arithmetic> <m:word_label> "," <r:word_reg> =>{
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let src = get_word_reg_val(vm,r);
+        let res = f(vm,dest,src);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+    //reg , immediate
+    <start:@L> <f:byte_binary_arithmetic> <r:byte_reg> "," <n:s_byte_num> =>{
+        let dest = get_byte_reg(vm,r);
+        let src = n as u8;
+        let res = f(vm,dest,src);
+        set_byte_reg(vm,r,res); 
+    },
+    <start:@L> <f:word_binary_arithmetic> <r:word_reg> "," <n:s_word_num> =>{
+        let dest = get_word_reg_val(vm,r);
+        let src = n as u16;
+        let res = f(vm,dest,src);
+        set_word_reg_val(vm,r,res);
+    },
+    // mem, immediate
+    <start:@L> <f:byte_binary_arithmetic> "byte" <m:memory_addr> "," <n:s_byte_num> =>{
+        let dest = vm.mem[m];
+        let src = n as u8;
+        let res = f(vm,dest,src);
+        vm.mem[m] = res;
+    },
+    <start:@L> <f:word_binary_arithmetic> "word" <m:memory_addr> "," <n:s_word_num> =>{
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let src = n as u16;
+        let res = f(vm,dest,src);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+    <start:@L> <f:byte_binary_arithmetic> <m:byte_label> "," <n:s_byte_num> =>{
+        let dest = vm.mem[m];
+        let src = n as u8;
+        let res = f(vm,dest,src);
+        vm.mem[m] = res;
+    },
+    <start:@L> <f:word_binary_arithmetic>  <m:word_label> "," <n:s_word_num> =>{
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let src = n as u16;
+        let res = f(vm,dest,src);
+        let (hb,lb) = separate_bytes(res as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+}
+
+byte_binary_arithmetic:ByteOpBinary = {
+    
+    "add" => byte_add,
+    
+    "adc" => byte_adc,
+    
+    "sub" => byte_sub,
+    
+    "sbb" => byte_sbb,
+    
+    "cmp" => byte_cmp,
+}
+
+word_binary_arithmetic:WordOpBinary = {
+    
+    "add" => word_add,
+    
+    "adc" => word_adc,
+    
+    "sub" => word_sub,
+    
+    "sbb" => word_sbb,
+    
+    "cmp" => word_cmp,
+}
+
+singleton_arithmetic:() = {
+    
+    "aaa" => aaa(vm),
+    
+    "aad" => aad(vm),
+    
+    "aam" => aam(vm),
+    
+    "aas" => aas(vm),
+    
+    "daa" => daa(vm),
+    
+    "das" => das(vm),
+
+    "cbw" => cbw(vm),
+    
+    "cwd" => cwd(vm),
+}
+
+unary_arithmetic:State = {
+    <start:@L> <f:byte_unary_arithmetic> <r:byte_reg> =>{
+        let mut val = get_byte_reg(vm,r);
+        match f(vm,&mut val){
+            Ok(_)=>{},
+            Err(_)=>return State::INT(0),
+        };
+        set_byte_reg(vm,r,val);
+        return State::NEXT;
+        
+    },
+    <start:@L> <f:word_unary_arithmetic> <r:word_reg> =>{
+        let mut val = get_word_reg_val(vm,r);
+        match f(vm,&mut val){
+            Ok(_)=>{},
+            Err(_)=>return State::INT(0),
+        };
+        set_word_reg_val(vm,r,val);
+        return State::NEXT;
+    },
+    <start:@L> <f:byte_unary_arithmetic> "byte" <m:memory_addr> =>{
+        let mut val = vm.mem[m];
+        match f(vm,&mut val){
+            Ok(_)=>{},
+            Err(_)=>return State::INT(0),
+        };
+        vm.mem[m] = val;
+        return State::NEXT;
+    },
+    <start:@L> <f:word_unary_arithmetic> "word" <m:memory_addr> =>{
+        let mut val = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        match f(vm,&mut val){
+            Ok(_)=>{},
+            Err(_)=>return State::INT(0),
+        };
+        let (hb,lb) = separate_bytes(val as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+        return State::NEXT;
+    },
+    <start:@L> <f:byte_unary_arithmetic> <m:byte_label> =>{
+        let mut val = vm.mem[m];
+        match f(vm,&mut val){
+            Ok(_)=>{},
+            Err(_)=>return State::INT(0),
+        };
+        vm.mem[m] = val;
+        return State::NEXT;
+    },
+    <start:@L> <f:word_unary_arithmetic> <m:word_label> =>{
+        let mut val = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        match f(vm,&mut val){
+            Ok(_)=>{},
+            Err(_)=>return State::INT(0),
+        };
+        let (hb,lb) = separate_bytes(val as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+        return State::NEXT;
+    },
+}
+
+byte_unary_arithmetic:ByteOpUnary = {
+    
+    "dec" => byte_dec,
+    
+    "inc" => byte_inc,
+    
+    "neg" => byte_neg,
+    
+    "mul" => byte_mul,
+    
+    "imul" =>byte_imul,
+    
+    "div" => byte_div,
+    
+    "idiv" =>byte_idiv,
+}
+
+word_unary_arithmetic:WordOpUnary = {
+    
+    "dec" => word_dec,
+    
+    "inc" => word_inc,
+    
+    "neg" => word_neg,
+    
+    "mul" => word_mul,
+    
+    "imul" => word_imul,
+    
+    "div" => word_div,
+    
+    "idiv" => word_idiv,
+}
+
+
+
+
+
+// ----------------------------------
 // String Instructions
-
-
 
 string:State = {
     string_instructions => State::NEXT,
@@ -248,7 +512,7 @@ binary_logical:() = {
     },
 }
 
-byte_binary_logical:ByteOp = {
+byte_binary_logical:ByteOpBinary = {
     "and" => {
         byte_and
     },
@@ -263,7 +527,7 @@ byte_binary_logical:ByteOp = {
     },
 }
 
-word_binary_logical:WordOp = {
+word_binary_logical:WordOpBinary = {
     "and" => {
         word_and
     },
@@ -362,7 +626,7 @@ shift_rotate:() = {
     },
 }
 
-byte_shift_rotate:ByteOp = {
+byte_shift_rotate:ByteOpBinary = {
     "sal" => {
         byte_sal
     },
@@ -391,7 +655,7 @@ byte_shift_rotate:ByteOp = {
     },
 }
 
-word_shift_rotate:WordOp  = {
+word_shift_rotate:WordOpBinary  = {
     
     "sal" => {
         word_sal
@@ -607,6 +871,16 @@ u_byte_num: u8 = {
             Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between 0-255".to_owned())
         }
     },
+}
+
+s_byte_num: i8 = {
+    <start:@L> <n:r"-[0-9]+"> <end:@R> =>? {
+        match i8::from_str_radix(n,10){
+            Ok(v) => Ok(v),
+            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between -128-255".to_owned())
+        }
+    },
+    <n:u_word_num> => n as i8
 }
 
 u_word_num: u16 = {

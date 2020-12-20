@@ -851,8 +851,12 @@ unary_arithmetic:() = {
         out.code.push(format!("{} {}",q,r));
         context.mapper.add_entry(start);
     },
-    <start:@L> <q:quote_unary_arithmetic> <m:memory_addr> =>{
-        out.code.push(format!("{} {}",q,m));
+    <start:@L> <q:quote_unary_arithmetic> quote_byte_length <m:memory_addr> =>{
+        out.code.push(format!("{} byte {}",q,m));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_unary_arithmetic> quote_word_length <m:memory_addr> =>{
+        out.code.push(format!("{} word {}",q,m));
         context.mapper.add_entry(start);
     },
     <start:@L> <q:quote_unary_arithmetic> <l:byte_label> =>{

@@ -1,6 +1,11 @@
 use super::preprocessor_util::Label;
 use std::collections::HashMap;
 
+pub type ByteOpBinary = fn(&mut crate::vm::VM, u8, u8) -> u8;
+pub type WordOpBinary = fn(&mut crate::vm::VM, u16, u16) -> u16;
+pub type ByteOpUnary = fn(&mut crate::vm::VM, &mut u8) -> Result<(), ()>;
+pub type WordOpUnary = fn(&mut crate::vm::VM, &mut u16) -> Result<(), ()>;
+
 /// This Is supposed to be used as return from interpretation of single instruction
 /// and should be used by driver to decide next step
 #[derive(PartialEq, Eq, Debug)]
