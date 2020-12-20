@@ -639,41 +639,39 @@ quote_lea:() ={
 // ----------------------------------
 // String Instructions
 
-
-// TODO make better naming scheme
 string:() = {
-    <start:@L> <q:string_rep__opcode> => {
+    <start:@L> <q:string_condition_repeat_opcode> => {
         out.code.push(q);
         context.mapper.add_entry(start);
     },
-    <start:@L> <q:string_rep_opcode> =>{
+    <start:@L> <q:string_repeat_opcode> =>{
         out.code.push(q);
         context.mapper.add_entry(start);
     },
-    string_rep,
-    string_rep_
+    string_repeat,
+    string_condition_repeat
 }
 
-string_rep:() = {
-    <start:@L> quote_rep <o:string_rep_opcode> =>{
+string_repeat:() = {
+    <start:@L> quote_repeat <o:string_repeat_opcode> =>{
         out.code.push(format!("rep {}",o));
         context.mapper.add_entry(start);
     },
 }
 
-string_rep_:() ={
-    <start:@L> <q:quote_rep_> <o:string_rep__opcode> =>{
+string_condition_repeat:() ={
+    <start:@L> <q:quote_condition_repeat> <o:string_condition_repeat_opcode> =>{
         out.code.push(format!("{} {}",q,o));
         context.mapper.add_entry(start);
     },
 }
 
-quote_rep:() ={
+quote_repeat:() ={
     "REP",
     "rep"
 }
 
-quote_rep_:String={
+quote_condition_repeat:String={
     "REPE" => "repz".to_owned(),
     "repe" => "repz".to_owned(),
     "REPZ" => "repz".to_owned(),
@@ -685,27 +683,27 @@ quote_rep_:String={
     "repnz" => "repnz".to_owned(),
 }
 
-string_rep__opcode:String = {
-    <q:quote_string_rep_> quote_byte_length =>{
+string_condition_repeat_opcode:String = {
+    <q:quote_condition_repeat_opcode> quote_byte_length =>{
         format!("{} byte",q)
     },
-    <q:quote_string_rep_> quote_word_length =>{
+    <q:quote_condition_repeat_opcode> quote_word_length =>{
         format!("{} word",q)
     },
 }
 
-string_rep_opcode:String = {
-    <q:quote_string_rep> quote_byte_length =>{
+string_repeat_opcode:String = {
+    <q:quote_repeat_opcode> quote_byte_length =>{
         format!("{} byte",q)
     },
-    <q:quote_string_rep> quote_word_length =>{
+    <q:quote_repeat_opcode> quote_word_length =>{
         format!("{} word",q)
     },
 }
 
 
 // Instructions used with REP(E/Z/NE/NZ)
-quote_string_rep_:String ={
+quote_condition_repeat_opcode:String ={
     "CMPS" => "cmps".to_owned(),
     "cmps" => "cmps".to_owned(),
     "SCAS" => "scas".to_owned(),
@@ -713,7 +711,7 @@ quote_string_rep_:String ={
 }
 
 // Instructions used with REP
-quote_string_rep:String = {
+quote_repeat_opcode:String = {
     "MOVS" => "movs".to_owned(),
     "movs" => "movs".to_owned(),
     "LODS" => "lods".to_owned(),
