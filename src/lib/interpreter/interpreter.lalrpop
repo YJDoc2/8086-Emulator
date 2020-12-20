@@ -169,25 +169,6 @@ word_binary_arithmetic:WordOpBinary = {
     "cmp" => word_cmp,
 }
 
-singleton_arithmetic:() = {
-    
-    "aaa" => aaa(vm),
-    
-    "aad" => aad(vm),
-    
-    "aam" => aam(vm),
-    
-    "aas" => aas(vm),
-    
-    "daa" => daa(vm),
-    
-    "das" => das(vm),
-
-    "cbw" => cbw(vm),
-    
-    "cwd" => cwd(vm),
-}
-
 unary_arithmetic:State = {
     <start:@L> <f:byte_unary_arithmetic> <r:byte_reg> =>{
         let mut val = get_byte_reg(vm,r);
@@ -284,7 +265,24 @@ word_unary_arithmetic:WordOpUnary = {
     "idiv" => word_idiv,
 }
 
+singleton_arithmetic:() = {
+    
+    "aaa" => aaa(vm),
+    
+    "aad" => aad(vm),
+    
+    "aam" => aam(vm),
+    
+    "aas" => aas(vm),
+    
+    "daa" => daa(vm),
+    
+    "das" => das(vm),
 
+    "cbw" => cbw(vm),
+    
+    "cwd" => cwd(vm),
+}
 
 
 

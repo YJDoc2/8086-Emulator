@@ -75,7 +75,7 @@ fn set_flag_helper(flag: &mut u16, sign: bool, zero: bool, parity: bool) {
 pub fn aaa(vm: &mut VM) {
     let al = get_byte_reg(vm, ByteReg::AL);
     if al & 0x0F > 9 || get_flag_state(vm.arch.flag, Flags::AUX_CARRY) {
-        set_byte_reg(vm, ByteReg::AL, ((al as u16 + 1) & 0x0F) as u8);
+        set_byte_reg(vm, ByteReg::AL, ((al as u16 + 6) & 0x0F) as u8);
         let ah = get_byte_reg(vm, ByteReg::AH);
         set_byte_reg(vm, ByteReg::AH, (ah as u16 + 1) as u8);
         set_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
@@ -102,11 +102,11 @@ pub fn aad(vm: &mut VM) {
 
 pub fn aam(vm: &mut VM) {
     let al = get_byte_reg(vm, ByteReg::AL);
-    set_byte_reg(vm, ByteReg::AL, al % 10);
     set_byte_reg(vm, ByteReg::AH, al / 10);
+    set_byte_reg(vm, ByteReg::AL, al % 10);
     let res = vm.arch.ax;
     set_flag_helper(
-        &mut vm.arch.ax,
+        &mut vm.arch.flag,
         res >= 1 << 15,
         res == 0,
         has_even_parity(al % 10), // only lower 8 bytes are considered, i.e. al, which now have al %10
@@ -136,6 +136,7 @@ pub fn daa(vm: &mut VM) {
     } else {
         unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
     }
+    let al = get_byte_reg(vm, ByteReg::AL);
     if al > 0x9F || get_flag_state(vm.arch.flag, Flags::CARRY) {
         let temp = al as u16 + 0x60;
         overflow = temp > 255;
@@ -166,6 +167,7 @@ pub fn das(vm: &mut VM) {
     } else {
         unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
     }
+    let al = get_byte_reg(vm, ByteReg::AL);
     if al > 0x9F || get_flag_state(vm.arch.flag, Flags::CARRY) {
         let temp = al as i16 - 0x60;
         set_byte_reg(vm, ByteReg::AL, temp as u8);
