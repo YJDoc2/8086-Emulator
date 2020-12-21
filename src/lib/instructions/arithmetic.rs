@@ -291,7 +291,7 @@ pub fn byte_mul(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
 
 pub fn byte_imul(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
     let al = get_byte_reg(&vm, ByteReg::AL);
-    let res = al as i16 * (*val as i16);
+    let res = al as u16 as i16 * (*val as i8 as i16);
     let ah = get_byte_reg(&vm, ByteReg::AH);
     if ah != u8::MAX {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
@@ -405,7 +405,7 @@ pub fn word_neg(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
 pub fn word_mul(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
     let ax = vm.arch.ax;
     let res = ax as u32 * (*val as u32);
-    let upper = (res & 0xFFFF0000 >> 16) as u16;
+    let upper = ((res & 0xFFFF0000) >> 16) as u16;
     if upper == 0 {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
@@ -421,7 +421,7 @@ pub fn word_mul(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
 pub fn word_imul(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
     let ax = vm.arch.ax as i16;
     let res = ax as i32 * (*val as i16 as i32);
-    let upper = (res as u32 & 0xFFFF0000 >> 16) as u16;
+    let upper = ((res as u32 & 0xFFFF0000) >> 16) as u16;
     if upper != u16::MAX {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
