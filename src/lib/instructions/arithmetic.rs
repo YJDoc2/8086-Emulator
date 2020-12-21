@@ -470,9 +470,9 @@ pub fn byte_add(vm: &mut VM, op1: u8, op2: u8) -> u8 {
             zero: res == 0,
             overflow: res > u8::MAX as u16,
             parity: has_even_parity(res as u8),
-            sign: res >= 1 << 7,
+            sign: res & 1 << 7 != 0,
             carry: res > u8::MAX as u16,
-            auxillary: (op1 & 0xF + op2 & 0xF) > 0xF,
+            auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
         },
     );
     return res as u8;
@@ -489,11 +489,12 @@ pub fn byte_adc(vm: &mut VM, op1: u8, op2: u8) -> u8 {
             zero: res == 0,
             overflow: res > u8::MAX as u16,
             parity: has_even_parity(res as u8),
-            sign: res >= 1 << 7,
+            sign: res as u8 >= 1 << 7,
             carry: res > u8::MAX as u16,
-            auxillary: (op1 & 0xF + op2 & 0xF) > 0xF,
+            auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
         },
     );
+
     return res as u8;
 }
 
@@ -505,9 +506,9 @@ pub fn byte_sub(vm: &mut VM, op1: u8, op2: u8) -> u8 {
             zero: res == 0,
             overflow: res < i8::MIN as i16,
             parity: has_even_parity(res as u8),
-            sign: res as u16 >= 1 << 7,
+            sign: res as u16 as u8 >= 1 << 7,
             carry: op1 < op2,
-            auxillary: op1 & 0xF < op2 & 0xF,
+            auxillary: (op1 & 0xF) < (op2 & 0xF),
         },
     );
     return res as u16 as u8;
@@ -526,7 +527,7 @@ pub fn byte_sbb(vm: &mut VM, op1: u8, op2: u8) -> u8 {
             parity: has_even_parity(res as u8),
             sign: res as u16 >= 1 << 7,
             carry: op1 < op2,
-            auxillary: op1 & 0xF < op2 & 0xF,
+            auxillary: (op1 & 0xF) < (op2 & 0xF) + 1,
         },
     );
     return res as u16 as u8;
@@ -542,7 +543,7 @@ pub fn byte_cmp(vm: &mut VM, op1: u8, op2: u8) -> u8 {
             parity: has_even_parity(res as u8),
             sign: res as u16 >= 1 << 7,
             carry: op1 < op2,
-            auxillary: op1 & 0xF < op2 & 0xF,
+            auxillary: (op1 & 0xF) < (op2 & 0xF),
         },
     );
     return op1;
@@ -560,7 +561,7 @@ pub fn word_add(vm: &mut VM, op1: u16, op2: u16) -> u16 {
             parity: has_even_parity(res as u8),
             sign: res >= 1 << 15,
             carry: res > u16::MAX as u32,
-            auxillary: (op1 & 0xF + op2 & 0xF) > 0xF,
+            auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
         },
     );
     return res as u16;
@@ -577,9 +578,9 @@ pub fn word_adc(vm: &mut VM, op1: u16, op2: u16) -> u16 {
             zero: res == 0,
             overflow: res > u16::MAX as u32,
             parity: has_even_parity(res as u8),
-            sign: res >= 1 << 15,
+            sign: res as u16 >= 1 << 15,
             carry: res > u16::MAX as u32,
-            auxillary: (op1 & 0xF + op2 & 0xF) > 0xF,
+            auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
         },
     );
     return res as u16;

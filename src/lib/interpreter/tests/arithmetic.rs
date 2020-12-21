@@ -245,3 +245,156 @@ fn test_unary_arithmetic() {
     assert_eq!(vm.arch.ax, 0x0001);
     assert_eq!(vm.arch.dx, 0x0003);
 }
+
+#[test]
+fn test_binary_arithmetic() {
+    let mut vm = VM::new();
+    let mut context = Context::default();
+    let p = interpreter::InterpreterParser::new();
+    context
+        .label_map
+        .insert("l1".to_owned(), Label::new(LabelType::DATA, 0, 0));
+    context
+        .label_map
+        .insert("l2".to_owned(), Label::new(LabelType::DATA, 0, 2));
+
+    let base = vm.arch.ds as usize * 0x10;
+    vm.mem[base] = 255;
+    vm.mem[base + 1] = 0;
+    vm.mem[base + 2] = 0;
+    vm.mem[base + 3] = 255;
+
+    // add
+    vm.arch.ax = 0x00FF;
+    vm.arch.bx = 0x0001;
+    let o = p.parse(1, &mut vm, &mut context, "add al,bl");
+    assert!(o.is_ok());
+    assert_eq!(o.unwrap(), State::NEXT);
+    assert_eq!(get_byte_reg(&vm, ByteReg::AL), 0);
+    assert_eq!(vm.arch.bx, 1);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    vm.arch.ax = 0x0101;
+    let o = p.parse(1, &mut vm, &mut context, "add word [si],ax");
+    assert!(o.is_ok());
+    assert_eq!(o.unwrap(), State::NEXT);
+    assert_eq!(vm.arch.ax, 0x0101);
+    assert_eq!(vm.mem[base], 0);
+    assert_eq!(vm.mem[base + 1], 2);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(!get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    // adc
+    vm.arch.ax = 0x00FF;
+    vm.mem[base] = 2;
+    set_flag(&mut vm.arch.flag, Flags::CARRY);
+    let o = p.parse(1, &mut vm, &mut context, "adc byte l1,al");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], 2);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    vm.arch.ax = 0x0101;
+    vm.arch.bx = 0xFFFF;
+    set_flag(&mut vm.arch.flag, Flags::CARRY);
+    let o = p.parse(1, &mut vm, &mut context, "adc bx,ax");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.ax, 0x0101);
+    assert_eq!(vm.arch.bx, 0x0101);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    // sub
+    vm.arch.ax = 0x0000;
+    vm.mem[base] = 1;
+    let o = p.parse(1, &mut vm, &mut context, "sub al,byte [0]");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], 1);
+    assert_eq!(vm.arch.ax, 0x00FF);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    vm.arch.ax = 0x0202;
+    vm.mem[base] = 0x00;
+    vm.mem[base + 1] = 0x00;
+    let o = p.parse(1, &mut vm, &mut context, "sub word l1,ax");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], 0xFE);
+    assert_eq!(vm.mem[base + 1], 0xFD);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    // sbb
+    vm.arch.ax = 0x0000;
+    vm.mem[base] = 1;
+    set_flag(&mut vm.arch.flag, Flags::CARRY);
+    let o = p.parse(1, &mut vm, &mut context, "sbb al,byte [0]");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], 1);
+    assert_eq!(vm.arch.ax, 0x00FE);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    vm.arch.ax = 0x0202;
+    vm.mem[base] = 0x00;
+    vm.mem[base + 1] = 0x00;
+    set_flag(&mut vm.arch.flag, Flags::CARRY);
+    let o = p.parse(1, &mut vm, &mut context, "sbb word l1,ax");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], 0xFD);
+    assert_eq!(vm.mem[base + 1], 0xFD);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    // cmp
+    vm.arch.ax = 0x0001;
+    vm.mem[base] = 1;
+    let o = p.parse(1, &mut vm, &mut context, "cmp al,byte [0]");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], 1);
+    assert_eq!(vm.arch.ax, 0x0001);
+    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(!get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    vm.arch.ax = 0x0202;
+    vm.mem[base] = 0x00;
+    vm.mem[base + 1] = 0x00;
+    let o = p.parse(1, &mut vm, &mut context, "cmp word l1,ax");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.ax, 0x0202);
+    assert_eq!(vm.mem[base], 0x00);
+    assert_eq!(vm.mem[base + 1], 0x00);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+}
