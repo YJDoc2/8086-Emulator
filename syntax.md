@@ -73,7 +73,7 @@ REP(E/Z/NE/NZ) support cmps scas<br/>
 
 XLAT always takes base address of table from BX. the form in manual (XLAT source-table) allows source-table to documentation purpose label, indicating where the BX offset points, but XLAT always takes BX as offset, even if the label points to some other, hence that form is not supported here. https://www.felixcloutier.com/x86/xlat:xlatb
 
-push and pop only supports word label
+push and pop only supports word label / word operand
 
 lds and les are not supported, as they are used to load/store a 32 bit pointer, which we don't support
 <br/>
@@ -91,3 +91,6 @@ Conditions for jumps in 8086 family manual seemed incorrect, so have used from :
 <br/>
 Segment override is not supported in memory addressing
 For memory addressing explanation check : https://www.ic.unicamp.br/~celio/mc404s2-03/addr_modes/intel_addr.html
+<br/>
+Check https://retrocomputing.stackexchange.com/questions/2927/did-the-intel-8086-8088-not-guarantee-the-value-of-sssp-immediately-after-reset
+for default values of segment registers

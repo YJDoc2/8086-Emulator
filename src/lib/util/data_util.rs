@@ -19,6 +19,14 @@ pub enum WordReg {
     BX,
     CX,
     DX,
+    SS,
+    CS,
+    DS,
+    ES,
+    SP,
+    BP,
+    SI,
+    DI,
 }
 
 #[inline]
@@ -110,6 +118,14 @@ pub fn get_word_reg_mut(vm: &mut VM, reg: WordReg) -> &mut u16 {
         WordReg::BX => &mut vm.arch.bx,
         WordReg::CX => &mut vm.arch.cx,
         WordReg::DX => &mut vm.arch.dx,
+        WordReg::SS => &mut vm.arch.ss,
+        WordReg::DS => &mut vm.arch.ds,
+        WordReg::CS => &mut vm.arch.cs,
+        WordReg::ES => &mut vm.arch.es,
+        WordReg::SI => &mut vm.arch.si,
+        WordReg::DI => &mut vm.arch.di,
+        WordReg::SP => &mut vm.arch.sp,
+        WordReg::BP => &mut vm.arch.bp,
     }
 }
 
@@ -119,6 +135,14 @@ pub fn get_word_reg_val(vm: &VM, reg: WordReg) -> u16 {
         WordReg::BX => vm.arch.bx,
         WordReg::CX => vm.arch.cx,
         WordReg::DX => vm.arch.dx,
+        WordReg::SS => vm.arch.ss,
+        WordReg::DS => vm.arch.ds,
+        WordReg::CS => vm.arch.cs,
+        WordReg::ES => vm.arch.es,
+        WordReg::SI => vm.arch.si,
+        WordReg::DI => vm.arch.di,
+        WordReg::SP => vm.arch.sp,
+        WordReg::BP => vm.arch.bp,
     }
 }
 
@@ -128,5 +152,13 @@ pub fn set_word_reg_val(vm: &mut VM, reg: WordReg, val: u16) {
         WordReg::BX => vm.arch.bx = val,
         WordReg::CX => vm.arch.cx = val,
         WordReg::DX => vm.arch.dx = val,
+        WordReg::SS => vm.arch.ss = val,
+        WordReg::DS => vm.arch.ds = val,
+        WordReg::CS => vm.arch.cs = val,
+        WordReg::ES => vm.arch.es = val,
+        WordReg::SI => vm.arch.si = val,
+        WordReg::DI => vm.arch.di = val,
+        WordReg::SP => vm.arch.sp = val,
+        WordReg::BP => vm.arch.bp = val,
     }
 }

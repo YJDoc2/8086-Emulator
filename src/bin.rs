@@ -15,21 +15,9 @@ pub fn main() {
         .label_map
         .insert("l2".to_owned(), Label::new(LabelType::DATA, 0, 2));
 
-    let base = vm.arch.ds as usize * 0x10;
-
-    const V1: u8 = 155;
-    const V2: u8 = 122;
-    const V3: u16 = 0xF0F0;
-
-    vm.mem[base] = V1;
-    vm.mem[base + 1] = V2;
-    vm.mem[base + 2] = V2;
-    vm.mem[base + 3] = V1;
-
-    vm.arch.ax = V3; // 0x F0F0
-    vm.arch.cx = !V3; // 0x 0F0F
-
-    let o = p.parse(1, &mut vm, &mut context, "xor ax, word [0]");
+    //let base = vm.arch.ss as usize * 0x10;
+    vm.arch.sp = 4;
+    vm.arch.ax = 0xF0F0;
+    let o = p.parse(1, &mut vm, &mut context, "push ax");
     println!("{:?}", o);
-    println!("{:x}", vm.arch.ax);
 }

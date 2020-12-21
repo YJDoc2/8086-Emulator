@@ -1534,10 +1534,12 @@ reg_cl:String = {
 }
 
 gen_word_reg:String = {
+    
     "AX" => "ax".to_owned(),
     "ax" => "ax".to_owned(),
-    "BX" => "bx".to_owned(),
-    "bx" => "bx".to_owned(),
+    base_index_reg
+    "sp" => "sp".to_owned(),
+    "SP" => "sp".to_owned(),
     "CX" => "cx".to_owned(),
     "cx" => "cx".to_owned(),
     "DX" => "dx".to_owned(),

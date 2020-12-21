@@ -3,10 +3,9 @@ use std::boxed::Box;
 
 pub const MB: u32 = 1 * 1024 * 1024;
 
-// All these are arbitrary
-// Stack should be higher, as on x86 stack grows downwards
-pub const DATA_SEG_BEGIN: u16 = 0x1000; // 4096
-pub const STACK_SEG_BEGIN: u16 = 0x7000; // 28672
+// check https://retrocomputing.stackexchange.com/questions/2927/did-the-intel-8086-8088-not-guarantee-the-value-of-sssp-immediately-after-reset
+pub const DEFAULT_FLAG: u16 = 0xF000;
+pub const CODE_SEG: u16 = 0xFFFF;
 
 // TODO what to use for mem
 pub struct VM {
@@ -22,8 +21,8 @@ impl VM {
         };
 
         // Set default values for registers
-        ret.arch.ds = DATA_SEG_BEGIN;
-        ret.arch.ss = STACK_SEG_BEGIN;
+        ret.arch.flag = DEFAULT_FLAG;
+        ret.arch.cs = CODE_SEG;
         return ret;
     }
 }

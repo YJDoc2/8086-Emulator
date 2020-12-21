@@ -19,8 +19,311 @@ pub Interpreter:State = {
     bit_manipulation => State::NEXT,
     arithmetic,
     string,
-    //data_transfer,
+    data_transfer => State::NEXT,
 }
+
+// ----------------------------------
+// Data Transfer Instructions
+
+data_transfer:() = {
+    unary_data_transfer,
+    xchg,
+    pop,
+    push,
+    lea,
+    mov
+}
+
+
+mov:() ={
+    // reg,reg
+    <start:@L> "mov" <r1:byte_reg> "," <r2:byte_reg> =>{
+        set_byte_reg(vm,r1,get_byte_reg(vm,r2));
+    },
+    <start:@L> "mov" <r1:word_reg> "," <r2:word_reg> =>{
+        set_word_reg_val(vm,r1,get_word_reg_val(vm,r2));
+    },
+    
+    //reg,mem
+    <start:@L> "mov" <r:byte_reg> "," "byte" <m:memory_addr> =>{
+        set_byte_reg(vm,r,vm.mem[m]);
+    },
+    <start:@L> "mov" <r:word_reg> "," "word" <m:memory_addr> =>{
+        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
+        set_word_reg_val(vm,r,val);
+    },
+    <start:@L> "mov" <r:byte_reg> "," <m:byte_label> =>{
+        set_byte_reg(vm,r,vm.mem[m]);
+    },
+    <start:@L> "mov" <r:word_reg> "," <m:word_label> =>{
+        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
+        set_word_reg_val(vm,r,val);
+    },
+
+    // mem,reg
+    <start:@L> "mov" "byte" <m:memory_addr> "," <r:byte_reg> =>{
+        vm.mem[m] = get_byte_reg(vm,r);
+    },
+    <start:@L> "mov" "word" <m:memory_addr> "," <r:word_reg> =>{
+        let (hb,lb) = separate_bytes(get_word_reg_val(vm,r) as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+
+    <start:@L> "mov"  <m:byte_label> "," <r:byte_reg> =>{
+        vm.mem[m] = get_byte_reg(vm,r);
+    },
+    <start:@L> "mov" <m:word_label> "," <r:word_reg> =>{
+        let (hb,lb) = separate_bytes(get_word_reg_val(vm,r) as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+
+    //reg , immediate
+    <start:@L> "mov" <r:byte_reg> "," <n:s_byte_num> =>{
+        set_byte_reg(vm,r,n as u8);
+    },
+    <start:@L> "mov" <r:word_reg> "," <n:s_word_num> =>{
+        set_word_reg_val(vm,r,n as u16);
+    },
+
+    // mem, immediate
+    <start:@L> "mov" "byte" <m:memory_addr> "," <n:s_byte_num> =>{
+        vm.mem[m] = n as u8;
+    },
+    <start:@L> "mov" "word" <m:memory_addr> "," <n:s_word_num> =>{
+        let (hb,lb) = separate_bytes(n);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+    <start:@L> "mov" <m:byte_label> "," <n:s_byte_num> =>{
+        vm.mem[m] = n as u8;
+    },
+    <start:@L> "mov" <m:word_label> "," <n:s_word_num> =>{
+        let (hb,lb) = separate_bytes(n);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+
+    // seg-reg , reg
+    <start:@L> "mov" <sr:seg_reg> "," <r:word_reg> =>{
+      set_word_reg_val(vm,sr,get_word_reg_val(vm,r));  
+    },
+
+    //reg, seg-reg
+    <start:@L> "mov" <r:word_reg>  ","  <sr:seg_reg>  =>{
+        set_word_reg_val(vm,r,get_word_reg_val(vm,sr));  
+    },
+
+    // mem, seg-reg    
+    <start:@L> "mov" "word" <m:memory_addr> "," <sr:seg_reg> =>{
+        let (hb,lb) = separate_bytes(get_word_reg_val(vm,sr) as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+    <start:@L> "mov"  <m:word_label> "," <sr:seg_reg> =>{
+        let (hb,lb) = separate_bytes(get_word_reg_val(vm,sr) as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m,1)] = hb;
+    },
+
+    // seg-reg , mem
+    <start:@L> "mov"  <sr:seg_reg> "," "word" <m:memory_addr> =>{
+        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
+        set_word_reg_val(vm,sr,val);
+    },
+    <start:@L> "mov" <sr:seg_reg> "," <m:word_label>=>{
+        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
+        set_word_reg_val(vm,sr,val);
+    },
+}
+
+seg_reg:WordReg={
+    
+    "es" => WordReg::ES,
+    
+    "ds" => WordReg::DS,
+    
+    "ss" => WordReg::SS,
+    
+    "cs" => WordReg::CS,
+    
+}
+
+unary_data_transfer:() ={
+    
+    "lahf" => {
+        let t = vm.arch.flag as u8;
+        set_byte_reg(vm,ByteReg::AH,t);
+    },
+    
+    "sahf" => {
+        let t = get_byte_reg(vm,ByteReg::AH);
+        vm.arch.flag = (vm.arch.flag & 0xFF00) | t as u16;
+    },
+    
+    "pushf" => {
+        vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
+        let (hb,lb) = separate_bytes(vm.arch.flag as i16);
+        let ss = vm.arch.ss as usize*0x10;
+        let sp = vm.arch.sp as usize;
+        let base = Address::calculate_from_offset(ss,sp);
+        vm.mem[base] = lb;
+        vm.mem[inc_addr(base,1)] = hb;
+    },
+    "popf" => {
+        let ss = vm.arch.ss as usize*0x10;
+        let sp = vm.arch.sp as usize;
+        let base = Address::calculate_from_offset(ss,sp);
+        let val = vm.mem[base] as u16 | (vm.mem[inc_addr(base,1)] as u16) << 8;
+        vm.arch.flag = val;
+        vm.arch.sp = (vm.arch.sp as u32 + 2) as u16;
+    },
+    
+    "xlat" => {
+        let base = Address::calculate_from_offset(vm.arch.ds,vm.arch.bx);
+        let al = get_byte_reg(vm,ByteReg::AL);
+        let val = vm.mem[inc_addr(base,al as usize)];
+        set_byte_reg(vm,ByteReg::AL,val);
+    },
+}
+
+
+xchg:() = {
+    // reg, reg
+    <start:@L> "xchg" <r1:byte_reg> "," <r2:byte_reg>  => {
+        let new_r1 = get_byte_reg(vm,r2);
+        let new_r2 = get_byte_reg(vm,r1);
+        set_byte_reg(vm,r1,new_r1);
+        set_byte_reg(vm,r2,new_r2);
+    },
+    <start:@L> "xchg" <r1:word_reg> "," <r2:word_reg>  => {
+        let new_r1 = get_word_reg_val(vm,r2);
+        let new_r2 = get_word_reg_val(vm,r1);
+        set_word_reg_val(vm,r1,new_r1);
+        set_word_reg_val(vm,r2,new_r2);
+    },
+    // mem, reg
+    <start:@L> "xchg" "byte" <m:memory_addr> "," <r:byte_reg>  => {
+        let new_reg = vm.mem[m];
+        let new_mem = get_byte_reg(vm,r);
+        set_byte_reg(vm,r,new_reg);
+        vm.mem[m] = new_mem;
+        
+    },
+    <start:@L> "xchg" "word" <m:memory_addr> "," <r:word_reg>  => {
+        let new_reg = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
+        let new_mem = get_word_reg_val(vm,r);
+        set_word_reg_val(vm,r,new_reg);
+        vm.mem[m] = new_mem as u8;
+        vm.mem[inc_addr(m,1)] = ((new_mem & 0xFF) >> 8) as u8;
+    },
+    <start:@L> "xchg" <m:byte_label> "," <r:byte_reg>  => {
+        let new_reg = vm.mem[m];
+        let new_mem = get_byte_reg(vm,r);
+        set_byte_reg(vm,r,new_reg);
+        vm.mem[m] = new_mem;
+    },
+    <start:@L> "xchg" <m:word_label> "," <r:word_reg>  => {
+        let new_reg = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
+        let new_mem = get_word_reg_val(vm,r);
+        set_word_reg_val(vm,r,new_reg);
+        vm.mem[m] = new_mem as u8;
+        vm.mem[inc_addr(m,1)] = ((new_mem & 0xFF) >> 8) as u8;
+    },
+    
+}
+
+pop:() ={
+    // reg, seg-reg
+    <start:@L> "pop" <r:pop_reg> => {
+        let ss = vm.arch.ss as usize*0x10;
+        let sp = vm.arch.sp as usize;
+        let base = Address::calculate_from_offset(ss,sp);
+        let val = vm.mem[base] as u16 | (vm.mem[inc_addr(base,1)] as u16) << 8;
+        set_word_reg_val(vm,r,val);
+        vm.arch.sp = (vm.arch.sp as u32 + 2) as u16;
+    },
+    // mem
+    <start:@L> "pop" <m:memory_addr> => {
+        let ss = vm.arch.ss as usize*0x10;
+        let sp = vm.arch.sp as usize;
+        let base = Address::calculate_from_offset(ss,sp);
+        vm.mem[m] = vm.mem[base];
+        vm.mem[inc_addr(m,1)] = vm.mem[inc_addr(base,1)];
+        vm.arch.sp = (vm.arch.sp as u32 + 2) as u16;
+    },
+    <start:@L> "pop" <m:word_label> => {
+        let ss = vm.arch.ss as usize*0x10;
+        let sp = vm.arch.sp as usize;
+        let base = Address::calculate_from_offset(ss,sp);
+        vm.mem[m] = vm.mem[base];
+        vm.mem[inc_addr(m,1)] = vm.mem[inc_addr(base,1)];
+        vm.arch.sp = (vm.arch.sp as u32 + 2) as u16;
+    },
+}
+
+push:() = {
+    // reg, seg-reg
+    // registers for push is registers of pop + cs
+    <start:@L> "push" <r:pop_reg> => {
+        vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
+        let (hb,lb) = separate_bytes(get_word_reg_val(vm,r) as i16);
+        let ss = vm.arch.ss as usize*0x10;
+        let sp = vm.arch.sp as usize;
+        let base = Address::calculate_from_offset(ss,sp);
+        vm.mem[base] = lb;
+        vm.mem[inc_addr(base,1)] = hb;
+
+    },
+    <start:@L> "push" "cs" => {
+        vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
+        let (hb,lb) = separate_bytes(vm.arch.cs as i16);
+        let ss = vm.arch.ss as usize*0x10;
+        let sp = vm.arch.sp as usize;
+        let base = Address::calculate_from_offset(ss,sp);
+        vm.mem[base] = lb;
+        vm.mem[inc_addr(base,1)] = hb;
+    },
+    // mem
+    <start:@L> "push" <m:memory_addr> => {
+        vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
+        let ss = vm.arch.ss as usize*0x10;
+        let sp = vm.arch.sp as usize;
+        let base = Address::calculate_from_offset(ss,sp);
+        vm.mem[base] = vm.mem[m];
+        vm.mem[inc_addr(base,1)] = vm.mem[inc_addr(m,1)];
+    },
+    <start:@L> "push" <m:word_label> => {
+        vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
+        let ss = vm.arch.ss as usize*0x10;
+        let sp = vm.arch.sp as usize;
+        let base = Address::calculate_from_offset(ss,sp);
+        vm.mem[base] = vm.mem[m];
+        vm.mem[inc_addr(base,1)] = vm.mem[inc_addr(m,1)];
+    },
+
+}
+
+pop_reg:WordReg ={
+    word_reg,
+    "es" => WordReg::ES,
+    "ds" => WordReg::DS,
+    "ss" => WordReg::SS,
+}
+
+lea:() = {
+    <start:@L> "lea" <r:word_reg> "," "word" <m:memory_addr> =>{
+        let offset = (m - vm.arch.ds as usize * 0x10) as u16;
+        set_word_reg_val(vm,r,offset);
+    },
+    <start:@L> "lea" <r:word_reg> "," <m:word_label> =>{
+        let offset = (m - vm.arch.ds as usize * 0x10) as u16;
+        set_word_reg_val(vm,r,offset);
+    }
+}
+
+
 
 // ----------------------------------
 // Arithmetic Instructions
@@ -59,7 +362,7 @@ binary_arithmetic:() = {
         set_word_reg_val(vm,r,res);
     },
     <start:@L> <f:byte_binary_arithmetic> <r:byte_reg> "," <m:byte_label> =>{
-         let dest = get_byte_reg(vm,r);
+        let dest = get_byte_reg(vm,r);
         let src = vm.mem[m];
         let res = f(vm,dest,src);
         set_byte_reg(vm,r,res);
@@ -933,6 +1236,11 @@ word_reg:WordReg = {
     "cx" => WordReg::CX,
     
     "dx" => WordReg::DX,
+
+    "sp" => WordReg::SP,
+    "bp" => WordReg::BP,
+    "si" => WordReg::SI,
+    "di" => WordReg::DI,
 }
 
 
