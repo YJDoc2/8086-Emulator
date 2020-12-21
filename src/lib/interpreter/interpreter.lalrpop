@@ -5,7 +5,7 @@ use crate::util::flag_util::*;
 use crate::util::data_util::*;
 use crate::util::address::*;
 use crate::arch::{FLAG_CARRY,FLAG_ZERO};
-use crate::vm::VM;
+use crate::vm::{VM,MB};
 use crate::error;
 use lalrpop_util::ParseError;
 
@@ -20,6 +20,27 @@ pub Interpreter:State = {
     arithmetic,
     string,
     data_transfer => State::NEXT,
+    print_stmt => State::PRINT,
+}
+
+
+// print 
+print_stmt:() = {
+    "print" "flags",
+    "print" "reg",
+    "print" "mem" raw_addr "->" raw_addr,
+    "print" "mem" raw_addr ":" raw_addr,
+    "print" "mem"  ":" raw_addr,
+}
+
+raw_addr: u32 = {
+    // Decimal
+    <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
+        match u32::from_str_radix(n,10){
+            Ok(v) => Ok(v%MB),
+            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between 0-1048576".to_owned())
+        }
+    },
 }
 
 // ----------------------------------

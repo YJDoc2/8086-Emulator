@@ -63,6 +63,7 @@ fn test_not() {
     assert_eq!(vm.mem[base + 1], 255);
     assert_eq!(vm.mem[base + 2], 0);
 
+    vm.arch.ss = 0x50; // by default ss = ds = 0, so we change ss to verify that ds does not change
     let stack_base = vm.arch.ss as usize * 0x10;
     vm.mem[stack_base] = 0;
     vm.mem[stack_base + 1] = 255;

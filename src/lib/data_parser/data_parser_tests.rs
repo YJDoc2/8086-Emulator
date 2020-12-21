@@ -46,8 +46,8 @@ fn test_db_string() {
     // -2 is done for starting address to check if by any chance the " is not stored
     // even though it should work same without -2, as ctr is zero
     assert_eq!(
-        &vm.mem[vm.arch.ds as usize * 0x10 - 2..vm.arch.ds as usize * 0x10 + 6],
-        &[0, 0, 65, 66, 67, 68, 0, 0]
+        &vm.mem[vm.arch.ds as usize * 0x10..vm.arch.ds as usize * 0x10 + 6],
+        &[65, 66, 67, 68, 0, 0]
     );
 }
 
@@ -98,8 +98,8 @@ fn test_dw_string() {
     // -2 is done for starting address to check if by any chance the " is not stored
     // even though it should work same without -2, as ctr is zero
     assert_eq!(
-        &vm.mem[vm.arch.ds as usize * 0x10 - 2..vm.arch.ds as usize * 0x10 + 12],
-        &[0, 0, 0, 65, 0, 66, 0, 67, 0, 68, 0, 0, 0, 0]
+        &vm.mem[vm.arch.ds as usize * 0x10..vm.arch.ds as usize * 0x10 + 12],
+        &[0, 65, 0, 66, 0, 67, 0, 68, 0, 0, 0, 0]
     );
 }
 
