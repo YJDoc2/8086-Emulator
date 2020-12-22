@@ -47,7 +47,7 @@ raw_addr: u32 = {
 // Data Transfer Instructions
 
 data_transfer:() = {
-    unary_data_transfer,
+    singleton_data_transfer,
     xchg,
     pop,
     push,
@@ -171,7 +171,7 @@ seg_reg:WordReg={
     
 }
 
-unary_data_transfer:() ={
+singleton_data_transfer:() ={
     
     "lahf" => {
         let t = vm.arch.flag as u8;
@@ -245,12 +245,12 @@ xchg:() = {
         set_byte_reg(vm,r,new_reg);
         vm.mem[m] = new_mem;
     },
-    <start:@L> "xchg" <m:word_label> "," <r:word_reg>  => {
+    <start:@L> "xchg" <m:word_label> ","  <r:word_reg>=> {
         let new_reg = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
         let new_mem = get_word_reg_val(vm,r);
         set_word_reg_val(vm,r,new_reg);
         vm.mem[m] = new_mem as u8;
-        vm.mem[inc_addr(m,1)] = ((new_mem & 0xFF) >> 8) as u8;
+        vm.mem[inc_addr(m,1)] = ((new_mem & 0xFF00) >> 8) as u8;
     },
     
 }
@@ -335,11 +335,11 @@ pop_reg:WordReg ={
 
 lea:() = {
     <start:@L> "lea" <r:word_reg> "," "word" <m:memory_addr> =>{
-        let offset = (m - vm.arch.ds as usize * 0x10) as u16;
+        let offset = (m as isize - vm.arch.ds as isize * 0x10) as usize as u16;
         set_word_reg_val(vm,r,offset);
     },
     <start:@L> "lea" <r:word_reg> "," <m:word_label> =>{
-        let offset = (m - vm.arch.ds as usize * 0x10) as u16;
+        let offset = (m as isize- vm.arch.ds as isize * 0x10) as usize as u16;
         set_word_reg_val(vm,r,offset);
     }
 }

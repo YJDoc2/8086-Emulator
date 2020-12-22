@@ -326,7 +326,7 @@ opcodes:()={
 // Data Transfer Instructions
 
 data_transfer:() = {
-    unary_data_transfer,
+    singleton_data_transfer,
     xchg,
     op_in,
     op_out,
@@ -465,14 +465,14 @@ quote_mov:() ={
     "mov",
 }
 
-unary_data_transfer:() = {
-    <start:@L> <q:quote_unary_transfer> => {
+singleton_data_transfer:() = {
+    <start:@L> <q:quote_singleton_transfer> => {
         out.code.push(q);
         context.mapper.add_entry(start);
     },
 }
 
-quote_unary_transfer:String ={
+quote_singleton_transfer:String ={
     "LAHF" => "lahf".to_owned(),
     "lahf" => "lahf".to_owned(),
     "SAHF" => "sahf".to_owned(),
@@ -496,11 +496,21 @@ xchg:() = {
         context.mapper.add_entry(start);
     },
     // mem, reg
+    // as the operands could be in any order, this accepts both reg,mem and mem,reg 
+    // but converts it to single format mem, reg
     <start:@L> <q:quote_xchg> quote_byte_length <m:memory_addr> "," <r:gen_byte_reg>  => {
         out.code.push(format!("xchg byte {} ,{}",m,r));
         context.mapper.add_entry(start);
     },
-    <start:@L> <q:quote_xchg> quote_word_length <m:memory_addr> "," <r:gen_word_reg>  => {
+    <start:@L> <q:quote_xchg> <r:gen_byte_reg> "," quote_byte_length <m:memory_addr>  => {
+        out.code.push(format!("xchg byte {} ,{}",m,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_xchg> <r:gen_word_reg> "," quote_word_length <m:memory_addr> => {
+        out.code.push(format!("xchg word {} ,{}",m,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_xchg> quote_word_length <m:memory_addr> "," <r:gen_word_reg>=> {
         out.code.push(format!("xchg word {} ,{}",m,r));
         context.mapper.add_entry(start);
     },
@@ -508,7 +518,15 @@ xchg:() = {
         out.code.push(format!("xchg byte {} ,{}",l,r));
         context.mapper.add_entry(start);
     },
+    <start:@L> <q:quote_xchg> <r:gen_byte_reg> ","  <l:byte_label>  => {
+        out.code.push(format!("xchg byte {} ,{}",l,r));
+        context.mapper.add_entry(start);
+    },
     <start:@L> <q:quote_xchg> <l:word_label> "," <r:gen_word_reg>  => {
+        out.code.push(format!("xchg word {} ,{}",l,r));
+        context.mapper.add_entry(start);
+    },
+    <start:@L> <q:quote_xchg> <r:gen_word_reg> "," <l:word_label> => {
         out.code.push(format!("xchg word {} ,{}",l,r));
         context.mapper.add_entry(start);
     },
@@ -589,7 +607,6 @@ push:() = {
 
 pop_reg:String ={
     gen_word_reg,
-    index_reg,
     "ES" => "es".to_owned(),
     "es" => "es".to_owned(),
     "DS" => "ds".to_owned(),
@@ -1537,7 +1554,7 @@ gen_word_reg:String = {
     
     "AX" => "ax".to_owned(),
     "ax" => "ax".to_owned(),
-    base_index_reg
+    base_index_reg,
     "sp" => "sp".to_owned(),
     "SP" => "sp".to_owned(),
     "CX" => "cx".to_owned(),
@@ -1548,7 +1565,7 @@ gen_word_reg:String = {
 
 base_index_reg:String = {
     base_reg,
-    index_reg
+    index_reg,
 }
 
 base_reg:String = {

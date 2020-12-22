@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 2d9ea3948cc4eabdee52ba395cc83524fdcc991b7354c45b149b5349ed43c3
+// sha256: 736417136161a77b47ab4b2a8bca2b1c1fbc2ac0b328f1412c68d7a18a9354c2
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
 use crate::instructions::{bit_manipulation::*,string::*,arithmetic::*};
@@ -631,7 +631,7 @@ mod __parse__Interpreter {
         // State 286
         -100, 0, 0, 0, -100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 287
-        0, 0, 0, 0, -229, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, -234, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 288
         0, 80, 81, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 289
@@ -1004,15 +1004,15 @@ mod __parse__Interpreter {
         // State 88
         -5,
         // State 89
-        -224,
+        -229,
         // State 90
         -3,
         // State 91
         -8,
         // State 92
-        -227,
+        -232,
         // State 93
-        -226,
+        -231,
         // State 94
         -98,
         // State 95
@@ -1026,21 +1026,21 @@ mod __parse__Interpreter {
         // State 99
         -97,
         // State 100
-        -225,
+        -230,
         // State 101
         -52,
         // State 102
         -13,
         // State 103
-        -7,
-        // State 104
-        -210,
-        // State 105
-        -4,
-        // State 106
-        -12,
-        // State 107
         -94,
+        // State 104
+        -7,
+        // State 105
+        -215,
+        // State 106
+        -4,
+        // State 107
+        -12,
         // State 108
         -95,
         // State 109
@@ -1130,7 +1130,7 @@ mod __parse__Interpreter {
         // State 151
         0,
         // State 152
-        -236,
+        -210,
         // State 153
         0,
         // State 154
@@ -1148,11 +1148,11 @@ mod __parse__Interpreter {
         // State 160
         0,
         // State 161
-        -239,
+        -213,
         // State 162
         0,
         // State 163
-        -238,
+        -212,
         // State 164
         0,
         // State 165
@@ -1164,7 +1164,7 @@ mod __parse__Interpreter {
         // State 168
         0,
         // State 169
-        -237,
+        -211,
         // State 170
         0,
         // State 171
@@ -1188,7 +1188,7 @@ mod __parse__Interpreter {
         // State 180
         0,
         // State 181
-        -240,
+        -214,
         // State 182
         0,
         // State 183
@@ -1222,9 +1222,9 @@ mod __parse__Interpreter {
         // State 197
         0,
         // State 198
-        -234,
+        -239,
         // State 199
-        -230,
+        -235,
         // State 200
         -126,
         // State 201
@@ -1258,25 +1258,25 @@ mod __parse__Interpreter {
         // State 215
         0,
         // State 216
-        -235,
+        -240,
         // State 217
-        -231,
+        -236,
         // State 218
         -85,
         // State 219
-        -220,
+        -225,
         // State 220
-        -221,
+        -226,
         // State 221
         -102,
         // State 222
-        -228,
+        -233,
         // State 223
         0,
         // State 224
-        -216,
+        -221,
         // State 225
-        -217,
+        -222,
         // State 226
         0,
         // State 227
@@ -1296,9 +1296,9 @@ mod __parse__Interpreter {
         // State 234
         -188,
         // State 235
-        -214,
+        -219,
         // State 236
-        -215,
+        -220,
         // State 237
         -161,
         // State 238
@@ -1334,19 +1334,19 @@ mod __parse__Interpreter {
         // State 253
         -176,
         // State 254
-        -211,
+        -216,
         // State 255
-        -213,
-        // State 256
-        -212,
-        // State 257
-        -222,
-        // State 258
-        -223,
-        // State 259
         -218,
+        // State 256
+        -217,
+        // State 257
+        -227,
+        // State 258
+        -228,
+        // State 259
+        -223,
         // State 260
-        -219,
+        -224,
         // State 261
         0,
         // State 262
@@ -1364,7 +1364,7 @@ mod __parse__Interpreter {
         // State 268
         0,
         // State 269
-        -232,
+        -237,
         // State 270
         0,
         // State 271
@@ -1374,7 +1374,7 @@ mod __parse__Interpreter {
         // State 273
         0,
         // State 274
-        -233,
+        -238,
         // State 275
         0,
         // State 276
@@ -1400,7 +1400,7 @@ mod __parse__Interpreter {
         // State 286
         0,
         // State 287
-        -229,
+        -234,
         // State 288
         0,
         // State 289
@@ -1732,14 +1732,15 @@ mod __parse__Interpreter {
             38 => 101,
             39 => 102,
             40 => 103,
-            41 => match state {
+            41 => 104,
+            42 => match state {
                 17 => 254,
                 18 => 255,
                 19 => 256,
-                _ => 104,
+                _ => 105,
             },
-            42 => 105,
-            43 => match state {
+            43 => 106,
+            44 => match state {
                 40 => 300,
                 41 => 303,
                 42 => 305,
@@ -1751,7 +1752,7 @@ mod __parse__Interpreter {
                 70 => 361,
                 _ => 221,
             },
-            44 => match state {
+            45 => match state {
                 33 => 282,
                 38..=39 | 51..=52 | 62 | 75 => 294,
                 46 => 315,
@@ -1759,7 +1760,6 @@ mod __parse__Interpreter {
                 69 => 358,
                 _ => 309,
             },
-            45 => 106,
             46 => 107,
             47 => 6,
             48 => 7,
@@ -3011,28 +3011,10 @@ mod __parse__Interpreter {
                 __reduce226(current, vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             227 => {
-                // u_byte_num = r#"[0-9]+"# => ActionFn(384);
-                let __sym0 = __pop_Variant0(__symbols);
-                let __start = __sym0.0.clone();
-                let __end = __sym0.2.clone();
-                let __nt = match super::__action384::<>(current, vm, context, input, __sym0) {
-                    Ok(v) => v,
-                    Err(e) => return Some(Err(e)),
-                };
-                __symbols.push((__start, __Symbol::Variant13(__nt), __end));
-                (1, 43)
+                __reduce227(current, vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             228 => {
-                // u_word_num = r#"[0-9]+"# => ActionFn(385);
-                let __sym0 = __pop_Variant0(__symbols);
-                let __start = __sym0.0.clone();
-                let __end = __sym0.2.clone();
-                let __nt = match super::__action385::<>(current, vm, context, input, __sym0) {
-                    Ok(v) => v,
-                    Err(e) => return Some(Err(e)),
-                };
-                __symbols.push((__start, __Symbol::Variant14(__nt), __end));
-                (1, 44)
+                __reduce228(current, vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             229 => {
                 __reduce229(current, vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
@@ -3044,10 +3026,28 @@ mod __parse__Interpreter {
                 __reduce231(current, vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
             }
             232 => {
-                __reduce232(current, vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                // u_byte_num = r#"[0-9]+"# => ActionFn(384);
+                let __sym0 = __pop_Variant0(__symbols);
+                let __start = __sym0.0.clone();
+                let __end = __sym0.2.clone();
+                let __nt = match super::__action384::<>(current, vm, context, input, __sym0) {
+                    Ok(v) => v,
+                    Err(e) => return Some(Err(e)),
+                };
+                __symbols.push((__start, __Symbol::Variant13(__nt), __end));
+                (1, 44)
             }
             233 => {
-                __reduce233(current, vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                // u_word_num = r#"[0-9]+"# => ActionFn(385);
+                let __sym0 = __pop_Variant0(__symbols);
+                let __start = __sym0.0.clone();
+                let __end = __sym0.2.clone();
+                let __nt = match super::__action385::<>(current, vm, context, input, __sym0) {
+                    Ok(v) => v,
+                    Err(e) => return Some(Err(e)),
+                };
+                __symbols.push((__start, __Symbol::Variant14(__nt), __end));
+                (1, 45)
             }
             234 => {
                 __reduce234(current, vm, context, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
@@ -5433,7 +5433,7 @@ mod __parse__Interpreter {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // data_transfer = unary_data_transfer => ActionFn(14);
+        // data_transfer = singleton_data_transfer => ActionFn(14);
         let __sym0 = __pop_Variant3(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
@@ -7969,15 +7969,120 @@ mod __parse__Interpreter {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
+        // singleton_data_transfer = "lahf" => ActionFn(46);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action46::<>(current, vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
+        (1, 40)
+    }
+    pub(crate) fn __reduce210<
+        'input,
+        's,
+    >(
+        current: usize,
+        vm: &mut VM,
+        context: &'s mut Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // singleton_data_transfer = "sahf" => ActionFn(47);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action47::<>(current, vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
+        (1, 40)
+    }
+    pub(crate) fn __reduce211<
+        'input,
+        's,
+    >(
+        current: usize,
+        vm: &mut VM,
+        context: &'s mut Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // singleton_data_transfer = "pushf" => ActionFn(48);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action48::<>(current, vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
+        (1, 40)
+    }
+    pub(crate) fn __reduce212<
+        'input,
+        's,
+    >(
+        current: usize,
+        vm: &mut VM,
+        context: &'s mut Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // singleton_data_transfer = "popf" => ActionFn(49);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action49::<>(current, vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
+        (1, 40)
+    }
+    pub(crate) fn __reduce213<
+        'input,
+        's,
+    >(
+        current: usize,
+        vm: &mut VM,
+        context: &'s mut Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
+        // singleton_data_transfer = "xlat" => ActionFn(50);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action50::<>(current, vm, context, input, __sym0);
+        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
+        (1, 40)
+    }
+    pub(crate) fn __reduce214<
+        'input,
+        's,
+    >(
+        current: usize,
+        vm: &mut VM,
+        context: &'s mut Context,
+        input: &'input str,
+        __lookahead_start: Option<&usize>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+    ) -> (usize, usize)
+    {
         // string = string_instructions => ActionFn(127);
         let __sym0 = __pop_Variant3(__symbols);
         let __start = __sym0.0.clone();
         let __end = __sym0.2.clone();
         let __nt = super::__action127::<>(current, vm, context, input, __sym0);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (1, 40)
+        (1, 41)
     }
-    pub(crate) fn __reduce210<
+    pub(crate) fn __reduce215<
         'input,
         's,
     >(
@@ -7998,9 +8103,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action128::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (2, 40)
+        (2, 41)
     }
-    pub(crate) fn __reduce211<
+    pub(crate) fn __reduce216<
         'input,
         's,
     >(
@@ -8021,9 +8126,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action129::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (2, 40)
+        (2, 41)
     }
-    pub(crate) fn __reduce212<
+    pub(crate) fn __reduce217<
         'input,
         's,
     >(
@@ -8044,9 +8149,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action130::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (2, 40)
+        (2, 41)
     }
-    pub(crate) fn __reduce213<
+    pub(crate) fn __reduce218<
         'input,
         's,
     >(
@@ -8067,9 +8172,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action131::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce214<
+    pub(crate) fn __reduce219<
         'input,
         's,
     >(
@@ -8090,9 +8195,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action132::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce215<
+    pub(crate) fn __reduce220<
         'input,
         's,
     >(
@@ -8113,9 +8218,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action133::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce216<
+    pub(crate) fn __reduce221<
         'input,
         's,
     >(
@@ -8136,9 +8241,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action134::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce217<
+    pub(crate) fn __reduce222<
         'input,
         's,
     >(
@@ -8159,9 +8264,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action135::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce218<
+    pub(crate) fn __reduce223<
         'input,
         's,
     >(
@@ -8182,9 +8287,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action136::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce219<
+    pub(crate) fn __reduce224<
         'input,
         's,
     >(
@@ -8205,9 +8310,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action137::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce220<
+    pub(crate) fn __reduce225<
         'input,
         's,
     >(
@@ -8228,9 +8333,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action138::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce221<
+    pub(crate) fn __reduce226<
         'input,
         's,
     >(
@@ -8251,9 +8356,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action139::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce222<
+    pub(crate) fn __reduce227<
         'input,
         's,
     >(
@@ -8274,9 +8379,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action140::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (2, 41)
+        (2, 42)
     }
-    pub(crate) fn __reduce223<
+    pub(crate) fn __reduce228<
         'input,
         's,
     >(
@@ -8295,9 +8400,9 @@ mod __parse__Interpreter {
         let __end = __sym0.2.clone();
         let __nt = super::__action200::<>(current, vm, context, input, __sym0);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (1, 42)
+        (1, 43)
     }
-    pub(crate) fn __reduce224<
+    pub(crate) fn __reduce229<
         'input,
         's,
     >(
@@ -8316,9 +8421,9 @@ mod __parse__Interpreter {
         let __end = __sym0.2.clone();
         let __nt = super::__action201::<>(current, vm, context, input, __sym0);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (1, 42)
+        (1, 43)
     }
-    pub(crate) fn __reduce225<
+    pub(crate) fn __reduce230<
         'input,
         's,
     >(
@@ -8337,9 +8442,9 @@ mod __parse__Interpreter {
         let __end = __sym0.2.clone();
         let __nt = super::__action202::<>(current, vm, context, input, __sym0);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (1, 42)
+        (1, 43)
     }
-    pub(crate) fn __reduce226<
+    pub(crate) fn __reduce231<
         'input,
         's,
     >(
@@ -8358,9 +8463,9 @@ mod __parse__Interpreter {
         let __end = __sym0.2.clone();
         let __nt = super::__action203::<>(current, vm, context, input, __sym0);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (1, 42)
+        (1, 43)
     }
-    pub(crate) fn __reduce229<
+    pub(crate) fn __reduce234<
         'input,
         's,
     >(
@@ -8381,9 +8486,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action363::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (2, 45)
+        (2, 46)
     }
-    pub(crate) fn __reduce230<
+    pub(crate) fn __reduce235<
         'input,
         's,
     >(
@@ -8404,9 +8509,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action364::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (2, 45)
+        (2, 46)
     }
-    pub(crate) fn __reduce231<
+    pub(crate) fn __reduce236<
         'input,
         's,
     >(
@@ -8428,9 +8533,9 @@ mod __parse__Interpreter {
         let __end = __sym2.2.clone();
         let __nt = super::__action365::<>(current, vm, context, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (3, 45)
+        (3, 46)
     }
-    pub(crate) fn __reduce232<
+    pub(crate) fn __reduce237<
         'input,
         's,
     >(
@@ -8452,9 +8557,9 @@ mod __parse__Interpreter {
         let __end = __sym2.2.clone();
         let __nt = super::__action366::<>(current, vm, context, input, __sym0, __sym1, __sym2);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (3, 45)
+        (3, 46)
     }
-    pub(crate) fn __reduce233<
+    pub(crate) fn __reduce238<
         'input,
         's,
     >(
@@ -8475,9 +8580,9 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action367::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (2, 45)
+        (2, 46)
     }
-    pub(crate) fn __reduce234<
+    pub(crate) fn __reduce239<
         'input,
         's,
     >(
@@ -8498,112 +8603,7 @@ mod __parse__Interpreter {
         let __end = __sym1.2.clone();
         let __nt = super::__action368::<>(current, vm, context, input, __sym0, __sym1);
         __symbols.push((__start, __Symbol::Variant2(__nt), __end));
-        (2, 45)
-    }
-    pub(crate) fn __reduce235<
-        'input,
-        's,
-    >(
-        current: usize,
-        vm: &mut VM,
-        context: &'s mut Context,
-        input: &'input str,
-        __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
-    ) -> (usize, usize)
-    {
-        // unary_data_transfer = "lahf" => ActionFn(46);
-        let __sym0 = __pop_Variant0(__symbols);
-        let __start = __sym0.0.clone();
-        let __end = __sym0.2.clone();
-        let __nt = super::__action46::<>(current, vm, context, input, __sym0);
-        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (1, 46)
-    }
-    pub(crate) fn __reduce236<
-        'input,
-        's,
-    >(
-        current: usize,
-        vm: &mut VM,
-        context: &'s mut Context,
-        input: &'input str,
-        __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
-    ) -> (usize, usize)
-    {
-        // unary_data_transfer = "sahf" => ActionFn(47);
-        let __sym0 = __pop_Variant0(__symbols);
-        let __start = __sym0.0.clone();
-        let __end = __sym0.2.clone();
-        let __nt = super::__action47::<>(current, vm, context, input, __sym0);
-        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (1, 46)
-    }
-    pub(crate) fn __reduce237<
-        'input,
-        's,
-    >(
-        current: usize,
-        vm: &mut VM,
-        context: &'s mut Context,
-        input: &'input str,
-        __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
-    ) -> (usize, usize)
-    {
-        // unary_data_transfer = "pushf" => ActionFn(48);
-        let __sym0 = __pop_Variant0(__symbols);
-        let __start = __sym0.0.clone();
-        let __end = __sym0.2.clone();
-        let __nt = super::__action48::<>(current, vm, context, input, __sym0);
-        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (1, 46)
-    }
-    pub(crate) fn __reduce238<
-        'input,
-        's,
-    >(
-        current: usize,
-        vm: &mut VM,
-        context: &'s mut Context,
-        input: &'input str,
-        __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
-    ) -> (usize, usize)
-    {
-        // unary_data_transfer = "popf" => ActionFn(49);
-        let __sym0 = __pop_Variant0(__symbols);
-        let __start = __sym0.0.clone();
-        let __end = __sym0.2.clone();
-        let __nt = super::__action49::<>(current, vm, context, input, __sym0);
-        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (1, 46)
-    }
-    pub(crate) fn __reduce239<
-        'input,
-        's,
-    >(
-        current: usize,
-        vm: &mut VM,
-        context: &'s mut Context,
-        input: &'input str,
-        __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
-    ) -> (usize, usize)
-    {
-        // unary_data_transfer = "xlat" => ActionFn(50);
-        let __sym0 = __pop_Variant0(__symbols);
-        let __start = __sym0.0.clone();
-        let __end = __sym0.2.clone();
-        let __nt = super::__action50::<>(current, vm, context, input, __sym0);
-        __symbols.push((__start, __Symbol::Variant3(__nt), __end));
-        (1, 46)
+        (2, 46)
     }
     pub(crate) fn __reduce240<
         'input,
@@ -10666,7 +10666,7 @@ fn __action56<
         let new_mem = get_word_reg_val(vm,r);
         set_word_reg_val(vm,r,new_reg);
         vm.mem[m] = new_mem as u8;
-        vm.mem[inc_addr(m,1)] = ((new_mem & 0xFF) >> 8) as u8;
+        vm.mem[inc_addr(m,1)] = ((new_mem & 0xFF00) >> 8) as u8;
     }
 }
 
@@ -10919,7 +10919,7 @@ fn __action68<
 ) -> ()
 {
     {
-        let offset = (m - vm.arch.ds as usize * 0x10) as u16;
+        let offset = (m as isize - vm.arch.ds as isize * 0x10) as usize as u16;
         set_word_reg_val(vm,r,offset);
     }
 }
@@ -10941,7 +10941,7 @@ fn __action69<
 ) -> ()
 {
     {
-        let offset = (m - vm.arch.ds as usize * 0x10) as u16;
+        let offset = (m as isize- vm.arch.ds as isize * 0x10) as usize as u16;
         set_word_reg_val(vm,r,offset);
     }
 }

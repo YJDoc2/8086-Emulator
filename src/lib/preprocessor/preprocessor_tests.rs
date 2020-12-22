@@ -268,7 +268,7 @@ fn test_data_transfer_xchg_in_out() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-    let o = p.parse(&mut ctx, &mut out, "l:DW 5 xchg AL,CL xchg word l, DX");
+    let o = p.parse(&mut ctx, &mut out, "l:DW 5 xchg AL,CL xchg word l, si");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
     out.clear();
