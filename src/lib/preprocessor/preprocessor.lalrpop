@@ -27,11 +27,12 @@ Code:() = {
     opcodes,
     procedure,
     print_stmt,
-    Code label opcodes,
     Code code_directives,
     Code opcodes,
     Code procedure,
     Code print_stmt,
+    Code label,
+    
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -1179,7 +1180,7 @@ jmps_loops:() = {
         out.code.push(format!("{} {}",q,n));
         context.mapper.add_entry(start);
         if !context.label_map.contains_key(&n){
-            context.undefined_labels.insert(n);
+            context.undefined_labels.insert((start,n));
         }
         
     }

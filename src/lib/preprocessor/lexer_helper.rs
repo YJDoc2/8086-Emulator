@@ -4,8 +4,8 @@
 /// which can later be used to check the newline that occurred before given character
 #[derive(Default)]
 pub struct LexerHelper {
-    pub temp_line: u16,
-    newline_list: Vec<u16>,
+    pub temp_line: usize,
+    newline_list: Vec<usize>,
 }
 
 impl LexerHelper {
@@ -16,7 +16,7 @@ impl LexerHelper {
         let mut l = LexerHelper::default();
         for (i, c) in input.chars().enumerate() {
             if c == '\n' {
-                l.newline_list.push(i as u16);
+                l.newline_list.push(i);
             }
         }
         l
@@ -28,14 +28,34 @@ impl LexerHelper {
     /// i : u16 place before which the newline is to be checked
     /// Returns :
     /// (line number, newline char index) : (u16,u16)
-    pub fn get_newline_before(&self, i: u16) -> (u16, u16) {
+    pub fn get_newline_before(&self, i: usize) -> (usize, usize) {
         for (idx, v) in self.newline_list.iter().enumerate() {
             if *v > i {
-                return (idx as u16, *v);
+                return (idx, *v);
             }
         }
         let max = self.newline_list.len();
-        return (max as u16, self.newline_list[max - 1]);
+        return (max, self.newline_list[max - 1]);
+    }
+
+    pub fn get_line_bounds(&self, pos: usize, l: usize) -> (usize, usize) {
+        let mut t = 0;
+        let mut i = 0;
+        for (idx, v) in self.newline_list.iter().enumerate() {
+            if *v > pos {
+                t = *v;
+                i = idx;
+                break;
+            }
+        }
+        if t == 0 {
+            let max = self.newline_list.len();
+            return (self.newline_list[max - 1] + 1, l);
+        } else if i + 1 == self.newline_list.len() {
+            return (self.newline_list[i] + 1, l);
+        } else {
+            return (self.newline_list[i] + 1, self.newline_list[i + 1]);
+        }
     }
 }
 

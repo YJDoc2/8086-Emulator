@@ -1,23 +1,50 @@
-use emulator_8086_lib as lib;
-#[allow(unused_imports)]
-use lib::instructions::bit_manipulation::*;
-#[allow(unused_imports)]
-use lib::util::data_util::*;
-use lib::util::preprocessor_util::{Label, LabelType};
-pub fn main() {
-    let mut vm = lib::vm::VM::new();
-    let p = lib::interpreter::interpreter::InterpreterParser::new();
-    let mut context = lib::util::interpreter_util::Context::default();
-    context
-        .label_map
-        .insert("l1".to_owned(), Label::new(LabelType::DATA, 0, 0));
-    context
-        .label_map
-        .insert("l2".to_owned(), Label::new(LabelType::DATA, 0, 2));
+mod driver;
+use clap::{App, Arg};
+use driver::CMDDriver;
+use std::fs;
+use std::path::Path;
 
-    //let base = vm.arch.ss as usize * 0x10;
-    vm.arch.sp = 4;
-    vm.arch.ax = 0xF0F0;
-    let o = p.parse(1, &mut vm, &mut context, "push ax");
-    println!("{:?}", o);
+fn main() {
+    let matches = App::new("8086 Emulator")
+        .version("0.1.0")
+        .author("Yashodhan Joshi")
+        .about("A commandline 8086 emulator / VM / interpreter")
+        .arg(
+            Arg::with_name("file_path")
+                .takes_value(true)
+                .help("Input assembly file path"),
+        )
+        .arg(
+            Arg::with_name("interpreted")
+                .short("i")
+                .long("interpreted")
+                .takes_value(false)
+                .help("To run in interpreted mode"),
+        )
+        .get_matches();
+
+    let filepath = match matches.value_of("file_path") {
+        None => {
+            println!("Input File is necessary argument...\nExiting.");
+            std::process::exit(1);
+        }
+        Some(a) => a,
+    };
+    let interpreted = matches.is_present("interpreted");
+
+    if !Path::new(filepath).exists() {
+        println!("Given Input File does not exist...\nExiting");
+        std::process::exit(1);
+    }
+
+    let input = match fs::read_to_string(filepath) {
+        Ok(s) => s,
+        Err(e) => {
+            println!("Error Reading file : {}\nExiting", e);
+            std::process::exit(1);
+        }
+    };
+
+    let driver = CMDDriver::new(input, interpreted);
+    driver.run();
 }

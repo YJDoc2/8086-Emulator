@@ -138,7 +138,7 @@ pub struct Context {
     pub macro_map: HashMap<String, String>,
     pub mapper: SourceMapper,
     pub fn_map: HashMap<String, usize>,
-    pub undefined_labels: HashSet<String>,
+    pub undefined_labels: HashSet<(usize, String)>,
 }
 
 impl Context {

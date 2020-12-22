@@ -24,3 +24,5 @@ lalrpop = { version = "0.19.1", features = ["lexer"] }
 [dependencies]
 lalrpop-util = "0.19.1"
 regex = "1"
+clap = "2"
+
