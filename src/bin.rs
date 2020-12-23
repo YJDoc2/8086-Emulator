@@ -47,4 +47,5 @@ fn main() {
 
     let driver = CMDDriver::new(input, interpreted);
     driver.run();
+    println!();
 }

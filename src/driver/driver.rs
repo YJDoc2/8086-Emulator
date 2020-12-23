@@ -28,7 +28,7 @@ impl CMDDriver {
 
     pub fn run(&self) {
         // remove comments
-        let r = Regex::new(r";.*\n").unwrap();
+        let r = Regex::new(r";.*\n?").unwrap();
         let uncommented = r.replace_all(&self.input, "\n").to_string();
         // run the preprocessor
         let (lh, pctx, mut out) = match preprocess(&uncommented) {
@@ -114,7 +114,6 @@ impl CMDDriver {
         out.code.push("hlt".to_owned());
         let interpreter = Interpreter::new();
         let printer = PrintParser::new();
-
         loop {
             let tf = get_flag_state(vm.arch.flag, Flags::TRAP);
             if self.interpreted || tf {
