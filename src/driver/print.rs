@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 32d68369d1359638aa1b4ec5428361f43d4b7d7d8af71bda3f444f682d2d47c6
+// sha256: 835bfbf79129e774617127bf2841a6f186cc4172e36e8c3bed93dc93372934e
 use emulator_8086_lib as lib;
 use lib::vm::{VM,MB};
 use lib::{get_flag_state, Flags};

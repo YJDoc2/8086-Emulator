@@ -9,8 +9,7 @@ use crate::vm::{VM,MB};
 use crate::error;
 use lalrpop_util::ParseError;
 
-// TODO add print 
-
+ 
 grammar<'s>(current:usize,vm:&mut VM,context:&'s mut Context);
 
 pub Interpreter:State = {

@@ -3,7 +3,6 @@ use lib::vm::{VM,MB};
 use lib::{get_flag_state, Flags};
 use lalrpop_util::ParseError;
 
-// TODO add print 
 
 grammar<'s>(vm:& VM);
 

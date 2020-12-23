@@ -27,7 +27,7 @@ impl Address {
     }
 }
 
-// TODO Decide output format
+// We don't use this, but for contingency reasons
 impl std::fmt::Display for Address {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "[{}]", self)

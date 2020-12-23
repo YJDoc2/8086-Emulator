@@ -151,7 +151,7 @@ impl Context {
         self.undefined_labels.clear();
     }
 }
-// TODO add how both are used in the three stages
+
 /// This is used to store the output of preprocessor
 /// data stores data commands
 /// code stores code commands

@@ -2,6 +2,7 @@ use super::error_helper::get_err_pos;
 use super::interrupts::{int_13, int_21};
 use super::preprocess::preprocess;
 use super::print::PrintParser;
+use super::user_interface::user_interface;
 use emulator_8086_lib as lib;
 use lib::util::data_util::{get_byte_reg, ByteReg};
 use lib::InterpreterContext;
@@ -66,7 +67,7 @@ impl CMDDriver {
             }
         }
 
-        let mut idx = 0; // for iterating through code
+        let mut idx; // for iterating through code
 
         // check if the start is defined or not
         match lmap.get("start") {
@@ -115,6 +116,20 @@ impl CMDDriver {
         let printer = PrintParser::new();
 
         loop {
+            let tf = get_flag_state(vm.arch.flag, Flags::TRAP);
+            if self.interpreted || tf {
+                let pos = source_map.get(&idx).unwrap();
+                let (line, _, start, end) = get_err_pos(&lh, *pos);
+                println!(
+                    "About to execute line {} : {}",
+                    line,
+                    &uncommented[start..end]
+                );
+                if tf {
+                    println!("Trap flag is set");
+                }
+                user_interface(&vm);
+            }
             match interpreter.parse(idx, &mut vm, &mut ictx, &out.code[idx]) {
                 Err(e) => {
                     println!(
@@ -125,7 +140,6 @@ impl CMDDriver {
                 }
                 Ok(s) => match s {
                     State::HALT => {
-                        println!("res : {}", vm.arch.ax);
                         return;
                     }
                     State::PRINT => {
@@ -143,6 +157,7 @@ impl CMDDriver {
                         idx += 1;
                     }
                     State::JMP(next) => {
+                        // jump to next commnand
                         idx = next;
                     }
                     State::NEXT => {
@@ -166,7 +181,7 @@ impl CMDDriver {
                                 let pos = source_map.get(&idx).unwrap();
                                 let (line, _, _, _) = get_err_pos(&lh, *pos);
                                 println!("Int 3 at line {}", line);
-                                // TODO handle user input
+                                user_interface(&vm);
                             }
                             0x10 => {
                                 let ah = get_byte_reg(&vm, ByteReg::AH);
