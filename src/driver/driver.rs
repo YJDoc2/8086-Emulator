@@ -1,7 +1,9 @@
 use super::error_helper::get_err_pos;
+use super::interrupts::{int_13, int_21};
 use super::preprocess::preprocess;
 use super::print::PrintParser;
 use emulator_8086_lib as lib;
+use lib::util::data_util::{get_byte_reg, ByteReg};
 use lib::InterpreterContext;
 use lib::LabelType;
 use lib::PreprocessorContext;
@@ -127,8 +129,8 @@ impl CMDDriver {
                         return;
                     }
                     State::PRINT => {
-                        let line = source_map.get(&idx).unwrap();
-                        let (line, _, start, end) = get_err_pos(&lh, *line);
+                        let pos = source_map.get(&idx).unwrap();
+                        let (line, _, start, end) = get_err_pos(&lh, *pos);
                         println!("Output of line {} : {} :", line, &uncommented[start..end]);
                         match printer.parse(&vm, &out.code[idx]) {
                             Ok(_) => {}
@@ -147,7 +149,66 @@ impl CMDDriver {
                         // we can do this without check, as we have inserted a 'hlt' in the code at end
                         idx += 1;
                     }
-                    State::INT(int) => {}
+                    State::INT(int) => {
+                        match int {
+                            0 => {
+                                let pos = source_map.get(&idx).unwrap();
+                                let (line, _, start, end) = get_err_pos(&lh, *pos);
+                                println!(
+                                    "Attempt to divide by 0 : int 0 at {} : {}",
+                                    line,
+                                    &uncommented[start..end]
+                                );
+                                println!("Exiting");
+                                return;
+                            }
+                            0x3 => {
+                                let pos = source_map.get(&idx).unwrap();
+                                let (line, _, _, _) = get_err_pos(&lh, *pos);
+                                println!("Int 3 at line {}", line);
+                                // TODO handle user input
+                            }
+                            0x10 => {
+                                let ah = get_byte_reg(&vm, ByteReg::AH);
+                                if ah != 0xA && ah != 0x13 {
+                                    let pos = source_map.get(&idx).unwrap();
+                                    let (line, _, start, end) = get_err_pos(&lh, *pos);
+                                    println!(
+                                        "Error at line {} : {}, value of AH = {} is not supported for int 0x10",
+                                        line,
+                                        &uncommented[start..end],
+                                        ah
+                                    );
+                                    println!("Exiting");
+                                    return;
+                                }
+                                int_13(&vm, ah);
+                            }
+                            0x21 => {
+                                let ah = get_byte_reg(&vm, ByteReg::AH);
+                                if ah != 0x1 && ah != 0x2 && ah != 0xA {
+                                    let pos = source_map.get(&idx).unwrap();
+                                    let (line, _, start, end) = get_err_pos(&lh, *pos);
+                                    println!(
+                                        "Error at line {} : {}, value of AH = {} is not supported for int 0x10",
+                                        line,
+                                        &uncommented[start..end],
+                                        ah
+                                    );
+                                    println!("Exiting");
+                                    return;
+                                }
+                                int_21(&mut vm, ah);
+                            }
+                            _ => {
+                                println!("Internal Error : Should not have reached here in interrupt parser\nError : int {} not supported",int);
+                                return;
+                            }
+                        }
+
+                        // go to next command
+                        idx += 1;
+                    }
                     State::REPEAT => { /* Do nothing, as we have to repeat the same instruction*/ }
                 },
             }

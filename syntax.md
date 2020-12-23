@@ -79,7 +79,11 @@ lds and les are not supported, as they are used to load/store a 32 bit pointer, 
 <br/>
 <br/>
 Only int 3H,10H, and 21H are supported<br/>
-In 10H : value of AH allowed are : 0AH,13H<br/>
+Only byte string is supported to display and input<br/>
+In 10H : value of AH allowed are : 0AH,13H  
+0AH ignores BH & BL (page number and page attribute)
+13H ignores AL (write mode), BH & BL (page number and attributes), DH (row to print the string on), supports DL (column to print string on)
+<br/>
 IN 21H : value of AH allowed are : 1H,2H,0AH<br/>
 ALL OF THESE WILL BUFFER INPUT, depending on the interpreter driver<br/>
 <br/>
