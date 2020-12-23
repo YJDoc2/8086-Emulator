@@ -1,5 +1,6 @@
 use super::error_helper::get_err_pos;
 use super::preprocess::preprocess;
+use super::print::PrintParser;
 use emulator_8086_lib as lib;
 use lib::InterpreterContext;
 use lib::LabelType;
@@ -109,6 +110,8 @@ impl CMDDriver {
         // contingency, so we do not go over the end
         out.code.push("hlt".to_owned());
         let interpreter = Interpreter::new();
+        let printer = PrintParser::new();
+
         loop {
             match interpreter.parse(idx, &mut vm, &mut ictx, &out.code[idx]) {
                 Err(e) => {
@@ -123,7 +126,20 @@ impl CMDDriver {
                         println!("res : {}", vm.arch.ax);
                         return;
                     }
-                    State::PRINT => {}
+                    State::PRINT => {
+                        let line = source_map.get(&idx).unwrap();
+                        let (line, _, start, end) = get_err_pos(&lh, *line);
+                        println!("Output of line {} : {} :", line, &uncommented[start..end]);
+                        match printer.parse(&vm, &out.code[idx]) {
+                            Ok(_) => {}
+                            Err(e) => {
+                                println!("Internal Error : Should not have reached here in print parser\nError : {}",e);
+                                return;
+                            }
+                        }
+                        // go to next command
+                        idx += 1;
+                    }
                     State::JMP(next) => {
                         idx = next;
                     }

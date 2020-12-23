@@ -38,7 +38,7 @@ impl LexerHelper {
         return (max, self.newline_list[max - 1]);
     }
 
-    pub fn get_line_bounds(&self, pos: usize) -> (usize, usize) {
+    pub fn get_bounds(&self, pos: usize) -> (usize, usize) {
         let mut i = 0;
         for (idx, v) in self.newline_list.iter().enumerate() {
             if *v > pos {

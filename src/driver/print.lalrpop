@@ -1,0 +1,114 @@
+use emulator_8086_lib as lib;
+use lib::vm::{VM,MB};
+use lib::{get_flag_state, Flags};
+use lalrpop_util::ParseError;
+
+// TODO add print 
+
+grammar<'s>(vm:& VM);
+
+pub Print:() = {
+    "print" "flags" => {
+        let of = get_flag_state(vm.arch.flag, Flags::OVERFLOW) as u8;
+        let df = get_flag_state(vm.arch.flag, Flags::DIRECTION) as u8;
+        let iflag = get_flag_state(vm.arch.flag, Flags::INTERRUPT) as u8;
+        let tf = get_flag_state(vm.arch.flag, Flags::TRAP) as u8;
+        let sf = get_flag_state(vm.arch.flag, Flags::SIGN) as u8;
+        let zf = get_flag_state(vm.arch.flag, Flags::ZERO) as u8;
+        let af = get_flag_state(vm.arch.flag, Flags::AUX_CARRY) as u8;
+        let pf = get_flag_state(vm.arch.flag, Flags::PARITY) as u8;
+        let cf = get_flag_state(vm.arch.flag, Flags::CARRY) as u8;
+
+        println!(
+            "OF : {}\tDF : {}\tIF : {}\tTF : {}\tSF : {}\t ZF : {}\tAF : {}\tPF : {}\tCF : {}",
+            of, df, iflag, tf, sf, zf, af, pf, cf
+        );
+    },
+    "print" "reg" =>{
+        println!("AX : 0x{:04X}\t\tSP : 0x{:04X}",vm.arch.ax,vm.arch.sp);
+        println!("BX : 0x{:04X}\t\tBP : 0x{:04X}",vm.arch.bx,vm.arch.bp);
+        println!("CX : 0x{:04X}\t\tSI : 0x{:04X}",vm.arch.cx,vm.arch.si);
+        println!("DX : 0x{:04X}\t\tDI : 0x{:04X}",vm.arch.dx,vm.arch.di);
+        println!();
+        println!("CS : 0x{:04X}\t\tSS : 0x{:04X}",vm.arch.cs,vm.arch.ss);
+        println!("DS : 0x{:04X}\t\tES : 0x{:04X}",vm.arch.ds,vm.arch.es);
+    },
+    "print" "mem" <start:raw_addr> "->" <end:raw_addr> =>{
+        if start > end{
+            println!("Starting address is less than end address : {} > {}",start,end);
+            return;
+        }
+        let mut ctr = 0;
+        for i in start..=end{
+            print!("{:02X}\t",vm.mem[i]);
+            if (ctr+1)%8 ==0{
+                print!("\t");
+            }
+            if (ctr+1)%16 ==0{
+                println!();
+            }
+            ctr = (ctr+1)%16;
+        }
+        if ctr != 0 {
+            println!();
+        }
+    },
+    "print" "mem" <start:raw_addr> ":" <offset:raw_addr> =>? {
+        let end = start + offset;
+        if end >= MB as usize{
+            return Err(ParseError::UnrecognizedToken {
+                token: (start, Token(0, ""), end),expected: vec!["Internal Error : start + offset > 1048576".to_owned()]
+                })
+        }
+        let mut ctr = 0;
+        for i in start..=end{
+            print!("{:02X}\t",vm.mem[i]);
+            if (ctr+1)%8 ==0{
+                print!("\t");
+            }
+            if (ctr+1)%16 ==0{
+                println!();
+            }
+            ctr = (ctr+1)%16;
+        }
+        if ctr != 0 {
+            println!();
+        }
+        return Ok(());
+    },
+    "print" "mem"  ":" <offset:raw_addr> =>{
+        let start = vm.arch.ds as usize * 0x10;
+        let end = start + offset;
+        if end >= MB as usize{
+            println!("Error : End address overflowing memory space : DS * 0x10 =  {}, end address = {}",start,end);
+            return;
+        }
+        let mut ctr = 0;
+        for i in start..=end{
+            print!("{:02X}\t",vm.mem[i]);
+            if (ctr+1)%8 ==0{
+                print!("\t");
+            }
+            if (ctr+1)%16 ==0{
+                println!();
+            }
+            ctr = (ctr+1)%16;
+        }
+        if ctr != 0 {
+            println!();
+        }
+        
+    },
+}
+
+raw_addr: usize = {
+    // Decimal
+    <start:@L> <n:r"[0-9]+"> <end:@R> =>? {
+        match usize::from_str_radix(n,10){
+            Ok(v) => Ok(v%MB as usize),
+            Err(_) => Err(ParseError::UnrecognizedToken {
+                token: (start, Token(0, ""), end),expected: vec!["Internal Error : Invalid Value, must be between 0-1048576".to_owned()]
+                }),
+        }
+    },
+}

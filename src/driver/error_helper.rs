@@ -3,6 +3,6 @@ use lib::LexerHelper;
 
 pub fn get_err_pos(l: &LexerHelper, pos: usize) -> (usize, usize, usize, usize) {
     let (line, pos) = l.get_newline_before(pos);
-    let (start, end) = l.get_line_bounds(pos);
+    let (start, end) = l.get_bounds(pos);
     (line + 1, pos, start, end)
 }

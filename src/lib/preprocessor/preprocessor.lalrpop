@@ -281,9 +281,13 @@ print_stmt:() = {
         out.code.push(format!("print mem {} -> {}",s,e));
         context.mapper.add_entry(start);
     },
-    <start:@L> quote_print quote_mem <s:raw_addr> ":" <e:raw_addr> => {
+    <start:@L> quote_print quote_mem <s:raw_addr> ":" <e:raw_addr> <end:@R>=>? {
+        if s+e >= MB{
+            return error!(start,end,format!("End address is greater than memory address space : {} + {} = {} > {}",s,e,s+e,MB-1))
+        }
         out.code.push(format!("print mem {} : {}",s,e));
         context.mapper.add_entry(start);
+        Ok(())
     },
     <start:@L> quote_print quote_mem  ":" <o:raw_addr> => {
         out.code.push(format!("print mem : {}",o));
