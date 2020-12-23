@@ -13,12 +13,12 @@ pub fn preprocess(
     let helper = LexerHelper::new(input);
     match preprocessor.parse(&mut ctx, &mut out, input) {
         Err(e) => {
-            let error = if let ParseError::UnrecognizedToken {
+            if let ParseError::UnrecognizedToken {
                 token: (ref start, ref token, _),
                 ref expected,
             } = e
             {
-                let (line, pos, lstart, lend) = get_err_pos(&helper, *start, input);
+                let (line, pos, lstart, lend) = get_err_pos(&helper, *start);
                 let pos_str = format!("{}:{} : {}", line, pos - start, &input[lstart..lend]);
                 if token.1 == "" {
                     return Err(format!("Syntax Error at {} :\n{}", pos_str, expected[0]));

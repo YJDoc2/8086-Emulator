@@ -38,23 +38,21 @@ impl LexerHelper {
         return (max, self.newline_list[max - 1]);
     }
 
-    pub fn get_line_bounds(&self, pos: usize, l: usize) -> (usize, usize) {
-        let mut t = 0;
+    pub fn get_line_bounds(&self, pos: usize) -> (usize, usize) {
         let mut i = 0;
         for (idx, v) in self.newline_list.iter().enumerate() {
             if *v > pos {
-                t = *v;
-                i = idx;
                 break;
             }
+            i = idx;
         }
-        if t == 0 {
-            let max = self.newline_list.len();
-            return (self.newline_list[max - 1] + 1, l);
-        } else if i + 1 == self.newline_list.len() {
-            return (self.newline_list[i] + 1, l);
+        // error on first line, so we return 0-> first newline
+        if i == 0 {
+            return (0, self.newline_list[0]);
         } else {
-            return (self.newline_list[i] + 1, self.newline_list[i + 1]);
+            // else we return from the last newline char position + 1 -> newline char at error line position
+            // 1 is added to last newline position to skip the newline char itself
+            return (self.newline_list[i - 1] + 1, self.newline_list[i]);
         }
     }
 }

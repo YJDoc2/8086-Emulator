@@ -51,7 +51,7 @@ impl CMDDriver {
             match lmap.get(l) {
                 Some(_) => {}
                 None => {
-                    let (line, pos, start, end) = get_err_pos(&lh, *pos, &uncommented);
+                    let (line, pos, start, end) = get_err_pos(&lh, *pos);
                     println!(
                         "Label {} used but not defined at {} :{} : {}",
                         l,
