@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 82b2c2fde83d65699ecabf29396ebd1caef76f6ada1c9b99bed13476c48e
+// sha256: e6b712155ceb651dc084ba7811fc7c3a397736d75c9cd3e64a7df42d4b68b
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
 use crate::instructions::{bit_manipulation::*,string::*,arithmetic::*};
@@ -12359,8 +12359,8 @@ fn __action145<
 ) -> ()
 {
     {
-      let v = get_word_reg_mut(vm,r);
-      *v = !*v;
+      let v = get_word_reg_val(vm,r);
+      set_word_reg_val(vm,r,!v);
    }
 }
 

@@ -4,6 +4,7 @@ use crate::arch::{
 };
 
 #[allow(non_camel_case_types)]
+/// Enum to denote flags of 8086
 pub enum Flags {
     OVERFLOW,
     DIRECTION,
@@ -16,6 +17,7 @@ pub enum Flags {
     CARRY,
 }
 
+/// Funtion to check if a flag is set or not
 pub fn get_flag_state(reg: u16, flag: Flags) -> bool {
     match flag {
         Flags::OVERFLOW => reg & FLAG_OVERFLOW != 0,
@@ -42,6 +44,7 @@ fn test_get_flag_state() {
     assert_eq!(get_flag_state(reg, Flags::AUX_CARRY), true);
 }
 
+/// Function to set a particular flag
 pub fn set_flag(reg: &mut u16, flag: Flags) {
     match flag {
         Flags::OVERFLOW => *reg = *reg | FLAG_OVERFLOW,
@@ -67,6 +70,7 @@ fn test_set_flag() {
     assert_eq!(get_flag_state(reg, Flags::AUX_CARRY), true);
 }
 
+/// Function to unset particular flag
 pub fn unset_flag(reg: &mut u16, flag: Flags) {
     match flag {
         Flags::OVERFLOW => *reg = *reg & !FLAG_OVERFLOW,
@@ -90,16 +94,4 @@ fn test_unset_flag() {
 
     unset_flag(&mut reg, Flags::AUX_CARRY);
     assert_eq!(get_flag_state(reg, Flags::AUX_CARRY), false);
-}
-
-#[inline]
-pub fn is_aux_borrow(op1: u8, op2: u8) -> bool {
-    let t1 = op1 & 0b1111;
-    let t2 = op2 & 0b1111;
-    return t1 < t2;
-}
-
-#[inline]
-pub fn is_borrow(op1: u8, op2: u8) -> bool {
-    return op1 < op2;
 }

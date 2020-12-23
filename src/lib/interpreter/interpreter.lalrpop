@@ -690,8 +690,8 @@ bit_manipulation:() = {
       set_byte_reg(vm,r,!v);
    },
    "not" <r:word_reg> =>{
-      let v = get_word_reg_mut(vm,r);
-      *v = !*v;
+      let v = get_word_reg_val(vm,r);
+      set_word_reg_val(vm,r,!v);
    },
 
    "not" "byte" <m:memory_addr> =>{

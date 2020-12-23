@@ -14,7 +14,6 @@ pub const FLAG_CARRY: u16 = 1 << 0;
 
 /// 8086 Hardware Architecture
 /// Contains flags and various Registers
-
 #[allow(non_camel_case_types)]
 #[derive(Default)]
 pub struct i8086 {

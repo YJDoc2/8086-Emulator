@@ -180,11 +180,13 @@ fn test_print() {
     let o = p.parse(
         &mut ctx,
         &mut out,
-        "l:DB [7;0] _t:DB 0 print flags print reg print mem 0x0FFFF-> 0x100FF print mem 0xFFFFF:50 print mem : offset _t",
+        "l:DB [7;0] _t:DB 0 print flags print reg print mem 0x0FFFF-> 0x100FF print mem 0xFFF00:50 print mem : offset _t",
     );
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 2);
     assert_eq!(out.code.len(), 5);
+    let o = p.parse(&mut ctx, &mut out, "print mem 0xFFFFF:50");
+    assert!(o.is_err());
 }
 
 #[test]

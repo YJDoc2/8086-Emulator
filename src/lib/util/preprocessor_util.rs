@@ -1,12 +1,18 @@
 use std::collections::{HashMap, HashSet};
 
 #[derive(Copy, Clone, Debug)]
+/// Enum to denote type of label
 pub enum LabelType {
     DATA,
     CODE,
 }
 
 #[derive(Debug)]
+/// Structure to denote a label
+/// type is label type : data label or code label
+/// source position is where the label is in source
+/// map is where it is mapped in converted code,
+/// for data label this will mean offset of data, and for code label it will mean the converted code line in output
 pub struct Label {
     pub r#type: LabelType,
     pub source_position: usize,
@@ -14,6 +20,7 @@ pub struct Label {
 }
 
 impl Label {
+    /// Create a new label
     pub fn new(t: LabelType, pos: usize, map: usize) -> Self {
         Label {
             r#type: t,
@@ -21,6 +28,7 @@ impl Label {
             map: map,
         }
     }
+    /// as lalrpop gives error on using label.r#type
     pub fn get_type(&self) -> LabelType {
         return self.r#type;
     }
@@ -127,9 +135,14 @@ fn test_source_mapper() {
 
 /// This will provide various needed data structures to store
 /// metadata about code to preprocessor
+/// macro_nesting counter is for internal use to check if a macro is recursive or not
+/// data counter is for internal use of counting data offset
 /// label_map is for mapping label names to the (position in input ,position in output produced)
 /// macro_map is for internal use, for storing macros at processing time, so they can be used for substitution later
-/// source_map does reverse mapping of line number in output to in original code
+/// mapper does reverse mapping of line number in output to in original code
+/// fn_map is to map which function name corresponds to which line in output
+/// undefined_labels stores code labels which are used in jumps etc, before their declaration, for forward jumping
+///     these must be checked by driver to make sure all such labels are actually defined later or not
 #[derive(Default)]
 pub struct Context {
     pub macro_nesting_counter: HashSet<String>,

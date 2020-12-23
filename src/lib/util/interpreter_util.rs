@@ -1,6 +1,8 @@
 use super::preprocessor_util::Label;
 use std::collections::HashMap;
 
+/// As lalrpop gives error if tried to return function from a token,
+/// we define these types so we can use those
 pub type ByteOpBinary = fn(&mut crate::vm::VM, u8, u8) -> u8;
 pub type WordOpBinary = fn(&mut crate::vm::VM, u16, u16) -> u16;
 pub type ByteOpUnary = fn(&mut crate::vm::VM, &mut u8) -> Result<(), ()>;

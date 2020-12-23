@@ -2,6 +2,7 @@ use crate::vm::VM;
 const LOWER_BYTE: i16 = 255;
 
 #[derive(Copy, Clone)]
+/// Enum to denote Byte length registers of 8086
 pub enum ByteReg {
     AL,
     AH,
@@ -14,6 +15,7 @@ pub enum ByteReg {
 }
 
 #[derive(Copy, Clone)]
+/// Enum to denote Word length registers of 8086
 pub enum WordReg {
     AX,
     BX,
@@ -45,7 +47,7 @@ fn test_separate_byte() {
     assert_eq!(hb, 0b00001111);
 }
 
-/// returns value of selected byte register
+/// Returns value of selected byte register
 pub fn get_byte_reg(vm: &VM, reg: ByteReg) -> u8 {
     const LB: u16 = LOWER_BYTE as u16;
     const HB: u16 = !LB;
@@ -112,23 +114,7 @@ fn test_set_byte_reg() {
     assert_eq!(get_byte_reg(&vm, ByteReg::CH), 255);
 }
 
-pub fn get_word_reg_mut(vm: &mut VM, reg: WordReg) -> &mut u16 {
-    match reg {
-        WordReg::AX => &mut vm.arch.ax,
-        WordReg::BX => &mut vm.arch.bx,
-        WordReg::CX => &mut vm.arch.cx,
-        WordReg::DX => &mut vm.arch.dx,
-        WordReg::SS => &mut vm.arch.ss,
-        WordReg::DS => &mut vm.arch.ds,
-        WordReg::CS => &mut vm.arch.cs,
-        WordReg::ES => &mut vm.arch.es,
-        WordReg::SI => &mut vm.arch.si,
-        WordReg::DI => &mut vm.arch.di,
-        WordReg::SP => &mut vm.arch.sp,
-        WordReg::BP => &mut vm.arch.bp,
-    }
-}
-
+/// Helper function to get word register value
 pub fn get_word_reg_val(vm: &VM, reg: WordReg) -> u16 {
     match reg {
         WordReg::AX => vm.arch.ax,
@@ -146,6 +132,7 @@ pub fn get_word_reg_val(vm: &VM, reg: WordReg) -> u16 {
     }
 }
 
+/// Helper function to set word register value
 pub fn set_word_reg_val(vm: &mut VM, reg: WordReg, val: u16) {
     match reg {
         WordReg::AX => vm.arch.ax = val,

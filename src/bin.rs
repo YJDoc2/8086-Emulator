@@ -5,6 +5,7 @@ use std::fs;
 use std::path::Path;
 
 fn main() {
+    // get command line args using clap
     let matches = App::new("8086 Emulator")
         .version("0.1.0")
         .author("Yashodhan Joshi")
@@ -23,6 +24,7 @@ fn main() {
         )
         .get_matches();
 
+    // check if input file argument exists
     let filepath = match matches.value_of("file_path") {
         None => {
             println!("Input File is necessary argument...\nExiting.");
@@ -30,13 +32,16 @@ fn main() {
         }
         Some(a) => a,
     };
+    // if to run in interpreter mode or not
     let interpreted = matches.is_present("interpreted");
 
+    // check if the input file exists
     if !Path::new(filepath).exists() {
         println!("Given Input File does not exist...\nExiting");
         std::process::exit(1);
     }
 
+    // read file
     let input = match fs::read_to_string(filepath) {
         Ok(s) => s,
         Err(e) => {
@@ -45,7 +50,10 @@ fn main() {
         }
     };
 
+    // create driver
     let driver = CMDDriver::new(input, interpreted);
+    // run program
     driver.run();
+    // put a blank line
     println!();
 }

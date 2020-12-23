@@ -38,6 +38,9 @@ impl LexerHelper {
         return (max, self.newline_list[max - 1]);
     }
 
+    /// get bounds of line containing the given position
+    /// returns character position of character after the newline character which is before given character
+    /// and newline character after the given character
     pub fn get_bounds(&self, pos: usize) -> (usize, usize) {
         let mut i = 0;
         for (idx, v) in self.newline_list.iter().enumerate() {
