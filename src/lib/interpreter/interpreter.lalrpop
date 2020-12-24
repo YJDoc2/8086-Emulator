@@ -265,7 +265,7 @@ pop:() ={
         vm.arch.sp = (vm.arch.sp as u32 + 2) as u16;
     },
     // mem
-    <start:@L> "pop" <m:memory_addr> => {
+    <start:@L> "pop" "word" <m:memory_addr> => {
         let ss = vm.arch.ss as usize*0x10;
         let sp = vm.arch.sp as usize;
         let base = Address::calculate_from_offset(ss,sp);
@@ -306,7 +306,7 @@ push:() = {
         vm.mem[inc_addr(base,1)] = hb;
     },
     // mem
-    <start:@L> "push" <m:memory_addr> => {
+    <start:@L> "push" "word" <m:memory_addr> => {
         vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
         let ss = vm.arch.ss as usize*0x10;
         let sp = vm.arch.sp as usize;

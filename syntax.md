@@ -1,100 +1,378 @@
-Comments are not yet supported
-Data is stored in little endian format, lower byte first
-directives
-<br/>
-data directives
+# Syntax for the 8086 emulator
 
-set number : sets the data segment value to given number
+This shows the syntax for the 8086 emulator.
+The main reference for this was 8086 family user manual : i8086 manual : https://edge.edx.org/c4x/BITSPilani/EEE231/asset/8086_family_Users_Manual_1_.pdf
+<br />
+In some places the reference has also been taken from https://css.csail.mit.edu/6.858/2014/readings/i386/c17.htm, which is for 80386 instruction set, but as most of it is backward compatible, it applies to 8086.
 
-num can be signed or unsigned, for decimal - sign is -ve, for hex and binary, use 2's complement negatives
-<br/>
-DB num : sets a 8-bit value<br/>
-DB \[num] : sets num bytes to 0<br/>
-DB \[val ; num] : sets num bytes to value val<br/>
-DB OFFSET label<br/>
-DB "ascii string" : keep string size less tha 65525 characters, otherwise label mapping will be incorrect<br/>
+The opcodes and directives are case independent, but labels are case sensitive.
+In general this used little endian format. Lower byte first, then higher byte
 
-DW num : sets 16-bit value<br/>
-DW \[num] : sets 2\*num bytes to 0<br/>
-DW \[val ; num] : sets num bytes to 16-bit value val (So total 2\*num bytes are set)<br/>
-DW OFFSET label<br/>
-DW "ascii string" : keep string size less than 32758 characters, otherwise label mapping will be incorrect<br/>
-<br/>
-<br/>
-code directives
+#### Structure of Program
 
-MACROS :<br/>
-definition : MACRO name (params) -> code <-<br/>
-use : name (values)<br/>
-macros must have params, for constant/static macro use \_ as param in both declaration and invocation<br/>
-self referential (direct or indirect) macros are not allowed.
-for passing macro name to macro for invocation, make sure to leave space between param name and brackets :<br/>
-MACRO a(q)-> ADD AX,q <- MACRO b(k,q) -> k **this space** (q)<- b(a,5)<br/>
-<br/>
-offset :<br/>
-use : offset name<br/>
-only supported for data labels<br/>
-<br/>
-functions<br/>
-definition : def name {code}<br/>
-By default a ret is added at end, for safety<br/>
-<br/>
-<br/>
-AND-type instructions :<br/>
-and byte_reg,byte_reg<br/>
-and word_reg,word_reg<br/>
-and byte_reg,"byte" mem_addr<br/>
-and word_reg,"word" mem_addr<br/>
-and "byte" mem_addr , byte_reg<br/>
-and "word" mem_addr , word_reg<br/>
-and byte_reg,number<br/>
-and word_reg,number<br/>
-and "byte" mem_add, number<br/>
-and "word" mem_add, number<br/>
-<br/>
-<br/>
-shifts supports immediate number of shift, even though 8086 does not<br/>
+<strong>Note that all data directives must come before code directives and opcodes</strong>
 
-labels with same names as opcode are not supported
-<br/>
-print syntax<br/>
-print flags - print all flags<br/>
-print reg - print all registers (general , segment, offset)<br/>
-print mem start -> end - print memory starting from start, till end, both inclusive<br/>
-print mem start:offset - print offset bytes of memory from start, start inclusive<br/>
-print mem :offset - print offset bytes of memory starting from value in DS\*10H (similar to memory conversion done in 8086 )<br/>
+```bash
+Data directives
 
-i8086 manual : https://edge.edx.org/c4x/BITSPilani/EEE231/asset/8086_family_Users_Manual_1_.pdf
+Code directives and opcodes
 
-movsb/movsw are not supported, as movs does the same work, and due to syntax not ambiguity is there
+```
 
-REP supports movs, loads,stos<br/>
-REP(E/Z/NE/NZ) support cmps scas<br/>
+#### Commonly used terms :
 
-XLAT always takes base address of table from BX. the form in manual (XLAT source-table) allows source-table to documentation purpose label, indicating where the BX offset points, but XLAT always takes BX as offset, even if the label points to some other, hence that form is not supported here. https://www.felixcloutier.com/x86/xlat:xlatb
+<div>
+<ul>
+    <li><strong>Label</strong> : a single, no space containing word, immediately followed by a colon (:) when defining the label. Can contain _, 0-9, a-z, A-Z, but must not start with a number.
+    </li>
+    <li>
+        <strong>byte</strong> : the actual word "byte"
+    </li>
+    <li>
+        <strong>word</strong> : the actual word "word"
+    </li>
+    <li>
+        <strong>number</strong> : A number can be specified in three formats :
+        <ul>
+        <li> Decimal : using 0-9.</li>
+        <li> Binary : using 0 and 1, must start with 0b, eg : 5 = 0b0101 </li>
+        <li> Hexadecimal : using 0-9,a-f, must start with 0x, eg : 5 = 0x5 </li>
+        </ul>
+        value can be set using offset data directive as well.
+    </li>
+    <li>
+        <strong>unsigned byte number</strong> : number in range 0 -> 255
+    </li>
+    <li>
+        <strong>signed byte number</strong> : number in range -128 -> 127, only decimal numbers with '-' can be used, for other format use 2's complement for negating.
+    </li>
+    <li>
+        <strong>unsigned word number</strong> : numbers in range 0 -> 65535.
+    </li>
+    <li>
+        <strong>signed word number</strong> : numbers in range -32768 -> 32767, only decimal numbers with '-' can be used, for other format use 2's complement for negating.
+    </li>
+    <li>
+        <strong>memory</strong> : 8086 allows four types of memory addressing :
+        For all cases, when BP is used, the segment used is SS, for others, DS is used.
+        <ul>
+        <li>[offset] : offset of the data from current DS</li>
+        <li>[bx] / [bp] / [si] / [di] : The offset of value is taken from the specified register.</li>
+        <li>[bs/bp/si/di , signed word number] : The offset is taken from the registers, and the number is added to it.</li>
+        <li>[bs/bp , si/di , (signed word number) ] : The offset is taken from the base registers, and offset in index registers as well as the number is added to it. The number offset is optional.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Word Registers</strong> : AX,BX,CX,DX,BP,SP,SI,DI
+    </li>
+    <li>
+        <strong>Byte Registers</strong> : AL,AH,BL,BH,CL,CH,DL,DH
+    </li>
+    <li>
+        <strong>Segment Registers</strong> : ES,DS,SS,CS
+    </li>
+</ul>
+</div>
 
-push and pop only supports word label / word operand
+<details>
+  <summary>Data Directives</summary>
+    <div>
+    <h4>Data directives supported by emulator</h4>
+        <ul>
+            <li>
+                <strong>set</strong> : set directive is used for setting the value of  ds when storing the data.
+                <p><strong>syntax</strong> : set unsigned-word-number</p>
+            </li>
+            <li>
+                <strong>DB</strong> : used to store a single byte
+                <p><strong>syntax</strong> : label is optional
+                    <ul>
+                    <li>(label) DB signed/unsigned byte number : sets a single byte to given value</li>
+                    <li>(label) DB [unsigned word number] : sets given number of bytes to 0 (can be used to declare empty array)</li>
+                    <li>(label) DB [signed/unsigned byte number ; unsigned word number] : sets given number of bytes (second argument) to given value (first argument).</li>
+                    <li>(label) DB "string" : stores a string , characters or not escaped, eg : \n will be stored as \ and n.</li>
+                    </ul>
+                </p>
+            </li>
+            <li>
+                <strong>DW</strong> : used to store a word number
+                <p><strong>syntax</strong> : label is optional
+                    <ul>
+                    <li>(label) DW signed/unsigned word number : sets a word to given value</li>
+                    <li>(label) DW [unsigned word number] : sets given number of words to 0 (can be used to declare empty array)</li>
+                    <li>(label) DW [signed/unsigned word number ; unsigned word number] : sets given number of words (second argument) to given value (first argument).</li>
+                    <li>(label) DW "string" : stores a string , characters or not escaped, eg : \n will be stored as \ and n.</li>
+                    </ul>
+                </p>
+            </li>
+            <li>
+                <strong>offset</strong> : used to get offset of value from the data segment it was defined in. <strong>Note</strong> that this only gives offset from the segment was defined in, so if DS was changed using set, it will contain offset from that value.
+                <p><strong>syntax</strong> :
+                    <ul>
+                    <li>offset label_name : can be used in place of number, as this is determined at compile time.</li>
+                    </ul>
+                </p>
+            </li>
+        </ul>
+    </div>
+</details>
+<details>
+  <summary>Code Directives</summary>
+  <div>
+    <h4>Code directives supported by emulator</h4>
+    <ul>
+        <li>
+            <strong>macro definition</strong> : used to define macros, which can be used to put code in place, where parameters are replaced by given values at compile time
+            <p><strong>syntax</strong> : macro macro_name (comma separated parameter list) -> replace string <- </p> The code between '->' and '<-' will be placed in place of macro use, where the parameters will be replaced by the ones given in macro call.<br />
+            <strong> Note </strong> that recursive macros direct/ indirect are not supported. For no parameter macro use single _ as parameter in definition as well as use.<br/>
+            For passing macro name to macro for invocation, make sure to leave space between param name and brackets :<br/>MACRO a(q)-> ADD AX,q <- MACRO b(k,q) -> k **this space** (q)<- b(a,5)<br/>
+        </li>
+        <li>
+            <strong>macro use</strong> : used to 'call' macro, the code defined in macro will be placed in place of this.=, with parameters replaced.
+            <p><strong>syntax</strong> : macro_name (comma separated value list)</p> The code between '->' and '<-' will be placed in place of macro use, where the parameters will be replaced by the ones given in macro call.
+        </li>
+        <li>
+            <strong>procedure definition</strong> : used to define procedure
+            <p><strong>syntax</strong> : def procedure_name {opcodes/macro use} <br />procedure name has same format as label, except ':'.</p>
+        </li>
+    </ul>
+  </div>
+</details>
 
-lds and les are not supported, as they are used to load/store a 32 bit pointer, which we don't support
-<br/>
-<br/>
-Only int 3H,10H, and 21H are supported<br/>
-Only byte string is supported to display and input<br/>
-In 10H : value of AH allowed are : 0AH,13H  
-0AH ignores BH & BL (page number and page attribute)
-13H ignores AL (write mode), BH & BL (page number and attributes), DH (row to print the string on), supports DL (column to print string on)
-<br/>
-IN 21H : value of AH allowed are : 1H,2H,0AH<br/>
-ALL OF THESE WILL BUFFER INPUT, depending on the interpreter driver<br/>
-<br/>
-<br/>
-For CALL, unlike real 8086 no ip/cs is pushed on stack, instead it is maintained internally<br/>
-Similarly for RET no pop is done<br/>
-<br/>
-Conditions for jumps in 8086 family manual seemed incorrect, so have used from : https://css.csail.mit.edu/6.858/2014/readings/i386/Jcc.htm
-<br/>
-Segment override is not supported in memory addressing
-For memory addressing explanation check : https://www.ic.unicamp.br/~celio/mc404s2-03/addr_modes/intel_addr.html
-<br/>
-Check https://retrocomputing.stackexchange.com/questions/2927/did-the-intel-8086-8088-not-guarantee-the-value-of-sssp-immediately-after-reset
-for default values of segment registers
+<details>
+  <summary>Print Statements</summary>
+  <div>
+    <h4>This shows print commands syntax, which can be used in the code as well as in interactive user prompt.</h4>
+    <ul>
+        <li>print flags : This will print the value of various flags.</li>
+        <li>print reg   : This will print the value of registers.</li>
+        <li>print mem start -> end : This will print the value of memory, from start to end, both inclusive. the start and end are unsigned number, in range 0 ->1048575</li>
+        <li>print mem start:offset : This will print the value of memory from start, to start+offset. Value of start and start+offset must lie in 0 -> 1048575</li>
+        <li>print :offset : This will print the value of memory from start of current data segment till offset, both inclusive.</li>
+    </ul>
+  </div>
+</details>
+<br />
+<h5>For opcodes, detail explanation of what they do is given in 8086 family manual, this explains only the syntax.</h5>
+
+<details>
+  <summary>Control Instructions</summary>
+    <div>
+        These are single opcode instructions.<br />
+        STC,CLC,CMC,STD,CLD,STI,CLI,HLT,NOP are supported.<br />
+        WAIT, ESC, and LOCK are not supported <br />
+        <strong>Syntax</strong> : opcode
+    </div>
+</details>
+
+<details>
+  <summary>Control Transfer Instructions</summary>
+    <div>
+        <ul>
+            <li>jump instructions :<br />jmp, ja,jnbe,jae,jnb,jb,jnae,jbe,jna,jc,je,jz,jg,jnle,jge,jnl,jl,jnge,jle,jng,jnc,jne,jnz,jno,jnp,jpo,jns,jo,jp,jpe,js,jcxz</li>
+            <li>loop instructions : <br />loop,loope,loopz,loopne,loopnz</li>
+            <strong>Syntax</strong> : opcode label
+        </ul>
+        <div>
+            <strong>int</strong> : Following interrupts are supported
+            <ul>
+                <li>int 3 : Can be used for debugging, displays user prompt</li>
+                <li>int 0x10 : value of AH allowed are : 0AH,13H <br />
+                0AH ignores BH & BL (page number and page attribute)<br/>
+                13H ignores AL (write mode), BH & BL (page number and attributes), DH (row to print the string on), supports DL (column to print string on)</li>
+                <li>int 0x21 :  value of AH allowed are : 1H,2H,0AH</li>
+            </ul>
+        </div>
+        <p>into and iret are not supported</p>
+        <div>
+            <ul>
+                <li><strong>call</strong> : used for calling a procedure.<br/>
+                    <p><strong>syntax</strong> : call proc_name</p>
+                </li>
+                <li><strong>ret</strong> : used for returning from a procedure.<br/>
+                    <p><strong>syntax</strong> : call</p>
+                </li>
+            </ul>
+        </div>        
+    </div>
+</details>
+
+<details>
+  <summary>Bit Manipulation Instructions</summary>
+    <div>
+        <ul>
+            <li><strong>not</strong> : bitwise not <br />
+                <div><strong>syntax</strong> : <br/>
+                not byte register<br/>
+                not word register<br/>
+                not byte memory<br/>
+                not word memory<br/>
+                not byte label<br/>
+                not word label<br/>
+                </div>
+            </li>
+            <li><strong>binary logical</strong> : and,or,xor,test 
+            <div><strong>syntax</strong> : <br/>
+                opcode byte-register , byte-register<br/>
+                opcode word-register , word-register<br/>
+                opcode byte-register , byte memory<br/>
+                opcode word-register , word memory<br/>
+                opcode byte-register , byte label<br/>
+                opcode word-register , word label<br/>
+                opcode byte memory , byte-register<br/>
+                opcode word memory , word-register<br/>
+                opcode byte label , byte-register<br/>
+                opcode word label , word-register<br/>
+                opcode byte-register , unsigned byte number<br/>
+                opcode word-register , unsigned word number<br/>
+                opcode byte memory , unsigned byte number<br/>
+                opcode word memory , unsigned word number<br/>
+                opcode byte label , unsigned byte number<br/>
+                opcode word label , unsigned word number<br/>
+                </div>
+            </li>
+            <li><strong>shifts and rotates</strong> : sal,shl,sar,shr,rol,ror,rcl,rcl
+            <div><strong>syntax</strong> : <br/>
+                opcode byte-register , unsigned byte number<br/>
+                opcode word-register , unsigned byte number<br/>
+                opcode byte-register , cl<br/>
+                opcode word-register , cl<br/>
+                opcode byte memory , unsigned byte number<br />
+                opcode word memory , unsigned byte number<br />
+                opcode byte memory , cl<br />
+                opcode word memory , cl<br />
+                opcode byte label , unsigned byte number<br />
+                opcode word label , unsigned byte number<br />
+                opcode byte label , cl<br />
+                opcode word label , cl<br />
+                </div>
+            </li>
+        </ul> 
+    </div>
+</details>
+
+<details>
+  <summary>Arithmetic Instructions</summary>
+    <div>
+        <ul>
+            <li><strong>No operands</strong> : aaa,aad,aam,aas,daa,das,cbw,cwd<br />
+                <strong>syntax</strong> : opcode
+            </li>
+            <li><strong>Single operand</strong> : dec,inc,neg,mul,imul,div,idiv<br/>
+            <div><strong>syntax</strong> : <br/>
+                    opcode byte-register<br/>
+                    opcode word-register<br/>
+                    opcode byte memory<br/>
+                    opcode word memory<br/>
+                    opcode byte label<br/>
+                    opcode word label<br/>
+                </div>
+            </li>
+            <li><strong>Binary opcodes</strong> : add, adc, sub, sbb, cmp <br/>
+            <div><strong>syntax</strong> : <br/>
+                    opcode byte-register , byte-register<br/>
+                    opcode word-register , word-register<br/>
+                    opcode byte-register , byte memory<br/>
+                    opcode word-register , word memory<br/>
+                    opcode byte-register , byte label<br/>
+                    opcode word-register , word label<br/>
+                    opcode byte memory , byte-register<br/>
+                    opcode word memory , word-register<br/>
+                    opcode byte label , byte-register<br/>
+                    opcode word label , word-register<br/>
+                    opcode byte-register , unsigned/signed byte number<br/>
+                    opcode word-register , unsigned/signed word number<br/>
+                    opcode byte memory , unsigned/signed byte number<br/>
+                    opcode word memory , unsigned/signed word number<br/>
+                    opcode byte label , unsigned/signed byte number<br/>
+                    opcode word label , unsigned/signed word number<br/>
+                    </div>
+            </li>
+        </ul>        
+    </div>
+</details>
+
+<details>
+  <summary>String Instructions</summary>
+    <div>Instructions are : movs, lods,stos,cmps,scas<br />
+        movsb, movsw are not supported<br />
+        <strong>Syntax</strong> : <br />
+        opcode byte<br/>
+        opcode word<br/>
+        The word and byte specifies if the string is byte string or word string<br/>
+        <strong>repeat instructions</strong> <br/>
+        rep supports movs,lods,stos<br/>
+        repe,repz,repne,repnz supports cmps, scas<br/>
+    </div>
+</details>
+
+<details>
+  <summary>Data Transfer Instructions</summary>
+    <div>
+        in,out,lds,les are not supported <br/>    
+        <ul>
+    <li><strong>No operands</strong> : lahf,sahf,pushf,popf,xlat<br />
+        <strong>syntax</strong> : opcode
+    </li>
+    <li><strong>No operands</strong> : lahf,sahf,pushf,popf,xlat<br />
+    </li>
+    <li><strong>lea</strong> : <br />
+    <strong>syntax</strong> : 
+    lea word-register word memory<br />
+    lea word-register word label<br />
+    </li>
+    <li><strong>push</strong> : supports only word length memory<br />
+    <strong>syntax</strong> : 
+    push word-register<br />
+    push segment-register (cs register allowed)<br />
+    push word memory<br />
+    push word label<br />
+    </li>
+    <li><strong>pop</strong> : supports only word length memory<br />
+    <strong>syntax</strong> : 
+    pop word-register<br />
+    push segment-register (cs register not allowed)<br />
+    push word memory<br />
+    push word label<br />
+    </li>
+    <li><strong>xchg</strong> :<br />
+    <strong>syntax</strong> : 
+    xchg byte-register , byte-register<br />
+    xchg word-register ,  word-register<br />
+    xchg byte memory , byte-register<br />
+    xchg byte-register , byte memory<br />
+    xchg word memory , word-register<br />
+    xchg word-register , word memory<br />
+    xchg byte label , byte-register<br />
+    xchg byte-register , byte label<br />
+    xchg word label , word-register<br />
+    xchg word-register , word label<br />
+    </li>
+    <li><strong>mov</strong> :<br />
+    <strong>syntax</strong> : 
+    mov byte-register , byte-register<br />
+    mov word-register , word-register<br />
+    mov byte-register , byte memory<br />
+    mov word-register , word memory<br />
+    mov byte-register , byte label<br />
+    mov word-register , word label<br />
+    mov byte memory , byte-register<br />
+    mov word memory , word-memory<br />
+    mov byte label , byte-register<br />
+    mov word label , word-register<br />
+    mov byte-register , unsigned/signed byte number<br />
+    mov word-register , unsigned/signed word number<br />
+    mov byte memory , unsigned/signed byte number<br />
+    mov word memory , unsigned/signed word number<br />
+    mov byte label , unsigned/signed byte number<br />
+    mov word label , unsigned/signed word number<br />
+    mov segment-register , word-register<br />
+    mov word-register , segment-register<br />
+    mov segment-register , word memory<br />
+    mov segment-register , word label<br />
+    mov word memory , segment-register<br />
+    mov word label , segment-register<br />
+    </li>
+</ul>
+    </div>
+</details>

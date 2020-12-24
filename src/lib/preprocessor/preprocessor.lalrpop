@@ -572,7 +572,7 @@ pop:() ={
         context.mapper.add_entry(start);
     },
     // mem
-    <start:@L> <q:quote_pop> <m:memory_addr> => {
+    <start:@L> <q:quote_pop> "word" <m:memory_addr> => {
         out.code.push(format!("pop {}",m));
         context.mapper.add_entry(start);
     },
@@ -599,7 +599,7 @@ push:() = {
         context.mapper.add_entry(start);
     },
     // mem
-    <start:@L> <q:quote_push> <m:memory_addr> => {
+    <start:@L> <q:quote_push> quote_word_length <m:memory_addr> => {
         out.code.push(format!("push {}",m));
         context.mapper.add_entry(start);
     },
