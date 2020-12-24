@@ -2,6 +2,7 @@
 
 This is an Intel 8086 emulator / vm. It can run most of 8086 instruction set and provides an interactive interpreter to run the program line by line.
 This repository contains the core library which contains the preprocessor, data parser and interpreter ; as well as a command line driver which provides command line interface for running the program.
+For syntax check <a href="./syntax.md">syntax.md</a>.
 
 <ul>
   <li><a href ="#installation">Installation</a></li>
