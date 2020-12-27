@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 4c7eba6aacc4d3ee797c478322755879b9dc14f8c2fa79153956dd4a9714a5
+// sha256: 343fe112a32cced8d01b96e3fae44fbd133a0a5afacdf923022cbf589a6e4f
 use crate::util::{address::*,data_util::separate_bytes};
 use crate::vm::VM;
 use crate::error;
@@ -204,7 +204,7 @@ mod __parse__Data {
     }
     fn __expected_tokens(__state: i8) -> Vec<::std::string::String> {
         const __TERMINAL: &[&str] = &[
-            r###"";""###,
+            r###"",""###,
             r###""[""###,
             r###""]""###,
             r###""db""###,
@@ -764,7 +764,7 @@ mod __parse__Data {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // db = "db", "[", s_byte_num, ";", u_word_num, "]" => ActionFn(7);
+        // db = "db", "[", s_byte_num, ",", u_word_num, "]" => ActionFn(7);
         assert!(__symbols.len() >= 6);
         let __sym5 = __pop_Variant0(__symbols);
         let __sym4 = __pop_Variant6(__symbols);
@@ -858,7 +858,7 @@ mod __parse__Data {
         _: ::std::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
-        // dw = "dw", "[", s_word_num, ";", u_word_num, "]" => ActionFn(11);
+        // dw = "dw", "[", s_word_num, ",", u_word_num, "]" => ActionFn(11);
         assert!(__symbols.len() >= 6);
         let __sym5 = __pop_Variant0(__symbols);
         let __sym4 = __pop_Variant6(__symbols);
@@ -974,7 +974,7 @@ mod __intern_token {
             ("^(\"[\u{0}-\u{7f}]*\")", false),
             ("^(\\-[0-9]+)", false),
             ("^([0-9]+)", false),
-            ("^(;)", false),
+            ("^(,)", false),
             ("^(\\[)", false),
             ("^(\\])", false),
             ("^(db)", false),
@@ -1149,7 +1149,7 @@ fn __action8<
             vm.mem[addr] = i;
             addr =inc_addr(addr,1);
         }
-        *counter += q.len();
+        *counter += q.len() -2;
     }
 }
 
@@ -1243,12 +1243,12 @@ fn __action12<
         let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
         // the slice skips the quotes
         for i in (&q[1..q.len()-1]).bytes(){
-            vm.mem[addr] = 0;
-            addr = inc_addr(addr,1);
             vm.mem[addr] = i;
             addr = inc_addr(addr,1);
+            vm.mem[addr] = 0;
+            addr = inc_addr(addr,1);
         }
-        *counter += q.len();
+        *counter += 2*(q.len()-2);
     }
 }
 

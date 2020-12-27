@@ -20,7 +20,7 @@ fn test_db_number() {
 
     // First test for numbered array, so we can check if non-numbered array actually zeros the memory
     ctr = 0;
-    let o = p.parse(&mut vm, &mut ctr, "db [50 ; 5]");
+    let o = p.parse(&mut vm, &mut ctr, "db [50 , 5]");
     assert!(o.is_ok());
     assert_eq!(
         &vm.mem[vm.arch.ds as usize * 0x10..vm.arch.ds as usize * 0x10 + 6],
@@ -72,7 +72,7 @@ fn test_dw_number() {
 
     // First test for numbered array, so we can check if non-numbered array actually zeros the memory
     ctr = 0;
-    let o = p.parse(&mut vm, &mut ctr, "dw [43981 ; 5]");
+    let o = p.parse(&mut vm, &mut ctr, "dw [43981 , 5]");
     assert!(o.is_ok());
     assert_eq!(
         &vm.mem[vm.arch.ds as usize * 0x10..vm.arch.ds as usize * 0x10 + 12],
@@ -99,7 +99,7 @@ fn test_dw_string() {
     // even though it should work same without -2, as ctr is zero
     assert_eq!(
         &vm.mem[vm.arch.ds as usize * 0x10..vm.arch.ds as usize * 0x10 + 12],
-        &[0, 65, 0, 66, 0, 67, 0, 68, 0, 0, 0, 0]
+        &[65, 0, 66, 0, 67, 0, 68, 0, 0, 0, 0,0]
     );
 }
 
@@ -119,6 +119,6 @@ fn test_set_directive() {
     // even though it should work same without -2, as ctr is zero
     assert_eq!(
         &vm.mem[(vm.arch.ds as usize + 0x100) * 0x10..(vm.arch.ds as usize + 0x100) * 0x10 + 10],
-        &[0, 65, 0, 66, 0, 67, 0, 68, 0, 0]
+        &[65, 0, 66, 0, 67, 0, 68, 0, 0,0]
     );
 }

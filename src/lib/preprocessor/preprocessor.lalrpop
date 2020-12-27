@@ -82,11 +82,11 @@ db_directive:() = {
         context.data_counter += n;
     },
     // Set array value initialized to value
-    <start:@L> <l:label?> quote_db "["<v:s_byte_num> ";" <n:u_word_num>"]" =>{
+    <start:@L> <l:label?> quote_db "["<v:s_byte_num> "," <n:u_word_num>"]" =>{
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
-        out.data.push(format!("db [{} ; {}]",v,n));
+        out.data.push(format!("db [{} , {}]",v,n));
         // Increment the data counter
         context.data_counter += n;
     },
@@ -131,11 +131,11 @@ dw_directive:() = {
         context.data_counter += 2*n;
     },
     // Set array value initialized to value
-    <start:@L> <l:label?> quote_dw "["<v:s_word_num> ";" <n:u_word_num>"]" =>{
+    <start:@L> <l:label?> quote_dw "["<v:s_word_num> "," <n:u_word_num>"]" =>{
         if let Some(l) = l{
             context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
         }
-        out.data.push(format!("dw [{} ; {}]",v,n));
+        out.data.push(format!("dw [{} , {}]",v,n));
         // Increment the data counter
         context.data_counter += 2*n;
     },

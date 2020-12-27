@@ -34,7 +34,7 @@ db:() = {
         *counter += n as usize;
     },
     
-    "db" "["<v:s_byte_num> ";" <n:u_word_num>"]" =>{
+    "db" "["<v:s_byte_num> "," <n:u_word_num>"]" =>{
         let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
         for _ in 0..n{
             vm.mem[addr] = v as u8;
@@ -50,7 +50,7 @@ db:() = {
             vm.mem[addr] = i;
             addr =inc_addr(addr,1);
         }
-        *counter += q.len();
+        *counter += q.len() -2;
     },
 }
 
@@ -73,7 +73,7 @@ dw:() = {
         *counter += 2*n as usize;
     },
 
-    "dw" "["<v:s_word_num> ";" <n:u_word_num>"]" =>{
+    "dw" "["<v:s_word_num> "," <n:u_word_num>"]" =>{
         let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
         let (hb,lb) = separate_bytes(v); 
         for _ in 0..n{
@@ -89,12 +89,12 @@ dw:() = {
         let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
         // the slice skips the quotes
         for i in (&q[1..q.len()-1]).bytes(){
-            vm.mem[addr] = 0;
-            addr = inc_addr(addr,1);
             vm.mem[addr] = i;
             addr = inc_addr(addr,1);
+            vm.mem[addr] = 0;
+            addr = inc_addr(addr,1);
         }
-        *counter += q.len();
+        *counter += 2*(q.len()-2);
     },
 }
 

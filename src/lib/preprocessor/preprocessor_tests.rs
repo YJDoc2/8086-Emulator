@@ -32,7 +32,7 @@ fn test_data_directives() {
     out.clear();
     ctx.clear();
 
-    let o = p.parse(&mut ctx, &mut out, "test: DB [5;6]");
+    let o = p.parse(&mut ctx, &mut out, "test: DB [5,6]");
     assert!(o.is_ok());
 }
 
@@ -107,7 +107,7 @@ fn test_offset() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-    let o = p.parse(&mut ctx, &mut out, "DB [0;5] name: DB [2] DB OFFSET name");
+    let o = p.parse(&mut ctx, &mut out, "DB [0,5] name: DB [2] DB OFFSET name");
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 3);
     assert_eq!(out.data[2], "db 5");
@@ -180,7 +180,7 @@ fn test_print() {
     let o = p.parse(
         &mut ctx,
         &mut out,
-        "l:DB [7;0] _t:DB 0 print flags print reg print mem 0x0FFFF-> 0x100FF print mem 0xFFF00:50 print mem : offset _t",
+        "l:DB [7,0] _t:DB 0 print flags print reg print mem 0x0FFFF-> 0x100FF print mem 0xFFF00:50 print mem : offset _t",
     );
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 2);
@@ -197,7 +197,7 @@ fn test_arithmetic() {
     let o = p.parse(
         &mut ctx,
         &mut out,
-        "l:DB [7;0] _t:DB 0 ADD AX , -5 IMUL CX DIV byte l DAA CBW",
+        "l:DB [7,0] _t:DB 0 ADD AX , -5 IMUL CX DIV byte l DAA CBW",
     );
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 2);
@@ -251,12 +251,12 @@ fn test_data_transfer_push_pop() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-    let o = p.parse(&mut ctx, &mut out, "l:DW [5;7] push CS push word l");
+    let o = p.parse(&mut ctx, &mut out, "l:DW [5,7] push CS push word l");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
     out.clear();
     ctx.clear();
-    let o = p.parse(&mut ctx, &mut out, "l:DW [5;7] pop ES pop word l");
+    let o = p.parse(&mut ctx, &mut out, "l:DW [5,7] pop ES pop word l");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 2);
     out.clear();
