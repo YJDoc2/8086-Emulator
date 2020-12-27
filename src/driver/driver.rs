@@ -67,9 +67,10 @@ impl CMDDriver {
                         "Label {} used but not defined at {} :{} : {}",
                         l,
                         line,
-                        start - pos,
+                        end - pos,
                         &uncommented[start..end]
                     );
+                    return;
                 }
             }
         }
@@ -133,11 +134,15 @@ impl CMDDriver {
 
         loop {
             let tf = get_flag_state(vm.arch.flag, Flags::TRAP);
+
             // if trap flag is set, or interpreted is enabled, display user prompt
-            if self.interpreted || tf {
+            // the second condition is to check that the instruction is not the hlt that we have inserted
+            // as it does not have any mapping
+            if (self.interpreted || tf) && idx <= out.code.len() - 2 {
                 // idx is 0 based, but line numbers are 1 based
-                let pos = source_map.get(&(idx + 1)).unwrap();
-                let (line, start, end) = get_err_pos(&lh, *pos);
+
+                let pos = source_map.get(&idx).unwrap();
+                let (line, start, end) = get_err_pos(&lh, *pos + 5);
                 // show which line is to be executed
                 println!(
                     "About to execute line {} : {}",

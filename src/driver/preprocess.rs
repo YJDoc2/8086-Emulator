@@ -30,7 +30,7 @@ pub fn preprocess(
             {
                 // get error position
                 let (line, lstart, lend) = get_err_pos(&helper, *start);
-                let pos_str = format!("{}:{} : {}", line, lend - start, &input[lstart..lend]);
+                let pos_str = format!("{}:{} : {}", line, start-lstart, &input[lstart..lend]);
 
                 if token.1 == "" {
                     // error is custom, piggybacked on UnrecognizedToken type
