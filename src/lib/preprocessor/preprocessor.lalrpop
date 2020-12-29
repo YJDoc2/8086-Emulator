@@ -452,19 +452,6 @@ mov:() ={
     },
 }
 
-seg_reg:String={
-    "ES" => "es".to_owned(),
-    "es" => "es".to_owned(),
-    "DS" => "ds".to_owned(),
-    "ds" => "ds".to_owned(),
-    "SS" => "ss".to_owned(),
-    "ss" => "ss".to_owned(),
-    "CS" => "cs".to_owned(),
-    "cs" => "cs".to_owned(),
-    
-}
-
-
 quote_mov:() ={
     "MOV",
     "mov",
@@ -1587,20 +1574,64 @@ index_reg:String = {
     "di" => "di".to_owned(),
 }
 
+
+seg_reg:String={
+    "ES" => "es".to_owned(),
+    "es" => "es".to_owned(),
+    "DS" => "ds".to_owned(),
+    "ds" => "ds".to_owned(),
+    "SS" => "ss".to_owned(),
+    "ss" => "ss".to_owned(),
+    "CS" => "cs".to_owned(),
+    "cs" => "cs".to_owned(),
+    
+}
+
 memory_addr:String = {
     // direct addressing
-    "[" <n:u_word_num> "]" => format!("[{}]",n),
+    <sr:(<seg_reg>)?> "[" <n:u_word_num> "]" => {
+        if let Some(s) = sr{
+            format!("{}:[{}]",s,n)    
+        }else{
+            format!("[{}]",n)
+        }
+    },
     // Register Indirect
-    "[" <r:base_index_reg> "]" => format!("[{}]",r),
+    <sr:(<seg_reg>)?> "[" <r:base_index_reg> "]" => {
+        if let Some(s) = sr{
+            format!("{}:[{}]",s,r)
+        }else{
+            format!("[{}]",r)
+        }
+    },
     // Based
-    "[" <r:base_reg> "," <n:s_word_num> "]" => format!("[{},{}]",r,n),
+    <sr:(<seg_reg>)?> "[" <r:base_reg> "," <n:s_word_num> "]" => {
+        if let Some(s) = sr{
+            format!("{}:[{},{}]",s,r,n)
+        }else{
+            format!("[{},{}]",r,n)
+        }
+    },
     // indexed
-    "[" <r:index_reg> "," <n:s_word_num> "]" => format!("[{},{}]",r,n),
+    <sr:(<seg_reg>)?> "[" <r:index_reg> "," <n:s_word_num> "]" => {
+        if let Some(s) = sr{
+            format!("{}:[{},{}]",s,r,n)
+        }else{
+            format!("[{},{}]",r,n)
+        }
+    },
     //based indexed
-    "[" <b:base_reg> "," <i:index_reg> <k:("," <s_word_num>)?> "]" => {
-        match k{
-            Some(n) => format!("[{},{},{}]",b,i,n),
-            None => format!("[{},{},{}]",b,i,0),
+    <sr:(<seg_reg>)?> "[" <b:base_reg> "," <i:index_reg> <k:("," <s_word_num>)?> "]" => {
+        if let Some(s) = sr{
+            match k{
+                Some(n) => format!("{}:[{},{},{}]",s,b,i,n),
+                None => format!("{}:[{},{},{}]",s,b,i,0),
+            }
+        }else{
+            match k{
+                Some(n) => format!("[{},{},{}]",b,i,n),
+                None => format!("[{},{},{}]",b,i,0),
+            }
         }
     },
 }

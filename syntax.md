@@ -53,16 +53,6 @@ Code directives and opcodes
         <strong>signed word number</strong> : numbers in range -32768 -> 32767, only decimal numbers with '-' can be used, for other format use 2's complement for negating.
     </li>
     <li>
-        <strong>memory</strong> : 8086 allows four types of memory addressing :
-        For all cases, when BP is used, the segment used is SS, for others, DS is used.
-        <ul>
-        <li>[offset] : offset of the data from current DS</li>
-        <li>[bx] / [bp] / [si] / [di] : The offset of value is taken from the specified register.</li>
-        <li>[bs/bp/si/di , signed word number] : The offset is taken from the registers, and the number is added to it.</li>
-        <li>[bs/bp , si/di , (signed word number) ] : The offset is taken from the base registers, and offset in index registers as well as the number is added to it. The number offset is optional.</li>
-        </ul>
-    </li>
-    <li>
         <strong>Word Registers</strong> : AX,BX,CX,DX,BP,SP,SI,DI
     </li>
     <li>
@@ -70,6 +60,16 @@ Code directives and opcodes
     </li>
     <li>
         <strong>Segment Registers</strong> : ES,DS,SS,CS
+    </li>
+    <li>
+        <strong>memory</strong> : 8086 allows four types of memory addressing :
+        For all cases, when BP is used, the segment used is SS, for others, DS is used, unless segment register is provided as override, in which case that is sued as the segment.
+        <ul>
+        <li>(segment-register) [offset] : offset of the data from current DS or given segment register</li>
+        <li>(segment-register) [bx/bp/si/di] : The offset of value is taken from the specified register.</li>
+        <li>(segment-register)[bs/bp/si/di , signed word number] : The offset is taken from the registers, and the number is added to it.</li>
+        <li>(segment-register)[bs/bp , si/di , (signed word number) ] : The offset is taken from the base registers, and offset in index registers as well as the number is added to it. The number offset is optional.</li>
+        </ul>
     </li>
 </ul>
 </div>
@@ -128,7 +128,7 @@ Code directives and opcodes
             For passing macro name to macro for invocation, make sure to leave space between param name and brackets :<br/>MACRO a(q)-> ADD AX,q <- MACRO b(k,q) -> k **this space** (q)<- b(a,5)<br/>
         </li>
         <li>
-            <strong>macro use</strong> : used to 'call' macro, the code defined in macro will be placed in place of this.=, with parameters replaced.
+            <strong>macro use</strong> : used to 'call' macro, the code defined in macro will be placed in place of this,with parameters replaced.
             <p><strong>syntax</strong> : macro_name (comma separated value list)</p> The code between '->' and '<-' will be placed in place of macro use, where the parameters will be replaced by the ones given in macro call.
         </li>
         <li>
@@ -313,8 +313,6 @@ Code directives and opcodes
         <ul>
     <li><strong>No operands</strong> : lahf,sahf,pushf,popf,xlat<br />
         <strong>syntax</strong> : opcode
-    </li>
-    <li><strong>No operands</strong> : lahf,sahf,pushf,popf,xlat<br />
     </li>
     <li><strong>lea</strong> : <br />
     <strong>syntax</strong> : 

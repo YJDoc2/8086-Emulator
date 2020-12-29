@@ -158,18 +158,6 @@ mov:() ={
     },
 }
 
-seg_reg:WordReg={
-    
-    "es" => WordReg::ES,
-    
-    "ds" => WordReg::DS,
-    
-    "ss" => WordReg::SS,
-    
-    "cs" => WordReg::CS,
-    
-}
-
 singleton_data_transfer:() ={
     
     "lahf" => {
@@ -1166,15 +1154,41 @@ control:State={
 
 memory_addr:usize = {
     // direct addressing
-    "[" <n:u_word_num> "]" => Address::calculate_from_offset(vm.arch.ds,n),
+    <sr:(seg_reg ":")?> "[" <n:u_word_num> "]" => {
+        let base = match sr{
+            Some(s) => get_word_reg_val(vm,s.0),
+            None =>vm.arch.ds,
+        };
+        Address::calculate_from_offset(base,n)
+    },
     // Register Indirect
     "[" <r:base_index_reg_addr> "]" => r,
+
+    <sr:seg_reg> ":" "[" <r:base_index_reg_val> "]" => {
+        let base = get_word_reg_val(vm,sr);
+        Address::calculate_from_offset(base,r)
+    },
     // Based
     "[" <r:base_reg_addr> "," <n:s_word_num> "]" => make_valid_address((r as i32 + n as i32) as usize),
+    <sr:seg_reg> ":" "[" <r:base_reg_val> "," <n:s_word_num> "]" => {
+        let base = get_word_reg_val(vm,sr);
+        let start = Address::calculate_from_offset(base,r);
+        make_valid_address((start as i32 + n as i32) as usize)
+    },
     // indexed
     "[" <r:index_reg_val> "," <n:s_word_num> "]" => make_valid_address((Address::calculate_from_offset(vm.arch.ds,r) as i32 + n as i32) as usize),
+    <sr:seg_reg> ":" "[" <r:index_reg_val> "," <n:s_word_num> "]" => {
+        let base = get_word_reg_val(vm,sr);
+        let start = Address::calculate_from_offset(base,r);
+        make_valid_address((start as i32 + n as i32) as usize)
+    },
     //based indexed
     "[" <b:base_reg_addr> "," <i:index_reg_val> "," <k:s_word_num> "]" => make_valid_address(((b+i) as i32 + k as i32) as usize),
+    <sr:seg_reg> ":" "[" <b:base_reg_val> "," <i:index_reg_val> "," <k:s_word_num> "]" => {
+        let base = get_word_reg_val(vm,sr);
+        let start = Address::calculate_from_offset(base,b);
+        make_valid_address(((start+i) as i32 + k as i32) as usize)
+    },
     
 }
 
@@ -1263,6 +1277,15 @@ word_reg:WordReg = {
     "di" => WordReg::DI,
 }
 
+base_index_reg_val:usize ={
+    base_reg_val,
+    index_reg_val,
+}
+
+base_reg_val:usize = {
+   "bx" => vm.arch.bx as usize,
+   "bp" => vm.arch.bp as usize, 
+}
 
 base_index_reg_addr:usize = {
    base_reg_addr,
@@ -1277,6 +1300,19 @@ base_reg_addr:usize = {
 index_reg_val:usize = {
    "si" => vm.arch.si as usize,
    "di" => vm.arch.di as usize,
+}
+
+
+seg_reg:WordReg={
+    
+    "es" => WordReg::ES,
+    
+    "ds" => WordReg::DS,
+    
+    "ss" => WordReg::SS,
+    
+    "cs" => WordReg::CS,
+    
 }
 
 byte_label:usize = {

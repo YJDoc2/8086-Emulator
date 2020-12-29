@@ -334,3 +334,20 @@ fn test_macro() {
     );
     assert!(o.is_ok());
 }
+
+#[test]
+fn test_segment_override(){
+    let mut ctx = crate::util::preprocessor_util::Context::default();
+    let mut out = crate::util::preprocessor_util::Output::default();
+    let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
+    let o = p.parse(&mut ctx,&mut out,"mov ax,word es[bp]");
+    println!("{:?}",o);
+    assert!(o.is_ok());
+    let o = p.parse(&mut ctx,&mut out,"mov ax,word ss[5]");
+    assert!(o.is_ok());
+    let o = p.parse(&mut ctx,&mut out,"mov ax,word ds[bp,SI]");
+    assert!(o.is_ok());
+    let o = p.parse(&mut ctx,&mut out,"mov ax,word CS[bx,di,6]");
+    assert!(o.is_ok());
+
+}
