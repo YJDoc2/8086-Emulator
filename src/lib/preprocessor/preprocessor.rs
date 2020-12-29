@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 55218c9de2e4b48850dce0137b41c021bc763521d6ff89bef275b2fb583a52d7
+// sha256: 66b7ca7ab4cae62c0318b378240a729c8998bcb3ee38cfcb7f89b3fe4b3db
 use crate::util::preprocessor_util as util;
 use util::{Label,LabelType};
 use crate::vm::MB;
@@ -18280,6 +18280,7 @@ fn __action18<
 {
     {
         out.data.push(format!("set {}",n));
+        context.data_counter = 0;
     }
 }
 

@@ -122,7 +122,7 @@ impl CMDDriver {
                 }
             }
         }
-
+        vm.arch.ds = 0;
         // contingency, so we do not go over the end
         // and as the user will probably not add hlt at end, this is a good thing
         // even the examples do not contain hlt at end

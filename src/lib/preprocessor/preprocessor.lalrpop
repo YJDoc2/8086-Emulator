@@ -53,6 +53,7 @@ data_directives:() = {
 set_directive:() = {
     quote_set <n:u_word_num> => {
         out.data.push(format!("set {}",n));
+        context.data_counter = 0;
     }
 }
 
