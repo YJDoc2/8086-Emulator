@@ -6,7 +6,7 @@ This is an Intel 8086 emulator / vm. It can run most of 8086 instruction set and
 This repository contains the core library which contains the preprocessor, data parser and interpreter ; as well as a command line driver which provides command line interface for running the program.
 For syntax check <a href="./syntax.md">syntax.md</a>.
 
-This also has be compiled to WASM and available in Web version : [https://github.com/YJDoc2/8086-Emulator-Web](https://github.com/YJDoc2/8086-Emulator-Web)
+This also has be compiled to WASM and available in Web version : [https://github.com/YJDoc2/8086-emulator-web](https://github.com/YJDoc2/8086-emulator-web)
 
 ## Note
 
