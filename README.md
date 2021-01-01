@@ -6,6 +6,18 @@ This is an Intel 8086 emulator / vm. It can run most of 8086 instruction set and
 This repository contains the core library which contains the preprocessor, data parser and interpreter ; as well as a command line driver which provides command line interface for running the program.
 For syntax check <a href="./syntax.md">syntax.md</a>.
 
+This also has be compiled to WASM and available in Web version : [https://github.com/YJDoc2/8086-Emulator-Web](https://github.com/YJDoc2/8086-Emulator-Web)
+
+## Note
+
+This is a Intel 8086 Emulator, providing a way to run programs written for 8086 assembly instruction set. This internally stores data in the emulated "memory" of 1 MB size, but the code is not compiled to binary or stored in memory. Assembly statements are executed using an interpreter, which operates on the memory and architecture (registers, flags etc.) to emulate execution of the program.
+
+As this does not have a 'True' memory, this does not allow jumps to memory positions, and Does not support ISRs, as ISR requires the code to be stored in memory as well.
+
+This also does not emulate external devices like storage, or co-processors, but allows almost all instructions that 8086 support.
+
+Most of the assembly syntax is same as Intel assembly syntax, with few minor changes, which are documented under respective instructions in the <a href="./syntax.md">syntax.md</a>.
+
 <ul>
   <li><a href ="#installation">Installation</a></li>
   <li><a href ="#to-use-as-dependency">Use As dependency</a></li>
@@ -120,10 +132,9 @@ The complete project has following file structure :
 
 #### Driver
 
-TODO add web link
 Driver is the program which uses the core library to run the vm and interpret the code, hence the name '_driver_'.
 AS the core library contains functionality related to preprocessing/syntax checking, data feed into vm, and running the code via interpreter, it is kept purposefully as much platform independent as it can be. The driver takes care of taking the input (via a file or so), removing comments from the file, feeding that to the prerpocessor (which converts everything to uniform small case, and does syntac checking etc.), take its output, then run data parser to store the data of DB/DW commands into the vm memory, and then run the interpreter, as well as provide the user prompt.
-The driver is kept this way, so that the core library can be also used without any changes in the web version as well.
+The driver is kept this way, so that the core library can be also used without any changes in the [web version](https://github.com/YJDoc2/8086-Emulator-Web) as well.
 <br />
 The print parser in the driver interprets the print commands and displays the output. This can be used to interactively check state of vm, as well as for debugging purposes.
 
