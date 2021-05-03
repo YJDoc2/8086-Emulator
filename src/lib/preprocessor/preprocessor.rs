@@ -1,5 +1,5 @@
 // auto-generated: "lalrpop 0.19.1"
-// sha256: 66b7ca7ab4cae62c0318b378240a729c8998bcb3ee38cfcb7f89b3fe4b3db
+// sha256: 3f8e4509f5835a09af51473624e928d31173f7a8c11c69e17db8db77edadd9
 use crate::util::preprocessor_util as util;
 use util::{Label,LabelType};
 use crate::vm::MB;
@@ -4780,7 +4780,18 @@ mod __parse__Preprocessor {
                 (1, 43)
             }
             166 => {
-                __reduce166(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                // jmps_loops = quote_jmps_loops, name_string => ActionFn(721);
+                assert!(__symbols.len() >= 2);
+                let __sym1 = __pop_Variant3(__symbols);
+                let __sym0 = __pop_Variant3(__symbols);
+                let __start = __sym0.0.clone();
+                let __end = __sym1.2.clone();
+                let __nt = match super::__action721::<>(context, out, input, __sym0, __sym1) {
+                    Ok(v) => v,
+                    Err(e) => return Some(Err(e)),
+                };
+                __symbols.push((__start, __Symbol::Variant7(__nt), __end));
+                (2, 44)
             }
             167 => {
                 // label = r#"[_a-zA-Z][_a-zA-Z0-9]*:"# => ActionFn(616);
@@ -9740,28 +9751,6 @@ mod __parse__Preprocessor {
         let __nt = super::__action492::<>(context, out, input, __sym0);
         __symbols.push((__start, __Symbol::Variant3(__nt), __end));
         (1, 41)
-    }
-    pub(crate) fn __reduce166<
-        'input,
-        's,
-    >(
-        context: &'s mut util::Context,
-        out: &'s mut util::Output,
-        input: &'input str,
-        __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
-    ) -> (usize, usize)
-    {
-        // jmps_loops = quote_jmps_loops, name_string => ActionFn(721);
-        assert!(__symbols.len() >= 2);
-        let __sym1 = __pop_Variant3(__symbols);
-        let __sym0 = __pop_Variant3(__symbols);
-        let __start = __sym0.0.clone();
-        let __end = __sym1.2.clone();
-        let __nt = super::__action721::<>(context, out, input, __sym0, __sym1);
-        __symbols.push((__start, __Symbol::Variant7(__nt), __end));
-        (2, 44)
     }
     pub(crate) fn __reduce168<
         'input,
@@ -23640,15 +23629,23 @@ fn __action332<
     (_, q, _): (usize, String, usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> ()
+) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
     {
+        if let Some(l) = context.label_map.get(&n){
+            match l.get_type(){
+                LabelType::DATA =>{
+                    return error!(start,end,format!("Jumps are only supported with Code labels : {} is data label",n));
+                }
+                LabelType::CODE => {}
+            }
+        }else{
+            context.undefined_labels.insert((start,n.clone()));
+        }
         out.code.push(format!("{} {}",q,n));
         context.mapper.add_entry(start);
-        if !context.label_map.contains_key(&n){
-            context.undefined_labels.insert((start,n));
-        }
-        
+        Ok(())
+           
     }
 }
 
@@ -29370,7 +29367,7 @@ fn __action615<
     __0: (usize, String, usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> ()
+) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
@@ -33027,7 +33024,7 @@ fn __action721<
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
-) -> ()
+) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();

@@ -99,7 +99,7 @@ fn test_dw_string() {
     // even though it should work same without -2, as ctr is zero
     assert_eq!(
         &vm.mem[vm.arch.ds as usize * 0x10..vm.arch.ds as usize * 0x10 + 12],
-        &[65, 0, 66, 0, 67, 0, 68, 0, 0, 0, 0,0]
+        &[65, 0, 66, 0, 67, 0, 68, 0, 0, 0, 0, 0]
     );
 }
 
@@ -119,6 +119,6 @@ fn test_set_directive() {
     // even though it should work same without -2, as ctr is zero
     assert_eq!(
         &vm.mem[(vm.arch.ds as usize + 0x100) * 0x10..(vm.arch.ds as usize + 0x100) * 0x10 + 10],
-        &[65, 0, 66, 0, 67, 0, 68, 0, 0,0]
+        &[65, 0, 66, 0, 67, 0, 68, 0, 0, 0]
     );
 }

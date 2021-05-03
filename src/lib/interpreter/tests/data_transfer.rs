@@ -12,13 +12,13 @@ use crate::util::preprocessor_util::{Label, LabelType};
 use crate::vm::VM;
 
 #[test]
-fn test_seg_override(){
+fn test_seg_override() {
     let mut vm = VM::new();
     let mut context = Context::default();
     let p = interpreter::InterpreterParser::new();
 
     vm.arch.es = 0xF;
-    vm.mem[0xF*0x10+1] = 0xFF;
+    vm.mem[0xF * 0x10 + 1] = 0xFF;
     let o = p.parse(1, &mut vm, &mut context, "mov ax, word es:[1]");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
@@ -26,7 +26,7 @@ fn test_seg_override(){
 
     vm.arch.ss = 0xF;
     vm.arch.si = 10;
-    vm.mem[0xF*0x10+10] = 0xFF;
+    vm.mem[0xF * 0x10 + 10] = 0xFF;
     let o = p.parse(1, &mut vm, &mut context, "mov bx, word ss:[si]");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
@@ -34,7 +34,7 @@ fn test_seg_override(){
 
     vm.arch.cs = 0xF;
     vm.arch.bp = 5;
-    vm.mem[0xF*0x10+5] = 0xFF;
+    vm.mem[0xF * 0x10 + 5] = 0xFF;
     let o = p.parse(1, &mut vm, &mut context, "mov ch, byte cs:[bp]");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);
@@ -43,7 +43,7 @@ fn test_seg_override(){
     vm.arch.es = 0xF;
     vm.arch.di = 2;
     vm.arch.bx = 5;
-    vm.mem[0xF*0x10+10] = 0xFF;
+    vm.mem[0xF * 0x10 + 10] = 0xFF;
     let o = p.parse(1, &mut vm, &mut context, "mov dl, byte es:[bx,di,3]");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::NEXT);

@@ -1168,13 +1168,21 @@ quote_into_iret:String = {
 
 // All jumps and loops are combined in single, as they have same syntax
 jmps_loops:() = {
-    <start:@L> <q:quote_jmps_loops> <n:name_string><end:@R> =>{
+    <start:@L> <q:quote_jmps_loops> <n:name_string><end:@R> =>?{
+        if let Some(l) = context.label_map.get(&n){
+            match l.get_type(){
+                LabelType::DATA =>{
+                    return error!(start,end,format!("Jumps are only supported with Code labels : {} is data label",n));
+                }
+                LabelType::CODE => {}
+            }
+        }else{
+            context.undefined_labels.insert((start,n.clone()));
+        }
         out.code.push(format!("{} {}",q,n));
         context.mapper.add_entry(start);
-        if !context.label_map.contains_key(&n){
-            context.undefined_labels.insert((start,n));
-        }
-        
+        Ok(())
+           
     }
 }
 

@@ -1,14 +1,14 @@
 // auto-generated: "lalrpop 0.19.1"
 // sha256: c717a4c9787fc426655b512ff1465b9ed9fd48bf3d2fdf819e86a94e6a61ee
+use crate::arch::{FLAG_CARRY, FLAG_ZERO};
+use crate::error;
+use crate::instructions::{arithmetic::*, bit_manipulation::*, string::*};
+use crate::util::address::*;
+use crate::util::data_util::*;
+use crate::util::flag_util::*;
 use crate::util::interpreter_util::*;
 use crate::util::preprocessor_util::LabelType;
-use crate::instructions::{bit_manipulation::*,string::*,arithmetic::*};
-use crate::util::flag_util::*;
-use crate::util::data_util::*;
-use crate::util::address::*;
-use crate::arch::{FLAG_CARRY,FLAG_ZERO};
-use crate::vm::{VM,MB};
-use crate::error;
+use crate::vm::{MB, VM};
 use lalrpop_util::ParseError;
 #[allow(unused_extern_crates)]
 extern crate lalrpop_util as __lalrpop_util;
@@ -10002,162 +10002,119 @@ mod __intern_token {
 pub use self::__lalrpop_util::lexer::Token;
 
 #[allow(unused_variables)]
-fn __action0<
-    'input,
-    's,
->(
+fn __action0<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action1<
-    'input,
-    's,
->(
+fn __action1<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action2<
-    'input,
-    's,
->(
+fn __action2<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action3<
-    'input,
-    's,
->(
+fn __action3<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> State
-{
+) -> State {
     State::NEXT
 }
 
 #[allow(unused_variables)]
-fn __action4<
-    'input,
-    's,
->(
+fn __action4<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action5<
-    'input,
-    's,
->(
+fn __action5<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action6<
-    'input,
-    's,
->(
+fn __action6<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> State
-{
+) -> State {
     State::NEXT
 }
 
 #[allow(unused_variables)]
-fn __action7<
-    'input,
-    's,
->(
+fn __action7<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> State
-{
+) -> State {
     State::PRINT
 }
 
 #[allow(unused_variables)]
-fn __action8<
-    'input,
-    's,
->(
+fn __action8<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action9<
-    'input,
-    's,
->(
+fn __action9<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action10<
-    'input,
-    's,
->(
+fn __action10<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10167,16 +10124,12 @@ fn __action10<
     (_, __2, _): (usize, u32, usize),
     (_, __3, _): (usize, &'input str, usize),
     (_, __4, _): (usize, u32, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action11<
-    'input,
-    's,
->(
+fn __action11<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10186,16 +10139,12 @@ fn __action11<
     (_, __2, _): (usize, u32, usize),
     (_, __3, _): (usize, &'input str, usize),
     (_, __4, _): (usize, u32, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action12<
-    'input,
-    's,
->(
+fn __action12<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10204,16 +10153,12 @@ fn __action12<
     (_, __1, _): (usize, &'input str, usize),
     (_, __2, _): (usize, &'input str, usize),
     (_, __3, _): (usize, u32, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action13<
-    'input,
-    's,
->(
+fn __action13<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10221,111 +10166,87 @@ fn __action13<
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u32::from_str_radix(n,10){
-            Ok(v) => Ok(v%MB),
-            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between 0-1048576".to_owned())
+        match u32::from_str_radix(n, 10) {
+            Ok(v) => Ok(v % MB),
+            Err(_) => error!(
+                start,
+                end,
+                "Internal Error : Invalid Value, must be between 0-1048576".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action14<
-    'input,
-    's,
->(
+fn __action14<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action15<
-    'input,
-    's,
->(
+fn __action15<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action16<
-    'input,
-    's,
->(
+fn __action16<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action17<
-    'input,
-    's,
->(
+fn __action17<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action18<
-    'input,
-    's,
->(
+fn __action18<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action19<
-    'input,
-    's,
->(
+fn __action19<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action20<
-    'input,
-    's,
->(
+fn __action20<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10335,18 +10256,14 @@ fn __action20<
     (_, r1, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        set_byte_reg(vm,r1,get_byte_reg(vm,r2));
+        set_byte_reg(vm, r1, get_byte_reg(vm, r2));
     }
 }
 
 #[allow(unused_variables)]
-fn __action21<
-    'input,
-    's,
->(
+fn __action21<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10356,18 +10273,14 @@ fn __action21<
     (_, r1, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        set_word_reg_val(vm,r1,get_word_reg_val(vm,r2));
+        set_word_reg_val(vm, r1, get_word_reg_val(vm, r2));
     }
 }
 
 #[allow(unused_variables)]
-fn __action22<
-    'input,
-    's,
->(
+fn __action22<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10378,18 +10291,14 @@ fn __action22<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        set_byte_reg(vm,r,vm.mem[m]);
+        set_byte_reg(vm, r, vm.mem[m]);
     }
 }
 
 #[allow(unused_variables)]
-fn __action23<
-    'input,
-    's,
->(
+fn __action23<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10400,19 +10309,15 @@ fn __action23<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
-        set_word_reg_val(vm,r,val);
+        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m, 1)] as u16) << 8);
+        set_word_reg_val(vm, r, val);
     }
 }
 
 #[allow(unused_variables)]
-fn __action24<
-    'input,
-    's,
->(
+fn __action24<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10422,18 +10327,14 @@ fn __action24<
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        set_byte_reg(vm,r,vm.mem[m]);
+        set_byte_reg(vm, r, vm.mem[m]);
     }
 }
 
 #[allow(unused_variables)]
-fn __action25<
-    'input,
-    's,
->(
+fn __action25<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10443,19 +10344,15 @@ fn __action25<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
-        set_word_reg_val(vm,r,val);
+        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m, 1)] as u16) << 8);
+        set_word_reg_val(vm, r, val);
     }
 }
 
 #[allow(unused_variables)]
-fn __action26<
-    'input,
-    's,
->(
+fn __action26<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10466,18 +10363,14 @@ fn __action26<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        vm.mem[m] = get_byte_reg(vm,r);
+        vm.mem[m] = get_byte_reg(vm, r);
     }
 }
 
 #[allow(unused_variables)]
-fn __action27<
-    'input,
-    's,
->(
+fn __action27<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10488,20 +10381,16 @@ fn __action27<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let (hb,lb) = separate_bytes(get_word_reg_val(vm,r) as i16);
+        let (hb, lb) = separate_bytes(get_word_reg_val(vm, r) as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action28<
-    'input,
-    's,
->(
+fn __action28<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10511,18 +10400,14 @@ fn __action28<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        vm.mem[m] = get_byte_reg(vm,r);
+        vm.mem[m] = get_byte_reg(vm, r);
     }
 }
 
 #[allow(unused_variables)]
-fn __action29<
-    'input,
-    's,
->(
+fn __action29<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10532,20 +10417,16 @@ fn __action29<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let (hb,lb) = separate_bytes(get_word_reg_val(vm,r) as i16);
+        let (hb, lb) = separate_bytes(get_word_reg_val(vm, r) as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action30<
-    'input,
-    's,
->(
+fn __action30<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10555,18 +10436,14 @@ fn __action30<
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
-        set_byte_reg(vm,r,n as u8);
+        set_byte_reg(vm, r, n as u8);
     }
 }
 
 #[allow(unused_variables)]
-fn __action31<
-    'input,
-    's,
->(
+fn __action31<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10576,18 +10453,14 @@ fn __action31<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        set_word_reg_val(vm,r,n as u16);
+        set_word_reg_val(vm, r, n as u16);
     }
 }
 
 #[allow(unused_variables)]
-fn __action32<
-    'input,
-    's,
->(
+fn __action32<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10598,18 +10471,14 @@ fn __action32<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
         vm.mem[m] = n as u8;
     }
 }
 
 #[allow(unused_variables)]
-fn __action33<
-    'input,
-    's,
->(
+fn __action33<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10620,20 +10489,16 @@ fn __action33<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        let (hb,lb) = separate_bytes(n);
+        let (hb, lb) = separate_bytes(n);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action34<
-    'input,
-    's,
->(
+fn __action34<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10643,18 +10508,14 @@ fn __action34<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
         vm.mem[m] = n as u8;
     }
 }
 
 #[allow(unused_variables)]
-fn __action35<
-    'input,
-    's,
->(
+fn __action35<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10664,20 +10525,16 @@ fn __action35<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        let (hb,lb) = separate_bytes(n);
+        let (hb, lb) = separate_bytes(n);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action36<
-    'input,
-    's,
->(
+fn __action36<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10687,18 +10544,14 @@ fn __action36<
     (_, sr, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-      set_word_reg_val(vm,sr,get_word_reg_val(vm,r));  
+        set_word_reg_val(vm, sr, get_word_reg_val(vm, r));
     }
 }
 
 #[allow(unused_variables)]
-fn __action37<
-    'input,
-    's,
->(
+fn __action37<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10708,18 +10561,14 @@ fn __action37<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, sr, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        set_word_reg_val(vm,r,get_word_reg_val(vm,sr));  
+        set_word_reg_val(vm, r, get_word_reg_val(vm, sr));
     }
 }
 
 #[allow(unused_variables)]
-fn __action38<
-    'input,
-    's,
->(
+fn __action38<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10730,20 +10579,16 @@ fn __action38<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, sr, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let (hb,lb) = separate_bytes(get_word_reg_val(vm,sr) as i16);
+        let (hb, lb) = separate_bytes(get_word_reg_val(vm, sr) as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action39<
-    'input,
-    's,
->(
+fn __action39<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10753,20 +10598,16 @@ fn __action39<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, sr, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let (hb,lb) = separate_bytes(get_word_reg_val(vm,sr) as i16);
+        let (hb, lb) = separate_bytes(get_word_reg_val(vm, sr) as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action40<
-    'input,
-    's,
->(
+fn __action40<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10777,19 +10618,15 @@ fn __action40<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
-        set_word_reg_val(vm,sr,val);
+        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m, 1)] as u16) << 8);
+        set_word_reg_val(vm, sr, val);
     }
 }
 
 #[allow(unused_variables)]
-fn __action41<
-    'input,
-    's,
->(
+fn __action41<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10799,120 +10636,96 @@ fn __action41<
     (_, sr, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
-        set_word_reg_val(vm,sr,val);
+        let val = vm.mem[m] as u16 | ((vm.mem[inc_addr(m, 1)] as u16) << 8);
+        set_word_reg_val(vm, sr, val);
     }
 }
 
 #[allow(unused_variables)]
-fn __action42<
-    'input,
-    's,
->(
+fn __action42<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
         let t = vm.arch.flag as u8;
-        set_byte_reg(vm,ByteReg::AH,t);
+        set_byte_reg(vm, ByteReg::AH, t);
     }
 }
 
 #[allow(unused_variables)]
-fn __action43<
-    'input,
-    's,
->(
+fn __action43<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let t = get_byte_reg(vm,ByteReg::AH);
+        let t = get_byte_reg(vm, ByteReg::AH);
         vm.arch.flag = (vm.arch.flag & 0xFF00) | t as u16;
     }
 }
 
 #[allow(unused_variables)]
-fn __action44<
-    'input,
-    's,
->(
+fn __action44<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
         vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
-        let (hb,lb) = separate_bytes(vm.arch.flag as i16);
-        let ss = vm.arch.ss as usize*0x10;
+        let (hb, lb) = separate_bytes(vm.arch.flag as i16);
+        let ss = vm.arch.ss as usize * 0x10;
         let sp = vm.arch.sp as usize;
-        let base = Address::calculate_from_offset(ss,sp);
+        let base = Address::calculate_from_offset(ss, sp);
         vm.mem[base] = lb;
-        vm.mem[inc_addr(base,1)] = hb;
+        vm.mem[inc_addr(base, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action45<
-    'input,
-    's,
->(
+fn __action45<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let ss = vm.arch.ss as usize*0x10;
+        let ss = vm.arch.ss as usize * 0x10;
         let sp = vm.arch.sp as usize;
-        let base = Address::calculate_from_offset(ss,sp);
-        let val = vm.mem[base] as u16 | (vm.mem[inc_addr(base,1)] as u16) << 8;
+        let base = Address::calculate_from_offset(ss, sp);
+        let val = vm.mem[base] as u16 | (vm.mem[inc_addr(base, 1)] as u16) << 8;
         vm.arch.flag = val;
         vm.arch.sp = (vm.arch.sp as u32 + 2) as u16;
     }
 }
 
 #[allow(unused_variables)]
-fn __action46<
-    'input,
-    's,
->(
+fn __action46<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let base = Address::calculate_from_offset(vm.arch.ds,vm.arch.bx);
-        let al = get_byte_reg(vm,ByteReg::AL);
-        let val = vm.mem[inc_addr(base,al as usize)];
-        set_byte_reg(vm,ByteReg::AL,val);
+        let base = Address::calculate_from_offset(vm.arch.ds, vm.arch.bx);
+        let al = get_byte_reg(vm, ByteReg::AL);
+        let val = vm.mem[inc_addr(base, al as usize)];
+        set_byte_reg(vm, ByteReg::AL, val);
     }
 }
 
 #[allow(unused_variables)]
-fn __action47<
-    'input,
-    's,
->(
+fn __action47<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10922,21 +10735,17 @@ fn __action47<
     (_, r1, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let new_r1 = get_byte_reg(vm,r2);
-        let new_r2 = get_byte_reg(vm,r1);
-        set_byte_reg(vm,r1,new_r1);
-        set_byte_reg(vm,r2,new_r2);
+        let new_r1 = get_byte_reg(vm, r2);
+        let new_r2 = get_byte_reg(vm, r1);
+        set_byte_reg(vm, r1, new_r1);
+        set_byte_reg(vm, r2, new_r2);
     }
 }
 
 #[allow(unused_variables)]
-fn __action48<
-    'input,
-    's,
->(
+fn __action48<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10946,21 +10755,17 @@ fn __action48<
     (_, r1, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let new_r1 = get_word_reg_val(vm,r2);
-        let new_r2 = get_word_reg_val(vm,r1);
-        set_word_reg_val(vm,r1,new_r1);
-        set_word_reg_val(vm,r2,new_r2);
+        let new_r1 = get_word_reg_val(vm, r2);
+        let new_r2 = get_word_reg_val(vm, r1);
+        set_word_reg_val(vm, r1, new_r1);
+        set_word_reg_val(vm, r2, new_r2);
     }
 }
 
 #[allow(unused_variables)]
-fn __action49<
-    'input,
-    's,
->(
+fn __action49<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10971,22 +10776,17 @@ fn __action49<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
         let new_reg = vm.mem[m];
-        let new_mem = get_byte_reg(vm,r);
-        set_byte_reg(vm,r,new_reg);
+        let new_mem = get_byte_reg(vm, r);
+        set_byte_reg(vm, r, new_reg);
         vm.mem[m] = new_mem;
-        
     }
 }
 
 #[allow(unused_variables)]
-fn __action50<
-    'input,
-    's,
->(
+fn __action50<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -10997,22 +10797,18 @@ fn __action50<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let new_reg = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
-        let new_mem = get_word_reg_val(vm,r);
-        set_word_reg_val(vm,r,new_reg);
+        let new_reg = vm.mem[m] as u16 | ((vm.mem[inc_addr(m, 1)] as u16) << 8);
+        let new_mem = get_word_reg_val(vm, r);
+        set_word_reg_val(vm, r, new_reg);
         vm.mem[m] = new_mem as u8;
-        vm.mem[inc_addr(m,1)] = ((new_mem & 0xFF) >> 8) as u8;
+        vm.mem[inc_addr(m, 1)] = ((new_mem & 0xFF) >> 8) as u8;
     }
 }
 
 #[allow(unused_variables)]
-fn __action51<
-    'input,
-    's,
->(
+fn __action51<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11022,21 +10818,17 @@ fn __action51<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
         let new_reg = vm.mem[m];
-        let new_mem = get_byte_reg(vm,r);
-        set_byte_reg(vm,r,new_reg);
+        let new_mem = get_byte_reg(vm, r);
+        set_byte_reg(vm, r, new_reg);
         vm.mem[m] = new_mem;
     }
 }
 
 #[allow(unused_variables)]
-fn __action52<
-    'input,
-    's,
->(
+fn __action52<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11046,22 +10838,18 @@ fn __action52<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let new_reg = vm.mem[m] as u16 | ((vm.mem[inc_addr(m,1)] as u16) << 8);
-        let new_mem = get_word_reg_val(vm,r);
-        set_word_reg_val(vm,r,new_reg);
+        let new_reg = vm.mem[m] as u16 | ((vm.mem[inc_addr(m, 1)] as u16) << 8);
+        let new_mem = get_word_reg_val(vm, r);
+        set_word_reg_val(vm, r, new_reg);
         vm.mem[m] = new_mem as u8;
-        vm.mem[inc_addr(m,1)] = ((new_mem & 0xFF00) >> 8) as u8;
+        vm.mem[inc_addr(m, 1)] = ((new_mem & 0xFF00) >> 8) as u8;
     }
 }
 
 #[allow(unused_variables)]
-fn __action53<
-    'input,
-    's,
->(
+fn __action53<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11069,23 +10857,19 @@ fn __action53<
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let ss = vm.arch.ss as usize*0x10;
+        let ss = vm.arch.ss as usize * 0x10;
         let sp = vm.arch.sp as usize;
-        let base = Address::calculate_from_offset(ss,sp);
-        let val = vm.mem[base] as u16 | (vm.mem[inc_addr(base,1)] as u16) << 8;
-        set_word_reg_val(vm,r,val);
+        let base = Address::calculate_from_offset(ss, sp);
+        let val = vm.mem[base] as u16 | (vm.mem[inc_addr(base, 1)] as u16) << 8;
+        set_word_reg_val(vm, r, val);
         vm.arch.sp = (vm.arch.sp as u32 + 2) as u16;
     }
 }
 
 #[allow(unused_variables)]
-fn __action54<
-    'input,
-    's,
->(
+fn __action54<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11094,23 +10878,19 @@ fn __action54<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let ss = vm.arch.ss as usize*0x10;
+        let ss = vm.arch.ss as usize * 0x10;
         let sp = vm.arch.sp as usize;
-        let base = Address::calculate_from_offset(ss,sp);
+        let base = Address::calculate_from_offset(ss, sp);
         vm.mem[m] = vm.mem[base];
-        vm.mem[inc_addr(m,1)] = vm.mem[inc_addr(base,1)];
+        vm.mem[inc_addr(m, 1)] = vm.mem[inc_addr(base, 1)];
         vm.arch.sp = (vm.arch.sp as u32 + 2) as u16;
     }
 }
 
 #[allow(unused_variables)]
-fn __action55<
-    'input,
-    's,
->(
+fn __action55<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11118,23 +10898,19 @@ fn __action55<
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let ss = vm.arch.ss as usize*0x10;
+        let ss = vm.arch.ss as usize * 0x10;
         let sp = vm.arch.sp as usize;
-        let base = Address::calculate_from_offset(ss,sp);
+        let base = Address::calculate_from_offset(ss, sp);
         vm.mem[m] = vm.mem[base];
-        vm.mem[inc_addr(m,1)] = vm.mem[inc_addr(base,1)];
+        vm.mem[inc_addr(m, 1)] = vm.mem[inc_addr(base, 1)];
         vm.arch.sp = (vm.arch.sp as u32 + 2) as u16;
     }
 }
 
 #[allow(unused_variables)]
-fn __action56<
-    'input,
-    's,
->(
+fn __action56<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11142,25 +10918,20 @@ fn __action56<
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
         vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
-        let (hb,lb) = separate_bytes(get_word_reg_val(vm,r) as i16);
-        let ss = vm.arch.ss as usize*0x10;
+        let (hb, lb) = separate_bytes(get_word_reg_val(vm, r) as i16);
+        let ss = vm.arch.ss as usize * 0x10;
         let sp = vm.arch.sp as usize;
-        let base = Address::calculate_from_offset(ss,sp);
+        let base = Address::calculate_from_offset(ss, sp);
         vm.mem[base] = lb;
-        vm.mem[inc_addr(base,1)] = hb;
-
+        vm.mem[inc_addr(base, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action57<
-    'input,
-    's,
->(
+fn __action57<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11168,24 +10939,20 @@ fn __action57<
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
         vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
-        let (hb,lb) = separate_bytes(vm.arch.cs as i16);
-        let ss = vm.arch.ss as usize*0x10;
+        let (hb, lb) = separate_bytes(vm.arch.cs as i16);
+        let ss = vm.arch.ss as usize * 0x10;
         let sp = vm.arch.sp as usize;
-        let base = Address::calculate_from_offset(ss,sp);
+        let base = Address::calculate_from_offset(ss, sp);
         vm.mem[base] = lb;
-        vm.mem[inc_addr(base,1)] = hb;
+        vm.mem[inc_addr(base, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action58<
-    'input,
-    's,
->(
+fn __action58<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11194,23 +10961,19 @@ fn __action58<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
         vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
-        let ss = vm.arch.ss as usize*0x10;
+        let ss = vm.arch.ss as usize * 0x10;
         let sp = vm.arch.sp as usize;
-        let base = Address::calculate_from_offset(ss,sp);
+        let base = Address::calculate_from_offset(ss, sp);
         vm.mem[base] = vm.mem[m];
-        vm.mem[inc_addr(base,1)] = vm.mem[inc_addr(m,1)];
+        vm.mem[inc_addr(base, 1)] = vm.mem[inc_addr(m, 1)];
     }
 }
 
 #[allow(unused_variables)]
-fn __action59<
-    'input,
-    's,
->(
+fn __action59<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11218,83 +10981,63 @@ fn __action59<
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
         vm.arch.sp = (vm.arch.sp as u32 as i32 - 2) as u32 as u16;
-        let ss = vm.arch.ss as usize*0x10;
+        let ss = vm.arch.ss as usize * 0x10;
         let sp = vm.arch.sp as usize;
-        let base = Address::calculate_from_offset(ss,sp);
+        let base = Address::calculate_from_offset(ss, sp);
         vm.mem[base] = vm.mem[m];
-        vm.mem[inc_addr(base,1)] = vm.mem[inc_addr(m,1)];
+        vm.mem[inc_addr(base, 1)] = vm.mem[inc_addr(m, 1)];
     }
 }
 
 #[allow(unused_variables)]
-fn __action60<
-    'input,
-    's,
->(
+fn __action60<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, WordReg, usize),
-) -> WordReg
-{
+) -> WordReg {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action61<
-    'input,
-    's,
->(
+fn __action61<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::ES
 }
 
 #[allow(unused_variables)]
-fn __action62<
-    'input,
-    's,
->(
+fn __action62<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::DS
 }
 
 #[allow(unused_variables)]
-fn __action63<
-    'input,
-    's,
->(
+fn __action63<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::SS
 }
 
 #[allow(unused_variables)]
-fn __action64<
-    'input,
-    's,
->(
+fn __action64<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11305,19 +11048,15 @@ fn __action64<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
         let offset = (m as isize - vm.arch.ds as isize * 0x10) as usize as u16;
-        set_word_reg_val(vm,r,offset);
+        set_word_reg_val(vm, r, offset);
     }
 }
 
 #[allow(unused_variables)]
-fn __action65<
-    'input,
-    's,
->(
+fn __action65<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11327,64 +11066,48 @@ fn __action65<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let offset = (m as isize- vm.arch.ds as isize * 0x10) as usize as u16;
-        set_word_reg_val(vm,r,offset);
+        let offset = (m as isize - vm.arch.ds as isize * 0x10) as usize as u16;
+        set_word_reg_val(vm, r, offset);
     }
 }
 
 #[allow(unused_variables)]
-fn __action66<
-    'input,
-    's,
->(
+fn __action66<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> State
-{
+) -> State {
     State::NEXT
 }
 
 #[allow(unused_variables)]
-fn __action67<
-    'input,
-    's,
->(
+fn __action67<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action68<
-    'input,
-    's,
->(
+fn __action68<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> State
-{
+) -> State {
     State::NEXT
 }
 
 #[allow(unused_variables)]
-fn __action69<
-    'input,
-    's,
->(
+fn __action69<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11394,22 +11117,17 @@ fn __action69<
     (_, r1, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r1);
-        let src = get_byte_reg(vm,r2);
-        let res = f(vm,dest,src);
-        set_byte_reg(vm,r1,res);
-        
+        let dest = get_byte_reg(vm, r1);
+        let src = get_byte_reg(vm, r2);
+        let res = f(vm, dest, src);
+        set_byte_reg(vm, r1, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action70<
-    'input,
-    's,
->(
+fn __action70<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11419,21 +11137,17 @@ fn __action70<
     (_, r1, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_word_reg_val(vm,r1);
-        let src = get_word_reg_val(vm,r2);
-        let res = f(vm,dest,src);
-        set_word_reg_val(vm,r1,res);
+        let dest = get_word_reg_val(vm, r1);
+        let src = get_word_reg_val(vm, r2);
+        let res = f(vm, dest, src);
+        set_word_reg_val(vm, r1, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action71<
-    'input,
-    's,
->(
+fn __action71<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11444,21 +11158,17 @@ fn __action71<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r);
+        let dest = get_byte_reg(vm, r);
         let src = vm.mem[m];
-        let res = f(vm,dest,src);
-        set_byte_reg(vm,r,res);
+        let res = f(vm, dest, src);
+        set_byte_reg(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action72<
-    'input,
-    's,
->(
+fn __action72<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11469,21 +11179,17 @@ fn __action72<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_word_reg_val(vm,r);
-        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let res = f(vm,dest,src);
-        set_word_reg_val(vm,r,res);
+        let dest = get_word_reg_val(vm, r);
+        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let res = f(vm, dest, src);
+        set_word_reg_val(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action73<
-    'input,
-    's,
->(
+fn __action73<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11493,21 +11199,17 @@ fn __action73<
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r);
+        let dest = get_byte_reg(vm, r);
         let src = vm.mem[m];
-        let res = f(vm,dest,src);
-        set_byte_reg(vm,r,res);
+        let res = f(vm, dest, src);
+        set_byte_reg(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action74<
-    'input,
-    's,
->(
+fn __action74<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11517,21 +11219,17 @@ fn __action74<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_word_reg_val(vm,r);
-        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let res = f(vm,dest,src);
-        set_word_reg_val(vm,r,res);
+        let dest = get_word_reg_val(vm, r);
+        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let res = f(vm, dest, src);
+        set_word_reg_val(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action75<
-    'input,
-    's,
->(
+fn __action75<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11542,21 +11240,17 @@ fn __action75<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
-        let src = get_byte_reg(vm,r);
-        let res = f(vm,dest,src);
+        let src = get_byte_reg(vm, r);
+        let res = f(vm, dest, src);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action76<
-    'input,
-    's,
->(
+fn __action76<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11567,23 +11261,19 @@ fn __action76<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let src = get_word_reg_val(vm,r);
-        let res = f(vm,dest,src);
-        let (hb,lb) = separate_bytes(res as i16);
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let src = get_word_reg_val(vm, r);
+        let res = f(vm, dest, src);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action77<
-    'input,
-    's,
->(
+fn __action77<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11593,21 +11283,17 @@ fn __action77<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
-        let src = get_byte_reg(vm,r);
-        let res = f(vm,dest,src);
+        let src = get_byte_reg(vm, r);
+        let res = f(vm, dest, src);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action78<
-    'input,
-    's,
->(
+fn __action78<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11617,23 +11303,19 @@ fn __action78<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let src = get_word_reg_val(vm,r);
-        let res = f(vm,dest,src);
-        let (hb,lb) = separate_bytes(res as i16);
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let src = get_word_reg_val(vm, r);
+        let res = f(vm, dest, src);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action79<
-    'input,
-    's,
->(
+fn __action79<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11643,21 +11325,17 @@ fn __action79<
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r);
+        let dest = get_byte_reg(vm, r);
         let src = n as u8;
-        let res = f(vm,dest,src);
-        set_byte_reg(vm,r,res); 
+        let res = f(vm, dest, src);
+        set_byte_reg(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action80<
-    'input,
-    's,
->(
+fn __action80<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11667,21 +11345,17 @@ fn __action80<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_word_reg_val(vm,r);
+        let dest = get_word_reg_val(vm, r);
         let src = n as u16;
-        let res = f(vm,dest,src);
-        set_word_reg_val(vm,r,res);
+        let res = f(vm, dest, src);
+        set_word_reg_val(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action81<
-    'input,
-    's,
->(
+fn __action81<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11692,21 +11366,17 @@ fn __action81<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
         let src = n as u8;
-        let res = f(vm,dest,src);
+        let res = f(vm, dest, src);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action82<
-    'input,
-    's,
->(
+fn __action82<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11717,23 +11387,19 @@ fn __action82<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
         let src = n as u16;
-        let res = f(vm,dest,src);
-        let (hb,lb) = separate_bytes(res as i16);
+        let res = f(vm, dest, src);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action83<
-    'input,
-    's,
->(
+fn __action83<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11743,21 +11409,17 @@ fn __action83<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
         let src = n as u8;
-        let res = f(vm,dest,src);
+        let res = f(vm, dest, src);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action84<
-    'input,
-    's,
->(
+fn __action84<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11767,173 +11429,129 @@ fn __action84<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
         let src = n as u16;
-        let res = f(vm,dest,src);
-        let (hb,lb) = separate_bytes(res as i16);
+        let res = f(vm, dest, src);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action85<
-    'input,
-    's,
->(
+fn __action85<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     byte_add
 }
 
 #[allow(unused_variables)]
-fn __action86<
-    'input,
-    's,
->(
+fn __action86<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     byte_adc
 }
 
 #[allow(unused_variables)]
-fn __action87<
-    'input,
-    's,
->(
+fn __action87<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     byte_sub
 }
 
 #[allow(unused_variables)]
-fn __action88<
-    'input,
-    's,
->(
+fn __action88<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     byte_sbb
 }
 
 #[allow(unused_variables)]
-fn __action89<
-    'input,
-    's,
->(
+fn __action89<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     byte_cmp
 }
 
 #[allow(unused_variables)]
-fn __action90<
-    'input,
-    's,
->(
+fn __action90<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     word_add
 }
 
 #[allow(unused_variables)]
-fn __action91<
-    'input,
-    's,
->(
+fn __action91<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     word_adc
 }
 
 #[allow(unused_variables)]
-fn __action92<
-    'input,
-    's,
->(
+fn __action92<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     word_sub
 }
 
 #[allow(unused_variables)]
-fn __action93<
-    'input,
-    's,
->(
+fn __action93<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     word_sbb
 }
 
 #[allow(unused_variables)]
-fn __action94<
-    'input,
-    's,
->(
+fn __action94<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     word_cmp
 }
 
 #[allow(unused_variables)]
-fn __action95<
-    'input,
-    's,
->(
+fn __action95<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11941,25 +11559,20 @@ fn __action95<
     (_, start, _): (usize, usize, usize),
     (_, f, _): (usize, ByteOpUnary, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> State
-{
+) -> State {
     {
-        let mut val = get_byte_reg(vm,r);
-        match f(vm,&mut val){
-            Ok(_)=>{},
-            Err(_)=>return State::INT(0),
+        let mut val = get_byte_reg(vm, r);
+        match f(vm, &mut val) {
+            Ok(_) => {}
+            Err(_) => return State::INT(0),
         };
-        set_byte_reg(vm,r,val);
+        set_byte_reg(vm, r, val);
         return State::NEXT;
-        
     }
 }
 
 #[allow(unused_variables)]
-fn __action96<
-    'input,
-    's,
->(
+fn __action96<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11967,24 +11580,20 @@ fn __action96<
     (_, start, _): (usize, usize, usize),
     (_, f, _): (usize, WordOpUnary, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> State
-{
+) -> State {
     {
-        let mut val = get_word_reg_val(vm,r);
-        match f(vm,&mut val){
-            Ok(_)=>{},
-            Err(_)=>return State::INT(0),
+        let mut val = get_word_reg_val(vm, r);
+        match f(vm, &mut val) {
+            Ok(_) => {}
+            Err(_) => return State::INT(0),
         };
-        set_word_reg_val(vm,r,val);
+        set_word_reg_val(vm, r, val);
         return State::NEXT;
     }
 }
 
 #[allow(unused_variables)]
-fn __action97<
-    'input,
-    's,
->(
+fn __action97<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -11993,13 +11602,12 @@ fn __action97<
     (_, f, _): (usize, ByteOpUnary, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> State
-{
+) -> State {
     {
         let mut val = vm.mem[m];
-        match f(vm,&mut val){
-            Ok(_)=>{},
-            Err(_)=>return State::INT(0),
+        match f(vm, &mut val) {
+            Ok(_) => {}
+            Err(_) => return State::INT(0),
         };
         vm.mem[m] = val;
         return State::NEXT;
@@ -12007,10 +11615,7 @@ fn __action97<
 }
 
 #[allow(unused_variables)]
-fn __action98<
-    'input,
-    's,
->(
+fn __action98<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12019,26 +11624,22 @@ fn __action98<
     (_, f, _): (usize, WordOpUnary, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> State
-{
+) -> State {
     {
-        let mut val = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        match f(vm,&mut val){
-            Ok(_)=>{},
-            Err(_)=>return State::INT(0),
+        let mut val = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        match f(vm, &mut val) {
+            Ok(_) => {}
+            Err(_) => return State::INT(0),
         };
-        let (hb,lb) = separate_bytes(val as i16);
+        let (hb, lb) = separate_bytes(val as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
         return State::NEXT;
     }
 }
 
 #[allow(unused_variables)]
-fn __action99<
-    'input,
-    's,
->(
+fn __action99<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12046,13 +11647,12 @@ fn __action99<
     (_, start, _): (usize, usize, usize),
     (_, f, _): (usize, ByteOpUnary, usize),
     (_, m, _): (usize, usize, usize),
-) -> State
-{
+) -> State {
     {
         let mut val = vm.mem[m];
-        match f(vm,&mut val){
-            Ok(_)=>{},
-            Err(_)=>return State::INT(0),
+        match f(vm, &mut val) {
+            Ok(_) => {}
+            Err(_) => return State::INT(0),
         };
         vm.mem[m] = val;
         return State::NEXT;
@@ -12060,10 +11660,7 @@ fn __action99<
 }
 
 #[allow(unused_variables)]
-fn __action100<
-    'input,
-    's,
->(
+fn __action100<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12071,693 +11668,525 @@ fn __action100<
     (_, start, _): (usize, usize, usize),
     (_, f, _): (usize, WordOpUnary, usize),
     (_, m, _): (usize, usize, usize),
-) -> State
-{
+) -> State {
     {
-        let mut val = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        match f(vm,&mut val){
-            Ok(_)=>{},
-            Err(_)=>return State::INT(0),
+        let mut val = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        match f(vm, &mut val) {
+            Ok(_) => {}
+            Err(_) => return State::INT(0),
         };
-        let (hb,lb) = separate_bytes(val as i16);
+        let (hb, lb) = separate_bytes(val as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
         return State::NEXT;
     }
 }
 
 #[allow(unused_variables)]
-fn __action101<
-    'input,
-    's,
->(
+fn __action101<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpUnary
-{
+) -> ByteOpUnary {
     byte_dec
 }
 
 #[allow(unused_variables)]
-fn __action102<
-    'input,
-    's,
->(
+fn __action102<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpUnary
-{
+) -> ByteOpUnary {
     byte_inc
 }
 
 #[allow(unused_variables)]
-fn __action103<
-    'input,
-    's,
->(
+fn __action103<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpUnary
-{
+) -> ByteOpUnary {
     byte_neg
 }
 
 #[allow(unused_variables)]
-fn __action104<
-    'input,
-    's,
->(
+fn __action104<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpUnary
-{
+) -> ByteOpUnary {
     byte_mul
 }
 
 #[allow(unused_variables)]
-fn __action105<
-    'input,
-    's,
->(
+fn __action105<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpUnary
-{
+) -> ByteOpUnary {
     byte_imul
 }
 
 #[allow(unused_variables)]
-fn __action106<
-    'input,
-    's,
->(
+fn __action106<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpUnary
-{
+) -> ByteOpUnary {
     byte_div
 }
 
 #[allow(unused_variables)]
-fn __action107<
-    'input,
-    's,
->(
+fn __action107<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpUnary
-{
+) -> ByteOpUnary {
     byte_idiv
 }
 
 #[allow(unused_variables)]
-fn __action108<
-    'input,
-    's,
->(
+fn __action108<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpUnary
-{
+) -> WordOpUnary {
     word_dec
 }
 
 #[allow(unused_variables)]
-fn __action109<
-    'input,
-    's,
->(
+fn __action109<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpUnary
-{
+) -> WordOpUnary {
     word_inc
 }
 
 #[allow(unused_variables)]
-fn __action110<
-    'input,
-    's,
->(
+fn __action110<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpUnary
-{
+) -> WordOpUnary {
     word_neg
 }
 
 #[allow(unused_variables)]
-fn __action111<
-    'input,
-    's,
->(
+fn __action111<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpUnary
-{
+) -> WordOpUnary {
     word_mul
 }
 
 #[allow(unused_variables)]
-fn __action112<
-    'input,
-    's,
->(
+fn __action112<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpUnary
-{
+) -> WordOpUnary {
     word_imul
 }
 
 #[allow(unused_variables)]
-fn __action113<
-    'input,
-    's,
->(
+fn __action113<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpUnary
-{
+) -> WordOpUnary {
     word_div
 }
 
 #[allow(unused_variables)]
-fn __action114<
-    'input,
-    's,
->(
+fn __action114<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpUnary
-{
+) -> WordOpUnary {
     word_idiv
 }
 
 #[allow(unused_variables)]
-fn __action115<
-    'input,
-    's,
->(
+fn __action115<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     aaa(vm)
 }
 
 #[allow(unused_variables)]
-fn __action116<
-    'input,
-    's,
->(
+fn __action116<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     aad(vm)
 }
 
 #[allow(unused_variables)]
-fn __action117<
-    'input,
-    's,
->(
+fn __action117<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     aam(vm)
 }
 
 #[allow(unused_variables)]
-fn __action118<
-    'input,
-    's,
->(
+fn __action118<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     aas(vm)
 }
 
 #[allow(unused_variables)]
-fn __action119<
-    'input,
-    's,
->(
+fn __action119<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     daa(vm)
 }
 
 #[allow(unused_variables)]
-fn __action120<
-    'input,
-    's,
->(
+fn __action120<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     das(vm)
 }
 
 #[allow(unused_variables)]
-fn __action121<
-    'input,
-    's,
->(
+fn __action121<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     cbw(vm)
 }
 
 #[allow(unused_variables)]
-fn __action122<
-    'input,
-    's,
->(
+fn __action122<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     cwd(vm)
 }
 
 #[allow(unused_variables)]
-fn __action123<
-    'input,
-    's,
->(
+fn __action123<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> State
-{
+) -> State {
     State::NEXT
 }
 
 #[allow(unused_variables)]
-fn __action124<
-    'input,
-    's,
->(
+fn __action124<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, (), usize),
-) -> State
-{
+) -> State {
     {
-        if vm.arch.cx == 0{
+        if vm.arch.cx == 0 {
             return State::NEXT;
-        }else{
-            vm.arch.cx = vm.arch.cx -1;
+        } else {
+            vm.arch.cx = vm.arch.cx - 1;
             return State::REPEAT;
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action125<
-    'input,
-    's,
->(
+fn __action125<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, (), usize),
-) -> State
-{
+) -> State {
     {
-        if vm.arch.cx == 0{
+        if vm.arch.cx == 0 {
             return State::NEXT;
-        }else{
-            vm.arch.cx = vm.arch.cx -1;
-            if vm.arch.flag & FLAG_ZERO !=0 {
+        } else {
+            vm.arch.cx = vm.arch.cx - 1;
+            if vm.arch.flag & FLAG_ZERO != 0 {
                 // zero flag is set
                 return State::REPEAT;
-            }else{
+            } else {
                 return State::NEXT;
-            }            
+            }
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action126<
-    'input,
-    's,
->(
+fn __action126<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, (), usize),
-) -> State
-{
+) -> State {
     {
-        if vm.arch.cx == 0{
+        if vm.arch.cx == 0 {
             return State::NEXT;
-        }else{
-            vm.arch.cx = vm.arch.cx -1;
+        } else {
+            vm.arch.cx = vm.arch.cx - 1;
             if vm.arch.flag & FLAG_ZERO == 0 {
                 // zero flag is not set
                 return State::REPEAT;
-            }else{
+            } else {
                 return State::NEXT;
-            }            
+            }
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action127<
-    'input,
-    's,
->(
+fn __action127<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     movs_byte(vm)
 }
 
 #[allow(unused_variables)]
-fn __action128<
-    'input,
-    's,
->(
+fn __action128<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     movs_word(vm)
 }
 
 #[allow(unused_variables)]
-fn __action129<
-    'input,
-    's,
->(
+fn __action129<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     loads_byte(vm)
 }
 
 #[allow(unused_variables)]
-fn __action130<
-    'input,
-    's,
->(
+fn __action130<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     loads_word(vm)
 }
 
 #[allow(unused_variables)]
-fn __action131<
-    'input,
-    's,
->(
+fn __action131<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     stos_byte(vm)
 }
 
 #[allow(unused_variables)]
-fn __action132<
-    'input,
-    's,
->(
+fn __action132<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     stos_word(vm)
 }
 
 #[allow(unused_variables)]
-fn __action133<
-    'input,
-    's,
->(
+fn __action133<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     cmps_byte(vm)
 }
 
 #[allow(unused_variables)]
-fn __action134<
-    'input,
-    's,
->(
+fn __action134<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     cmps_word(vm)
 }
 
 #[allow(unused_variables)]
-fn __action135<
-    'input,
-    's,
->(
+fn __action135<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     scas_byte(vm)
 }
 
 #[allow(unused_variables)]
-fn __action136<
-    'input,
-    's,
->(
+fn __action136<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     scas_word(vm)
 }
 
 #[allow(unused_variables)]
-fn __action137<
-    'input,
-    's,
->(
+fn __action137<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action138<
-    'input,
-    's,
->(
+fn __action138<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action139<
-    'input,
-    's,
->(
+fn __action139<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action140<
-    'input,
-    's,
->(
+fn __action140<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-      let v = get_byte_reg(vm,r);
-      set_byte_reg(vm,r,!v);
-   }
+        let v = get_byte_reg(vm, r);
+        set_byte_reg(vm, r, !v);
+    }
 }
 
 #[allow(unused_variables)]
-fn __action141<
-    'input,
-    's,
->(
+fn __action141<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-      let v = get_word_reg_val(vm,r);
-      set_word_reg_val(vm,r,!v);
-   }
+        let v = get_word_reg_val(vm, r);
+        set_word_reg_val(vm, r, !v);
+    }
 }
 
 #[allow(unused_variables)]
-fn __action142<
-    'input,
-    's,
->(
+fn __action142<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12765,18 +12194,14 @@ fn __action142<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-      vm.mem[m] = !vm.mem[m];
-   }
+        vm.mem[m] = !vm.mem[m];
+    }
 }
 
 #[allow(unused_variables)]
-fn __action143<
-    'input,
-    's,
->(
+fn __action143<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12784,64 +12209,52 @@ fn __action143<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-      let mut temp:u16 = vm.mem[m] as u16;
-      temp |= (vm.mem[inc_addr(m,1)] as u16) << 8;
-      temp = !temp;
-      let (hb,lb) = separate_bytes(temp as i16);
-      vm.mem[m] = lb;
-      vm.mem[inc_addr(m,1)] = hb;
-   }
+        let mut temp: u16 = vm.mem[m] as u16;
+        temp |= (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        temp = !temp;
+        let (hb, lb) = separate_bytes(temp as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m, 1)] = hb;
+    }
 }
 
 #[allow(unused_variables)]
-fn __action144<
-    'input,
-    's,
->(
+fn __action144<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-      vm.mem[m] = !vm.mem[m];
-   }
+        vm.mem[m] = !vm.mem[m];
+    }
 }
 
 #[allow(unused_variables)]
-fn __action145<
-    'input,
-    's,
->(
+fn __action145<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-      let mut temp:u16 = vm.mem[m] as u16;
-      temp |= (vm.mem[inc_addr(m,1)] as u16) << 8;
-      temp = !temp;
-      let (hb,lb) = separate_bytes(temp as i16);
-      vm.mem[m] = lb;
-      vm.mem[inc_addr(m,1)] = hb;
-   }
+        let mut temp: u16 = vm.mem[m] as u16;
+        temp |= (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        temp = !temp;
+        let (hb, lb) = separate_bytes(temp as i16);
+        vm.mem[m] = lb;
+        vm.mem[inc_addr(m, 1)] = hb;
+    }
 }
 
 #[allow(unused_variables)]
-fn __action146<
-    'input,
-    's,
->(
+fn __action146<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12851,21 +12264,17 @@ fn __action146<
     (_, r1, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r1);
-        let src = get_byte_reg(vm,r2);
-        let res = f(vm,dest,src);
-        set_byte_reg(vm,r1,res);
+        let dest = get_byte_reg(vm, r1);
+        let src = get_byte_reg(vm, r2);
+        let res = f(vm, dest, src);
+        set_byte_reg(vm, r1, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action147<
-    'input,
-    's,
->(
+fn __action147<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12875,23 +12284,19 @@ fn __action147<
     (_, r1, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
         // as f requires mut , we cannot use get_word_reg_val
         // so first take both values and set destination value
-        let dest = get_word_reg_val(vm,r1);
-        let src = get_word_reg_val(vm,r2);
-        let res = f(vm,dest,src);
-        set_word_reg_val(vm,r1,res);
+        let dest = get_word_reg_val(vm, r1);
+        let src = get_word_reg_val(vm, r2);
+        let res = f(vm, dest, src);
+        set_word_reg_val(vm, r1, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action148<
-    'input,
-    's,
->(
+fn __action148<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12902,21 +12307,17 @@ fn __action148<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r);
+        let dest = get_byte_reg(vm, r);
         let src = vm.mem[m];
-        let res = f(vm,dest,src);
-        set_byte_reg(vm,r,res);
+        let res = f(vm, dest, src);
+        set_byte_reg(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action149<
-    'input,
-    's,
->(
+fn __action149<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12927,21 +12328,17 @@ fn __action149<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_word_reg_val(vm,r);
-        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let res = f(vm,dest,src);
-        set_word_reg_val(vm,r,res);
+        let dest = get_word_reg_val(vm, r);
+        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let res = f(vm, dest, src);
+        set_word_reg_val(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action150<
-    'input,
-    's,
->(
+fn __action150<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12951,21 +12348,17 @@ fn __action150<
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r);
+        let dest = get_byte_reg(vm, r);
         let src = vm.mem[m];
-        let res = f(vm,dest,src);
-        set_byte_reg(vm,r,res);
+        let res = f(vm, dest, src);
+        set_byte_reg(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action151<
-    'input,
-    's,
->(
+fn __action151<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -12975,21 +12368,17 @@ fn __action151<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_word_reg_val(vm,r);
-        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let res = f(vm,dest,src);
-        set_word_reg_val(vm,r,res);
+        let dest = get_word_reg_val(vm, r);
+        let src = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let res = f(vm, dest, src);
+        set_word_reg_val(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action152<
-    'input,
-    's,
->(
+fn __action152<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13000,21 +12389,17 @@ fn __action152<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
-        let src = get_byte_reg(vm,r);
-        let res = f(vm,dest,src);
+        let src = get_byte_reg(vm, r);
+        let res = f(vm, dest, src);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action153<
-    'input,
-    's,
->(
+fn __action153<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13025,23 +12410,19 @@ fn __action153<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let src = get_word_reg_val(vm,r);
-        let res = f(vm,dest,src);
-        let (hb,lb) = separate_bytes(res as i16);
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let src = get_word_reg_val(vm, r);
+        let res = f(vm, dest, src);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action154<
-    'input,
-    's,
->(
+fn __action154<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13051,21 +12432,17 @@ fn __action154<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
-        let src = get_byte_reg(vm,r);
-        let res = f(vm,dest,src);
+        let src = get_byte_reg(vm, r);
+        let res = f(vm, dest, src);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action155<
-    'input,
-    's,
->(
+fn __action155<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13075,23 +12452,19 @@ fn __action155<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let src = get_word_reg_val(vm,r);
-        let res = f(vm,dest,src);
-        let (hb,lb) = separate_bytes(res as i16);
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let src = get_word_reg_val(vm, r);
+        let res = f(vm, dest, src);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action156<
-    'input,
-    's,
->(
+fn __action156<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13101,21 +12474,17 @@ fn __action156<
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r);
+        let dest = get_byte_reg(vm, r);
         let src = n;
-        let res = f(vm,dest,src);
-        set_byte_reg(vm,r,res);
+        let res = f(vm, dest, src);
+        set_byte_reg(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action157<
-    'input,
-    's,
->(
+fn __action157<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13125,21 +12494,17 @@ fn __action157<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_word_reg_val(vm,r);
+        let dest = get_word_reg_val(vm, r);
         let src = n;
-        let res = f(vm,dest,src);
-        set_word_reg_val(vm,r,res);
+        let res = f(vm, dest, src);
+        set_word_reg_val(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action158<
-    'input,
-    's,
->(
+fn __action158<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13150,21 +12515,17 @@ fn __action158<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
         let src = n;
-        let res = f(vm,dest,src);
+        let res = f(vm, dest, src);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action159<
-    'input,
-    's,
->(
+fn __action159<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13175,23 +12536,19 @@ fn __action159<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
         let src = n;
-        let res = f(vm,dest,src);
-        let (hb,lb) = separate_bytes(res as i16);
+        let res = f(vm, dest, src);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action160<
-    'input,
-    's,
->(
+fn __action160<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13201,21 +12558,17 @@ fn __action160<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
         let src = n;
-        let res = f(vm,dest,src);
+        let res = f(vm, dest, src);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action161<
-    'input,
-    's,
->(
+fn __action161<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13225,159 +12578,123 @@ fn __action161<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
         let src = n;
-        let res = f(vm,dest,src);
-        let (hb,lb) = separate_bytes(res as i16);
+        let res = f(vm, dest, src);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action162<
-    'input,
-    's,
->(
+fn __action162<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_and
     }
 }
 
 #[allow(unused_variables)]
-fn __action163<
-    'input,
-    's,
->(
+fn __action163<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_or
     }
 }
 
 #[allow(unused_variables)]
-fn __action164<
-    'input,
-    's,
->(
+fn __action164<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_xor
     }
 }
 
 #[allow(unused_variables)]
-fn __action165<
-    'input,
-    's,
->(
+fn __action165<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_test
     }
 }
 
 #[allow(unused_variables)]
-fn __action166<
-    'input,
-    's,
->(
+fn __action166<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_and
     }
 }
 
 #[allow(unused_variables)]
-fn __action167<
-    'input,
-    's,
->(
+fn __action167<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_or
     }
 }
 
 #[allow(unused_variables)]
-fn __action168<
-    'input,
-    's,
->(
+fn __action168<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_xor
     }
 }
 
 #[allow(unused_variables)]
-fn __action169<
-    'input,
-    's,
->(
+fn __action169<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_test
     }
 }
 
 #[allow(unused_variables)]
-fn __action170<
-    'input,
-    's,
->(
+fn __action170<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13387,20 +12704,16 @@ fn __action170<
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, num, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r);
-        let res = f(vm,dest,num);
-        set_byte_reg(vm,r,res);
+        let dest = get_byte_reg(vm, r);
+        let res = f(vm, dest, num);
+        set_byte_reg(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action171<
-    'input,
-    's,
->(
+fn __action171<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13410,21 +12723,17 @@ fn __action171<
     (_, r, _): (usize, ByteReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_byte_reg(vm,r);
-        let num = get_byte_reg(vm,ByteReg::CL);
-        let res = f(vm,dest,num);
-        set_byte_reg(vm,r,res);
+        let dest = get_byte_reg(vm, r);
+        let num = get_byte_reg(vm, ByteReg::CL);
+        let res = f(vm, dest, num);
+        set_byte_reg(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action172<
-    'input,
-    's,
->(
+fn __action172<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13434,20 +12743,16 @@ fn __action172<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, num, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_word_reg_val(vm,r);
-        let res = f(vm,dest,num as u16);
-        set_word_reg_val(vm,r,res);
+        let dest = get_word_reg_val(vm, r);
+        let res = f(vm, dest, num as u16);
+        set_word_reg_val(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action173<
-    'input,
-    's,
->(
+fn __action173<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13457,21 +12762,17 @@ fn __action173<
     (_, r, _): (usize, WordReg, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = get_word_reg_val(vm,r);
-        let num = get_byte_reg(vm,ByteReg::CL);
-        let res = f(vm,dest,num as u16);
-        set_word_reg_val(vm,r,res);
+        let dest = get_word_reg_val(vm, r);
+        let num = get_byte_reg(vm, ByteReg::CL);
+        let res = f(vm, dest, num as u16);
+        set_word_reg_val(vm, r, res);
     }
 }
 
 #[allow(unused_variables)]
-fn __action174<
-    'input,
-    's,
->(
+fn __action174<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13482,20 +12783,16 @@ fn __action174<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, num, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
-        let res = f(vm,dest,num);
+        let res = f(vm, dest, num);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action175<
-    'input,
-    's,
->(
+fn __action175<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13506,21 +12803,17 @@ fn __action175<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
-        let num = get_byte_reg(vm,ByteReg::CL);
-        let res = f(vm,dest,num);
+        let num = get_byte_reg(vm, ByteReg::CL);
+        let res = f(vm, dest, num);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action176<
-    'input,
-    's,
->(
+fn __action176<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13531,22 +12824,18 @@ fn __action176<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, num, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let res = f(vm,dest,num as u16);
-        let (hb,lb) = separate_bytes(res as i16);
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let res = f(vm, dest, num as u16);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action177<
-    'input,
-    's,
->(
+fn __action177<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13557,23 +12846,19 @@ fn __action177<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let num = get_byte_reg(vm,ByteReg::CL);
-        let res = f(vm,dest,num as u16);
-        let (hb,lb) = separate_bytes(res as i16);
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let num = get_byte_reg(vm, ByteReg::CL);
+        let res = f(vm, dest, num as u16);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action178<
-    'input,
-    's,
->(
+fn __action178<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13583,20 +12868,16 @@ fn __action178<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, num, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
-        let res = f(vm,dest,num);
+        let res = f(vm, dest, num);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action179<
-    'input,
-    's,
->(
+fn __action179<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13606,21 +12887,17 @@ fn __action179<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
         let dest = vm.mem[m];
-        let num = get_byte_reg(vm,ByteReg::CL);
-        let res = f(vm,dest,num);
+        let num = get_byte_reg(vm, ByteReg::CL);
+        let res = f(vm, dest, num);
         vm.mem[m] = res;
     }
 }
 
 #[allow(unused_variables)]
-fn __action180<
-    'input,
-    's,
->(
+fn __action180<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13630,22 +12907,18 @@ fn __action180<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, num, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let res = f(vm,dest,num as u16);
-        let (hb,lb) = separate_bytes(res as i16);
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let res = f(vm, dest, num as u16);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action181<
-    'input,
-    's,
->(
+fn __action181<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13655,321 +12928,245 @@ fn __action181<
     (_, m, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     {
-        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m,1)] as u16) << 8;
-        let num = get_byte_reg(vm,ByteReg::CL);
-        let res = f(vm,dest,num as u16);
-        let (hb,lb) = separate_bytes(res as i16);
+        let dest = vm.mem[m] as u16 | (vm.mem[inc_addr(m, 1)] as u16) << 8;
+        let num = get_byte_reg(vm, ByteReg::CL);
+        let res = f(vm, dest, num as u16);
+        let (hb, lb) = separate_bytes(res as i16);
         vm.mem[m] = lb;
-        vm.mem[inc_addr(m,1)] = hb;
+        vm.mem[inc_addr(m, 1)] = hb;
     }
 }
 
 #[allow(unused_variables)]
-fn __action182<
-    'input,
-    's,
->(
+fn __action182<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_sal
     }
 }
 
 #[allow(unused_variables)]
-fn __action183<
-    'input,
-    's,
->(
+fn __action183<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_sar
     }
 }
 
 #[allow(unused_variables)]
-fn __action184<
-    'input,
-    's,
->(
+fn __action184<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_shr
     }
 }
 
 #[allow(unused_variables)]
-fn __action185<
-    'input,
-    's,
->(
+fn __action185<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_rol
     }
 }
 
 #[allow(unused_variables)]
-fn __action186<
-    'input,
-    's,
->(
+fn __action186<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_ror
     }
 }
 
 #[allow(unused_variables)]
-fn __action187<
-    'input,
-    's,
->(
+fn __action187<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_rcl
     }
 }
 
 #[allow(unused_variables)]
-fn __action188<
-    'input,
-    's,
->(
+fn __action188<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteOpBinary
-{
+) -> ByteOpBinary {
     {
         byte_rcr
     }
 }
 
 #[allow(unused_variables)]
-fn __action189<
-    'input,
-    's,
->(
+fn __action189<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_sal
     }
 }
 
 #[allow(unused_variables)]
-fn __action190<
-    'input,
-    's,
->(
+fn __action190<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_sar
     }
 }
 
 #[allow(unused_variables)]
-fn __action191<
-    'input,
-    's,
->(
+fn __action191<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_shr
     }
 }
 
 #[allow(unused_variables)]
-fn __action192<
-    'input,
-    's,
->(
+fn __action192<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_rol
     }
 }
 
 #[allow(unused_variables)]
-fn __action193<
-    'input,
-    's,
->(
+fn __action193<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_ror
     }
 }
 
 #[allow(unused_variables)]
-fn __action194<
-    'input,
-    's,
->(
+fn __action194<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_rcl
     }
 }
 
 #[allow(unused_variables)]
-fn __action195<
-    'input,
-    's,
->(
+fn __action195<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordOpBinary
-{
+) -> WordOpBinary {
     {
         word_rcr
     }
 }
 
 #[allow(unused_variables)]
-fn __action196<
-    'input,
-    's,
->(
+fn __action196<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action197<
-    'input,
-    's,
->(
+fn __action197<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action198<
-    'input,
-    's,
->(
+fn __action198<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action199<
-    'input,
-    's,
->(
+fn __action199<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, State, usize),
-) -> State
-{
+) -> State {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action200<
-    'input,
-    's,
->(
+fn __action200<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -13978,21 +13175,24 @@ fn __action200<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-       match context.fn_map.get(&n){
-         Some(pos) => {context.call_stack.push(current); Ok(State::JMP(*pos)) },
-         None => error!(start,end,format!("Internal Error : call to undefined procedure {}",n))
-       }
+        match context.fn_map.get(&n) {
+            Some(pos) => {
+                context.call_stack.push(current);
+                Ok(State::JMP(*pos))
+            }
+            None => error!(
+                start,
+                end,
+                format!("Internal Error : call to undefined procedure {}", n)
+            ),
+        }
     }
 }
 
 #[allow(unused_variables)]
-fn __action201<
-    'input,
-    's,
->(
+fn __action201<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14000,21 +13200,21 @@ fn __action201<
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-      match context.call_stack.pop() {
-         Some(p) => {Ok(State::JMP(p))},
-         None => error!(start,end,"Error : ret is encountered without corresponding call".to_owned())
-      }
-   }
+        match context.call_stack.pop() {
+            Some(p) => Ok(State::JMP(p)),
+            None => error!(
+                start,
+                end,
+                "Error : ret is encountered without corresponding call".to_owned()
+            ),
+        }
+    }
 }
 
 #[allow(unused_variables)]
-fn __action202<
-    'input,
-    's,
->(
+fn __action202<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14023,391 +13223,302 @@ fn __action202<
     (_, take, _): (usize, bool, usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-       match context.label_map.get(&n){
+        match context.label_map.get(&n) {
+            Some(l) => match l.get_type() {
+                LabelType::DATA => error!(
+                    start,
+                    end,
+                    format!("Internal Error : jump to data type label {}", n)
+                ),
 
-          Some(l) => {
-
-             match l.get_type(){
-               
-               LabelType::DATA => error!(start,end,format!("Internal Error : jump to data type label {}",n)),
-               
-               LabelType::CODE => {
-                  if take {
-                     Ok(State::JMP(l.map))
-                  }else{
-                     Ok(State::NEXT)
-                  }
-               }
-             }
-          }
-          // No label found
-          None => error!(start,end,format!("Internal Error : jump to undefined label {}",n))
-       }
+                LabelType::CODE => {
+                    if take {
+                        Ok(State::JMP(l.map))
+                    } else {
+                        Ok(State::NEXT)
+                    }
+                }
+            },
+            // No label found
+            None => error!(
+                start,
+                end,
+                format!("Internal Error : jump to undefined label {}", n)
+            ),
+        }
     }
 }
 
 #[allow(unused_variables)]
-fn __action203<
-    'input,
-    's,
->(
+fn __action203<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
+) -> bool {
     true
 }
 
 #[allow(unused_variables)]
-fn __action204<
-    'input,
-    's,
->(
+fn __action204<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    !get_flag_state(vm.arch.flag,Flags::CARRY) && !get_flag_state(vm.arch.flag,Flags::ZERO)
+) -> bool {
+    !get_flag_state(vm.arch.flag, Flags::CARRY) && !get_flag_state(vm.arch.flag, Flags::ZERO)
 }
 
 #[allow(unused_variables)]
-fn __action205<
-    'input,
-    's,
->(
+fn __action205<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    !get_flag_state(vm.arch.flag,Flags::CARRY)
+) -> bool {
+    !get_flag_state(vm.arch.flag, Flags::CARRY)
 }
 
 #[allow(unused_variables)]
-fn __action206<
-    'input,
-    's,
->(
+fn __action206<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::CARRY)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::CARRY)
 }
 
 #[allow(unused_variables)]
-fn __action207<
-    'input,
-    's,
->(
+fn __action207<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::CARRY) || get_flag_state(vm.arch.flag,Flags::ZERO)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::CARRY) || get_flag_state(vm.arch.flag, Flags::ZERO)
 }
 
 #[allow(unused_variables)]
-fn __action208<
-    'input,
-    's,
->(
+fn __action208<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::CARRY)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::CARRY)
 }
 
 #[allow(unused_variables)]
-fn __action209<
-    'input,
-    's,
->(
+fn __action209<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::ZERO)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::ZERO)
 }
 
 #[allow(unused_variables)]
-fn __action210<
-    'input,
-    's,
->(
+fn __action210<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    !get_flag_state(vm.arch.flag,Flags::ZERO) && get_flag_state(vm.arch.flag,Flags::SIGN) == get_flag_state(vm.arch.flag,Flags::OVERFLOW)
+) -> bool {
+    !get_flag_state(vm.arch.flag, Flags::ZERO)
+        && get_flag_state(vm.arch.flag, Flags::SIGN)
+            == get_flag_state(vm.arch.flag, Flags::OVERFLOW)
 }
 
 #[allow(unused_variables)]
-fn __action211<
-    'input,
-    's,
->(
+fn __action211<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::SIGN) == get_flag_state(vm.arch.flag,Flags::OVERFLOW)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::SIGN) == get_flag_state(vm.arch.flag, Flags::OVERFLOW)
 }
 
 #[allow(unused_variables)]
-fn __action212<
-    'input,
-    's,
->(
+fn __action212<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::SIGN) != get_flag_state(vm.arch.flag,Flags::OVERFLOW)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::SIGN) != get_flag_state(vm.arch.flag, Flags::OVERFLOW)
 }
 
 #[allow(unused_variables)]
-fn __action213<
-    'input,
-    's,
->(
+fn __action213<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::ZERO) && get_flag_state(vm.arch.flag,Flags::SIGN) != get_flag_state(vm.arch.flag,Flags::OVERFLOW)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::ZERO)
+        && get_flag_state(vm.arch.flag, Flags::SIGN)
+            != get_flag_state(vm.arch.flag, Flags::OVERFLOW)
 }
 
 #[allow(unused_variables)]
-fn __action214<
-    'input,
-    's,
->(
+fn __action214<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    !get_flag_state(vm.arch.flag,Flags::CARRY)
+) -> bool {
+    !get_flag_state(vm.arch.flag, Flags::CARRY)
 }
 
 #[allow(unused_variables)]
-fn __action215<
-    'input,
-    's,
->(
+fn __action215<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    !get_flag_state(vm.arch.flag,Flags::ZERO)
+) -> bool {
+    !get_flag_state(vm.arch.flag, Flags::ZERO)
 }
 
 #[allow(unused_variables)]
-fn __action216<
-    'input,
-    's,
->(
+fn __action216<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    !get_flag_state(vm.arch.flag,Flags::OVERFLOW)
+) -> bool {
+    !get_flag_state(vm.arch.flag, Flags::OVERFLOW)
 }
 
 #[allow(unused_variables)]
-fn __action217<
-    'input,
-    's,
->(
+fn __action217<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    !get_flag_state(vm.arch.flag,Flags::PARITY)
+) -> bool {
+    !get_flag_state(vm.arch.flag, Flags::PARITY)
 }
 
 #[allow(unused_variables)]
-fn __action218<
-    'input,
-    's,
->(
+fn __action218<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    !get_flag_state(vm.arch.flag,Flags::SIGN)
+) -> bool {
+    !get_flag_state(vm.arch.flag, Flags::SIGN)
 }
 
 #[allow(unused_variables)]
-fn __action219<
-    'input,
-    's,
->(
+fn __action219<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::OVERFLOW)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::OVERFLOW)
 }
 
 #[allow(unused_variables)]
-fn __action220<
-    'input,
-    's,
->(
+fn __action220<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::PARITY)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::PARITY)
 }
 
 #[allow(unused_variables)]
-fn __action221<
-    'input,
-    's,
->(
+fn __action221<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
-    get_flag_state(vm.arch.flag,Flags::SIGN)
+) -> bool {
+    get_flag_state(vm.arch.flag, Flags::SIGN)
 }
 
 #[allow(unused_variables)]
-fn __action222<
-    'input,
-    's,
->(
+fn __action222<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
+) -> bool {
     vm.arch.cx == 0
 }
 
 #[allow(unused_variables)]
-fn __action223<
-    'input,
-    's,
->(
+fn __action223<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
+) -> bool {
     {
-      vm.arch.cx = (vm.arch.cx as i32 -1) as u16;
-      vm.arch.cx != 0
-   }
+        vm.arch.cx = (vm.arch.cx as i32 - 1) as u16;
+        vm.arch.cx != 0
+    }
 }
 
 #[allow(unused_variables)]
-fn __action224<
-    'input,
-    's,
->(
+fn __action224<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
+) -> bool {
     {
-      vm.arch.cx = (vm.arch.cx as i32 -1) as u16;
-      vm.arch.cx != 0 && get_flag_state(vm.arch.flag,Flags::ZERO)
-   }
+        vm.arch.cx = (vm.arch.cx as i32 - 1) as u16;
+        vm.arch.cx != 0 && get_flag_state(vm.arch.flag, Flags::ZERO)
+    }
 }
 
 #[allow(unused_variables)]
-fn __action225<
-    'input,
-    's,
->(
+fn __action225<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> bool
-{
+) -> bool {
     {
-      vm.arch.cx = (vm.arch.cx as i32 -1) as u16;
-      vm.arch.cx != 0 && !get_flag_state(vm.arch.flag,Flags::ZERO)
-   }
+        vm.arch.cx = (vm.arch.cx as i32 - 1) as u16;
+        vm.arch.cx != 0 && !get_flag_state(vm.arch.flag, Flags::ZERO)
+    }
 }
 
 #[allow(unused_variables)]
-fn __action226<
-    'input,
-    's,
->(
+fn __action226<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14416,143 +13527,135 @@ fn __action226<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        if n==3 || n == 0x10 || n == 0x21{
+        if n == 3 || n == 0x10 || n == 0x21 {
             Ok(State::INT(n))
-        }else{
-            error!(start,end,format!("Internal Error : int does not support {}",n))
+        } else {
+            error!(
+                start,
+                end,
+                format!("Internal Error : int does not support {}", n)
+            )
         }
-        
     }
 }
 
 #[allow(unused_variables)]
-fn __action227<
-    'input,
-    's,
->(
+fn __action227<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> State
-{
-    {set_flag(&mut vm.arch.flag,Flags::CARRY); State::NEXT}
+) -> State {
+    {
+        set_flag(&mut vm.arch.flag, Flags::CARRY);
+        State::NEXT
+    }
 }
 
 #[allow(unused_variables)]
-fn __action228<
-    'input,
-    's,
->(
+fn __action228<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> State
-{
-    {unset_flag(&mut vm.arch.flag,Flags::CARRY); State::NEXT}
+) -> State {
+    {
+        unset_flag(&mut vm.arch.flag, Flags::CARRY);
+        State::NEXT
+    }
 }
 
 #[allow(unused_variables)]
-fn __action229<
-    'input,
-    's,
->(
+fn __action229<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> State
-{
-    {if (vm.arch.flag & FLAG_CARRY) != 0 {vm.arch.flag &= !FLAG_CARRY}else{vm.arch.flag |= FLAG_CARRY}; State::NEXT}
+) -> State {
+    {
+        if (vm.arch.flag & FLAG_CARRY) != 0 {
+            vm.arch.flag &= !FLAG_CARRY
+        } else {
+            vm.arch.flag |= FLAG_CARRY
+        };
+        State::NEXT
+    }
 }
 
 #[allow(unused_variables)]
-fn __action230<
-    'input,
-    's,
->(
+fn __action230<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> State
-{
-    {set_flag(&mut vm.arch.flag,Flags::DIRECTION); State::NEXT}
+) -> State {
+    {
+        set_flag(&mut vm.arch.flag, Flags::DIRECTION);
+        State::NEXT
+    }
 }
 
 #[allow(unused_variables)]
-fn __action231<
-    'input,
-    's,
->(
+fn __action231<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> State
-{
-    {unset_flag(&mut vm.arch.flag,Flags::DIRECTION); State::NEXT}
+) -> State {
+    {
+        unset_flag(&mut vm.arch.flag, Flags::DIRECTION);
+        State::NEXT
+    }
 }
 
 #[allow(unused_variables)]
-fn __action232<
-    'input,
-    's,
->(
+fn __action232<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> State
-{
-    {set_flag(&mut vm.arch.flag,Flags::INTERRUPT); State::NEXT}
+) -> State {
+    {
+        set_flag(&mut vm.arch.flag, Flags::INTERRUPT);
+        State::NEXT
+    }
 }
 
 #[allow(unused_variables)]
-fn __action233<
-    'input,
-    's,
->(
+fn __action233<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> State
-{
-    {unset_flag(&mut vm.arch.flag,Flags::INTERRUPT); State::NEXT}
+) -> State {
+    {
+        unset_flag(&mut vm.arch.flag, Flags::INTERRUPT);
+        State::NEXT
+    }
 }
 
 #[allow(unused_variables)]
-fn __action234<
-    'input,
-    's,
->(
+fn __action234<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> State
-{
+) -> State {
     State::HALT
 }
 
 #[allow(unused_variables)]
-fn __action235<
-    'input,
-    's,
->(
+fn __action235<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14561,22 +13664,18 @@ fn __action235<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     {
-        let base = match sr{
-            Some(s) => get_word_reg_val(vm,s.0),
-            None =>vm.arch.ds,
+        let base = match sr {
+            Some(s) => get_word_reg_val(vm, s.0),
+            None => vm.arch.ds,
         };
-        Address::calculate_from_offset(base,n)
+        Address::calculate_from_offset(base, n)
     }
 }
 
 #[allow(unused_variables)]
-fn __action236<
-    'input,
-    's,
->(
+fn __action236<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14584,16 +13683,12 @@ fn __action236<
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     r
 }
 
 #[allow(unused_variables)]
-fn __action237<
-    'input,
-    's,
->(
+fn __action237<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14603,19 +13698,15 @@ fn __action237<
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     {
-        let base = get_word_reg_val(vm,sr);
-        Address::calculate_from_offset(base,r)
+        let base = get_word_reg_val(vm, sr);
+        Address::calculate_from_offset(base, r)
     }
 }
 
 #[allow(unused_variables)]
-fn __action238<
-    'input,
-    's,
->(
+fn __action238<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14625,16 +13716,12 @@ fn __action238<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     make_valid_address((r as i32 + n as i32) as usize)
 }
 
 #[allow(unused_variables)]
-fn __action239<
-    'input,
-    's,
->(
+fn __action239<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14646,20 +13733,16 @@ fn __action239<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     {
-        let base = get_word_reg_val(vm,sr);
-        let start = Address::calculate_from_offset(base,r);
+        let base = get_word_reg_val(vm, sr);
+        let start = Address::calculate_from_offset(base, r);
         make_valid_address((start as i32 + n as i32) as usize)
     }
 }
 
 #[allow(unused_variables)]
-fn __action240<
-    'input,
-    's,
->(
+fn __action240<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14669,16 +13752,12 @@ fn __action240<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> usize
-{
-    make_valid_address((Address::calculate_from_offset(vm.arch.ds,r) as i32 + n as i32) as usize)
+) -> usize {
+    make_valid_address((Address::calculate_from_offset(vm.arch.ds, r) as i32 + n as i32) as usize)
 }
 
 #[allow(unused_variables)]
-fn __action241<
-    'input,
-    's,
->(
+fn __action241<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14690,20 +13769,16 @@ fn __action241<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     {
-        let base = get_word_reg_val(vm,sr);
-        let start = Address::calculate_from_offset(base,r);
+        let base = get_word_reg_val(vm, sr);
+        let start = Address::calculate_from_offset(base, r);
         make_valid_address((start as i32 + n as i32) as usize)
     }
 }
 
 #[allow(unused_variables)]
-fn __action242<
-    'input,
-    's,
->(
+fn __action242<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14715,16 +13790,12 @@ fn __action242<
     (_, _, _): (usize, &'input str, usize),
     (_, k, _): (usize, i16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> usize
-{
-    make_valid_address(((b+i) as i32 + k as i32) as usize)
+) -> usize {
+    make_valid_address(((b + i) as i32 + k as i32) as usize)
 }
 
 #[allow(unused_variables)]
-fn __action243<
-    'input,
-    's,
->(
+fn __action243<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14738,37 +13809,29 @@ fn __action243<
     (_, _, _): (usize, &'input str, usize),
     (_, k, _): (usize, i16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     {
-        let base = get_word_reg_val(vm,sr);
-        let start = Address::calculate_from_offset(base,b);
-        make_valid_address(((start+i) as i32 + k as i32) as usize)
+        let base = get_word_reg_val(vm, sr);
+        let start = Address::calculate_from_offset(base, b);
+        make_valid_address(((start + i) as i32 + k as i32) as usize)
     }
 }
 
 #[allow(unused_variables)]
-fn __action244<
-    'input,
-    's,
->(
+fn __action244<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, v, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     {
         v.to_owned()
     }
 }
 
 #[allow(unused_variables)]
-fn __action245<
-    'input,
-    's,
->(
+fn __action245<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14776,21 +13839,21 @@ fn __action245<
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u8::from_str_radix(n,10){
+        match u8::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Internal Error : Invalid Value, must be between 0-255".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action246<
-    'input,
-    's,
->(
+fn __action246<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14798,36 +13861,32 @@ fn __action246<
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match i8::from_str_radix(n,10){
+        match i8::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between -128-255".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Internal Error : Invalid Value, must be between -128-255".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action247<
-    'input,
-    's,
->(
+fn __action247<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, n, _): (usize, u16, usize),
-) -> i8
-{
+) -> i8 {
     n as i8
 }
 
 #[allow(unused_variables)]
-fn __action248<
-    'input,
-    's,
->(
+fn __action248<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14835,21 +13894,21 @@ fn __action248<
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u16::from_str_radix(n,10){
+        match u16::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Internal Error : Invalid Value, must be between 0-65535".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action249<
-    'input,
-    's,
->(
+fn __action249<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -14857,501 +13916,373 @@ fn __action249<
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match i16::from_str_radix(n,10){
+        match i16::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Internal Error : Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Internal Error : Invalid Value, must be between 0-65535".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action250<
-    'input,
-    's,
->(
+fn __action250<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, n, _): (usize, u16, usize),
-) -> i16
-{
+) -> i16 {
     n as i16
 }
 
 #[allow(unused_variables)]
-fn __action251<
-    'input,
-    's,
->(
+fn __action251<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteReg
-{
+) -> ByteReg {
     ByteReg::AH
 }
 
 #[allow(unused_variables)]
-fn __action252<
-    'input,
-    's,
->(
+fn __action252<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteReg
-{
+) -> ByteReg {
     ByteReg::AL
 }
 
 #[allow(unused_variables)]
-fn __action253<
-    'input,
-    's,
->(
+fn __action253<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteReg
-{
+) -> ByteReg {
     ByteReg::BH
 }
 
 #[allow(unused_variables)]
-fn __action254<
-    'input,
-    's,
->(
+fn __action254<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteReg
-{
+) -> ByteReg {
     ByteReg::BL
 }
 
 #[allow(unused_variables)]
-fn __action255<
-    'input,
-    's,
->(
+fn __action255<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteReg
-{
+) -> ByteReg {
     ByteReg::CH
 }
 
 #[allow(unused_variables)]
-fn __action256<
-    'input,
-    's,
->(
+fn __action256<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, ByteReg, usize),
-) -> ByteReg
-{
+) -> ByteReg {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action257<
-    'input,
-    's,
->(
+fn __action257<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteReg
-{
+) -> ByteReg {
     ByteReg::DH
 }
 
 #[allow(unused_variables)]
-fn __action258<
-    'input,
-    's,
->(
+fn __action258<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteReg
-{
+) -> ByteReg {
     ByteReg::DL
 }
 
 #[allow(unused_variables)]
-fn __action259<
-    'input,
-    's,
->(
+fn __action259<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ByteReg
-{
+) -> ByteReg {
     ByteReg::CL
 }
 
 #[allow(unused_variables)]
-fn __action260<
-    'input,
-    's,
->(
+fn __action260<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::AX
 }
 
 #[allow(unused_variables)]
-fn __action261<
-    'input,
-    's,
->(
+fn __action261<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::BX
 }
 
 #[allow(unused_variables)]
-fn __action262<
-    'input,
-    's,
->(
+fn __action262<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::CX
 }
 
 #[allow(unused_variables)]
-fn __action263<
-    'input,
-    's,
->(
+fn __action263<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::DX
 }
 
 #[allow(unused_variables)]
-fn __action264<
-    'input,
-    's,
->(
+fn __action264<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::SP
 }
 
 #[allow(unused_variables)]
-fn __action265<
-    'input,
-    's,
->(
+fn __action265<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::BP
 }
 
 #[allow(unused_variables)]
-fn __action266<
-    'input,
-    's,
->(
+fn __action266<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::SI
 }
 
 #[allow(unused_variables)]
-fn __action267<
-    'input,
-    's,
->(
+fn __action267<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::DI
 }
 
 #[allow(unused_variables)]
-fn __action268<
-    'input,
-    's,
->(
+fn __action268<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, usize, usize),
-) -> usize
-{
+) -> usize {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action269<
-    'input,
-    's,
->(
+fn __action269<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, usize, usize),
-) -> usize
-{
+) -> usize {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action270<
-    'input,
-    's,
->(
+fn __action270<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     vm.arch.bx as usize
 }
 
 #[allow(unused_variables)]
-fn __action271<
-    'input,
-    's,
->(
+fn __action271<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     vm.arch.bp as usize
 }
 
 #[allow(unused_variables)]
-fn __action272<
-    'input,
-    's,
->(
+fn __action272<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, usize, usize),
-) -> usize
-{
+) -> usize {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action273<
-    'input,
-    's,
->(
+fn __action273<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, v, _): (usize, usize, usize),
-) -> usize
-{
-    Address::calculate_from_offset(vm.arch.ds,v)
+) -> usize {
+    Address::calculate_from_offset(vm.arch.ds, v)
 }
 
 #[allow(unused_variables)]
-fn __action274<
-    'input,
-    's,
->(
+fn __action274<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> usize
-{
-    Address::calculate_from_offset(vm.arch.ds,vm.arch.bx)
+) -> usize {
+    Address::calculate_from_offset(vm.arch.ds, vm.arch.bx)
 }
 
 #[allow(unused_variables)]
-fn __action275<
-    'input,
-    's,
->(
+fn __action275<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> usize
-{
-    Address::calculate_from_offset(vm.arch.ss,vm.arch.bp)
+) -> usize {
+    Address::calculate_from_offset(vm.arch.ss, vm.arch.bp)
 }
 
 #[allow(unused_variables)]
-fn __action276<
-    'input,
-    's,
->(
+fn __action276<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     vm.arch.si as usize
 }
 
 #[allow(unused_variables)]
-fn __action277<
-    'input,
-    's,
->(
+fn __action277<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     vm.arch.di as usize
 }
 
 #[allow(unused_variables)]
-fn __action278<
-    'input,
-    's,
->(
+fn __action278<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::ES
 }
 
 #[allow(unused_variables)]
-fn __action279<
-    'input,
-    's,
->(
+fn __action279<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::DS
 }
 
 #[allow(unused_variables)]
-fn __action280<
-    'input,
-    's,
->(
+fn __action280<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::SS
 }
 
 #[allow(unused_variables)]
-fn __action281<
-    'input,
-    's,
->(
+fn __action281<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> WordReg
-{
+) -> WordReg {
     WordReg::CS
 }
 
 #[allow(unused_variables)]
-fn __action282<
-    'input,
-    's,
->(
+fn __action282<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15360,26 +14291,34 @@ fn __action282<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<usize,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<usize, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match context.label_map.get(&n){
-            None => {return error!(start,end,format!("Internal Error : Label {} not defined",n));},
-            Some(l) => {
-                match l.get_type() {
-                    LabelType::CODE => {return error!(start,end,format!("Internal Error : Cannot use Code label {}",n));}
-                    LabelType::DATA =>{return Ok(Address::calculate_from_offset(vm.arch.ds,l.map));}
+        match context.label_map.get(&n) {
+            None => {
+                return error!(
+                    start,
+                    end,
+                    format!("Internal Error : Label {} not defined", n)
+                );
+            }
+            Some(l) => match l.get_type() {
+                LabelType::CODE => {
+                    return error!(
+                        start,
+                        end,
+                        format!("Internal Error : Cannot use Code label {}", n)
+                    );
                 }
-            } 
-        } 
+                LabelType::DATA => {
+                    return Ok(Address::calculate_from_offset(vm.arch.ds, l.map));
+                }
+            },
+        }
     }
 }
 
 #[allow(unused_variables)]
-fn __action283<
-    'input,
-    's,
->(
+fn __action283<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15388,138 +14327,109 @@ fn __action283<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<usize,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<usize, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match context.label_map.get(&n){
-            None => {return error!(start,end,format!("Internal Error : Label {} not defined",n));},
-            Some(l) => {
-                match l.get_type() {
-                    LabelType::CODE => {return error!(start,end,format!("Internal Error : Cannot use Code label {}  ",n));}
-                    LabelType::DATA =>{return Ok(Address::calculate_from_offset(vm.arch.ds,l.map));}
+        match context.label_map.get(&n) {
+            None => {
+                return error!(
+                    start,
+                    end,
+                    format!("Internal Error : Label {} not defined", n)
+                );
+            }
+            Some(l) => match l.get_type() {
+                LabelType::CODE => {
+                    return error!(
+                        start,
+                        end,
+                        format!("Internal Error : Cannot use Code label {}  ", n)
+                    );
                 }
-            } 
-        } 
+                LabelType::DATA => {
+                    return Ok(Address::calculate_from_offset(vm.arch.ds, l.map));
+                }
+            },
+        }
     }
 }
 
 #[allow(unused_variables)]
-fn __action284<
-    'input,
-    's,
->(
+fn __action284<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, (WordReg, &'input str), usize),
-) -> ::std::option::Option<(WordReg, &'input str)>
-{
+) -> ::std::option::Option<(WordReg, &'input str)> {
     Some(__0)
 }
 
 #[allow(unused_variables)]
-fn __action285<
-    'input,
-    's,
->(
+fn __action285<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<(WordReg, &'input str)>
-{
+) -> ::std::option::Option<(WordReg, &'input str)> {
     None
 }
 
 #[allow(unused_variables)]
-fn __action286<
-    'input,
-    's,
->(
+fn __action286<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     (_, __0, _): (usize, WordReg, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> (WordReg, &'input str)
-{
+) -> (WordReg, &'input str) {
     (__0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action287<
-    'input,
-    's,
->(
+fn __action287<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize
-{
+) -> usize {
     __lookbehind.clone()
 }
 
 #[allow(unused_variables)]
-fn __action288<
-    'input,
-    's,
->(
+fn __action288<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize
-{
+) -> usize {
     __lookahead.clone()
 }
 
 #[allow(unused_variables)]
-fn __action289<
-    'input,
-    's,
->(
+fn __action289<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, WordReg, usize),
     __1: (usize, &'input str, usize),
-) -> ::std::option::Option<(WordReg, &'input str)>
-{
+) -> ::std::option::Option<(WordReg, &'input str)> {
     let __start0 = __0.0.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action286(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __1,
-    );
+    let __temp0 = __action286(current, vm, context, input, __0, __1);
     let __temp0 = (__start0, __temp0, __end0);
-    __action284(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-    )
+    __action284(current, vm, context, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action290<
-    'input,
-    's,
->(
+fn __action290<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15529,36 +14439,16 @@ fn __action290<
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
     __4: (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     let __start0 = __0.0.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action289(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __1,
-    );
+    let __temp0 = __action289(current, vm, context, input, __0, __1);
     let __temp0 = (__start0, __temp0, __end0);
-    __action235(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __2,
-        __3,
-        __4,
-    )
+    __action235(current, vm, context, input, __temp0, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action291<
-    'input,
-    's,
->(
+fn __action291<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15566,36 +14456,16 @@ fn __action291<
     __0: (usize, &'input str, usize),
     __1: (usize, u16, usize),
     __2: (usize, &'input str, usize),
-) -> usize
-{
+) -> usize {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action285(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action285(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action235(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action235(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action292<
-    'input,
-    's,
->(
+fn __action292<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15604,37 +14474,16 @@ fn __action292<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action69(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action69(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action293<
-    'input,
-    's,
->(
+fn __action293<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15643,37 +14492,16 @@ fn __action293<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action70(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action70(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action294<
-    'input,
-    's,
->(
+fn __action294<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15683,38 +14511,18 @@ fn __action294<
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action71(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action295<
-    'input,
-    's,
->(
+fn __action295<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15724,38 +14532,18 @@ fn __action295<
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action72(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action296<
-    'input,
-    's,
->(
+fn __action296<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15764,37 +14552,16 @@ fn __action296<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action73(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action73(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action297<
-    'input,
-    's,
->(
+fn __action297<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15803,37 +14570,16 @@ fn __action297<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action74(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action74(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action298<
-    'input,
-    's,
->(
+fn __action298<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15843,38 +14589,18 @@ fn __action298<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action75(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action299<
-    'input,
-    's,
->(
+fn __action299<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15884,38 +14610,18 @@ fn __action299<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action76(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action300<
-    'input,
-    's,
->(
+fn __action300<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15924,37 +14630,16 @@ fn __action300<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action77(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action77(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action301<
-    'input,
-    's,
->(
+fn __action301<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -15963,37 +14648,16 @@ fn __action301<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action78(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action78(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action302<
-    'input,
-    's,
->(
+fn __action302<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16002,37 +14666,16 @@ fn __action302<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action79(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action79(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action303<
-    'input,
-    's,
->(
+fn __action303<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16041,37 +14684,16 @@ fn __action303<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action80(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action80(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action304<
-    'input,
-    's,
->(
+fn __action304<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16081,38 +14703,18 @@ fn __action304<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action81(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action305<
-    'input,
-    's,
->(
+fn __action305<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16122,38 +14724,18 @@ fn __action305<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action82(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action306<
-    'input,
-    's,
->(
+fn __action306<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16162,37 +14744,16 @@ fn __action306<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action83(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action83(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action307<
-    'input,
-    's,
->(
+fn __action307<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16201,37 +14762,16 @@ fn __action307<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action84(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action84(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action308<
-    'input,
-    's,
->(
+fn __action308<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16240,37 +14780,16 @@ fn __action308<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action146(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action146(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action309<
-    'input,
-    's,
->(
+fn __action309<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16279,37 +14798,16 @@ fn __action309<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action147(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action147(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action310<
-    'input,
-    's,
->(
+fn __action310<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16319,38 +14817,18 @@ fn __action310<
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action148(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action311<
-    'input,
-    's,
->(
+fn __action311<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16360,38 +14838,18 @@ fn __action311<
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action149(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action312<
-    'input,
-    's,
->(
+fn __action312<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16400,37 +14858,16 @@ fn __action312<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action150(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action150(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action313<
-    'input,
-    's,
->(
+fn __action313<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16439,37 +14876,16 @@ fn __action313<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action151(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action151(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action314<
-    'input,
-    's,
->(
+fn __action314<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16479,38 +14895,18 @@ fn __action314<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action152(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action315<
-    'input,
-    's,
->(
+fn __action315<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16520,38 +14916,18 @@ fn __action315<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action153(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action316<
-    'input,
-    's,
->(
+fn __action316<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16560,37 +14936,16 @@ fn __action316<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action154(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action154(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action317<
-    'input,
-    's,
->(
+fn __action317<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16599,37 +14954,16 @@ fn __action317<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action155(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action155(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action318<
-    'input,
-    's,
->(
+fn __action318<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16638,37 +14972,16 @@ fn __action318<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action156(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action156(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action319<
-    'input,
-    's,
->(
+fn __action319<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16677,37 +14990,16 @@ fn __action319<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action157(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action157(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action320<
-    'input,
-    's,
->(
+fn __action320<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16717,38 +15009,18 @@ fn __action320<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action158(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action321<
-    'input,
-    's,
->(
+fn __action321<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16758,38 +15030,18 @@ fn __action321<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action159(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action322<
-    'input,
-    's,
->(
+fn __action322<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16798,37 +15050,16 @@ fn __action322<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action160(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action160(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action323<
-    'input,
-    's,
->(
+fn __action323<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16837,37 +15068,16 @@ fn __action323<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action161(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action161(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action324<
-    'input,
-    's,
->(
+fn __action324<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16875,36 +15085,16 @@ fn __action324<
     __0: (usize, &'input str, usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<usize,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<usize, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action282(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action282(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action325<
-    'input,
-    's,
->(
+fn __action325<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16912,36 +15102,16 @@ fn __action325<
     __0: (usize, &'input str, usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action200(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action200(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action326<
-    'input,
-    's,
->(
+fn __action326<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16949,36 +15119,16 @@ fn __action326<
     __0: (usize, &'input str, usize),
     __1: (usize, u8, usize),
     __2: (usize, usize, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action226(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action226(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action327<
-    'input,
-    's,
->(
+fn __action327<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -16986,36 +15136,16 @@ fn __action327<
     __0: (usize, bool, usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action202(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action202(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action328<
-    'input,
-    's,
->(
+fn __action328<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17025,38 +15155,18 @@ fn __action328<
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action64(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action329<
-    'input,
-    's,
->(
+fn __action329<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17065,37 +15175,16 @@ fn __action329<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action65(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action65(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action330<
-    'input,
-    's,
->(
+fn __action330<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17104,37 +15193,16 @@ fn __action330<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action20(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action20(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action331<
-    'input,
-    's,
->(
+fn __action331<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17143,37 +15211,16 @@ fn __action331<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action21(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action21(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action332<
-    'input,
-    's,
->(
+fn __action332<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17183,38 +15230,18 @@ fn __action332<
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action22(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action333<
-    'input,
-    's,
->(
+fn __action333<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17224,38 +15251,18 @@ fn __action333<
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action23(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action334<
-    'input,
-    's,
->(
+fn __action334<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17264,37 +15271,16 @@ fn __action334<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action24(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action24(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action335<
-    'input,
-    's,
->(
+fn __action335<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17303,37 +15289,16 @@ fn __action335<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action25(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action25(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action336<
-    'input,
-    's,
->(
+fn __action336<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17343,38 +15308,18 @@ fn __action336<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action26(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action337<
-    'input,
-    's,
->(
+fn __action337<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17384,38 +15329,18 @@ fn __action337<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action27(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action338<
-    'input,
-    's,
->(
+fn __action338<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17424,37 +15349,16 @@ fn __action338<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action28(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action28(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action339<
-    'input,
-    's,
->(
+fn __action339<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17463,37 +15367,16 @@ fn __action339<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action29(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action29(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action340<
-    'input,
-    's,
->(
+fn __action340<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17502,37 +15385,16 @@ fn __action340<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action30(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action30(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action341<
-    'input,
-    's,
->(
+fn __action341<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17541,37 +15403,16 @@ fn __action341<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action31(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action31(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action342<
-    'input,
-    's,
->(
+fn __action342<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17581,38 +15422,18 @@ fn __action342<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action32(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action343<
-    'input,
-    's,
->(
+fn __action343<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17622,38 +15443,18 @@ fn __action343<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action33(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action344<
-    'input,
-    's,
->(
+fn __action344<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17662,37 +15463,16 @@ fn __action344<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action34(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action34(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action345<
-    'input,
-    's,
->(
+fn __action345<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17701,37 +15481,16 @@ fn __action345<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action35(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action35(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action346<
-    'input,
-    's,
->(
+fn __action346<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17740,37 +15499,16 @@ fn __action346<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action36(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action36(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action347<
-    'input,
-    's,
->(
+fn __action347<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17779,37 +15517,16 @@ fn __action347<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action37(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action37(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action348<
-    'input,
-    's,
->(
+fn __action348<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17819,38 +15536,18 @@ fn __action348<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action38(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action349<
-    'input,
-    's,
->(
+fn __action349<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17859,37 +15556,16 @@ fn __action349<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action39(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action39(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action350<
-    'input,
-    's,
->(
+fn __action350<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17899,38 +15575,18 @@ fn __action350<
     __2: (usize, &'input str, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action40(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action351<
-    'input,
-    's,
->(
+fn __action351<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -17939,72 +15595,32 @@ fn __action351<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action41(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action41(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action352<
-    'input,
-    's,
->(
+fn __action352<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action53(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action53(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action353<
-    'input,
-    's,
->(
+fn __action353<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18012,141 +15628,64 @@ fn __action353<
     __0: (usize, &'input str, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action54(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action54(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action354<
-    'input,
-    's,
->(
+fn __action354<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action55(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action55(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action355<
-    'input,
-    's,
->(
+fn __action355<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action56(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action56(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action356<
-    'input,
-    's,
->(
+fn __action356<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action57(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action57(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action357<
-    'input,
-    's,
->(
+fn __action357<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18154,211 +15693,96 @@ fn __action357<
     __0: (usize, &'input str, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action58(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action58(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action358<
-    'input,
-    's,
->(
+fn __action358<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action59(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action59(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action359<
-    'input,
-    's,
->(
+fn __action359<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action13(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action13(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action360<
-    'input,
-    's,
->(
+fn __action360<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action201(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action201(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action361<
-    'input,
-    's,
->(
+fn __action361<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action246(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action246(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action362<
-    'input,
-    's,
->(
+fn __action362<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action249(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action249(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action363<
-    'input,
-    's,
->(
+fn __action363<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18367,37 +15791,16 @@ fn __action363<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action170(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action170(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action364<
-    'input,
-    's,
->(
+fn __action364<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18406,37 +15809,16 @@ fn __action364<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action171(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action171(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action365<
-    'input,
-    's,
->(
+fn __action365<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18445,37 +15827,16 @@ fn __action365<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action172(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action172(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action366<
-    'input,
-    's,
->(
+fn __action366<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18484,37 +15845,16 @@ fn __action366<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action173(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action173(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action367<
-    'input,
-    's,
->(
+fn __action367<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18524,38 +15864,18 @@ fn __action367<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action174(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action368<
-    'input,
-    's,
->(
+fn __action368<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18565,38 +15885,18 @@ fn __action368<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action175(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action369<
-    'input,
-    's,
->(
+fn __action369<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18606,38 +15906,18 @@ fn __action369<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action176(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action370<
-    'input,
-    's,
->(
+fn __action370<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18647,38 +15927,18 @@ fn __action370<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action177(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action371<
-    'input,
-    's,
->(
+fn __action371<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18687,37 +15947,16 @@ fn __action371<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action178(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action178(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action372<
-    'input,
-    's,
->(
+fn __action372<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18726,37 +15965,16 @@ fn __action372<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action179(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action179(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action373<
-    'input,
-    's,
->(
+fn __action373<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18765,37 +15983,16 @@ fn __action373<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action180(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action180(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action374<
-    'input,
-    's,
->(
+fn __action374<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18804,177 +16001,80 @@ fn __action374<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action181(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action181(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action375<
-    'input,
-    's,
->(
+fn __action375<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action245(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action245(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action376<
-    'input,
-    's,
->(
+fn __action376<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action248(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action248(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action377<
-    'input,
-    's,
->(
+fn __action377<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, ByteOpUnary, usize),
     __1: (usize, ByteReg, usize),
-) -> State
-{
+) -> State {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action95(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action95(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action378<
-    'input,
-    's,
->(
+fn __action378<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, WordOpUnary, usize),
     __1: (usize, WordReg, usize),
-) -> State
-{
+) -> State {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action96(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action96(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action379<
-    'input,
-    's,
->(
+fn __action379<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -18982,36 +16082,16 @@ fn __action379<
     __0: (usize, ByteOpUnary, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
-) -> State
-{
+) -> State {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action97(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action97(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action380<
-    'input,
-    's,
->(
+fn __action380<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -19019,106 +16099,48 @@ fn __action380<
     __0: (usize, WordOpUnary, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, usize, usize),
-) -> State
-{
+) -> State {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action98(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action98(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action381<
-    'input,
-    's,
->(
+fn __action381<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, ByteOpUnary, usize),
     __1: (usize, usize, usize),
-) -> State
-{
+) -> State {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action99(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action99(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action382<
-    'input,
-    's,
->(
+fn __action382<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, WordOpUnary, usize),
     __1: (usize, usize, usize),
-) -> State
-{
+) -> State {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action100(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action100(current, vm, context, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action383<
-    'input,
-    's,
->(
+fn __action383<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -19126,36 +16148,16 @@ fn __action383<
     __0: (usize, &'input str, usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<usize,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<usize, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action283(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action283(current, vm, context, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action384<
-    'input,
-    's,
->(
+fn __action384<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -19164,37 +16166,16 @@ fn __action384<
     __1: (usize, ByteReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action47(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action47(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action385<
-    'input,
-    's,
->(
+fn __action385<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -19203,37 +16184,16 @@ fn __action385<
     __1: (usize, WordReg, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action48(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action48(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action386<
-    'input,
-    's,
->(
+fn __action386<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -19243,38 +16203,18 @@ fn __action386<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action49(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action387<
-    'input,
-    's,
->(
+fn __action387<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -19284,38 +16224,18 @@ fn __action387<
     __2: (usize, usize, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action50(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
+        current, vm, context, input, __temp0, __0, __1, __2, __3, __4,
     )
 }
 
 #[allow(unused_variables)]
-fn __action388<
-    'input,
-    's,
->(
+fn __action388<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -19324,37 +16244,16 @@ fn __action388<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, ByteReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action51(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action51(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action389<
-    'input,
-    's,
->(
+fn __action389<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
@@ -19363,416 +16262,210 @@ fn __action389<
     __1: (usize, usize, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, WordReg, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action288(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action288(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action52(
-        current,
-        vm,
-        context,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action52(current, vm, context, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action390<
-    'input,
-    's,
->(
+fn __action390<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, String, usize),
-) -> Result<usize,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<usize, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action324(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action324(current, vm, context, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action391<
-    'input,
-    's,
->(
+fn __action391<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, String, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action325(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action325(current, vm, context, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action392<
-    'input,
-    's,
->(
+fn __action392<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, u8, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action326(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action326(current, vm, context, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action393<
-    'input,
-    's,
->(
+fn __action393<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, bool, usize),
     __1: (usize, String, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action327(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action327(current, vm, context, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action394<
-    'input,
-    's,
->(
+fn __action394<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action359(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __temp0,
-    )
+    __action359(current, vm, context, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action395<
-    'input,
-    's,
->(
+fn __action395<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<State,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<State, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action360(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __temp0,
-    )
+    __action360(current, vm, context, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action396<
-    'input,
-    's,
->(
+fn __action396<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action361(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __temp0,
-    )
+    __action361(current, vm, context, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action397<
-    'input,
-    's,
->(
+fn __action397<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action362(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __temp0,
-    )
+    __action362(current, vm, context, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action398<
-    'input,
-    's,
->(
+fn __action398<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action375(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __temp0,
-    )
+    __action375(current, vm, context, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action399<
-    'input,
-    's,
->(
+fn __action399<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action376(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __temp0,
-    )
+    __action376(current, vm, context, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action400<
-    'input,
-    's,
->(
+fn __action400<'input, 's>(
     current: usize,
     vm: &mut VM,
     context: &'s mut Context,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, String, usize),
-) -> Result<usize,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<usize, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action287(
-        current,
-        vm,
-        context,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action287(current, vm, context, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action383(
-        current,
-        vm,
-        context,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action383(current, vm, context, input, __0, __1, __temp0)
 }
 
-pub trait __ToTriple<'input, 's, > {
-    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>>;
+pub trait __ToTriple<'input, 's> {
+    fn to_triple(
+        value: Self,
+    ) -> Result<
+        (usize, Token<'input>, usize),
+        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
+    >;
 }
 
-impl<'input, 's, > __ToTriple<'input, 's, > for (usize, Token<'input>, usize) {
-    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+impl<'input, 's> __ToTriple<'input, 's> for (usize, Token<'input>, usize) {
+    fn to_triple(
+        value: Self,
+    ) -> Result<
+        (usize, Token<'input>, usize),
+        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
+    > {
         Ok(value)
     }
 }
-impl<'input, 's, > __ToTriple<'input, 's, > for Result<(usize, Token<'input>, usize), &'static str> {
-    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+impl<'input, 's> __ToTriple<'input, 's> for Result<(usize, Token<'input>, usize), &'static str> {
+    fn to_triple(
+        value: Self,
+    ) -> Result<
+        (usize, Token<'input>, usize),
+        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
+    > {
         match value {
             Ok(v) => Ok(v),
             Err(error) => Err(__lalrpop_util::ParseError::User { error }),

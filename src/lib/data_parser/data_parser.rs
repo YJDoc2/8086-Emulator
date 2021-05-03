@@ -1,8 +1,8 @@
 // auto-generated: "lalrpop 0.19.1"
 // sha256: 343fe112a32cced8d01b96e3fae44fbd133a0a5afacdf923022cbf589a6e4f
-use crate::util::{address::*,data_util::separate_bytes};
-use crate::vm::VM;
 use crate::error;
+use crate::util::{address::*, data_util::separate_bytes};
+use crate::vm::VM;
 use lalrpop_util::ParseError;
 #[allow(unused_extern_crates)]
 extern crate lalrpop_util as __lalrpop_util;
@@ -988,103 +988,76 @@ mod __intern_token {
 pub use self::__lalrpop_util::lexer::Token;
 
 #[allow(unused_variables)]
-fn __action0<
-    'input,
-    's,
->(
+fn __action0<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action1<
-    'input,
-    's,
->(
+fn __action1<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action2<
-    'input,
-    's,
->(
+fn __action2<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action3<
-    'input,
-    's,
->(
+fn __action3<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action4<
-    'input,
-    's,
->(
+fn __action4<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
-) -> ()
-{
+) -> () {
     {
         vm.arch.ds = n;
-        *counter =0;
+        *counter = 0;
     }
 }
 
 #[allow(unused_variables)]
-fn __action5<
-    'input,
-    's,
->(
+fn __action5<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
-    { 
-        let addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+) -> () {
+    {
+        let addr = Address::calculate_from_offset(vm.arch.ds, *counter);
         vm.mem[addr] = n as u8;
         *counter += 1;
     }
 }
 
 #[allow(unused_variables)]
-fn __action6<
-    'input,
-    's,
->(
+fn __action6<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
@@ -1092,23 +1065,19 @@ fn __action6<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
-        for _ in 0..n{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
+        for _ in 0..n {
             vm.mem[addr] = 0;
-            addr = inc_addr(addr,1);
+            addr = inc_addr(addr, 1);
         }
         *counter += n as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action7<
-    'input,
-    's,
->(
+fn __action7<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
@@ -1118,67 +1087,55 @@ fn __action7<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
-        for _ in 0..n{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
+        for _ in 0..n {
             vm.mem[addr] = v as u8;
-            addr = inc_addr(addr,1);
+            addr = inc_addr(addr, 1);
         }
         *counter += n as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action8<
-    'input,
-    's,
->(
+fn __action8<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, q, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
         // the slice skips the quotes
-        for i in (&q[1..q.len()-1]).bytes(){
+        for i in (&q[1..q.len() - 1]).bytes() {
             vm.mem[addr] = i;
-            addr =inc_addr(addr,1);
+            addr = inc_addr(addr, 1);
         }
-        *counter += q.len() -2;
+        *counter += q.len() - 2;
     }
 }
 
 #[allow(unused_variables)]
-fn __action9<
-    'input,
-    's,
->(
+fn __action9<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        let addr = Address::calculate_from_offset(vm.arch.ds,*counter);
-        let (hb,lb) = separate_bytes(n); 
+        let addr = Address::calculate_from_offset(vm.arch.ds, *counter);
+        let (hb, lb) = separate_bytes(n);
         vm.mem[addr] = lb;
-        vm.mem[inc_addr(addr,1)] = hb;
+        vm.mem[inc_addr(addr, 1)] = hb;
         *counter += 2 as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action10<
-    'input,
-    's,
->(
+fn __action10<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
@@ -1186,23 +1143,19 @@ fn __action10<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
-        for _ in 0..2*n{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
+        for _ in 0..2 * n {
             vm.mem[addr] = 0;
-            addr = inc_addr(addr,1);
+            addr = inc_addr(addr, 1);
         }
-        *counter += 2*n as usize;
+        *counter += 2 * n as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action11<
-    'input,
-    's,
->(
+fn __action11<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
@@ -1212,447 +1165,309 @@ fn __action11<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
-        let (hb,lb) = separate_bytes(v); 
-        for _ in 0..n{
+        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
+        let (hb, lb) = separate_bytes(v);
+        for _ in 0..n {
             vm.mem[addr] = lb;
-            addr = inc_addr(addr,1);
+            addr = inc_addr(addr, 1);
             vm.mem[addr] = hb;
-            addr = inc_addr(addr,1);
+            addr = inc_addr(addr, 1);
         }
-        *counter += 2*n as usize;
+        *counter += 2 * n as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action12<
-    'input,
-    's,
->(
+fn __action12<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, q, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
         // the slice skips the quotes
-        for i in (&q[1..q.len()-1]).bytes(){
+        for i in (&q[1..q.len() - 1]).bytes() {
             vm.mem[addr] = i;
-            addr = inc_addr(addr,1);
+            addr = inc_addr(addr, 1);
             vm.mem[addr] = 0;
-            addr = inc_addr(addr,1);
+            addr = inc_addr(addr, 1);
         }
-        *counter += 2*(q.len()-2);
+        *counter += 2 * (q.len() - 2);
     }
 }
 
 #[allow(unused_variables)]
-fn __action13<
-    'input,
-    's,
->(
+fn __action13<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u16::from_str_radix(n,10){
+        match u16::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-65535".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action14<
-    'input,
-    's,
->(
+fn __action14<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u8::from_str_radix(n,10){
+        match u8::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-255".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action15<
-    'input,
-    's,
->(
+fn __action15<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match i16::from_str_radix(n,10){
+        match i16::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-65535".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action16<
-    'input,
-    's,
->(
+fn __action16<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, n, _): (usize, u16, usize),
-) -> i16
-{
+) -> i16 {
     n as i16
 }
 
 #[allow(unused_variables)]
-fn __action17<
-    'input,
-    's,
->(
+fn __action17<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match i8::from_str_radix(n,10){
+        match i8::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-255".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action18<
-    'input,
-    's,
->(
+fn __action18<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, n, _): (usize, u8, usize),
-) -> i8
-{
+) -> i8 {
     n as i8
 }
 
 #[allow(unused_variables)]
-fn __action19<
-    'input,
-    's,
->(
+fn __action19<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize
-{
+) -> usize {
     __lookbehind.clone()
 }
 
 #[allow(unused_variables)]
-fn __action20<
-    'input,
-    's,
->(
+fn __action20<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize
-{
+) -> usize {
     __lookahead.clone()
 }
 
 #[allow(unused_variables)]
-fn __action21<
-    'input,
-    's,
->(
+fn __action21<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action20(
-        vm,
-        counter,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action20(vm, counter, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action17(
-        vm,
-        counter,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action17(vm, counter, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action22<
-    'input,
-    's,
->(
+fn __action22<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action20(
-        vm,
-        counter,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action20(vm, counter, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action15(
-        vm,
-        counter,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action15(vm, counter, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action23<
-    'input,
-    's,
->(
+fn __action23<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action20(
-        vm,
-        counter,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action20(vm, counter, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action14(
-        vm,
-        counter,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action14(vm, counter, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action24<
-    'input,
-    's,
->(
+fn __action24<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action20(
-        vm,
-        counter,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action20(vm, counter, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action13(
-        vm,
-        counter,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action13(vm, counter, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action25<
-    'input,
-    's,
->(
+fn __action25<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action19(
-        vm,
-        counter,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action19(vm, counter, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action21(
-        vm,
-        counter,
-        input,
-        __0,
-        __temp0,
-    )
+    __action21(vm, counter, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action26<
-    'input,
-    's,
->(
+fn __action26<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action19(
-        vm,
-        counter,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action19(vm, counter, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action22(
-        vm,
-        counter,
-        input,
-        __0,
-        __temp0,
-    )
+    __action22(vm, counter, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action27<
-    'input,
-    's,
->(
+fn __action27<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action19(
-        vm,
-        counter,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action19(vm, counter, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action23(
-        vm,
-        counter,
-        input,
-        __0,
-        __temp0,
-    )
+    __action23(vm, counter, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action28<
-    'input,
-    's,
->(
+fn __action28<'input, 's>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action19(
-        vm,
-        counter,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action19(vm, counter, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action24(
-        vm,
-        counter,
-        input,
-        __0,
-        __temp0,
-    )
+    __action24(vm, counter, input, __0, __temp0)
 }
 
-pub trait __ToTriple<'input, 's, > {
-    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>>;
+pub trait __ToTriple<'input, 's> {
+    fn to_triple(
+        value: Self,
+    ) -> Result<
+        (usize, Token<'input>, usize),
+        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
+    >;
 }
 
-impl<'input, 's, > __ToTriple<'input, 's, > for (usize, Token<'input>, usize) {
-    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+impl<'input, 's> __ToTriple<'input, 's> for (usize, Token<'input>, usize) {
+    fn to_triple(
+        value: Self,
+    ) -> Result<
+        (usize, Token<'input>, usize),
+        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
+    > {
         Ok(value)
     }
 }
-impl<'input, 's, > __ToTriple<'input, 's, > for Result<(usize, Token<'input>, usize), &'static str> {
-    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+impl<'input, 's> __ToTriple<'input, 's> for Result<(usize, Token<'input>, usize), &'static str> {
+    fn to_triple(
+        value: Self,
+    ) -> Result<
+        (usize, Token<'input>, usize),
+        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
+    > {
         match value {
             Ok(v) => Ok(v),
             Err(error) => Err(__lalrpop_util::ParseError::User { error }),

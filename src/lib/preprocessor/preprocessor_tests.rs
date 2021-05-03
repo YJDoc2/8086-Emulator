@@ -85,6 +85,10 @@ fn test_transfer_opcode() {
     ctx.clear();
     let o = p.parse(&mut ctx, &mut out, "RET INTO");
     assert!(o.is_err());
+    out.clear();
+    ctx.clear();
+    let o = p.parse(&mut ctx,&mut out,"fault:DB 0 JMP fault");
+    assert!(o.is_err());
 }
 
 #[test]
@@ -336,18 +340,17 @@ fn test_macro() {
 }
 
 #[test]
-fn test_segment_override(){
+fn test_segment_override() {
     let mut ctx = crate::util::preprocessor_util::Context::default();
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-    let o = p.parse(&mut ctx,&mut out,"mov ax,word es[bp]");
-    println!("{:?}",o);
+    let o = p.parse(&mut ctx, &mut out, "mov ax,word es[bp]");
+    println!("{:?}", o);
     assert!(o.is_ok());
-    let o = p.parse(&mut ctx,&mut out,"mov ax,word ss[5]");
+    let o = p.parse(&mut ctx, &mut out, "mov ax,word ss[5]");
     assert!(o.is_ok());
-    let o = p.parse(&mut ctx,&mut out,"mov ax,word ds[bp,SI]");
+    let o = p.parse(&mut ctx, &mut out, "mov ax,word ds[bp,SI]");
     assert!(o.is_ok());
-    let o = p.parse(&mut ctx,&mut out,"mov ax,word CS[bx,di,6]");
+    let o = p.parse(&mut ctx, &mut out, "mov ax,word CS[bx,di,6]");
     assert!(o.is_ok());
-
 }
