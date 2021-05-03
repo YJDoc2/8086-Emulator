@@ -47,7 +47,7 @@ As this is not on crates.io, dependency is specified using this repository itsel
 
 ```TOML
 [dependencies]
-emulator_8086_lib = { git = "https://github.com/YJDoc2/8086-Emulator" }
+emulator_8086 = { git = "https://github.com/YJDoc2/8086-Emulator" }
 ```
 
 This will allow to import and use the core library of this in your project :
@@ -67,7 +67,7 @@ or use it under different name :
 ```TOML
 ...
 [dependencies]
-a_different_name = { git = "https://github.com/YJDoc2/8086-Emulator" }
+a_different_name = { git = "https://github.com/YJDoc2/8086-Emulator", package="emulator_8086"}
 ...
 ```
 
@@ -127,6 +127,7 @@ The complete project has following file structure :
 ├── LICENSE-APACHE        -> Licence file
 ├── LICENCE-MIT           -> Licence file
 ├── syntax.md             -> file containing syntax for the assembler
+├── flowcharts.md         -> Markdown file containing flowcharts for various parts of emulator
 └── .gitignore            -> gitignore file for the repository
 ```
 
@@ -150,6 +151,8 @@ The flow of the complete process is :
 
 - The driver checks for errors, start labels, and if all labels that are used before declaration (in jump commands) are declared or not. Then it gives data list of preprocessor output to data parser, which interprets data commands and stores the data into vm's memory
 - The driver checks for errors and runs an unconditional loop, in which it gives the code instructions to interpreter, checks its return state, and accordingly gives next input. If it is run in interpreted mode / encounters int 3 or trap flag is set, it also provides user prompt and interprets and runs print commands. Driver also has responsibility to handle DOS and BIOS interrupts.
+
+Flowcharts for various parts of emulator are in the [flowcharts.md](./flowcharts.md) file.
 
 ---
 
