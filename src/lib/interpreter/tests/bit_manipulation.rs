@@ -294,6 +294,25 @@ fn test_shifts() {
     assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
     assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
 
+    // to validate https://github.com/YJDoc2/8086-emulator-web/issues/17
+    vm.arch.cx = 4;
+    vm.arch.dx = 16;
+    let o = p.parse(1, &mut vm, &mut context, "shr dx, cl");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.dx, 1);
+    assert!(!get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    vm.arch.cx = 4;
+    vm.arch.dx = 0x00F0;
+    let o = p.parse(1, &mut vm, &mut context, "shl dl,cl");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.dx, 0);
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
     // mem
     let base = vm.arch.ds as usize * 0x10;
 

@@ -946,7 +946,10 @@ byte_shift_rotate:ByteOpBinary = {
     "shr" => {
         byte_shr
     },
-    
+
+    "shl" => {
+        byte_sal
+    },
     "rol" => {
         byte_rol
     },
@@ -975,6 +978,10 @@ word_shift_rotate:WordOpBinary  = {
     
     "shr" => {
         word_shr
+    },
+
+    "shl" => {
+        word_sal
     },
     
     "rol" => {

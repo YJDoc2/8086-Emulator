@@ -135,6 +135,9 @@ pub fn byte_sal(vm: &mut VM, val: u8, num: u8) -> u8 {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
         let t = (val as u16) << num;
+        // carry flag is to be set according to last bit
+        // shifted out of destination, so we first shift the byte value
+        // as a u16 value, and compare the 9th bit
         if t & 1 << 8 != 0 {
             set_flag(&mut vm.arch.flag, Flags::CARRY);
         } else {
@@ -161,7 +164,12 @@ pub fn byte_sal(vm: &mut VM, val: u8, num: u8) -> u8 {
 
 pub fn byte_sar(vm: &mut VM, val: u8, num: u8) -> u8 {
     let res: u8;
-
+    if num == 0 {
+        // as the 8086 family manual does not specify
+        // case of 0 shift, we return early without
+        // changing anything
+        return val;
+    }
     let msb = val & 1 << 7;
     if num > 9 {
         // kind of optimization, as shifting byte number more than 8 times, it will become zero or max
@@ -175,7 +183,10 @@ pub fn byte_sar(vm: &mut VM, val: u8, num: u8) -> u8 {
     } else {
         // instead of loop if msb is 1, shift the u8 max and OR it with number
         res = val >> num | if msb == 0 { 0 } else { u8::MAX << 8 - num };
-        if res & 1 == 1 {
+        // as the carry flag is set according to last bit
+        // shifted out, we subtract 1 from num, and test
+        // that bit
+        if val >> num - 1 & 1 == 1 {
             set_flag(&mut vm.arch.flag, Flags::CARRY);
         } else {
             unset_flag(&mut vm.arch.flag, Flags::CARRY);
@@ -193,6 +204,12 @@ pub fn byte_sar(vm: &mut VM, val: u8, num: u8) -> u8 {
 
 pub fn byte_shr(vm: &mut VM, val: u8, num: u8) -> u8 {
     let res: u8;
+    if num == 0 {
+        // as the 8086 family manual does not specify
+        // case of 0 shift, we return early without
+        // changing anything
+        return val;
+    }
     if num > 9 {
         // kind of optimization, as shifting byte number more than 8 times, it will become zero
         res = 0;
@@ -204,7 +221,10 @@ pub fn byte_shr(vm: &mut VM, val: u8, num: u8) -> u8 {
             set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
         }
         let t = (val as u16) >> num;
-        if t & 1 == 1 {
+        // as the carry flag is set according to last bit
+        // shifted out, we subtract 1 from num, and test
+        // that bit
+        if val >> num - 1 & 1 == 1 {
             set_flag(&mut vm.arch.flag, Flags::CARRY);
         } else {
             unset_flag(&mut vm.arch.flag, Flags::CARRY);
@@ -324,6 +344,9 @@ pub fn word_sal(vm: &mut VM, val: u16, num: u16) -> u16 {
 
 pub fn word_sar(vm: &mut VM, val: u16, num: u16) -> u16 {
     let res: u16;
+    if num == 0 {
+        return val;
+    }
 
     let msb = val & 1 << 15;
     if num > 17 {
@@ -337,7 +360,10 @@ pub fn word_sar(vm: &mut VM, val: u16, num: u16) -> u16 {
         }
     } else {
         res = val >> num | if msb == 0 { 0 } else { u16::MAX << 16 - num };
-        if res & 1 == 1 {
+        // as the carry flag is set according to last bit
+        // shifted out, we subtract 1 from num, and test
+        // that bit
+        if val >> num - 1 & 1 == 1 {
             set_flag(&mut vm.arch.flag, Flags::CARRY);
         } else {
             unset_flag(&mut vm.arch.flag, Flags::CARRY);
@@ -355,6 +381,9 @@ pub fn word_sar(vm: &mut VM, val: u16, num: u16) -> u16 {
 
 pub fn word_shr(vm: &mut VM, val: u16, num: u16) -> u16 {
     let res: u16;
+    if num == 0 {
+        return val;
+    }
     if num > 17 {
         // kind of optimization, as shifting byte number more than 8 times, it will become zero
         res = 0;
@@ -366,7 +395,10 @@ pub fn word_shr(vm: &mut VM, val: u16, num: u16) -> u16 {
             set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
         }
         let t = (val as u32) >> num;
-        if t & 1 == 1 {
+        // as the carry flag is set according to last bit
+        // shifted out, we subtract 1 from num, and test
+        // that bit
+        if val >> (num - 1) & 1 == 1 {
             set_flag(&mut vm.arch.flag, Flags::CARRY);
         } else {
             unset_flag(&mut vm.arch.flag, Flags::CARRY);

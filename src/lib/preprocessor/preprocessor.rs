@@ -1,11 +1,11 @@
 // auto-generated: "lalrpop 0.19.1"
 // sha256: 3f8e4509f5835a09af51473624e928d31173f7a8c11c69e17db8db77edadd9
-use crate::util::preprocessor_util as util;
-use util::{Label,LabelType};
-use crate::vm::MB;
-use regex::{Regex,Captures};
 use crate::error;
+use crate::util::preprocessor_util as util;
+use crate::vm::MB;
 use lalrpop_util::ParseError;
+use regex::{Captures, Regex};
+use util::{Label, LabelType};
 #[allow(unused_extern_crates)]
 extern crate lalrpop_util as __lalrpop_util;
 #[allow(unused_imports)]
@@ -17995,317 +17995,230 @@ mod __intern_token {
 pub use self::__lalrpop_util::lexer::Token;
 
 #[allow(unused_variables)]
-fn __action0<
-    'input,
-    's,
->(
+fn __action0<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action1<
-    'input,
-    's,
->(
+fn __action1<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, ::std::option::Option<()>, usize),
     (_, __1, _): (usize, ::std::option::Option<()>, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action2<
-    'input,
-    's,
->(
+fn __action2<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action3<
-    'input,
-    's,
->(
+fn __action3<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action4<
-    'input,
-    's,
->(
+fn __action4<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action5<
-    'input,
-    's,
->(
+fn __action5<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action6<
-    'input,
-    's,
->(
+fn __action6<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action7<
-    'input,
-    's,
->(
+fn __action7<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action8<
-    'input,
-    's,
->(
+fn __action8<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action9<
-    'input,
-    's,
->(
+fn __action9<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action10<
-    'input,
-    's,
->(
+fn __action10<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action11<
-    'input,
-    's,
->(
+fn __action11<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action12<
-    'input,
-    's,
->(
+fn __action12<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action13<
-    'input,
-    's,
->(
+fn __action13<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action14<
-    'input,
-    's,
->(
+fn __action14<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action15<
-    'input,
-    's,
->(
+fn __action15<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action16<
-    'input,
-    's,
->(
+fn __action16<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action17<
-    'input,
-    's,
->(
+fn __action17<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action18<
-    'input,
-    's,
->(
+fn __action18<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, u16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.data.push(format!("set {}",n));
+        out.data.push(format!("set {}", n));
         context.data_counter = 0;
     }
 }
 
 #[allow(unused_variables)]
-fn __action19<
-    'input,
-    's,
->(
+fn __action19<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action20<
-    'input,
-    's,
->(
+fn __action20<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action21<
-    'input,
-    's,
->(
+fn __action21<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18313,23 +18226,22 @@ fn __action21<
     (_, l, _): (usize, ::std::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
-        if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
+        if let Some(l) = l {
+            context.label_map.insert(
+                l,
+                Label::new(LabelType::DATA, start, context.data_counter as usize),
+            );
         }
-        out.data.push(format!("db {}",n));
+        out.data.push(format!("db {}", n));
         // Increment the data counter
         context.data_counter += 1;
     }
 }
 
 #[allow(unused_variables)]
-fn __action22<
-    'input,
-    's,
->(
+fn __action22<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18339,23 +18251,22 @@ fn __action22<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
+        if let Some(l) = l {
+            context.label_map.insert(
+                l,
+                Label::new(LabelType::DATA, start, context.data_counter as usize),
+            );
         }
-        out.data.push(format!("db [{}]",n));
+        out.data.push(format!("db [{}]", n));
         // Increment the data counter
         context.data_counter += n;
     }
 }
 
 #[allow(unused_variables)]
-fn __action23<
-    'input,
-    's,
->(
+fn __action23<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18367,23 +18278,22 @@ fn __action23<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
+        if let Some(l) = l {
+            context.label_map.insert(
+                l,
+                Label::new(LabelType::DATA, start, context.data_counter as usize),
+            );
         }
-        out.data.push(format!("db [{} , {}]",v,n));
+        out.data.push(format!("db [{} , {}]", v, n));
         // Increment the data counter
         context.data_counter += n;
     }
 }
 
 #[allow(unused_variables)]
-fn __action24<
-    'input,
-    's,
->(
+fn __action24<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18392,55 +18302,47 @@ fn __action24<
     (_, _, _): (usize, (), usize),
     (_, q, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        if q.len() > (u16::MAX-10) as usize{ // 10 is arbitrary
+        if q.len() > (u16::MAX - 10) as usize {
+            // 10 is arbitrary
             return error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",u16::MAX-10));
         }
-        if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
+        if let Some(l) = l {
+            context.label_map.insert(
+                l,
+                Label::new(LabelType::DATA, start, context.data_counter as usize),
+            );
         }
-        out.data.push(format!("db {}",q));
+        out.data.push(format!("db {}", q));
         // Increment the data counter
-        context.data_counter += (q.len()-2) as u16; // -2 for the quotes
+        context.data_counter += (q.len() - 2) as u16; // -2 for the quotes
         Ok(())
     }
 }
 
 #[allow(unused_variables)]
-fn __action25<
-    'input,
-    's,
->(
+fn __action25<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action26<
-    'input,
-    's,
->(
+fn __action26<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action27<
-    'input,
-    's,
->(
+fn __action27<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18448,23 +18350,22 @@ fn __action27<
     (_, l, _): (usize, ::std::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
+        if let Some(l) = l {
+            context.label_map.insert(
+                l,
+                Label::new(LabelType::DATA, start, context.data_counter as usize),
+            );
         }
-        out.data.push(format!("dw {}",n));
+        out.data.push(format!("dw {}", n));
         // Increment the data counter
         context.data_counter += 2;
     }
 }
 
 #[allow(unused_variables)]
-fn __action28<
-    'input,
-    's,
->(
+fn __action28<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18474,23 +18375,22 @@ fn __action28<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
+        if let Some(l) = l {
+            context.label_map.insert(
+                l,
+                Label::new(LabelType::DATA, start, context.data_counter as usize),
+            );
         }
-        out.data.push(format!("dw [{}]",n));
+        out.data.push(format!("dw [{}]", n));
         // Increment the data counter
-        context.data_counter += 2*n;
+        context.data_counter += 2 * n;
     }
 }
 
 #[allow(unused_variables)]
-fn __action29<
-    'input,
-    's,
->(
+fn __action29<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18502,23 +18402,22 @@ fn __action29<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
+        if let Some(l) = l {
+            context.label_map.insert(
+                l,
+                Label::new(LabelType::DATA, start, context.data_counter as usize),
+            );
         }
-        out.data.push(format!("dw [{} , {}]",v,n));
+        out.data.push(format!("dw [{} , {}]", v, n));
         // Increment the data counter
-        context.data_counter += 2*n;
+        context.data_counter += 2 * n;
     }
 }
 
 #[allow(unused_variables)]
-fn __action30<
-    'input,
-    's,
->(
+fn __action30<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18527,83 +18426,67 @@ fn __action30<
     (_, _, _): (usize, (), usize),
     (_, q, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        if q.len() > ((u16::MAX/2)-10) as usize { // 10 is arbitrary
+        if q.len() > ((u16::MAX / 2) - 10) as usize {
+            // 10 is arbitrary
             return error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",(u16::MAX/2)-10));
         }
-        if let Some(l) = l{
-            context.label_map.insert(l,Label::new(LabelType::DATA,start,context.data_counter as usize));
+        if let Some(l) = l {
+            context.label_map.insert(
+                l,
+                Label::new(LabelType::DATA, start, context.data_counter as usize),
+            );
         }
-        out.data.push(format!("dw {}",q));
+        out.data.push(format!("dw {}", q));
         // Increment the data counter
-        context.data_counter += (2*(q.len()-2)) as u16; // -2 for the quotes
+        context.data_counter += (2 * (q.len() - 2)) as u16; // -2 for the quotes
         Ok(())
     }
 }
 
 #[allow(unused_variables)]
-fn __action31<
-    'input,
-    's,
->(
+fn __action31<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action32<
-    'input,
-    's,
->(
+fn __action32<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action33<
-    'input,
-    's,
->(
+fn __action33<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action34<
-    'input,
-    's,
->(
+fn __action34<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action35<
-    'input,
-    's,
->(
+fn __action35<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18614,55 +18497,43 @@ fn __action35<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, s, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     {
-        let mut r =s[0..s.len()-2].to_owned();
+        let mut r = s[0..s.len() - 2].to_owned();
         // maybe try making single regex of all params and replace, somehow
-        for (i,p) in params.iter().enumerate(){
-            let pat = format!(r"\b{}\b",p);
+        for (i, p) in params.iter().enumerate() {
+            let pat = format!(r"\b{}\b", p);
             let re = Regex::new(&pat).unwrap();
-            r = re.replace_all(&r,|caps:&Captures|{
-                format!("{{{}}}",i)
-            }).to_string();
+            r = re
+                .replace_all(&r, |caps: &Captures| format!("{{{}}}", i))
+                .to_string();
         }
-        context.macro_map.insert(name,r);
+        context.macro_map.insert(name, r);
     }
 }
 
 #[allow(unused_variables)]
-fn __action36<
-    'input,
-    's,
->(
+fn __action36<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action37<
-    'input,
-    's,
->(
+fn __action37<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action38<
-    'input,
-    's,
->(
+fn __action38<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18672,56 +18543,67 @@ fn __action38<
     (_, params, _): (usize, Vec<String>, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match context.macro_map.get(l){
-            Some(value)=>{
+        match context.macro_map.get(l) {
+            Some(value) => {
                 let mut r = value.clone();
                 // TODO Maybe optimise this later
                 // maybe try making single regex of all params and replace, somehow
-                for (i,p) in params.iter().enumerate(){
-                    let pat = format!("{{{}}}",i);
-                    r = r.replace(&pat,&p);
+                for (i, p) in params.iter().enumerate() {
+                    let pat = format!("{{{}}}", i);
+                    r = r.replace(&pat, &p);
                 }
                 if context.macro_nesting_counter.contains(l) {
-                    return error!(start,end,"Recursive macros are not allowed".to_owned());
-                }else{
+                    return error!(start, end, "Recursive macros are not allowed".to_owned());
+                } else {
                     context.macro_nesting_counter.insert(l.to_string());
                 }
                 let p = PreprocessorParser::new();
                 context.mapper.set_source(start);
-                
+
                 context.mapper.lock_source();
-                let o = p.parse(context,out,&r);
+                let o = p.parse(context, out, &r);
                 context.mapper.unlock_source();
                 context.macro_nesting_counter.remove(l);
-                match o{
-                    Ok(_)=>Ok(()),
-                    Err(e)=>{
-                        let error = if let ParseError::UnrecognizedToken{token: (ref start, ref token, ref end),ref expected} = e{
+                match o {
+                    Ok(_) => Ok(()),
+                    Err(e) => {
+                        let error = if let ParseError::UnrecognizedToken {
+                            token: (ref start, ref token, ref end),
+                            ref expected,
+                        } = e
+                        {
                             if token.1 == "" {
-                                format!("{}",expected[0])
-                            }else{
-                                format!("Unexpected Token {}",token)
+                                format!("{}", expected[0])
+                            } else {
+                                format!("Unexpected Token {}", token)
                             }
-                        }else{
-                            format!("{}",e)
+                        } else {
+                            format!("{}", e)
                         };
-                        error!(start,end,format!("Error in Macro Expansion :\nExpanded Macro : {}\nError: {}",r,error))
+                        error!(
+                            start,
+                            end,
+                            format!(
+                                "Error in Macro Expansion :\nExpanded Macro : {}\nError: {}",
+                                r, error
+                            )
+                        )
                     }
                 }
-            },
-            None => error!(start as usize,start +l.len(),"Macro not defined".to_owned()),
+            }
+            None => error!(
+                start as usize,
+                start + l.len(),
+                "Macro not defined".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action39<
-    'input,
-    's,
->(
+fn __action39<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18731,8 +18613,7 @@ fn __action39<
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
         out.code.push("ret".to_owned());
         context.mapper.add_entry(end);
@@ -18740,10 +18621,7 @@ fn __action39<
 }
 
 #[allow(unused_variables)]
-fn __action40<
-    'input,
-    's,
->(
+fn __action40<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18751,115 +18629,89 @@ fn __action40<
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match context.fn_map.get(&n){
-            Some(_) => error!(start,end,format!("Procedure {} already declared",n)),
-            None => {context.fn_map.insert(n,out.code.len());Ok(())}
+        match context.fn_map.get(&n) {
+            Some(_) => error!(start, end, format!("Procedure {} already declared", n)),
+            None => {
+                context.fn_map.insert(n, out.code.len());
+                Ok(())
+            }
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action41<
-    'input,
-    's,
->(
+fn __action41<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action42<
-    'input,
-    's,
->(
+fn __action42<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action43<
-    'input,
-    's,
->(
+fn __action43<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action44<
-    'input,
-    's,
->(
+fn __action44<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action45<
-    'input,
-    's,
->(
+fn __action45<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action46<
-    'input,
-    's,
->(
+fn __action46<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action47<
-    'input,
-    's,
->(
+fn __action47<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     {
         out.code.push("print flags".to_owned());
         context.mapper.add_entry(start);
@@ -18867,18 +18719,14 @@ fn __action47<
 }
 
 #[allow(unused_variables)]
-fn __action48<
-    'input,
-    's,
->(
+fn __action48<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     {
         out.code.push("print reg".to_owned());
         context.mapper.add_entry(start);
@@ -18886,10 +18734,7 @@ fn __action48<
 }
 
 #[allow(unused_variables)]
-fn __action49<
-    'input,
-    's,
->(
+fn __action49<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18899,19 +18744,15 @@ fn __action49<
     (_, s, _): (usize, u32, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, e, _): (usize, u32, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("print mem {} -> {}",s,e));
+        out.code.push(format!("print mem {} -> {}", s, e));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action50<
-    'input,
-    's,
->(
+fn __action50<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18922,23 +18763,29 @@ fn __action50<
     (_, _, _): (usize, &'input str, usize),
     (_, e, _): (usize, u32, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        if s+e >= MB{
-            return error!(start,end,format!("End address is greater than memory address space : {} + {} = {} > {}",s,e,s+e,MB-1))
+        if s + e >= MB {
+            return error!(
+                start,
+                end,
+                format!(
+                    "End address is greater than memory address space : {} + {} = {} > {}",
+                    s,
+                    e,
+                    s + e,
+                    MB - 1
+                )
+            );
         }
-        out.code.push(format!("print mem {} : {}",s,e));
+        out.code.push(format!("print mem {} : {}", s, e));
         context.mapper.add_entry(start);
         Ok(())
     }
 }
 
 #[allow(unused_variables)]
-fn __action51<
-    'input,
-    's,
->(
+fn __action51<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -18947,341 +18794,245 @@ fn __action51<
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, &'input str, usize),
     (_, o, _): (usize, u32, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("print mem : {}",o));
+        out.code.push(format!("print mem : {}", o));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action52<
-    'input,
-    's,
->(
+fn __action52<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action53<
-    'input,
-    's,
->(
+fn __action53<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action54<
-    'input,
-    's,
->(
+fn __action54<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action55<
-    'input,
-    's,
->(
+fn __action55<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action56<
-    'input,
-    's,
->(
+fn __action56<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action57<
-    'input,
-    's,
->(
+fn __action57<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action58<
-    'input,
-    's,
->(
+fn __action58<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action59<
-    'input,
-    's,
->(
+fn __action59<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action60<
-    'input,
-    's,
->(
+fn __action60<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action61<
-    'input,
-    's,
->(
+fn __action61<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action62<
-    'input,
-    's,
->(
+fn __action62<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action63<
-    'input,
-    's,
->(
+fn __action63<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action64<
-    'input,
-    's,
->(
+fn __action64<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action65<
-    'input,
-    's,
->(
+fn __action65<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action66<
-    'input,
-    's,
->(
+fn __action66<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action67<
-    'input,
-    's,
->(
+fn __action67<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action68<
-    'input,
-    's,
->(
+fn __action68<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action69<
-    'input,
-    's,
->(
+fn __action69<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action70<
-    'input,
-    's,
->(
+fn __action70<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action71<
-    'input,
-    's,
->(
+fn __action71<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action72<
-    'input,
-    's,
->(
+fn __action72<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action73<
-    'input,
-    's,
->(
+fn __action73<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action74<
-    'input,
-    's,
->(
+fn __action74<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action75<
-    'input,
-    's,
->(
+fn __action75<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19290,19 +19041,15 @@ fn __action75<
     (_, r1, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {},{}",r1,r2));
+        out.code.push(format!("mov {},{}", r1, r2));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action76<
-    'input,
-    's,
->(
+fn __action76<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19311,19 +19058,15 @@ fn __action76<
     (_, r1, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {},{}",r1,r2));
+        out.code.push(format!("mov {},{}", r1, r2));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action77<
-    'input,
-    's,
->(
+fn __action77<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19333,19 +19076,15 @@ fn __action77<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {}, byte {}",r,m));
+        out.code.push(format!("mov {}, byte {}", r, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action78<
-    'input,
-    's,
->(
+fn __action78<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19355,19 +19094,15 @@ fn __action78<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {}, word {}",r,m));
+        out.code.push(format!("mov {}, word {}", r, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action79<
-    'input,
-    's,
->(
+fn __action79<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19376,19 +19111,15 @@ fn __action79<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {}, byte {}",r,l));
+        out.code.push(format!("mov {}, byte {}", r, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action80<
-    'input,
-    's,
->(
+fn __action80<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19397,19 +19128,15 @@ fn __action80<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {},word {}",r,l));
+        out.code.push(format!("mov {},word {}", r, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action81<
-    'input,
-    's,
->(
+fn __action81<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19419,19 +19146,15 @@ fn __action81<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov byte {},{}",m,r));
+        out.code.push(format!("mov byte {},{}", m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action82<
-    'input,
-    's,
->(
+fn __action82<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19441,19 +19164,15 @@ fn __action82<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov word {},{}",m,r));
+        out.code.push(format!("mov word {},{}", m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action83<
-    'input,
-    's,
->(
+fn __action83<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19462,19 +19181,15 @@ fn __action83<
     (_, l, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov byte {},{}",l,r));
+        out.code.push(format!("mov byte {},{}", l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action84<
-    'input,
-    's,
->(
+fn __action84<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19483,19 +19198,15 @@ fn __action84<
     (_, l, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov word {},{}",l,r));
+        out.code.push(format!("mov word {},{}", l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action85<
-    'input,
-    's,
->(
+fn __action85<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19504,19 +19215,15 @@ fn __action85<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {},{}",r,n));
+        out.code.push(format!("mov {},{}", r, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action86<
-    'input,
-    's,
->(
+fn __action86<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19525,19 +19232,15 @@ fn __action86<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {},{}",r,n));
+        out.code.push(format!("mov {},{}", r, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action87<
-    'input,
-    's,
->(
+fn __action87<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19547,19 +19250,15 @@ fn __action87<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov byte {}, {}",m,n));
+        out.code.push(format!("mov byte {}, {}", m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action88<
-    'input,
-    's,
->(
+fn __action88<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19569,19 +19268,15 @@ fn __action88<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov word {},{}",m,n));
+        out.code.push(format!("mov word {},{}", m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action89<
-    'input,
-    's,
->(
+fn __action89<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19590,19 +19285,15 @@ fn __action89<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov byte {}, {}",m,n));
+        out.code.push(format!("mov byte {}, {}", m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action90<
-    'input,
-    's,
->(
+fn __action90<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19611,19 +19302,15 @@ fn __action90<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov word {},{}",m,n));
+        out.code.push(format!("mov word {},{}", m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action91<
-    'input,
-    's,
->(
+fn __action91<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19632,19 +19319,15 @@ fn __action91<
     (_, sr, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {},{}",sr,r));
+        out.code.push(format!("mov {},{}", sr, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action92<
-    'input,
-    's,
->(
+fn __action92<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19653,19 +19336,15 @@ fn __action92<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, sr, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {},{}",r,sr));
+        out.code.push(format!("mov {},{}", r, sr));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action93<
-    'input,
-    's,
->(
+fn __action93<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19675,19 +19354,15 @@ fn __action93<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, sr, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov word {},{}",m,sr));
+        out.code.push(format!("mov word {},{}", m, sr));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action94<
-    'input,
-    's,
->(
+fn __action94<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19696,19 +19371,15 @@ fn __action94<
     (_, l, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, sr, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov word {},{}",l,sr));
+        out.code.push(format!("mov word {},{}", l, sr));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action95<
-    'input,
-    's,
->(
+fn __action95<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19718,19 +19389,15 @@ fn __action95<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {}, word {}",sr,m));
+        out.code.push(format!("mov {}, word {}", sr, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action96<
-    'input,
-    's,
->(
+fn __action96<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19739,54 +19406,41 @@ fn __action96<
     (_, sr, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("mov {}, word {}",sr,l));
+        out.code.push(format!("mov {}, word {}", sr, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action97<
-    'input,
-    's,
->(
+fn __action97<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action98<
-    'input,
-    's,
->(
+fn __action98<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action99<
-    'input,
-    's,
->(
+fn __action99<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
         out.code.push(q);
         context.mapper.add_entry(start);
@@ -19794,150 +19448,107 @@ fn __action99<
 }
 
 #[allow(unused_variables)]
-fn __action100<
-    'input,
-    's,
->(
+fn __action100<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "lahf".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action101<
-    'input,
-    's,
->(
+fn __action101<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "lahf".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action102<
-    'input,
-    's,
->(
+fn __action102<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sahf".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action103<
-    'input,
-    's,
->(
+fn __action103<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sahf".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action104<
-    'input,
-    's,
->(
+fn __action104<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "pushf".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action105<
-    'input,
-    's,
->(
+fn __action105<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "pushf".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action106<
-    'input,
-    's,
->(
+fn __action106<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "popf".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action107<
-    'input,
-    's,
->(
+fn __action107<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "popf".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action108<
-    'input,
-    's,
->(
+fn __action108<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "xlat".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action109<
-    'input,
-    's,
->(
+fn __action109<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "xlat".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action110<
-    'input,
-    's,
->(
+fn __action110<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19946,19 +19557,15 @@ fn __action110<
     (_, r1, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg {} ,{}",r1,r2));
+        out.code.push(format!("xchg {} ,{}", r1, r2));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action111<
-    'input,
-    's,
->(
+fn __action111<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19967,19 +19574,15 @@ fn __action111<
     (_, r1, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg {} ,{}",r1,r2));
+        out.code.push(format!("xchg {} ,{}", r1, r2));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action112<
-    'input,
-    's,
->(
+fn __action112<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -19989,19 +19592,15 @@ fn __action112<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg byte {} ,{}",m,r));
+        out.code.push(format!("xchg byte {} ,{}", m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action113<
-    'input,
-    's,
->(
+fn __action113<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20011,19 +19610,15 @@ fn __action113<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg byte {} ,{}",m,r));
+        out.code.push(format!("xchg byte {} ,{}", m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action114<
-    'input,
-    's,
->(
+fn __action114<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20033,19 +19628,15 @@ fn __action114<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg word {} ,{}",m,r));
+        out.code.push(format!("xchg word {} ,{}", m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action115<
-    'input,
-    's,
->(
+fn __action115<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20055,19 +19646,15 @@ fn __action115<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg word {} ,{}",m,r));
+        out.code.push(format!("xchg word {} ,{}", m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action116<
-    'input,
-    's,
->(
+fn __action116<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20076,19 +19663,15 @@ fn __action116<
     (_, l, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg byte {} ,{}",l,r));
+        out.code.push(format!("xchg byte {} ,{}", l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action117<
-    'input,
-    's,
->(
+fn __action117<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20097,19 +19680,15 @@ fn __action117<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg byte {} ,{}",l,r));
+        out.code.push(format!("xchg byte {} ,{}", l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action118<
-    'input,
-    's,
->(
+fn __action118<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20118,19 +19697,15 @@ fn __action118<
     (_, l, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg word {} ,{}",l,r));
+        out.code.push(format!("xchg word {} ,{}", l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action119<
-    'input,
-    's,
->(
+fn __action119<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20139,47 +19714,35 @@ fn __action119<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("xchg word {} ,{}",l,r));
+        out.code.push(format!("xchg word {} ,{}", l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action120<
-    'input,
-    's,
->(
+fn __action120<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action121<
-    'input,
-    's,
->(
+fn __action121<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action122<
-    'input,
-    's,
->(
+fn __action122<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20188,16 +19751,12 @@ fn __action122<
     (_, _, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, u8, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
-    error!(start,start+2,"\'in\' is not supported.".to_owned())
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+    error!(start, start + 2, "\'in\' is not supported.".to_owned())
 }
 
 #[allow(unused_variables)]
-fn __action123<
-    'input,
-    's,
->(
+fn __action123<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20206,16 +19765,12 @@ fn __action123<
     (_, _, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
-    error!(start,start+2,"\'in\' is not supported.".to_owned())
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+    error!(start, start + 2, "\'in\' is not supported.".to_owned())
 }
 
 #[allow(unused_variables)]
-fn __action124<
-    'input,
-    's,
->(
+fn __action124<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20224,16 +19779,12 @@ fn __action124<
     (_, _, _): (usize, u8, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
-    error!(start,start+2,"\'in\' is not supported.".to_owned())
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+    error!(start, start + 2, "\'in\' is not supported.".to_owned())
 }
 
 #[allow(unused_variables)]
-fn __action125<
-    'input,
-    's,
->(
+fn __action125<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20242,91 +19793,67 @@ fn __action125<
     (_, _, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
-    error!(start,start+2,"\'in\' is not supported.".to_owned())
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+    error!(start, start + 2, "\'in\' is not supported.".to_owned())
 }
 
 #[allow(unused_variables)]
-fn __action126<
-    'input,
-    's,
->(
+fn __action126<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action127<
-    'input,
-    's,
->(
+fn __action127<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action128<
-    'input,
-    's,
->(
+fn __action128<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action129<
-    'input,
-    's,
->(
+fn __action129<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action130<
-    'input,
-    's,
->(
+fn __action130<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, (), usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("pop {}",r));
+        out.code.push(format!("pop {}", r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action131<
-    'input,
-    's,
->(
+fn __action131<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20334,93 +19861,72 @@ fn __action131<
     (_, q, _): (usize, (), usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("pop {}",m));
+        out.code.push(format!("pop {}", m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action132<
-    'input,
-    's,
->(
+fn __action132<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, (), usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("pop {}",l));
+        out.code.push(format!("pop {}", l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action133<
-    'input,
-    's,
->(
+fn __action133<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action134<
-    'input,
-    's,
->(
+fn __action134<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action135<
-    'input,
-    's,
->(
+fn __action135<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, (), usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("push {}",r));
+        out.code.push(format!("push {}", r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action136<
-    'input,
-    's,
->(
+fn __action136<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, (), usize),
     (_, _, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     {
         out.code.push(format!("push cs"));
         context.mapper.add_entry(start);
@@ -20428,10 +19934,7 @@ fn __action136<
 }
 
 #[allow(unused_variables)]
-fn __action137<
-    'input,
-    's,
->(
+fn __action137<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20439,192 +19942,140 @@ fn __action137<
     (_, q, _): (usize, (), usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("push {}",m));
+        out.code.push(format!("push {}", m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action138<
-    'input,
-    's,
->(
+fn __action138<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, (), usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("push {}",l));
+        out.code.push(format!("push {}", l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action139<
-    'input,
-    's,
->(
+fn __action139<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action140<
-    'input,
-    's,
->(
+fn __action140<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "es".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action141<
-    'input,
-    's,
->(
+fn __action141<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "es".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action142<
-    'input,
-    's,
->(
+fn __action142<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ds".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action143<
-    'input,
-    's,
->(
+fn __action143<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ds".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action144<
-    'input,
-    's,
->(
+fn __action144<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ss".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action145<
-    'input,
-    's,
->(
+fn __action145<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ss".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action146<
-    'input,
-    's,
->(
+fn __action146<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action147<
-    'input,
-    's,
->(
+fn __action147<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action148<
-    'input,
-    's,
->(
+fn __action148<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action149<
-    'input,
-    's,
->(
+fn __action149<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action150<
-    'input,
-    's,
->(
+fn __action150<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20633,72 +20084,52 @@ fn __action150<
     (_, _, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, m, _): (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
-    error!(start,start+3,format!("\'{}\' is not supported",q))
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+    error!(start, start + 3, format!("\'{}\' is not supported", q))
 }
 
 #[allow(unused_variables)]
-fn __action151<
-    'input,
-    's,
->(
+fn __action151<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "lds".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action152<
-    'input,
-    's,
->(
+fn __action152<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "lds".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action153<
-    'input,
-    's,
->(
+fn __action153<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "les".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action154<
-    'input,
-    's,
->(
+fn __action154<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "les".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action155<
-    'input,
-    's,
->(
+fn __action155<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20708,19 +20139,15 @@ fn __action155<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("lea {} , word {}",r,m));
+        out.code.push(format!("lea {} , word {}", r, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action156<
-    'input,
-    's,
->(
+fn __action156<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -20729,54 +20156,41 @@ fn __action156<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("lea {} , word {}",r,l));
+        out.code.push(format!("lea {} , word {}", r, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action157<
-    'input,
-    's,
->(
+fn __action157<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action158<
-    'input,
-    's,
->(
+fn __action158<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action159<
-    'input,
-    's,
->(
+fn __action159<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
         out.code.push(q);
         context.mapper.add_entry(start);
@@ -20784,17 +20198,13 @@ fn __action159<
 }
 
 #[allow(unused_variables)]
-fn __action160<
-    'input,
-    's,
->(
+fn __action160<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
         out.code.push(q);
         context.mapper.add_entry(start);
@@ -20802,466 +20212,339 @@ fn __action160<
 }
 
 #[allow(unused_variables)]
-fn __action161<
-    'input,
-    's,
->(
+fn __action161<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action162<
-    'input,
-    's,
->(
+fn __action162<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action163<
-    'input,
-    's,
->(
+fn __action163<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, (), usize),
     (_, o, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("rep {}",o));
+        out.code.push(format!("rep {}", o));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action164<
-    'input,
-    's,
->(
+fn __action164<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
     (_, o, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}",q,o));
+        out.code.push(format!("{} {}", q, o));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action165<
-    'input,
-    's,
->(
+fn __action165<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action166<
-    'input,
-    's,
->(
+fn __action166<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action167<
-    'input,
-    's,
->(
+fn __action167<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "repz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action168<
-    'input,
-    's,
->(
+fn __action168<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "repz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action169<
-    'input,
-    's,
->(
+fn __action169<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "repz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action170<
-    'input,
-    's,
->(
+fn __action170<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "repz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action171<
-    'input,
-    's,
->(
+fn __action171<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "repnz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action172<
-    'input,
-    's,
->(
+fn __action172<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "repnz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action173<
-    'input,
-    's,
->(
+fn __action173<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "repnz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action174<
-    'input,
-    's,
->(
+fn __action174<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "repnz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action175<
-    'input,
-    's,
->(
+fn __action175<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, q, _): (usize, String, usize),
     (_, _, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     {
-        format!("{} byte",q)
+        format!("{} byte", q)
     }
 }
 
 #[allow(unused_variables)]
-fn __action176<
-    'input,
-    's,
->(
+fn __action176<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, q, _): (usize, String, usize),
     (_, _, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     {
-        format!("{} word",q)
+        format!("{} word", q)
     }
 }
 
 #[allow(unused_variables)]
-fn __action177<
-    'input,
-    's,
->(
+fn __action177<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, q, _): (usize, String, usize),
     (_, _, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     {
-        format!("{} byte",q)
+        format!("{} byte", q)
     }
 }
 
 #[allow(unused_variables)]
-fn __action178<
-    'input,
-    's,
->(
+fn __action178<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, q, _): (usize, String, usize),
     (_, _, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     {
-        format!("{} word",q)
+        format!("{} word", q)
     }
 }
 
 #[allow(unused_variables)]
-fn __action179<
-    'input,
-    's,
->(
+fn __action179<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cmps".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action180<
-    'input,
-    's,
->(
+fn __action180<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cmps".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action181<
-    'input,
-    's,
->(
+fn __action181<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "scas".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action182<
-    'input,
-    's,
->(
+fn __action182<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "scas".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action183<
-    'input,
-    's,
->(
+fn __action183<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "movs".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action184<
-    'input,
-    's,
->(
+fn __action184<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "movs".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action185<
-    'input,
-    's,
->(
+fn __action185<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "lods".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action186<
-    'input,
-    's,
->(
+fn __action186<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "lods".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action187<
-    'input,
-    's,
->(
+fn __action187<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "stos".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action188<
-    'input,
-    's,
->(
+fn __action188<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "stos".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action189<
-    'input,
-    's,
->(
+fn __action189<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action190<
-    'input,
-    's,
->(
+fn __action190<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action191<
-    'input,
-    's,
->(
+fn __action191<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action192<
-    'input,
-    's,
->(
+fn __action192<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21270,19 +20553,15 @@ fn __action192<
     (_, r1, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,r1,r2));
+        out.code.push(format!("{} {},{}", q, r1, r2));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action193<
-    'input,
-    's,
->(
+fn __action193<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21291,19 +20570,15 @@ fn __action193<
     (_, r1, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,r1,r2));
+        out.code.push(format!("{} {},{}", q, r1, r2));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action194<
-    'input,
-    's,
->(
+fn __action194<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21313,19 +20588,15 @@ fn __action194<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}, byte {}",q,r,m));
+        out.code.push(format!("{} {}, byte {}", q, r, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action195<
-    'input,
-    's,
->(
+fn __action195<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21335,19 +20606,15 @@ fn __action195<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}, word {}",q,r,m));
+        out.code.push(format!("{} {}, word {}", q, r, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action196<
-    'input,
-    's,
->(
+fn __action196<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21356,19 +20623,15 @@ fn __action196<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}, byte {}",q,r,l));
+        out.code.push(format!("{} {}, byte {}", q, r, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action197<
-    'input,
-    's,
->(
+fn __action197<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21377,19 +20640,15 @@ fn __action197<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},word {}",q,r,l));
+        out.code.push(format!("{} {},word {}", q, r, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action198<
-    'input,
-    's,
->(
+fn __action198<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21399,19 +20658,15 @@ fn __action198<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {},{}",q,m,r));
+        out.code.push(format!("{} byte {},{}", q, m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action199<
-    'input,
-    's,
->(
+fn __action199<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21421,19 +20676,15 @@ fn __action199<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},{}",q,m,r));
+        out.code.push(format!("{} word {},{}", q, m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action200<
-    'input,
-    's,
->(
+fn __action200<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21442,19 +20693,15 @@ fn __action200<
     (_, l, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {},{}",q,l,r));
+        out.code.push(format!("{} byte {},{}", q, l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action201<
-    'input,
-    's,
->(
+fn __action201<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21463,19 +20710,15 @@ fn __action201<
     (_, l, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},{}",q,l,r));
+        out.code.push(format!("{} word {},{}", q, l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action202<
-    'input,
-    's,
->(
+fn __action202<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21484,19 +20727,15 @@ fn __action202<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,r,n));
+        out.code.push(format!("{} {},{}", q, r, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action203<
-    'input,
-    's,
->(
+fn __action203<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21505,19 +20744,15 @@ fn __action203<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,r,n));
+        out.code.push(format!("{} {},{}", q, r, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action204<
-    'input,
-    's,
->(
+fn __action204<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21527,19 +20762,15 @@ fn __action204<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {}, {}",q,m,n));
+        out.code.push(format!("{} byte {}, {}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action205<
-    'input,
-    's,
->(
+fn __action205<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21549,19 +20780,15 @@ fn __action205<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},{}",q,m,n));
+        out.code.push(format!("{} word {},{}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action206<
-    'input,
-    's,
->(
+fn __action206<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21570,19 +20797,15 @@ fn __action206<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {}, {}",q,m,n));
+        out.code.push(format!("{} byte {}, {}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action207<
-    'input,
-    's,
->(
+fn __action207<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -21591,420 +20814,304 @@ fn __action207<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},{}",q,m,n));
+        out.code.push(format!("{} word {},{}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action208<
-    'input,
-    's,
->(
+fn __action208<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "add".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action209<
-    'input,
-    's,
->(
+fn __action209<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "add".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action210<
-    'input,
-    's,
->(
+fn __action210<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "adc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action211<
-    'input,
-    's,
->(
+fn __action211<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "adc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action212<
-    'input,
-    's,
->(
+fn __action212<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sub".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action213<
-    'input,
-    's,
->(
+fn __action213<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sub".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action214<
-    'input,
-    's,
->(
+fn __action214<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sbb".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action215<
-    'input,
-    's,
->(
+fn __action215<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sbb".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action216<
-    'input,
-    's,
->(
+fn __action216<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cmp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action217<
-    'input,
-    's,
->(
+fn __action217<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cmp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action218<
-    'input,
-    's,
->(
+fn __action218<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{}",q));
+        out.code.push(format!("{}", q));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action219<
-    'input,
-    's,
->(
+fn __action219<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "aaa".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action220<
-    'input,
-    's,
->(
+fn __action220<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "aaa".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action221<
-    'input,
-    's,
->(
+fn __action221<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "aad".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action222<
-    'input,
-    's,
->(
+fn __action222<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "aad".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action223<
-    'input,
-    's,
->(
+fn __action223<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "aam".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action224<
-    'input,
-    's,
->(
+fn __action224<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "aam".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action225<
-    'input,
-    's,
->(
+fn __action225<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "aas".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action226<
-    'input,
-    's,
->(
+fn __action226<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "aas".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action227<
-    'input,
-    's,
->(
+fn __action227<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "daa".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action228<
-    'input,
-    's,
->(
+fn __action228<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "daa".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action229<
-    'input,
-    's,
->(
+fn __action229<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "das".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action230<
-    'input,
-    's,
->(
+fn __action230<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "das".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action231<
-    'input,
-    's,
->(
+fn __action231<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cbw".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action232<
-    'input,
-    's,
->(
+fn __action232<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cbw".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action233<
-    'input,
-    's,
->(
+fn __action233<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cwd".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action234<
-    'input,
-    's,
->(
+fn __action234<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cwd".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action235<
-    'input,
-    's,
->(
+fn __action235<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}",q,r));
+        out.code.push(format!("{} {}", q, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action236<
-    'input,
-    's,
->(
+fn __action236<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22012,19 +21119,15 @@ fn __action236<
     (_, q, _): (usize, String, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {}",q,m));
+        out.code.push(format!("{} byte {}", q, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action237<
-    'input,
-    's,
->(
+fn __action237<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22032,314 +21135,230 @@ fn __action237<
     (_, q, _): (usize, String, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {}",q,m));
+        out.code.push(format!("{} word {}", q, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action238<
-    'input,
-    's,
->(
+fn __action238<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {}",q,l));
+        out.code.push(format!("{} byte {}", q, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action239<
-    'input,
-    's,
->(
+fn __action239<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {}",q,l));
+        out.code.push(format!("{} word {}", q, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action240<
-    'input,
-    's,
->(
+fn __action240<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "dec".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action241<
-    'input,
-    's,
->(
+fn __action241<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "dec".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action242<
-    'input,
-    's,
->(
+fn __action242<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "inc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action243<
-    'input,
-    's,
->(
+fn __action243<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "inc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action244<
-    'input,
-    's,
->(
+fn __action244<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "neg".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action245<
-    'input,
-    's,
->(
+fn __action245<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "neg".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action246<
-    'input,
-    's,
->(
+fn __action246<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "mul".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action247<
-    'input,
-    's,
->(
+fn __action247<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "mul".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action248<
-    'input,
-    's,
->(
+fn __action248<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "imul".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action249<
-    'input,
-    's,
->(
+fn __action249<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "imul".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action250<
-    'input,
-    's,
->(
+fn __action250<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "div".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action251<
-    'input,
-    's,
->(
+fn __action251<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "div".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action252<
-    'input,
-    's,
->(
+fn __action252<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "idiv".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action253<
-    'input,
-    's,
->(
+fn __action253<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "idiv".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action254<
-    'input,
-    's,
->(
+fn __action254<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action255<
-    'input,
-    's,
->(
+fn __action255<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action256<
-    'input,
-    's,
->(
+fn __action256<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action257<
-    'input,
-    's,
->(
+fn __action257<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, (), usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("not {}",r));
+        out.code.push(format!("not {}", r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action258<
-    'input,
-    's,
->(
+fn __action258<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22347,19 +21366,15 @@ fn __action258<
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("not byte {}",m));
+        out.code.push(format!("not byte {}", m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action259<
-    'input,
-    's,
->(
+fn __action259<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22367,85 +21382,65 @@ fn __action259<
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("not word {}",m));
+        out.code.push(format!("not word {}", m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action260<
-    'input,
-    's,
->(
+fn __action260<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, (), usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("not word {}",m));
+        out.code.push(format!("not word {}", m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action261<
-    'input,
-    's,
->(
+fn __action261<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, (), usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("not byte {}",m));
+        out.code.push(format!("not byte {}", m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action262<
-    'input,
-    's,
->(
+fn __action262<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action263<
-    'input,
-    's,
->(
+fn __action263<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action264<
-    'input,
-    's,
->(
+fn __action264<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22454,19 +21449,15 @@ fn __action264<
     (_, r1, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,r1,r2));
+        out.code.push(format!("{} {},{}", q, r1, r2));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action265<
-    'input,
-    's,
->(
+fn __action265<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22475,19 +21466,15 @@ fn __action265<
     (_, r1, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r2, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,r1,r2));
+        out.code.push(format!("{} {},{}", q, r1, r2));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action266<
-    'input,
-    's,
->(
+fn __action266<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22497,19 +21484,15 @@ fn __action266<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}, byte {}",q,r,m));
+        out.code.push(format!("{} {}, byte {}", q, r, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action267<
-    'input,
-    's,
->(
+fn __action267<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22519,19 +21502,15 @@ fn __action267<
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
     (_, m, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}, word {}",q,r,m));
+        out.code.push(format!("{} {}, word {}", q, r, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action268<
-    'input,
-    's,
->(
+fn __action268<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22540,19 +21519,15 @@ fn __action268<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}, byte {}",q,r,l));
+        out.code.push(format!("{} {}, byte {}", q, r, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action269<
-    'input,
-    's,
->(
+fn __action269<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22561,19 +21536,15 @@ fn __action269<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, l, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},word {}",q,r,l));
+        out.code.push(format!("{} {},word {}", q, r, l));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action270<
-    'input,
-    's,
->(
+fn __action270<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22583,19 +21554,15 @@ fn __action270<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {},{}",q,m,r));
+        out.code.push(format!("{} byte {},{}", q, m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action271<
-    'input,
-    's,
->(
+fn __action271<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22605,19 +21572,15 @@ fn __action271<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},{}",q,m,r));
+        out.code.push(format!("{} word {},{}", q, m, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action272<
-    'input,
-    's,
->(
+fn __action272<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22626,19 +21589,15 @@ fn __action272<
     (_, l, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {},{}",q,l,r));
+        out.code.push(format!("{} byte {},{}", q, l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action273<
-    'input,
-    's,
->(
+fn __action273<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22647,19 +21606,15 @@ fn __action273<
     (_, l, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},{}",q,l,r));
+        out.code.push(format!("{} word {},{}", q, l, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action274<
-    'input,
-    's,
->(
+fn __action274<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22668,19 +21623,15 @@ fn __action274<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,r,n));
+        out.code.push(format!("{} {},{}", q, r, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action275<
-    'input,
-    's,
->(
+fn __action275<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22689,19 +21640,15 @@ fn __action275<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,r,n));
+        out.code.push(format!("{} {},{}", q, r, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action276<
-    'input,
-    's,
->(
+fn __action276<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22711,19 +21658,15 @@ fn __action276<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {}, {}",q,m,n));
+        out.code.push(format!("{} byte {}, {}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action277<
-    'input,
-    's,
->(
+fn __action277<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22733,19 +21676,15 @@ fn __action277<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},{}",q,m,n));
+        out.code.push(format!("{} word {},{}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action278<
-    'input,
-    's,
->(
+fn __action278<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22754,19 +21693,15 @@ fn __action278<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {}, {}",q,m,n));
+        out.code.push(format!("{} byte {}, {}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action279<
-    'input,
-    's,
->(
+fn __action279<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22775,131 +21710,95 @@ fn __action279<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},{}",q,m,n));
+        out.code.push(format!("{} word {},{}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action280<
-    'input,
-    's,
->(
+fn __action280<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "and".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action281<
-    'input,
-    's,
->(
+fn __action281<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "and".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action282<
-    'input,
-    's,
->(
+fn __action282<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "or".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action283<
-    'input,
-    's,
->(
+fn __action283<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "or".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action284<
-    'input,
-    's,
->(
+fn __action284<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "xor".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action285<
-    'input,
-    's,
->(
+fn __action285<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "xor".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action286<
-    'input,
-    's,
->(
+fn __action286<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "test".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action287<
-    'input,
-    's,
->(
+fn __action287<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "test".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action288<
-    'input,
-    's,
->(
+fn __action288<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22908,19 +21807,15 @@ fn __action288<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,r,n));
+        out.code.push(format!("{} {},{}", q, r, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action289<
-    'input,
-    's,
->(
+fn __action289<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22929,19 +21824,15 @@ fn __action289<
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}, cl",q,r));
+        out.code.push(format!("{} {}, cl", q, r));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action290<
-    'input,
-    's,
->(
+fn __action290<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22951,19 +21842,15 @@ fn __action290<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {},{}",q,m,n));
+        out.code.push(format!("{} byte {},{}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action291<
-    'input,
-    's,
->(
+fn __action291<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22973,19 +21860,15 @@ fn __action291<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} byte {},cl",q,m));
+        out.code.push(format!("{} byte {},cl", q, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action292<
-    'input,
-    's,
->(
+fn __action292<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -22995,19 +21878,15 @@ fn __action292<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},{}",q,m,n));
+        out.code.push(format!("{} word {},{}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action293<
-    'input,
-    's,
->(
+fn __action293<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -23017,19 +21896,15 @@ fn __action293<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} word {},cl",q,m));
+        out.code.push(format!("{} word {},cl", q, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action294<
-    'input,
-    's,
->(
+fn __action294<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -23038,19 +21913,15 @@ fn __action294<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,m,n));
+        out.code.push(format!("{} {},{}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action295<
-    'input,
-    's,
->(
+fn __action295<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -23059,19 +21930,15 @@ fn __action295<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u8, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {},{}",q,m,n));
+        out.code.push(format!("{} {},{}", q, m, n));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action296<
-    'input,
-    's,
->(
+fn __action296<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -23080,19 +21947,15 @@ fn __action296<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}, cl",q,m));
+        out.code.push(format!("{} {}, cl", q, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action297<
-    'input,
-    's,
->(
+fn __action297<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -23101,299 +21964,215 @@ fn __action297<
     (_, m, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, String, usize),
-) -> ()
-{
+) -> () {
     {
-        out.code.push(format!("{} {}, cl",q,m));
+        out.code.push(format!("{} {}, cl", q, m));
         context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action298<
-    'input,
-    's,
->(
+fn __action298<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sal".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action299<
-    'input,
-    's,
->(
+fn __action299<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sal".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action300<
-    'input,
-    's,
->(
+fn __action300<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sal".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action301<
-    'input,
-    's,
->(
+fn __action301<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sal".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action302<
-    'input,
-    's,
->(
+fn __action302<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sar".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action303<
-    'input,
-    's,
->(
+fn __action303<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sar".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action304<
-    'input,
-    's,
->(
+fn __action304<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "shr".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action305<
-    'input,
-    's,
->(
+fn __action305<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "shr".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action306<
-    'input,
-    's,
->(
+fn __action306<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "rol".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action307<
-    'input,
-    's,
->(
+fn __action307<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "rol".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action308<
-    'input,
-    's,
->(
+fn __action308<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ror".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action309<
-    'input,
-    's,
->(
+fn __action309<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ror".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action310<
-    'input,
-    's,
->(
+fn __action310<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "rcl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action311<
-    'input,
-    's,
->(
+fn __action311<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "rcl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action312<
-    'input,
-    's,
->(
+fn __action312<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "rcr".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action313<
-    'input,
-    's,
->(
+fn __action313<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "rcr".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action314<
-    'input,
-    's,
->(
+fn __action314<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action315<
-    'input,
-    's,
->(
+fn __action315<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action316<
-    'input,
-    's,
->(
+fn __action316<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action317<
-    'input,
-    's,
->(
+fn __action317<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action318<
-    'input,
-    's,
->(
+fn __action318<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -23401,100 +22180,82 @@ fn __action318<
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        if !context.fn_map.contains_key(&n){
-            return error!(start,end,format!("\'call\' can be only used with procedures, {} is not a procedure",n));
-        }else{
-            out.code.push(format!("call {}",n));
+        if !context.fn_map.contains_key(&n) {
+            return error!(
+                start,
+                end,
+                format!(
+                    "\'call\' can be only used with procedures, {} is not a procedure",
+                    n
+                )
+            );
+        } else {
+            out.code.push(format!("call {}", n));
             context.mapper.add_entry(start);
             return Ok(());
         }
-        
     }
 }
 
 #[allow(unused_variables)]
-fn __action319<
-    'input,
-    's,
->(
+fn __action319<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action320<
-    'input,
-    's,
->(
+fn __action320<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action321<
-    'input,
-    's,
->(
+fn __action321<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, (), usize),
     (_, end, _): (usize, usize, usize),
-) -> ()
-{
+) -> () {
     {
         out.code.push("ret".to_owned());
-        context.mapper.add_entry(start);        
+        context.mapper.add_entry(start);
     }
 }
 
 #[allow(unused_variables)]
-fn __action322<
-    'input,
-    's,
->(
+fn __action322<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action323<
-    'input,
-    's,
->(
+fn __action323<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action324<
-    'input,
-    's,
->(
+fn __action324<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -23502,126 +22263,98 @@ fn __action324<
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, u8, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        if n==3 || n == 0x10 || n == 0x21{
-            out.code.push(format!("int {}",n));
+        if n == 3 || n == 0x10 || n == 0x21 {
+            out.code.push(format!("int {}", n));
             context.mapper.add_entry(start);
             Ok(())
-        }else{
-            error!(start,end,"\'int\' only supports 0x3,0x10 and 0x21".to_owned())
+        } else {
+            error!(
+                start,
+                end,
+                "\'int\' only supports 0x3,0x10 and 0x21".to_owned()
+            )
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action325<
-    'input,
-    's,
->(
+fn __action325<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action326<
-    'input,
-    's,
->(
+fn __action326<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action327<
-    'input,
-    's,
->(
+fn __action327<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        error!(start,end,format!("\'{}\' is not supported",q))
+        error!(start, end, format!("\'{}\' is not supported", q))
     }
 }
 
 #[allow(unused_variables)]
-fn __action328<
-    'input,
-    's,
->(
+fn __action328<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "into".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action329<
-    'input,
-    's,
->(
+fn __action329<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "into".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action330<
-    'input,
-    's,
->(
+fn __action330<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "iret".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action331<
-    'input,
-    's,
->(
+fn __action331<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "iret".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action332<
-    'input,
-    's,
->(
+fn __action332<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -23629,1799 +22362,1379 @@ fn __action332<
     (_, q, _): (usize, String, usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        if let Some(l) = context.label_map.get(&n){
-            match l.get_type(){
-                LabelType::DATA =>{
-                    return error!(start,end,format!("Jumps are only supported with Code labels : {} is data label",n));
+        if let Some(l) = context.label_map.get(&n) {
+            match l.get_type() {
+                LabelType::DATA => {
+                    return error!(
+                        start,
+                        end,
+                        format!(
+                            "Jumps are only supported with Code labels : {} is data label",
+                            n
+                        )
+                    );
                 }
                 LabelType::CODE => {}
             }
-        }else{
-            context.undefined_labels.insert((start,n.clone()));
+        } else {
+            context.undefined_labels.insert((start, n.clone()));
         }
-        out.code.push(format!("{} {}",q,n));
+        out.code.push(format!("{} {}", q, n));
         context.mapper.add_entry(start);
         Ok(())
-           
     }
 }
 
 #[allow(unused_variables)]
-fn __action333<
-    'input,
-    's,
->(
+fn __action333<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jmp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action334<
-    'input,
-    's,
->(
+fn __action334<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jmp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action335<
-    'input,
-    's,
->(
+fn __action335<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ja".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action336<
-    'input,
-    's,
->(
+fn __action336<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ja".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action337<
-    'input,
-    's,
->(
+fn __action337<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ja".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action338<
-    'input,
-    's,
->(
+fn __action338<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ja".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action339<
-    'input,
-    's,
->(
+fn __action339<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jae".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action340<
-    'input,
-    's,
->(
+fn __action340<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jae".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action341<
-    'input,
-    's,
->(
+fn __action341<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jae".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action342<
-    'input,
-    's,
->(
+fn __action342<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jae".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action343<
-    'input,
-    's,
->(
+fn __action343<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jb".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action344<
-    'input,
-    's,
->(
+fn __action344<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jb".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action345<
-    'input,
-    's,
->(
+fn __action345<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jb".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action346<
-    'input,
-    's,
->(
+fn __action346<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jb".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action347<
-    'input,
-    's,
->(
+fn __action347<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jbe".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action348<
-    'input,
-    's,
->(
+fn __action348<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jbe".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action349<
-    'input,
-    's,
->(
+fn __action349<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jna".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action350<
-    'input,
-    's,
->(
+fn __action350<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jna".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action351<
-    'input,
-    's,
->(
+fn __action351<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action352<
-    'input,
-    's,
->(
+fn __action352<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action353<
-    'input,
-    's,
->(
+fn __action353<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "je".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action354<
-    'input,
-    's,
->(
+fn __action354<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "je".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action355<
-    'input,
-    's,
->(
+fn __action355<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "je".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action356<
-    'input,
-    's,
->(
+fn __action356<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "je".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action357<
-    'input,
-    's,
->(
+fn __action357<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jg".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action358<
-    'input,
-    's,
->(
+fn __action358<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jg".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action359<
-    'input,
-    's,
->(
+fn __action359<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jg".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action360<
-    'input,
-    's,
->(
+fn __action360<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jg".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action361<
-    'input,
-    's,
->(
+fn __action361<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jge".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action362<
-    'input,
-    's,
->(
+fn __action362<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jge".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action363<
-    'input,
-    's,
->(
+fn __action363<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jge".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action364<
-    'input,
-    's,
->(
+fn __action364<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jge".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action365<
-    'input,
-    's,
->(
+fn __action365<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action366<
-    'input,
-    's,
->(
+fn __action366<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action367<
-    'input,
-    's,
->(
+fn __action367<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action368<
-    'input,
-    's,
->(
+fn __action368<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action369<
-    'input,
-    's,
->(
+fn __action369<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jle".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action370<
-    'input,
-    's,
->(
+fn __action370<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jle".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action371<
-    'input,
-    's,
->(
+fn __action371<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jle".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action372<
-    'input,
-    's,
->(
+fn __action372<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jle".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action373<
-    'input,
-    's,
->(
+fn __action373<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jnc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action374<
-    'input,
-    's,
->(
+fn __action374<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jnc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action375<
-    'input,
-    's,
->(
+fn __action375<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jne".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action376<
-    'input,
-    's,
->(
+fn __action376<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jne".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action377<
-    'input,
-    's,
->(
+fn __action377<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jne".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action378<
-    'input,
-    's,
->(
+fn __action378<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jne".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action379<
-    'input,
-    's,
->(
+fn __action379<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jno".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action380<
-    'input,
-    's,
->(
+fn __action380<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jno".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action381<
-    'input,
-    's,
->(
+fn __action381<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jnp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action382<
-    'input,
-    's,
->(
+fn __action382<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jnp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action383<
-    'input,
-    's,
->(
+fn __action383<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jnp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action384<
-    'input,
-    's,
->(
+fn __action384<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jnp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action385<
-    'input,
-    's,
->(
+fn __action385<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jns".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action386<
-    'input,
-    's,
->(
+fn __action386<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jns".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action387<
-    'input,
-    's,
->(
+fn __action387<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jo".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action388<
-    'input,
-    's,
->(
+fn __action388<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jo".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action389<
-    'input,
-    's,
->(
+fn __action389<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action390<
-    'input,
-    's,
->(
+fn __action390<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action391<
-    'input,
-    's,
->(
+fn __action391<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action392<
-    'input,
-    's,
->(
+fn __action392<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action393<
-    'input,
-    's,
->(
+fn __action393<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "js".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action394<
-    'input,
-    's,
->(
+fn __action394<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "js".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action395<
-    'input,
-    's,
->(
+fn __action395<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jcxz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action396<
-    'input,
-    's,
->(
+fn __action396<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "jcxz".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action397<
-    'input,
-    's,
->(
+fn __action397<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loop".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action398<
-    'input,
-    's,
->(
+fn __action398<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loop".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action399<
-    'input,
-    's,
->(
+fn __action399<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loope".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action400<
-    'input,
-    's,
->(
+fn __action400<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loope".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action401<
-    'input,
-    's,
->(
+fn __action401<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loope".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action402<
-    'input,
-    's,
->(
+fn __action402<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loope".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action403<
-    'input,
-    's,
->(
+fn __action403<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loopne".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action404<
-    'input,
-    's,
->(
+fn __action404<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loopne".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action405<
-    'input,
-    's,
->(
+fn __action405<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loopne".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action406<
-    'input,
-    's,
->(
+fn __action406<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "loopne".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action407<
-    'input,
-    's,
->(
+fn __action407<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action408<
-    'input,
-    's,
->(
+fn __action408<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
     (_, __1, _): (usize, (), usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action409<
-    'input,
-    's,
->(
+fn __action409<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
-) -> ()
-{
-    {out.code.push(format!("{}",q));context.mapper.add_entry(start);}
+) -> () {
+    {
+        out.code.push(format!("{}", q));
+        context.mapper.add_entry(start);
+    }
 }
 
 #[allow(unused_variables)]
-fn __action410<
-    'input,
-    's,
->(
+fn __action410<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "stc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action411<
-    'input,
-    's,
->(
+fn __action411<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "stc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action412<
-    'input,
-    's,
->(
+fn __action412<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "clc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action413<
-    'input,
-    's,
->(
+fn __action413<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "clc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action414<
-    'input,
-    's,
->(
+fn __action414<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cmc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action415<
-    'input,
-    's,
->(
+fn __action415<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cmc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action416<
-    'input,
-    's,
->(
+fn __action416<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "std".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action417<
-    'input,
-    's,
->(
+fn __action417<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "std".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action418<
-    'input,
-    's,
->(
+fn __action418<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cld".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action419<
-    'input,
-    's,
->(
+fn __action419<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cld".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action420<
-    'input,
-    's,
->(
+fn __action420<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sti".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action421<
-    'input,
-    's,
->(
+fn __action421<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sti".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action422<
-    'input,
-    's,
->(
+fn __action422<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cli".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action423<
-    'input,
-    's,
->(
+fn __action423<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cli".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action424<
-    'input,
-    's,
->(
+fn __action424<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "hlt".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action425<
-    'input,
-    's,
->(
+fn __action425<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "hlt".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action426<
-    'input,
-    's,
->(
+fn __action426<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, q, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
-    error!(start,end,format!("\'{}\' is not supported.",q))
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+    error!(start, end, format!("\'{}\' is not supported.", q))
 }
 
 #[allow(unused_variables)]
-fn __action427<
-    'input,
-    's,
->(
+fn __action427<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "wait".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action428<
-    'input,
-    's,
->(
+fn __action428<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "wait".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action429<
-    'input,
-    's,
->(
+fn __action429<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "esc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action430<
-    'input,
-    's,
->(
+fn __action430<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "esc".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action431<
-    'input,
-    's,
->(
+fn __action431<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "lock".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action432<
-    'input,
-    's,
->(
+fn __action432<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "lock".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action433<
-    'input,
-    's,
->(
+fn __action433<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
-
+) -> () {
 }
 
 #[allow(unused_variables)]
-fn __action434<
-    'input,
-    's,
->(
+fn __action434<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> ()
-{
-
+) -> () {
 }
 
 #[allow(unused_variables)]
-fn __action435<
-    'input,
-    's,
->(
+fn __action435<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, s, _): (usize, &'input str, usize),
-) -> Result<String,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<String, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match context.label_map.get(&s[0..s.len()-1]){
-            Some(l) => return error!(l.source_position as usize,l.source_position as usize+s.len(),format!("Label {} Already defined",s)),
+        match context.label_map.get(&s[0..s.len() - 1]) {
+            Some(l) => {
+                return error!(
+                    l.source_position as usize,
+                    l.source_position as usize + s.len(),
+                    format!("Label {} Already defined", s)
+                )
+            }
             None => {
-                context.label_map.insert(s[0..s.len()-1].to_owned(),Label::new(LabelType::CODE,start,out.code.len()));
-                Ok(s[0..s.len()-1].to_owned())
+                context.label_map.insert(
+                    s[0..s.len() - 1].to_owned(),
+                    Label::new(LabelType::CODE, start, out.code.len()),
+                );
+                Ok(s[0..s.len() - 1].to_owned())
             }
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action436<
-    'input,
-    's,
->(
+fn __action436<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u16::from_str_radix(n,10){
+        match u16::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-65535".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action437<
-    'input,
-    's,
->(
+fn __action437<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u16::from_str_radix(&n[2..],16){
+        match u16::from_str_radix(&n[2..], 16) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-65535".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action438<
-    'input,
-    's,
->(
+fn __action438<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u16::from_str_radix(&n[2..],2){
+        match u16::from_str_radix(&n[2..], 2) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-65535".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action439<
-    'input,
-    's,
->(
+fn __action439<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, u16, usize),
-) -> u16
-{
+) -> u16 {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action440<
-    'input,
-    's,
->(
+fn __action440<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u8::from_str_radix(n,10){
+        match u8::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-255".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action441<
-    'input,
-    's,
->(
+fn __action441<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u8::from_str_radix(&n[2..],16){
+        match u8::from_str_radix(&n[2..], 16) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-255".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action442<
-    'input,
-    's,
->(
+fn __action442<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u8::from_str_radix(&n[2..],2){
+        match u8::from_str_radix(&n[2..], 2) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-255".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action443<
-    'input,
-    's,
->(
+fn __action443<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, o, _): (usize, u16, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        if o > 255{
-            error!(start,end,format!("Offset is greater than 255"))
-        }else{
+        if o > 255 {
+            error!(start, end, format!("Offset is greater than 255"))
+        } else {
             Ok(o as u8)
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action444<
-    'input,
-    's,
->(
+fn __action444<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match i16::from_str_radix(n,10){
+        match i16::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-65535".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action445<
-    'input,
-    's,
->(
+fn __action445<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, n, _): (usize, u16, usize),
-) -> i16
-{
+) -> i16 {
     n as i16
 }
 
 #[allow(unused_variables)]
-fn __action446<
-    'input,
-    's,
->(
+fn __action446<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match i8::from_str_radix(n,10){
+        match i8::from_str_radix(n, 10) {
             Ok(v) => Ok(v),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-255".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action447<
-    'input,
-    's,
->(
+fn __action447<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, n, _): (usize, u8, usize),
-) -> i8
-{
+) -> i8 {
     n as i8
 }
 
 #[allow(unused_variables)]
-fn __action448<
-    'input,
-    's,
->(
+fn __action448<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u32::from_str_radix(n,10){
-            Ok(v) => Ok(v%MB),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
+        match u32::from_str_radix(n, 10) {
+            Ok(v) => Ok(v % MB),
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-1048576".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action449<
-    'input,
-    's,
->(
+fn __action449<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u32::from_str_radix(&n[2..],16){
-            Ok(v) => Ok(v%MB),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
+        match u32::from_str_radix(&n[2..], 16) {
+            Ok(v) => Ok(v % MB),
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-1048576".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action450<
-    'input,
-    's,
->(
+fn __action450<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match u32::from_str_radix(&n[2..],2){
-            Ok(v) => Ok(v%MB),
-            Err(_) => error!(start,end,"Invalid Value, must be between 0-1048576".to_owned())
+        match u32::from_str_radix(&n[2..], 2) {
+            Ok(v) => Ok(v % MB),
+            Err(_) => error!(
+                start,
+                end,
+                "Invalid Value, must be between 0-1048576".to_owned()
+            ),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action451<
-    'input,
-    's,
->(
+fn __action451<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, o, _): (usize, u16, usize),
-) -> u32
-{
+) -> u32 {
     {
-       o as u32
+        o as u32
     }
 }
 
 #[allow(unused_variables)]
-fn __action452<
-    'input,
-    's,
->(
+fn __action452<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -25429,698 +23742,508 @@ fn __action452<
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match context.label_map.get(&n){
-            Some(l)=>{
-                match l.get_type(){
-                    LabelType::CODE => {error!(start,end,format!("\'offset\' can be used only with data labels, {} is not a data label",n))}
-                    LabelType::DATA => {return Ok(l.map as u16);}
+        match context.label_map.get(&n) {
+            Some(l) => {
+                match l.get_type() {
+                    LabelType::CODE => {
+                        error!(start,end,format!("\'offset\' can be used only with data labels, {} is not a data label",n))
+                    }
+                    LabelType::DATA => {
+                        return Ok(l.map as u16);
+                    }
                 }
             }
-            None => {error!(start,end,format!("Label {} is not declared.",n))}
+            None => {
+                error!(start, end, format!("Label {} is not declared.", n))
+            }
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action453<
-    'input,
-    's,
->(
+fn __action453<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action454<
-    'input,
-    's,
->(
+fn __action454<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     ()
 }
 
 #[allow(unused_variables)]
-fn __action455<
-    'input,
-    's,
->(
+fn __action455<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action456<
-    'input,
-    's,
->(
+fn __action456<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action457<
-    'input,
-    's,
->(
+fn __action457<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ah".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action458<
-    'input,
-    's,
->(
+fn __action458<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ah".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action459<
-    'input,
-    's,
->(
+fn __action459<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "al".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action460<
-    'input,
-    's,
->(
+fn __action460<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "al".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action461<
-    'input,
-    's,
->(
+fn __action461<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "bh".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action462<
-    'input,
-    's,
->(
+fn __action462<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "bh".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action463<
-    'input,
-    's,
->(
+fn __action463<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "bl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action464<
-    'input,
-    's,
->(
+fn __action464<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "bl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action465<
-    'input,
-    's,
->(
+fn __action465<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ch".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action466<
-    'input,
-    's,
->(
+fn __action466<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ch".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action467<
-    'input,
-    's,
->(
+fn __action467<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action468<
-    'input,
-    's,
->(
+fn __action468<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "dh".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action469<
-    'input,
-    's,
->(
+fn __action469<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "dh".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action470<
-    'input,
-    's,
->(
+fn __action470<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "dl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action471<
-    'input,
-    's,
->(
+fn __action471<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "dl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action472<
-    'input,
-    's,
->(
+fn __action472<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action473<
-    'input,
-    's,
->(
+fn __action473<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cl".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action474<
-    'input,
-    's,
->(
+fn __action474<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ax".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action475<
-    'input,
-    's,
->(
+fn __action475<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ax".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action476<
-    'input,
-    's,
->(
+fn __action476<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action477<
-    'input,
-    's,
->(
+fn __action477<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action478<
-    'input,
-    's,
->(
+fn __action478<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "sp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action479<
-    'input,
-    's,
->(
+fn __action479<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cx".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action480<
-    'input,
-    's,
->(
+fn __action480<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cx".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action481<
-    'input,
-    's,
->(
+fn __action481<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "dx".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action482<
-    'input,
-    's,
->(
+fn __action482<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "dx".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action483<
-    'input,
-    's,
->(
+fn __action483<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action484<
-    'input,
-    's,
->(
+fn __action484<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action485<
-    'input,
-    's,
->(
+fn __action485<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "bx".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action486<
-    'input,
-    's,
->(
+fn __action486<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "bx".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action487<
-    'input,
-    's,
->(
+fn __action487<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "bp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action488<
-    'input,
-    's,
->(
+fn __action488<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "bp".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action489<
-    'input,
-    's,
->(
+fn __action489<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "si".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action490<
-    'input,
-    's,
->(
+fn __action490<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "si".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action491<
-    'input,
-    's,
->(
+fn __action491<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "di".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action492<
-    'input,
-    's,
->(
+fn __action492<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "di".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action493<
-    'input,
-    's,
->(
+fn __action493<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "es".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action494<
-    'input,
-    's,
->(
+fn __action494<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "es".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action495<
-    'input,
-    's,
->(
+fn __action495<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ds".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action496<
-    'input,
-    's,
->(
+fn __action496<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ds".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action497<
-    'input,
-    's,
->(
+fn __action497<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ss".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action498<
-    'input,
-    's,
->(
+fn __action498<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "ss".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action499<
-    'input,
-    's,
->(
+fn __action499<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cs".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action500<
-    'input,
-    's,
->(
+fn __action500<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "cs".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action501<
-    'input,
-    's,
->(
+fn __action501<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -26128,22 +24251,18 @@ fn __action501<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     {
-        if let Some(s) = sr{
-            format!("{}:[{}]",s,n)    
-        }else{
-            format!("[{}]",n)
+        if let Some(s) = sr {
+            format!("{}:[{}]", s, n)
+        } else {
+            format!("[{}]", n)
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action502<
-    'input,
-    's,
->(
+fn __action502<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -26151,22 +24270,18 @@ fn __action502<
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     {
-        if let Some(s) = sr{
-            format!("{}:[{}]",s,r)
-        }else{
-            format!("[{}]",r)
+        if let Some(s) = sr {
+            format!("{}:[{}]", s, r)
+        } else {
+            format!("[{}]", r)
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action503<
-    'input,
-    's,
->(
+fn __action503<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -26176,22 +24291,18 @@ fn __action503<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     {
-        if let Some(s) = sr{
-            format!("{}:[{},{}]",s,r,n)
-        }else{
-            format!("[{},{}]",r,n)
+        if let Some(s) = sr {
+            format!("{}:[{},{}]", s, r, n)
+        } else {
+            format!("[{},{}]", r, n)
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action504<
-    'input,
-    's,
->(
+fn __action504<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -26201,22 +24312,18 @@ fn __action504<
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     {
-        if let Some(s) = sr{
-            format!("{}:[{},{}]",s,r,n)
-        }else{
-            format!("[{},{}]",r,n)
+        if let Some(s) = sr {
+            format!("{}:[{},{}]", s, r, n)
+        } else {
+            format!("[{},{}]", r, n)
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action505<
-    'input,
-    's,
->(
+fn __action505<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -26227,28 +24334,24 @@ fn __action505<
     (_, i, _): (usize, String, usize),
     (_, k, _): (usize, ::std::option::Option<i16>, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     {
-        if let Some(s) = sr{
-            match k{
-                Some(n) => format!("{}:[{},{},{}]",s,b,i,n),
-                None => format!("{}:[{},{},{}]",s,b,i,0),
+        if let Some(s) = sr {
+            match k {
+                Some(n) => format!("{}:[{},{},{}]", s, b, i, n),
+                None => format!("{}:[{},{},{}]", s, b, i, 0),
             }
-        }else{
-            match k{
-                Some(n) => format!("[{},{},{}]",b,i,n),
-                None => format!("[{},{},{}]",b,i,0),
+        } else {
+            match k {
+                Some(n) => format!("[{},{},{}]", b, i, n),
+                None => format!("[{},{},{}]", b, i, 0),
             }
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action506<
-    'input,
-    's,
->(
+fn __action506<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -26256,27 +24359,25 @@ fn __action506<
     (_, l, _): (usize, String, usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<String,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<String, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match context.label_map.get(&n){
-            None => {return error!(start,end,format!("Label {} not defined",n));},
-            Some(l) => {
-                match l.get_type() {
-                    LabelType::CODE => {return error!(start,end,format!("Cannot use Code label {}",n));}
-                    LabelType::DATA =>{}
+        match context.label_map.get(&n) {
+            None => {
+                return error!(start, end, format!("Label {} not defined", n));
+            }
+            Some(l) => match l.get_type() {
+                LabelType::CODE => {
+                    return error!(start, end, format!("Cannot use Code label {}", n));
                 }
-            } 
-        } 
+                LabelType::DATA => {}
+            },
+        }
         Ok(n)
     }
 }
 
 #[allow(unused_variables)]
-fn __action507<
-    'input,
-    's,
->(
+fn __action507<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -26284,221 +24385,166 @@ fn __action507<
     (_, l, _): (usize, String, usize),
     (_, n, _): (usize, String, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<String,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<String, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     {
-        match context.label_map.get(&n){
-            None => {return error!(start,end,format!("Label {} not defined",n));},
-            Some(l) => {
-                match l.get_type() {
-                    LabelType::CODE => {return error!(start,end,format!("Cannot use Code label {}  ",n));}
-                    LabelType::DATA =>{}
+        match context.label_map.get(&n) {
+            None => {
+                return error!(start, end, format!("Label {} not defined", n));
+            }
+            Some(l) => match l.get_type() {
+                LabelType::CODE => {
+                    return error!(start, end, format!("Cannot use Code label {}  ", n));
                 }
-            } 
-        } 
+                LabelType::DATA => {}
+            },
+        }
         Ok(n)
     }
 }
 
 #[allow(unused_variables)]
-fn __action508<
-    'input,
-    's,
->(
+fn __action508<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "byte".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action509<
-    'input,
-    's,
->(
+fn __action509<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "byte".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action510<
-    'input,
-    's,
->(
+fn __action510<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "word".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action511<
-    'input,
-    's,
->(
+fn __action511<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     "word".to_owned()
 }
 
 #[allow(unused_variables)]
-fn __action512<
-    'input,
-    's,
->(
+fn __action512<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, v, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     {
         v.to_owned()
     }
 }
 
 #[allow(unused_variables)]
-fn __action513<
-    'input,
-    's,
->(
+fn __action513<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action514<
-    'input,
-    's,
->(
+fn __action514<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, n, _): (usize, u16, usize),
-) -> String
-{
-    format!("{}",n)
+) -> String {
+    format!("{}", n)
 }
 
 #[allow(unused_variables)]
-fn __action515<
-    'input,
-    's,
->(
+fn __action515<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, i16, usize),
-) -> ::std::option::Option<i16>
-{
+) -> ::std::option::Option<i16> {
     Some(__0)
 }
 
 #[allow(unused_variables)]
-fn __action516<
-    'input,
-    's,
->(
+fn __action516<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<i16>
-{
+) -> ::std::option::Option<i16> {
     None
 }
 
 #[allow(unused_variables)]
-fn __action517<
-    'input,
-    's,
->(
+fn __action517<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, __0, _): (usize, i16, usize),
-) -> i16
-{
+) -> i16 {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action518<
-    'input,
-    's,
->(
+fn __action518<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::option::Option<String>
-{
+) -> ::std::option::Option<String> {
     Some(__0)
 }
 
 #[allow(unused_variables)]
-fn __action519<
-    'input,
-    's,
->(
+fn __action519<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<String>
-{
+) -> ::std::option::Option<String> {
     None
 }
 
 #[allow(unused_variables)]
-fn __action520<
-    'input,
-    's,
->(
+fn __action520<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action521<
-    'input,
-    's,
->(
+fn __action521<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, v, _): (usize, ::std::vec::Vec<String>, usize),
     (_, e, _): (usize, ::std::option::Option<String>, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     match e {
         None => v,
         Some(e) => {
@@ -26510,17 +24556,13 @@ fn __action521<
 }
 
 #[allow(unused_variables)]
-fn __action522<
-    'input,
-    's,
->(
+fn __action522<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, v, _): (usize, ::std::vec::Vec<String>, usize),
     (_, e, _): (usize, ::std::option::Option<String>, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     match e {
         None => v,
         Some(e) => {
@@ -26532,361 +24574,263 @@ fn __action522<
 }
 
 #[allow(unused_variables)]
-fn __action523<
-    'input,
-    's,
->(
+fn __action523<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize
-{
+) -> usize {
     __lookbehind.clone()
 }
 
 #[allow(unused_variables)]
-fn __action524<
-    'input,
-    's,
->(
+fn __action524<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::option::Option<String>
-{
+) -> ::std::option::Option<String> {
     Some(__0)
 }
 
 #[allow(unused_variables)]
-fn __action525<
-    'input,
-    's,
->(
+fn __action525<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<String>
-{
+) -> ::std::option::Option<String> {
     None
 }
 
 #[allow(unused_variables)]
-fn __action526<
-    'input,
-    's,
->(
+fn __action526<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize
-{
+) -> usize {
     __lookahead.clone()
 }
 
 #[allow(unused_variables)]
-fn __action527<
-    'input,
-    's,
->(
+fn __action527<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ::std::option::Option<()>
-{
+) -> ::std::option::Option<()> {
     Some(__0)
 }
 
 #[allow(unused_variables)]
-fn __action528<
-    'input,
-    's,
->(
+fn __action528<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<()>
-{
+) -> ::std::option::Option<()> {
     None
 }
 
 #[allow(unused_variables)]
-fn __action529<
-    'input,
-    's,
->(
+fn __action529<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ::std::option::Option<()>
-{
+) -> ::std::option::Option<()> {
     Some(__0)
 }
 
 #[allow(unused_variables)]
-fn __action530<
-    'input,
-    's,
->(
+fn __action530<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<()>
-{
+) -> ::std::option::Option<()> {
     None
 }
 
 #[allow(unused_variables)]
-fn __action531<
-    'input,
-    's,
->(
+fn __action531<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::option::Option<String>
-{
+) -> ::std::option::Option<String> {
     Some(__0)
 }
 
 #[allow(unused_variables)]
-fn __action532<
-    'input,
-    's,
->(
+fn __action532<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<String>
-{
+) -> ::std::option::Option<String> {
     None
 }
 
 #[allow(unused_variables)]
-fn __action533<
-    'input,
-    's,
->(
+fn __action533<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     vec![]
 }
 
 #[allow(unused_variables)]
-fn __action534<
-    'input,
-    's,
->(
+fn __action534<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, v, _): (usize, ::std::vec::Vec<String>, usize),
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     v
 }
 
 #[allow(unused_variables)]
-fn __action535<
-    'input,
-    's,
->(
+fn __action535<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action536<
-    'input,
-    's,
->(
+fn __action536<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::option::Option<String>
-{
+) -> ::std::option::Option<String> {
     Some(__0)
 }
 
 #[allow(unused_variables)]
-fn __action537<
-    'input,
-    's,
->(
+fn __action537<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<String>
-{
+) -> ::std::option::Option<String> {
     None
 }
 
 #[allow(unused_variables)]
-fn __action538<
-    'input,
-    's,
->(
+fn __action538<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     vec![]
 }
 
 #[allow(unused_variables)]
-fn __action539<
-    'input,
-    's,
->(
+fn __action539<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, v, _): (usize, ::std::vec::Vec<String>, usize),
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     v
 }
 
 #[allow(unused_variables)]
-fn __action540<
-    'input,
-    's,
->(
+fn __action540<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     __0
 }
 
 #[allow(unused_variables)]
-fn __action541<
-    'input,
-    's,
->(
+fn __action541<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     vec![__0]
 }
 
 #[allow(unused_variables)]
-fn __action542<
-    'input,
-    's,
->(
+fn __action542<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, v, _): (usize, ::std::vec::Vec<String>, usize),
     (_, e, _): (usize, String, usize),
-) -> ::std::vec::Vec<String>
-{
-    { let mut v = v; v.push(e); v }
+) -> ::std::vec::Vec<String> {
+    {
+        let mut v = v;
+        v.push(e);
+        v
+    }
 }
 
 #[allow(unused_variables)]
-fn __action543<
-    'input,
-    's,
->(
+fn __action543<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     vec![__0]
 }
 
 #[allow(unused_variables)]
-fn __action544<
-    'input,
-    's,
->(
+fn __action544<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     (_, v, _): (usize, ::std::vec::Vec<String>, usize),
     (_, e, _): (usize, String, usize),
-) -> ::std::vec::Vec<String>
-{
-    { let mut v = v; v.push(e); v }
+) -> ::std::vec::Vec<String> {
+    {
+        let mut v = v;
+        v.push(e);
+        v
+    }
 }
 
 #[allow(unused_variables)]
-fn __action545<
-    'input,
-    's,
->(
+fn __action545<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, i16, usize),
-) -> ::std::option::Option<i16>
-{
+) -> ::std::option::Option<i16> {
     let __start0 = __0.0.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action517(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-    );
+    let __temp0 = __action517(context, out, input, __0, __1);
     let __temp0 = (__start0, __temp0, __end0);
-    __action515(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action515(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action546<
-    'input,
-    's,
->(
+fn __action546<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -26898,37 +24842,16 @@ fn __action546<
     __5: (usize, &'input str, usize),
     __6: (usize, i16, usize),
     __7: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __5.0.clone();
     let __end0 = __6.2.clone();
-    let __temp0 = __action545(
-        context,
-        out,
-        input,
-        __5,
-        __6,
-    );
+    let __temp0 = __action545(context, out, input, __5, __6);
     let __temp0 = (__start0, __temp0, __end0);
-    __action505(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __temp0,
-        __7,
-    )
+    __action505(context, out, input, __0, __1, __2, __3, __4, __temp0, __7)
 }
 
 #[allow(unused_variables)]
-fn __action547<
-    'input,
-    's,
->(
+fn __action547<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -26938,309 +24861,150 @@ fn __action547<
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
     __5: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __4.2.clone();
     let __end0 = __5.0.clone();
-    let __temp0 = __action516(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action516(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action505(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __temp0,
-        __5,
-    )
+    __action505(context, out, input, __0, __1, __2, __3, __4, __temp0, __5)
 }
 
 #[allow(unused_variables)]
-fn __action548<
-    'input,
-    's,
->(
+fn __action548<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, &'input str, usize),
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     let __start0 = __0.0.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action540(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-    );
+    let __temp0 = __action540(context, out, input, __0, __1);
     let __temp0 = (__start0, __temp0, __end0);
-    __action541(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action541(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action549<
-    'input,
-    's,
->(
+fn __action549<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::vec::Vec<String>, usize),
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     let __start0 = __1.0.clone();
     let __end0 = __2.2.clone();
-    let __temp0 = __action540(
-        context,
-        out,
-        input,
-        __1,
-        __2,
-    );
+    let __temp0 = __action540(context, out, input, __1, __2);
     let __temp0 = (__start0, __temp0, __end0);
-    __action542(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action542(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action550<
-    'input,
-    's,
->(
+fn __action550<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::option::Option<String>, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action538(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action538(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action521(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action521(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action551<
-    'input,
-    's,
->(
+fn __action551<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::vec::Vec<String>, usize),
     __1: (usize, ::std::option::Option<String>, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action539(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action539(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action521(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-    )
+    __action521(context, out, input, __temp0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action552<
-    'input,
-    's,
->(
+fn __action552<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, &'input str, usize),
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     let __start0 = __0.0.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action535(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-    );
+    let __temp0 = __action535(context, out, input, __0, __1);
     let __temp0 = (__start0, __temp0, __end0);
-    __action543(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action543(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action553<
-    'input,
-    's,
->(
+fn __action553<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::vec::Vec<String>, usize),
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
-) -> ::std::vec::Vec<String>
-{
+) -> ::std::vec::Vec<String> {
     let __start0 = __1.0.clone();
     let __end0 = __2.2.clone();
-    let __temp0 = __action535(
-        context,
-        out,
-        input,
-        __1,
-        __2,
-    );
+    let __temp0 = __action535(context, out, input, __1, __2);
     let __temp0 = (__start0, __temp0, __end0);
-    __action544(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action544(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action554<
-    'input,
-    's,
->(
+fn __action554<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::option::Option<String>, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action533(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action533(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action522(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action522(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action555<
-    'input,
-    's,
->(
+fn __action555<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::vec::Vec<String>, usize),
     __1: (usize, ::std::option::Option<String>, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action534(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action534(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action522(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-    )
+    __action522(context, out, input, __temp0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action556<
-    'input,
-    's,
->(
+fn __action556<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> ::std::option::Option<String>
-{
+) -> ::std::option::Option<String> {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action520(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action520(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action518(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action518(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action557<
-    'input,
-    's,
->(
+fn __action557<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27248,67 +25012,32 @@ fn __action557<
     __1: (usize, &'input str, usize),
     __2: (usize, u16, usize),
     __3: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action556(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action556(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action501(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-    )
+    __action501(context, out, input, __temp0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action558<
-    'input,
-    's,
->(
+fn __action558<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, u16, usize),
     __2: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action519(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action519(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action501(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action501(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action559<
-    'input,
-    's,
->(
+fn __action559<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27316,67 +25045,32 @@ fn __action559<
     __1: (usize, &'input str, usize),
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action556(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action556(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action502(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-    )
+    __action502(context, out, input, __temp0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action560<
-    'input,
-    's,
->(
+fn __action560<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action519(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action519(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action502(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action502(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action561<
-    'input,
-    's,
->(
+fn __action561<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27386,35 +25080,16 @@ fn __action561<
     __3: (usize, &'input str, usize),
     __4: (usize, i16, usize),
     __5: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action556(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action556(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action503(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-    )
+    __action503(context, out, input, __temp0, __1, __2, __3, __4, __5)
 }
 
 #[allow(unused_variables)]
-fn __action562<
-    'input,
-    's,
->(
+fn __action562<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27423,36 +25098,16 @@ fn __action562<
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
     __4: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action519(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action519(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action503(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action503(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action563<
-    'input,
-    's,
->(
+fn __action563<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27462,35 +25117,16 @@ fn __action563<
     __3: (usize, &'input str, usize),
     __4: (usize, i16, usize),
     __5: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action556(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action556(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action504(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-    )
+    __action504(context, out, input, __temp0, __1, __2, __3, __4, __5)
 }
 
 #[allow(unused_variables)]
-fn __action564<
-    'input,
-    's,
->(
+fn __action564<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27499,36 +25135,16 @@ fn __action564<
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
     __4: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action519(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action519(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action504(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action504(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action565<
-    'input,
-    's,
->(
+fn __action565<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27540,37 +25156,18 @@ fn __action565<
     __5: (usize, &'input str, usize),
     __6: (usize, i16, usize),
     __7: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action556(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action556(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
     __action546(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-        __6,
-        __7,
+        context, out, input, __temp0, __1, __2, __3, __4, __5, __6, __7,
     )
 }
 
 #[allow(unused_variables)]
-fn __action566<
-    'input,
-    's,
->(
+fn __action566<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27581,38 +25178,18 @@ fn __action566<
     __4: (usize, &'input str, usize),
     __5: (usize, i16, usize),
     __6: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action519(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action519(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action546(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-        __6,
+        context, out, input, __temp0, __0, __1, __2, __3, __4, __5, __6,
     )
 }
 
 #[allow(unused_variables)]
-fn __action567<
-    'input,
-    's,
->(
+fn __action567<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27622,35 +25199,16 @@ fn __action567<
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
     __5: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action556(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action556(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action547(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-    )
+    __action547(context, out, input, __temp0, __1, __2, __3, __4, __5)
 }
 
 #[allow(unused_variables)]
-fn __action568<
-    'input,
-    's,
->(
+fn __action568<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27659,36 +25217,16 @@ fn __action568<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, &'input str, usize),
-) -> String
-{
+) -> String {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action519(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action519(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action547(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action547(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action569<
-    'input,
-    's,
->(
+fn __action569<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27696,35 +25234,16 @@ fn __action569<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action192(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action192(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action570<
-    'input,
-    's,
->(
+fn __action570<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27732,35 +25251,16 @@ fn __action570<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action193(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action193(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action571<
-    'input,
-    's,
->(
+fn __action571<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27769,36 +25269,16 @@ fn __action571<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action194(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action194(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action572<
-    'input,
-    's,
->(
+fn __action572<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27807,36 +25287,16 @@ fn __action572<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action195(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action195(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action573<
-    'input,
-    's,
->(
+fn __action573<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27844,35 +25304,16 @@ fn __action573<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action196(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action196(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action574<
-    'input,
-    's,
->(
+fn __action574<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27880,35 +25321,16 @@ fn __action574<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action197(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action197(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action575<
-    'input,
-    's,
->(
+fn __action575<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27917,36 +25339,16 @@ fn __action575<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action198(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action198(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action576<
-    'input,
-    's,
->(
+fn __action576<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27955,36 +25357,16 @@ fn __action576<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action199(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action199(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action577<
-    'input,
-    's,
->(
+fn __action577<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -27992,35 +25374,16 @@ fn __action577<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action200(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action200(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action578<
-    'input,
-    's,
->(
+fn __action578<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28028,35 +25391,16 @@ fn __action578<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action201(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action201(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action579<
-    'input,
-    's,
->(
+fn __action579<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28064,35 +25408,16 @@ fn __action579<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action202(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action202(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action580<
-    'input,
-    's,
->(
+fn __action580<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28100,35 +25425,16 @@ fn __action580<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action203(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action203(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action581<
-    'input,
-    's,
->(
+fn __action581<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28137,36 +25443,16 @@ fn __action581<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action204(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action204(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action582<
-    'input,
-    's,
->(
+fn __action582<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28175,36 +25461,16 @@ fn __action582<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action205(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action205(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action583<
-    'input,
-    's,
->(
+fn __action583<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28212,35 +25478,16 @@ fn __action583<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action206(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action206(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action584<
-    'input,
-    's,
->(
+fn __action584<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28248,35 +25495,16 @@ fn __action584<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action207(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action207(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action585<
-    'input,
-    's,
->(
+fn __action585<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28284,35 +25512,16 @@ fn __action585<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action264(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action264(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action586<
-    'input,
-    's,
->(
+fn __action586<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28320,35 +25529,16 @@ fn __action586<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action265(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action265(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action587<
-    'input,
-    's,
->(
+fn __action587<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28357,36 +25547,16 @@ fn __action587<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action266(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action266(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action588<
-    'input,
-    's,
->(
+fn __action588<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28395,36 +25565,16 @@ fn __action588<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action267(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action267(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action589<
-    'input,
-    's,
->(
+fn __action589<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28432,35 +25582,16 @@ fn __action589<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action268(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action268(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action590<
-    'input,
-    's,
->(
+fn __action590<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28468,35 +25599,16 @@ fn __action590<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action269(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action269(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action591<
-    'input,
-    's,
->(
+fn __action591<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28505,36 +25617,16 @@ fn __action591<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action270(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action270(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action592<
-    'input,
-    's,
->(
+fn __action592<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28543,36 +25635,16 @@ fn __action592<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action271(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action271(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action593<
-    'input,
-    's,
->(
+fn __action593<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28580,35 +25652,16 @@ fn __action593<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action272(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action272(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action594<
-    'input,
-    's,
->(
+fn __action594<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28616,35 +25669,16 @@ fn __action594<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action273(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action273(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action595<
-    'input,
-    's,
->(
+fn __action595<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28652,35 +25686,16 @@ fn __action595<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action274(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action274(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action596<
-    'input,
-    's,
->(
+fn __action596<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28688,35 +25703,16 @@ fn __action596<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action275(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action275(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action597<
-    'input,
-    's,
->(
+fn __action597<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28725,36 +25721,16 @@ fn __action597<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action276(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action276(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action598<
-    'input,
-    's,
->(
+fn __action598<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28763,36 +25739,16 @@ fn __action598<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action277(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action277(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action599<
-    'input,
-    's,
->(
+fn __action599<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28800,35 +25756,16 @@ fn __action599<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action278(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action278(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action600<
-    'input,
-    's,
->(
+fn __action600<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -28836,199 +25773,93 @@ fn __action600<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action279(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action279(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action601<
-    'input,
-    's,
->(
+fn __action601<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<String,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<String, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action506(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action506(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action602<
-    'input,
-    's,
->(
+fn __action602<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action318(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action318(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action603<
-    'input,
-    's,
->(
+fn __action603<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action409(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action409(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action604<
-    'input,
-    's,
->(
+fn __action604<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action426(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action426(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action605<
-    'input,
-    's,
->(
+fn __action605<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action21(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action21(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action606<
-    'input,
-    's,
->(
+fn __action606<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29037,36 +25868,16 @@ fn __action606<
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
     __4: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action22(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action22(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action607<
-    'input,
-    's,
->(
+fn __action607<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29077,38 +25888,18 @@ fn __action607<
     __4: (usize, &'input str, usize),
     __5: (usize, u16, usize),
     __6: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action23(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-        __6,
+        context, out, input, __temp0, __0, __1, __2, __3, __4, __5, __6,
     )
 }
 
 #[allow(unused_variables)]
-fn __action608<
-    'input,
-    's,
->(
+fn __action608<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29116,69 +25907,32 @@ fn __action608<
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action24(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action24(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action609<
-    'input,
-    's,
->(
+fn __action609<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action27(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action27(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action610<
-    'input,
-    's,
->(
+fn __action610<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29187,36 +25941,16 @@ fn __action610<
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
     __4: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action28(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action28(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action611<
-    'input,
-    's,
->(
+fn __action611<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29227,38 +25961,18 @@ fn __action611<
     __4: (usize, &'input str, usize),
     __5: (usize, u16, usize),
     __6: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
     __action29(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-        __6,
+        context, out, input, __temp0, __0, __1, __2, __3, __4, __5, __6,
     )
 }
 
 #[allow(unused_variables)]
-fn __action612<
-    'input,
-    's,
->(
+fn __action612<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29266,165 +25980,77 @@ fn __action612<
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action30(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action30(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action613<
-    'input,
-    's,
->(
+fn __action613<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, u8, usize),
     __2: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action324(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action324(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action614<
-    'input,
-    's,
->(
+fn __action614<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action327(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action327(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action615<
-    'input,
-    's,
->(
+fn __action615<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action332(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action332(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action616<
-    'input,
-    's,
->(
+fn __action616<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<String,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<String, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action435(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action435(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action617<
-    'input,
-    's,
->(
+fn __action617<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29433,36 +26059,16 @@ fn __action617<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action155(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action155(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action618<
-    'input,
-    's,
->(
+fn __action618<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29470,35 +26076,16 @@ fn __action618<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action156(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action156(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action619<
-    'input,
-    's,
->(
+fn __action619<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29506,35 +26093,16 @@ fn __action619<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action150(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action150(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action620<
-    'input,
-    's,
->(
+fn __action620<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29543,36 +26111,16 @@ fn __action620<
     __2: (usize, Vec<String>, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action38(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action38(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action621<
-    'input,
-    's,
->(
+fn __action621<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29580,35 +26128,16 @@ fn __action621<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action75(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action75(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action622<
-    'input,
-    's,
->(
+fn __action622<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29616,35 +26145,16 @@ fn __action622<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action76(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action76(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action623<
-    'input,
-    's,
->(
+fn __action623<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29653,36 +26163,16 @@ fn __action623<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action77(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action77(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action624<
-    'input,
-    's,
->(
+fn __action624<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29691,36 +26181,16 @@ fn __action624<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action78(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action78(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action625<
-    'input,
-    's,
->(
+fn __action625<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29728,35 +26198,16 @@ fn __action625<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action79(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action79(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action626<
-    'input,
-    's,
->(
+fn __action626<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29764,35 +26215,16 @@ fn __action626<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action80(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action80(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action627<
-    'input,
-    's,
->(
+fn __action627<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29801,36 +26233,16 @@ fn __action627<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action81(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action81(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action628<
-    'input,
-    's,
->(
+fn __action628<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29839,36 +26251,16 @@ fn __action628<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action82(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action82(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action629<
-    'input,
-    's,
->(
+fn __action629<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29876,35 +26268,16 @@ fn __action629<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action83(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action83(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action630<
-    'input,
-    's,
->(
+fn __action630<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29912,35 +26285,16 @@ fn __action630<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action84(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action84(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action631<
-    'input,
-    's,
->(
+fn __action631<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29948,35 +26302,16 @@ fn __action631<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action85(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action85(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action632<
-    'input,
-    's,
->(
+fn __action632<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -29984,35 +26319,16 @@ fn __action632<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action86(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action86(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action633<
-    'input,
-    's,
->(
+fn __action633<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30021,36 +26337,16 @@ fn __action633<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action87(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action87(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action634<
-    'input,
-    's,
->(
+fn __action634<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30059,36 +26355,16 @@ fn __action634<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action88(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action88(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action635<
-    'input,
-    's,
->(
+fn __action635<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30096,35 +26372,16 @@ fn __action635<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action89(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action89(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action636<
-    'input,
-    's,
->(
+fn __action636<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30132,35 +26389,16 @@ fn __action636<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action90(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action90(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action637<
-    'input,
-    's,
->(
+fn __action637<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30168,35 +26406,16 @@ fn __action637<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action91(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action91(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action638<
-    'input,
-    's,
->(
+fn __action638<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30204,35 +26423,16 @@ fn __action638<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action92(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action92(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action639<
-    'input,
-    's,
->(
+fn __action639<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30241,36 +26441,16 @@ fn __action639<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action93(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action93(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action640<
-    'input,
-    's,
->(
+fn __action640<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30278,35 +26458,16 @@ fn __action640<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action94(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action94(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action641<
-    'input,
-    's,
->(
+fn __action641<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30315,36 +26476,16 @@ fn __action641<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action95(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action95(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action642<
-    'input,
-    's,
->(
+fn __action642<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30352,293 +26493,137 @@ fn __action642<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action96(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action96(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action643<
-    'input,
-    's,
->(
+fn __action643<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action433(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action433(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action644<
-    'input,
-    's,
->(
+fn __action644<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action434(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action434(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action645<
-    'input,
-    's,
->(
+fn __action645<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action257(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action257(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action646<
-    'input,
-    's,
->(
+fn __action646<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
     __2: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action258(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action258(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action647<
-    'input,
-    's,
->(
+fn __action647<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
     __2: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action259(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action259(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action648<
-    'input,
-    's,
->(
+fn __action648<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action260(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action260(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action649<
-    'input,
-    's,
->(
+fn __action649<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action261(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action261(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action650<
-    'input,
-    's,
->(
+fn __action650<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action452(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action452(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action651<
-    'input,
-    's,
->(
+fn __action651<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30646,35 +26631,16 @@ fn __action651<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action122(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action122(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action652<
-    'input,
-    's,
->(
+fn __action652<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30682,35 +26648,16 @@ fn __action652<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action123(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action123(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action653<
-    'input,
-    's,
->(
+fn __action653<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30718,35 +26665,16 @@ fn __action653<
     __1: (usize, u8, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action124(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action124(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action654<
-    'input,
-    's,
->(
+fn __action654<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30754,197 +26682,92 @@ fn __action654<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action125(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action125(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action655<
-    'input,
-    's,
->(
+fn __action655<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action130(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action130(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action656<
-    'input,
-    's,
->(
+fn __action656<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, &'input str, usize),
     __2: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action131(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action131(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action657<
-    'input,
-    's,
->(
+fn __action657<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action132(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action132(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action658<
-    'input,
-    's,
->(
+fn __action658<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, (), usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action47(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action47(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action659<
-    'input,
-    's,
->(
+fn __action659<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, (), usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action48(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action48(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action660<
-    'input,
-    's,
->(
+fn __action660<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30953,36 +26776,16 @@ fn __action660<
     __2: (usize, u32, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u32, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action49(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action49(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action661<
-    'input,
-    's,
->(
+fn __action661<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -30992,37 +26795,16 @@ fn __action661<
     __3: (usize, &'input str, usize),
     __4: (usize, u32, usize),
     __5: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action50(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-    )
+    __action50(context, out, input, __temp0, __0, __1, __2, __3, __4, __5)
 }
 
 #[allow(unused_variables)]
-fn __action662<
-    'input,
-    's,
->(
+fn __action662<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31030,69 +26812,32 @@ fn __action662<
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u32, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action51(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action51(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action663<
-    'input,
-    's,
->(
+fn __action663<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action40(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action40(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action664<
-    'input,
-    's,
->(
+fn __action664<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31101,358 +26846,167 @@ fn __action664<
     __2: (usize, (), usize),
     __3: (usize, &'input str, usize),
     __4: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action39(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action39(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action665<
-    'input,
-    's,
->(
+fn __action665<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action135(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action135(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action666<
-    'input,
-    's,
->(
+fn __action666<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, (), usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action136(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action136(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action667<
-    'input,
-    's,
->(
+fn __action667<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
     __2: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action137(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action137(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action668<
-    'input,
-    's,
->(
+fn __action668<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action138(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action138(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action669<
-    'input,
-    's,
->(
+fn __action669<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action448(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action448(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action670<
-    'input,
-    's,
->(
+fn __action670<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action449(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action449(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action671<
-    'input,
-    's,
->(
+fn __action671<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action450(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action450(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action672<
-    'input,
-    's,
->(
+fn __action672<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, usize, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action321(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action321(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action673<
-    'input,
-    's,
->(
+fn __action673<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action446(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action446(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action674<
-    'input,
-    's,
->(
+fn __action674<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action444(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action444(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action675<
-    'input,
-    's,
->(
+fn __action675<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31460,35 +27014,16 @@ fn __action675<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action288(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action288(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action676<
-    'input,
-    's,
->(
+fn __action676<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31496,35 +27031,16 @@ fn __action676<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action289(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action289(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action677<
-    'input,
-    's,
->(
+fn __action677<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31533,36 +27049,16 @@ fn __action677<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action290(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action290(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action678<
-    'input,
-    's,
->(
+fn __action678<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31571,36 +27067,16 @@ fn __action678<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action291(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action291(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action679<
-    'input,
-    's,
->(
+fn __action679<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31609,36 +27085,16 @@ fn __action679<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action292(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action292(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action680<
-    'input,
-    's,
->(
+fn __action680<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31647,36 +27103,16 @@ fn __action680<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action293(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action293(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action681<
-    'input,
-    's,
->(
+fn __action681<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31684,35 +27120,16 @@ fn __action681<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action294(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action294(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action682<
-    'input,
-    's,
->(
+fn __action682<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31720,35 +27137,16 @@ fn __action682<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action295(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action295(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action683<
-    'input,
-    's,
->(
+fn __action683<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31756,35 +27154,16 @@ fn __action683<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action296(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action296(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action684<
-    'input,
-    's,
->(
+fn __action684<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -31792,641 +27171,300 @@ fn __action684<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action297(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action297(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action685<
-    'input,
-    's,
->(
+fn __action685<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action218(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action218(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action686<
-    'input,
-    's,
->(
+fn __action686<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action99(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action99(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action687<
-    'input,
-    's,
->(
+fn __action687<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action159(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action159(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action688<
-    'input,
-    's,
->(
+fn __action688<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action160(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action160(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action689<
-    'input,
-    's,
->(
+fn __action689<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action164(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action164(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action690<
-    'input,
-    's,
->(
+fn __action690<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action163(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action163(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action691<
-    'input,
-    's,
->(
+fn __action691<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action440(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action440(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action692<
-    'input,
-    's,
->(
+fn __action692<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action441(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action441(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action693<
-    'input,
-    's,
->(
+fn __action693<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action442(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action442(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action694<
-    'input,
-    's,
->(
+fn __action694<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, u16, usize),
     __1: (usize, usize, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action443(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action443(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action695<
-    'input,
-    's,
->(
+fn __action695<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action436(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action436(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action696<
-    'input,
-    's,
->(
+fn __action696<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action437(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action437(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action697<
-    'input,
-    's,
->(
+fn __action697<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action438(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action438(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action698<
-    'input,
-    's,
->(
+fn __action698<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action235(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action235(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action699<
-    'input,
-    's,
->(
+fn __action699<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
     __2: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action236(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action236(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action700<
-    'input,
-    's,
->(
+fn __action700<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
     __2: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action237(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action237(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action701<
-    'input,
-    's,
->(
+fn __action701<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action238(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action238(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action702<
-    'input,
-    's,
->(
+fn __action702<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action239(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action239(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action703<
-    'input,
-    's,
->(
+fn __action703<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
     __2: (usize, usize, usize),
-) -> Result<String,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<String, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action507(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-    )
+    __action507(context, out, input, __temp0, __0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action704<
-    'input,
-    's,
->(
+fn __action704<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32434,35 +27472,16 @@ fn __action704<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action110(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action110(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action705<
-    'input,
-    's,
->(
+fn __action705<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32470,35 +27489,16 @@ fn __action705<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action111(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action111(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action706<
-    'input,
-    's,
->(
+fn __action706<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32507,36 +27507,16 @@ fn __action706<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action112(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action112(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action707<
-    'input,
-    's,
->(
+fn __action707<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32545,36 +27525,16 @@ fn __action707<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action113(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action113(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action708<
-    'input,
-    's,
->(
+fn __action708<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32583,36 +27543,16 @@ fn __action708<
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action114(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action114(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action709<
-    'input,
-    's,
->(
+fn __action709<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32621,36 +27561,16 @@ fn __action709<
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action115(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action115(context, out, input, __temp0, __0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action710<
-    'input,
-    's,
->(
+fn __action710<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32658,35 +27578,16 @@ fn __action710<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action116(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action116(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action711<
-    'input,
-    's,
->(
+fn __action711<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32694,35 +27595,16 @@ fn __action711<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action117(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action117(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action712<
-    'input,
-    's,
->(
+fn __action712<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32730,35 +27612,16 @@ fn __action712<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action118(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action118(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action713<
-    'input,
-    's,
->(
+fn __action713<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -32766,291 +27629,136 @@ fn __action713<
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
     __3: (usize, String, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action526(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action526(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action119(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action119(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action714<
-    'input,
-    's,
->(
+fn __action714<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
-) -> Result<String,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<String, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action601(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action601(context, out, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action715<
-    'input,
-    's,
->(
+fn __action715<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action602(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action602(context, out, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action716<
-    'input,
-    's,
->(
+fn __action716<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action604(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action604(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action717<
-    'input,
-    's,
->(
+fn __action717<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __2.2.clone();
     let __end0 = __2.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action608(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __2,
-        __temp0,
-    )
+    __action608(context, out, input, __0, __1, __2, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action718<
-    'input,
-    's,
->(
+fn __action718<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __2.2.clone();
     let __end0 = __2.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action612(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __2,
-        __temp0,
-    )
+    __action612(context, out, input, __0, __1, __2, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action719<
-    'input,
-    's,
->(
+fn __action719<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, u8, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action613(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action613(context, out, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action720<
-    'input,
-    's,
->(
+fn __action720<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action614(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action614(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action721<
-    'input,
-    's,
->(
+fn __action721<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action615(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action615(context, out, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action722<
-    'input,
-    's,
->(
+fn __action722<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -33058,67 +27766,31 @@ fn __action722<
     __1: (usize, &'input str, usize),
     __2: (usize, Vec<String>, usize),
     __3: (usize, &'input str, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __3.2.clone();
     let __end0 = __3.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action620(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __2,
-        __3,
-        __temp0,
-    )
+    __action620(context, out, input, __0, __1, __2, __3, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action723<
-    'input,
-    's,
->(
+fn __action723<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action650(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action650(context, out, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action724<
-    'input,
-    's,
->(
+fn __action724<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -33127,68 +27799,31 @@ fn __action724<
     __2: (usize, u32, usize),
     __3: (usize, &'input str, usize),
     __4: (usize, u32, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __4.2.clone();
     let __end0 = __4.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action661(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __temp0,
-    )
+    __action661(context, out, input, __0, __1, __2, __3, __4, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action725<
-    'input,
-    's,
->(
+fn __action725<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, String, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action663(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action663(context, out, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action726<
-    'input,
-    's,
->(
+fn __action726<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -33196,817 +27831,389 @@ fn __action726<
     __1: (usize, &'input str, usize),
     __2: (usize, (), usize),
     __3: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __3.2.clone();
     let __end0 = __3.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action664(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __2,
-        __3,
-        __temp0,
-    )
+    __action664(context, out, input, __0, __1, __2, __3, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action727<
-    'input,
-    's,
->(
+fn __action727<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action669(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action669(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action728<
-    'input,
-    's,
->(
+fn __action728<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action670(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action670(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action729<
-    'input,
-    's,
->(
+fn __action729<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u32,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u32, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action671(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action671(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action730<
-    'input,
-    's,
->(
+fn __action730<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action672(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action672(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action731<
-    'input,
-    's,
->(
+fn __action731<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action673(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action673(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action732<
-    'input,
-    's,
->(
+fn __action732<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action674(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action674(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action733<
-    'input,
-    's,
->(
+fn __action733<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action691(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action691(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action734<
-    'input,
-    's,
->(
+fn __action734<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action692(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action692(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action735<
-    'input,
-    's,
->(
+fn __action735<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action693(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action693(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action736<
-    'input,
-    's,
->(
+fn __action736<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, u16, usize),
-) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action694(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action694(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action737<
-    'input,
-    's,
->(
+fn __action737<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action695(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action695(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action738<
-    'input,
-    's,
->(
+fn __action738<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action696(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action696(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action739<
-    'input,
-    's,
->(
+fn __action739<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action697(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action697(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action740<
-    'input,
-    's,
->(
+fn __action740<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, String, usize),
-) -> Result<String,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<String, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action523(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action523(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action703(
-        context,
-        out,
-        input,
-        __0,
-        __1,
-        __temp0,
-    )
+    __action703(context, out, input, __0, __1, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action741<
-    'input,
-    's,
->(
+fn __action741<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::option::Option<()>, usize),
     __1: (usize, (), usize),
-) -> ()
-{
+) -> () {
     let __start0 = __1.0.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action527(
-        context,
-        out,
-        input,
-        __1,
-    );
+    let __temp0 = __action527(context, out, input, __1);
     let __temp0 = (__start0, __temp0, __end0);
-    __action1(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action1(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action742<
-    'input,
-    's,
->(
+fn __action742<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::option::Option<()>, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action528(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action528(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action1(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action1(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action743<
-    'input,
-    's,
->(
+fn __action743<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, (), usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action529(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action529(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action741(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-    )
+    __action741(context, out, input, __temp0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action744<
-    'input,
-    's,
->(
+fn __action744<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action530(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action530(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action741(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-    )
+    __action741(context, out, input, __temp0, __0)
 }
 
 #[allow(unused_variables)]
-fn __action745<
-    'input,
-    's,
->(
+fn __action745<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action529(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action529(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action742(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action742(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action746<
-    'input,
-    's,
->(
+fn __action746<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ()
-{
+) -> () {
     let __start0 = __lookbehind.clone();
     let __end0 = __lookahead.clone();
-    let __temp0 = __action530(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action530(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action742(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action742(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action747<
-    'input,
-    's,
->(
+fn __action747<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action536(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action536(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action550(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action550(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action748<
-    'input,
-    's,
->(
+fn __action748<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __lookbehind.clone();
     let __end0 = __lookahead.clone();
-    let __temp0 = __action537(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action537(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action550(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action550(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action749<
-    'input,
-    's,
->(
+fn __action749<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::vec::Vec<String>, usize),
     __1: (usize, String, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __1.0.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action536(
-        context,
-        out,
-        input,
-        __1,
-    );
+    let __temp0 = __action536(context, out, input, __1);
     let __temp0 = (__start0, __temp0, __end0);
-    __action551(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action551(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action750<
-    'input,
-    's,
->(
+fn __action750<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::vec::Vec<String>, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action537(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action537(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action551(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action551(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action751<
-    'input,
-    's,
->(
+fn __action751<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, (), usize),
     __2: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action524(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action524(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action605(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-    )
+    __action605(context, out, input, __temp0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action752<
-    'input,
-    's,
->(
+fn __action752<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, i8, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action525(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action525(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action605(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action605(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action753<
-    'input,
-    's,
->(
+fn __action753<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -34015,34 +28222,16 @@ fn __action753<
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
     __4: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action524(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action524(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action606(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action606(context, out, input, __temp0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action754<
-    'input,
-    's,
->(
+fn __action754<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -34050,35 +28239,16 @@ fn __action754<
     __1: (usize, &'input str, usize),
     __2: (usize, u16, usize),
     __3: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action525(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action525(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action606(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action606(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action755<
-    'input,
-    's,
->(
+fn __action755<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -34089,36 +28259,16 @@ fn __action755<
     __4: (usize, &'input str, usize),
     __5: (usize, u16, usize),
     __6: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action524(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action524(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action607(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-        __6,
-    )
+    __action607(context, out, input, __temp0, __1, __2, __3, __4, __5, __6)
 }
 
 #[allow(unused_variables)]
-fn __action756<
-    'input,
-    's,
->(
+fn __action756<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -34128,165 +28278,78 @@ fn __action756<
     __3: (usize, &'input str, usize),
     __4: (usize, u16, usize),
     __5: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action525(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action525(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action607(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-    )
+    __action607(context, out, input, __temp0, __0, __1, __2, __3, __4, __5)
 }
 
 #[allow(unused_variables)]
-fn __action757<
-    'input,
-    's,
->(
+fn __action757<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action524(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action524(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action717(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-    )
+    __action717(context, out, input, __temp0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action758<
-    'input,
-    's,
->(
+fn __action758<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, &'input str, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action525(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action525(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action717(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action717(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action759<
-    'input,
-    's,
->(
+fn __action759<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, (), usize),
     __2: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action524(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action524(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action609(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-    )
+    __action609(context, out, input, __temp0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action760<
-    'input,
-    's,
->(
+fn __action760<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, i16, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action525(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action525(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action609(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action609(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action761<
-    'input,
-    's,
->(
+fn __action761<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -34295,34 +28358,16 @@ fn __action761<
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
     __4: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action524(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action524(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action610(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-        __4,
-    )
+    __action610(context, out, input, __temp0, __1, __2, __3, __4)
 }
 
 #[allow(unused_variables)]
-fn __action762<
-    'input,
-    's,
->(
+fn __action762<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -34330,35 +28375,16 @@ fn __action762<
     __1: (usize, &'input str, usize),
     __2: (usize, u16, usize),
     __3: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action525(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action525(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action610(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-    )
+    __action610(context, out, input, __temp0, __0, __1, __2, __3)
 }
 
 #[allow(unused_variables)]
-fn __action763<
-    'input,
-    's,
->(
+fn __action763<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -34369,36 +28395,16 @@ fn __action763<
     __4: (usize, &'input str, usize),
     __5: (usize, u16, usize),
     __6: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action524(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action524(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action611(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-        __6,
-    )
+    __action611(context, out, input, __temp0, __1, __2, __3, __4, __5, __6)
 }
 
 #[allow(unused_variables)]
-fn __action764<
-    'input,
-    's,
->(
+fn __action764<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
@@ -34408,225 +28414,129 @@ fn __action764<
     __3: (usize, &'input str, usize),
     __4: (usize, u16, usize),
     __5: (usize, &'input str, usize),
-) -> ()
-{
+) -> () {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action525(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action525(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action611(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-        __2,
-        __3,
-        __4,
-        __5,
-    )
+    __action611(context, out, input, __temp0, __0, __1, __2, __3, __4, __5)
 }
 
 #[allow(unused_variables)]
-fn __action765<
-    'input,
-    's,
->(
+fn __action765<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action524(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action524(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action718(
-        context,
-        out,
-        input,
-        __temp0,
-        __1,
-        __2,
-    )
+    __action718(context, out, input, __temp0, __1, __2)
 }
 
 #[allow(unused_variables)]
-fn __action766<
-    'input,
-    's,
->(
+fn __action766<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, (), usize),
     __1: (usize, &'input str, usize),
-) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
-{
+) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action525(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action525(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action718(
-        context,
-        out,
-        input,
-        __temp0,
-        __0,
-        __1,
-    )
+    __action718(context, out, input, __temp0, __0, __1)
 }
 
 #[allow(unused_variables)]
-fn __action767<
-    'input,
-    's,
->(
+fn __action767<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action531(
-        context,
-        out,
-        input,
-        __0,
-    );
+    let __temp0 = __action531(context, out, input, __0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action554(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action554(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action768<
-    'input,
-    's,
->(
+fn __action768<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __lookbehind.clone();
     let __end0 = __lookahead.clone();
-    let __temp0 = __action532(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action532(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action554(
-        context,
-        out,
-        input,
-        __temp0,
-    )
+    __action554(context, out, input, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action769<
-    'input,
-    's,
->(
+fn __action769<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::vec::Vec<String>, usize),
     __1: (usize, String, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __1.0.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action531(
-        context,
-        out,
-        input,
-        __1,
-    );
+    let __temp0 = __action531(context, out, input, __1);
     let __temp0 = (__start0, __temp0, __end0);
-    __action555(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action555(context, out, input, __0, __temp0)
 }
 
 #[allow(unused_variables)]
-fn __action770<
-    'input,
-    's,
->(
+fn __action770<'input, 's>(
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, ::std::vec::Vec<String>, usize),
-) -> Vec<String>
-{
+) -> Vec<String> {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action532(
-        context,
-        out,
-        input,
-        &__start0,
-        &__end0,
-    );
+    let __temp0 = __action532(context, out, input, &__start0, &__end0);
     let __temp0 = (__start0, __temp0, __end0);
-    __action555(
-        context,
-        out,
-        input,
-        __0,
-        __temp0,
-    )
+    __action555(context, out, input, __0, __temp0)
 }
 
-pub trait __ToTriple<'input, 's, > {
-    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>>;
+pub trait __ToTriple<'input, 's> {
+    fn to_triple(
+        value: Self,
+    ) -> Result<
+        (usize, Token<'input>, usize),
+        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
+    >;
 }
 
-impl<'input, 's, > __ToTriple<'input, 's, > for (usize, Token<'input>, usize) {
-    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+impl<'input, 's> __ToTriple<'input, 's> for (usize, Token<'input>, usize) {
+    fn to_triple(
+        value: Self,
+    ) -> Result<
+        (usize, Token<'input>, usize),
+        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
+    > {
         Ok(value)
     }
 }
-impl<'input, 's, > __ToTriple<'input, 's, > for Result<(usize, Token<'input>, usize), &'static str> {
-    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+impl<'input, 's> __ToTriple<'input, 's> for Result<(usize, Token<'input>, usize), &'static str> {
+    fn to_triple(
+        value: Self,
+    ) -> Result<
+        (usize, Token<'input>, usize),
+        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
+    > {
         match value {
             Ok(v) => Ok(v),
             Err(error) => Err(__lalrpop_util::ParseError::User { error }),

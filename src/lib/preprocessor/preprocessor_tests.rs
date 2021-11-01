@@ -87,7 +87,7 @@ fn test_transfer_opcode() {
     assert!(o.is_err());
     out.clear();
     ctx.clear();
-    let o = p.parse(&mut ctx,&mut out,"fault:DB 0 JMP fault");
+    let o = p.parse(&mut ctx, &mut out, "fault:DB 0 JMP fault");
     assert!(o.is_err());
 }
 
