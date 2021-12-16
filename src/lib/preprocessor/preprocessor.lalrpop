@@ -1685,7 +1685,6 @@ quote_word_length:String = {
     "word" => "word".to_owned(),
 }
 
-
 CommaSepList<T>: Vec<T> = {
     <v:(<T> ",")*> <e:T?> => match e {
         None => v,
@@ -1703,7 +1702,16 @@ name_string:String ={
     }
 }
 
+// We have to add gen_reg here, as the exact string "AX" parses as a register
+// with more preference than globbed pattern of name string
+
 general_string:String = {
     name_string,
+    gen_reg,
+    seg_reg,
+    quote_byte_length <m:memory_addr> => format!("byte {}",m),
+    quote_word_length <m:memory_addr> => format!("word {}",m),
+    byte_label,
+    word_label, 
     <n:u_word_num> =>format!("{}",n)
 }

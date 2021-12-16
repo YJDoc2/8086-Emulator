@@ -46,6 +46,7 @@ fn test_macro_directives() {
         &mut out,
         "macro mcname (a) ->DB [a]<- \nmcname(5)",
     );
+    eprintln!("{:?}",o);
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 1);
     out.clear();
@@ -57,6 +58,16 @@ fn test_macro_directives() {
     );
     assert!(o.is_err());
     assert_eq!(out.data.len(), 0);
+    
+    out.clear();
+    ctx.clear();
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "macro clear (a) -> MOV a, 0<-\n macro test_seg (a) -> mov a, AX <-\nclear(AX)\nclear(bl)\nclear(SI)\nclear(byte [0])\ntest_seg(DS)",
+    );
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 5);
 }
 
 #[test]
