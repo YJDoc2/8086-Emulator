@@ -1015,8 +1015,9 @@ transfer:State = {
 
 call:State = {
     <start:@L> "call" <n:name_string> <end:@R> =>?{
+        // current +1  as we have to jump to next instruction when we return
        match context.fn_map.get(&n){
-         Some(pos) => {context.call_stack.push(current); Ok(State::JMP(*pos)) },
+         Some(pos) => {context.call_stack.push(current+1); Ok(State::JMP(*pos)) },
          None => error!(start,end,format!("Internal Error : call to undefined procedure {}",n))
        }
     },

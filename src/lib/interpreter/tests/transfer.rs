@@ -22,27 +22,31 @@ fn test_call_ret_instructions() {
     let o = p.parse(1, &mut vm, &mut context, "call f1");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::JMP(5));
-    assert_eq!(context.call_stack[0], 1);
+    assert_eq!(context.call_stack[0], 2);
 
     let o = p.parse(5, &mut vm, &mut context, "call f2");
     assert!(o.is_ok());
     assert_eq!(o.unwrap(), State::JMP(12));
     assert_eq!(context.call_stack.len(), 2);
-    assert_eq!(context.call_stack[0], 1);
-    assert_eq!(context.call_stack[1], 5);
+    assert_eq!(context.call_stack[0], 2);
+    assert_eq!(context.call_stack[1], 6);
 
     let o = p.parse(12, &mut vm, &mut context, "call f3");
     assert!(o.is_err());
 
     let o = p.parse(12, &mut vm, &mut context, "ret");
     assert!(o.is_ok());
-    assert_eq!(o.unwrap(), State::JMP(5));
+    // this needs to be 6, as after executing call instruction,
+    // next instruction to be executed should be 6
+    assert_eq!(o.unwrap(), State::JMP(6));
     assert_eq!(context.call_stack.len(), 1);
-    assert_eq!(context.call_stack[0], 1);
+    assert_eq!(context.call_stack[0], 2);
 
     let o = p.parse(5, &mut vm, &mut context, "ret");
     assert!(o.is_ok());
-    assert_eq!(o.unwrap(), State::JMP(1));
+    // this needs to be 2, as after executing call instruction,
+    // next instruction to be executed should be 2
+    assert_eq!(o.unwrap(), State::JMP(2));
     assert_eq!(context.call_stack.len(), 0);
 
     let o = p.parse(2, &mut vm, &mut context, "ret");
