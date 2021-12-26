@@ -254,7 +254,7 @@ pub fn byte_inc(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
 
 #[inline]
 pub fn byte_neg(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
-    let res = !*val;
+    let res = !*val + 1;
     set_flag_helper(
         &mut vm.arch.flag,
         res >= 1 << 7,
@@ -382,7 +382,7 @@ pub fn word_inc(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
 
 #[inline]
 pub fn word_neg(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
-    let res = !*val;
+    let res = !*val + 1;
     set_flag_helper(
         &mut vm.arch.flag,
         res >= 1 << 15,
