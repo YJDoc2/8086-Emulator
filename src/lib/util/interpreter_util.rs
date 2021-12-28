@@ -1,12 +1,22 @@
 use super::preprocessor_util::Label;
 use std::collections::HashMap;
 
+#[derive(Debug)]
+pub struct DivByZero;
+impl std::fmt::Display for DivByZero {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Attempted Division By Zero")
+    }
+}
+
+impl std::error::Error for DivByZero {}
+
 /// As lalrpop gives error if tried to return function from a token,
 /// we define these types so we can use those
 pub type ByteOpBinary = fn(&mut crate::vm::VM, u8, u8) -> u8;
 pub type WordOpBinary = fn(&mut crate::vm::VM, u16, u16) -> u16;
-pub type ByteOpUnary = fn(&mut crate::vm::VM, &mut u8) -> Result<(), ()>;
-pub type WordOpUnary = fn(&mut crate::vm::VM, &mut u16) -> Result<(), ()>;
+pub type ByteOpUnary = fn(&mut crate::vm::VM, &mut u8) -> Result<(), DivByZero>;
+pub type WordOpUnary = fn(&mut crate::vm::VM, &mut u16) -> Result<(), DivByZero>;
 
 /// This Is supposed to be used as return from interpretation of single instruction
 /// and should be used by driver to decide next step
@@ -47,7 +57,7 @@ pub fn has_even_parity(v: u8) -> bool {
     val ^= val >> 4;
     val ^= val >> 2;
     val ^= val >> 1;
-    return !val & 1 == 1;
+    !val & 1 == 1
 }
 
 #[test]

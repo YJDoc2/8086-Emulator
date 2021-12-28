@@ -66,7 +66,7 @@ fn setup() -> (VM, Context, interpreter::InterpreterParser) {
         .insert("l2".to_owned(), Label::new(LabelType::CODE, 0, 12));
     let p = interpreter::InterpreterParser::new();
 
-    return (vm, context, p);
+    (vm, context, p)
 }
 
 #[test]

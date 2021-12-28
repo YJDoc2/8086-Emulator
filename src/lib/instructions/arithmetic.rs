@@ -1,6 +1,6 @@
 use crate::util::data_util::*;
 use crate::util::flag_util::*;
-use crate::util::interpreter_util::has_even_parity;
+use crate::util::interpreter_util::{has_even_parity, DivByZero};
 use crate::vm::VM;
 
 struct FlagsToSet {
@@ -205,7 +205,7 @@ pub fn cwd(vm: &mut VM) {
 }
 
 #[inline]
-pub fn byte_dec(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
+pub fn byte_dec(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
     let res = *val as i8 as i16 - 1;
     set_flag_helper(
         &mut vm.arch.flag,
@@ -225,11 +225,11 @@ pub fn byte_dec(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
         unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
     }
     *val = res as i8 as u8;
-    return Ok(());
+    Ok(())
 }
 
 #[inline]
-pub fn byte_inc(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
+pub fn byte_inc(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
     let res = *val as u16 + 1;
     set_flag_helper(
         &mut vm.arch.flag,
@@ -249,11 +249,11 @@ pub fn byte_inc(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
         unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
     }
     *val = res as i8 as u8;
-    return Ok(());
+    Ok(())
 }
 
 #[inline]
-pub fn byte_neg(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
+pub fn byte_neg(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
     let res = !*val;
     set_flag_helper(
         &mut vm.arch.flag,
@@ -271,13 +271,13 @@ pub fn byte_neg(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
     // auxillary is not changed, even when it is said in specification,
     // as it does not make sense
     *val = res;
-    return Ok(());
+    Ok(())
 }
 
-pub fn byte_mul(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
-    let al = get_byte_reg(&vm, ByteReg::AL);
+pub fn byte_mul(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
+    let al = get_byte_reg(vm, ByteReg::AL);
     let res = al as u16 * (*val as u16);
-    let ah = get_byte_reg(&vm, ByteReg::AH);
+    let ah = get_byte_reg(vm, ByteReg::AH);
     if ah == 0 {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
@@ -286,13 +286,13 @@ pub fn byte_mul(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
     vm.arch.ax = res;
-    return Ok(());
+    Ok(())
 }
 
-pub fn byte_imul(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
-    let al = get_byte_reg(&vm, ByteReg::AL);
+pub fn byte_imul(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
+    let al = get_byte_reg(vm, ByteReg::AL);
     let res = al as u16 as i16 * (*val as i8 as i16);
-    let ah = get_byte_reg(&vm, ByteReg::AH);
+    let ah = get_byte_reg(vm, ByteReg::AH);
     if ah != u8::MAX {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
@@ -301,12 +301,12 @@ pub fn byte_imul(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
     vm.arch.ax = res as u16;
-    return Ok(());
+    Ok(())
 }
 
-pub fn byte_div(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
+pub fn byte_div(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
     if *val == 0 {
-        return Err(());
+        return Err(DivByZero);
     }
 
     let dividend = vm.arch.ax;
@@ -315,12 +315,12 @@ pub fn byte_div(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
 
     set_byte_reg(vm, ByteReg::AH, remainder as u8);
     set_byte_reg(vm, ByteReg::AL, quotient as u8);
-    return Ok(());
+    Ok(())
 }
 
-pub fn byte_idiv(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
+pub fn byte_idiv(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
     if *val == 0 {
-        return Err(());
+        return Err(DivByZero);
     }
 
     let dividend = vm.arch.ax as i16 as i32;
@@ -329,11 +329,11 @@ pub fn byte_idiv(vm: &mut VM, val: &mut u8) -> Result<(), ()> {
 
     set_byte_reg(vm, ByteReg::AH, remainder as u8);
     set_byte_reg(vm, ByteReg::AL, quotient as u8);
-    return Ok(());
+    Ok(())
 }
 
 #[inline]
-pub fn word_dec(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
+pub fn word_dec(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
     let res = *val as i16 as i32 - 1;
     set_flag_helper(
         &mut vm.arch.flag,
@@ -353,11 +353,11 @@ pub fn word_dec(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
         unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
     }
     *val = res as i16 as u16;
-    return Ok(());
+    Ok(())
 }
 
 #[inline]
-pub fn word_inc(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
+pub fn word_inc(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
     let res = *val as u32 + 1;
     set_flag_helper(
         &mut vm.arch.flag,
@@ -377,11 +377,11 @@ pub fn word_inc(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
         unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
     }
     *val = res as u16;
-    return Ok(());
+    Ok(())
 }
 
 #[inline]
-pub fn word_neg(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
+pub fn word_neg(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
     let res = !*val;
     set_flag_helper(
         &mut vm.arch.flag,
@@ -399,10 +399,10 @@ pub fn word_neg(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
     // auxillary is not changed, even when it is said in specification,
     // as it does not make sense
     *val = res;
-    return Ok(());
+    Ok(())
 }
 
-pub fn word_mul(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
+pub fn word_mul(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
     let ax = vm.arch.ax;
     let res = ax as u32 * (*val as u32);
     let upper = ((res & 0xFFFF0000) >> 16) as u16;
@@ -415,10 +415,10 @@ pub fn word_mul(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
     }
     vm.arch.ax = (res & 0x0000FFFF) as u16;
     vm.arch.dx = upper;
-    return Ok(());
+    Ok(())
 }
 
-pub fn word_imul(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
+pub fn word_imul(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
     let ax = vm.arch.ax as i16;
     let res = ax as i32 * (*val as i16 as i32);
     let upper = ((res as u32 & 0xFFFF0000) >> 16) as u16;
@@ -431,12 +431,12 @@ pub fn word_imul(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
     }
     vm.arch.ax = (res & 0x0000FFFF) as u16;
     vm.arch.dx = upper;
-    return Ok(());
+    Ok(())
 }
 
-pub fn word_div(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
+pub fn word_div(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
     if *val == 0 {
-        return Err(());
+        return Err(DivByZero);
     }
 
     let dividend = ((vm.arch.dx as u32) << 16) as u32 | vm.arch.ax as u32;
@@ -445,12 +445,12 @@ pub fn word_div(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
 
     vm.arch.ax = quotient as u16;
     vm.arch.dx = remainder as u16;
-    return Ok(());
+    Ok(())
 }
 
-pub fn word_idiv(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
+pub fn word_idiv(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
     if *val == 0 {
-        return Err(());
+        return Err(DivByZero);
     }
 
     let dividend = ((vm.arch.dx as u32) << 16 | vm.arch.ax as u32) as i32;
@@ -459,7 +459,7 @@ pub fn word_idiv(vm: &mut VM, val: &mut u16) -> Result<(), ()> {
 
     vm.arch.ax = quotient as u16;
     vm.arch.dx = remainder as u16;
-    return Ok(());
+    Ok(())
 }
 
 pub fn byte_add(vm: &mut VM, op1: u8, op2: u8) -> u8 {
@@ -475,7 +475,7 @@ pub fn byte_add(vm: &mut VM, op1: u8, op2: u8) -> u8 {
             auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
         },
     );
-    return res as u8;
+    res as u8
 }
 
 pub fn byte_adc(vm: &mut VM, op1: u8, op2: u8) -> u8 {
@@ -495,7 +495,7 @@ pub fn byte_adc(vm: &mut VM, op1: u8, op2: u8) -> u8 {
         },
     );
 
-    return res as u8;
+    res as u8
 }
 
 pub fn byte_sub(vm: &mut VM, op1: u8, op2: u8) -> u8 {
@@ -511,7 +511,7 @@ pub fn byte_sub(vm: &mut VM, op1: u8, op2: u8) -> u8 {
             auxillary: (op1 & 0xF) < (op2 & 0xF),
         },
     );
-    return res as u16 as u8;
+    res as u16 as u8
 }
 
 pub fn byte_sbb(vm: &mut VM, op1: u8, op2: u8) -> u8 {
@@ -530,7 +530,7 @@ pub fn byte_sbb(vm: &mut VM, op1: u8, op2: u8) -> u8 {
             auxillary: (op1 & 0xF) < (op2 & 0xF) + 1,
         },
     );
-    return res as u16 as u8;
+    res as u16 as u8
 }
 
 pub fn byte_cmp(vm: &mut VM, op1: u8, op2: u8) -> u8 {
@@ -546,7 +546,7 @@ pub fn byte_cmp(vm: &mut VM, op1: u8, op2: u8) -> u8 {
             auxillary: (op1 & 0xF) < (op2 & 0xF),
         },
     );
-    return op1;
+    op1
 }
 
 // ---- WORD
@@ -564,7 +564,7 @@ pub fn word_add(vm: &mut VM, op1: u16, op2: u16) -> u16 {
             auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
         },
     );
-    return res as u16;
+    res as u16
 }
 
 pub fn word_adc(vm: &mut VM, op1: u16, op2: u16) -> u16 {
@@ -583,7 +583,7 @@ pub fn word_adc(vm: &mut VM, op1: u16, op2: u16) -> u16 {
             auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
         },
     );
-    return res as u16;
+    res as u16
 }
 
 pub fn word_sub(vm: &mut VM, op1: u16, op2: u16) -> u16 {
@@ -599,7 +599,7 @@ pub fn word_sub(vm: &mut VM, op1: u16, op2: u16) -> u16 {
             auxillary: op1 & 0xF < op2 & 0xF,
         },
     );
-    return res as u32 as u16;
+    res as u32 as u16
 }
 
 pub fn word_sbb(vm: &mut VM, op1: u16, op2: u16) -> u16 {
@@ -618,7 +618,7 @@ pub fn word_sbb(vm: &mut VM, op1: u16, op2: u16) -> u16 {
             auxillary: op1 & 0xF < op2 & 0xF,
         },
     );
-    return res as u32 as u16;
+    res as u32 as u16
 }
 
 pub fn word_cmp(vm: &mut VM, op1: u16, op2: u16) -> u16 {
@@ -634,5 +634,5 @@ pub fn word_cmp(vm: &mut VM, op1: u16, op2: u16) -> u16 {
             auxillary: op1 & 0xF < op2 & 0xF,
         },
     );
-    return op1;
+    op1
 }

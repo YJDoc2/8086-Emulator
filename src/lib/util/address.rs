@@ -3,13 +3,13 @@ use crate::vm::MB;
 #[inline]
 /// just a % MB  function
 pub fn make_valid_address<T: Copy + Into<usize>>(v: T) -> usize {
-    return v.into() % MB as usize;
+    v.into() % MB as usize
 }
 
 #[inline]
 /// to increment address wrapping above MB
 pub fn inc_addr<T: std::ops::Add<Output = T> + Copy + Into<usize>>(v: T, inc: T) -> usize {
-    return (v + inc).into() % MB as usize;
+    (v + inc).into() % MB as usize
 }
 
 /// just an empty structure to give namespace to important addressing related functions

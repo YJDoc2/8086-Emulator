@@ -25,12 +25,12 @@ impl Label {
         Label {
             r#type: t,
             source_position: pos,
-            map: map,
+            map,
         }
     }
     /// as lalrpop gives error on using label.r#type
     pub fn get_type(&self) -> LabelType {
-        return self.r#type;
+        self.r#type
     }
 }
 
@@ -65,7 +65,7 @@ impl SourceMapper {
 
     /// consume the instance and return source map
     pub fn get_source_map(self) -> HashMap<usize, usize> {
-        return self.source_map;
+        self.source_map
     }
 
     /// Used to Set the source_last manually, should not be used unless absolutely required,
@@ -73,9 +73,7 @@ impl SourceMapper {
     /// to previous line, and as macro calls the lock, it will map all next entries to the previous line,
     /// so this is used to set the source_last manually
     pub fn set_source(&mut self, source_char: usize) {
-        if self.lock != 0 {
-            return;
-        } else {
+        if self.lock == 0 {
             self.source_last = source_char;
         }
     }

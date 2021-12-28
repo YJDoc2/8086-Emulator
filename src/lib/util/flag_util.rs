@@ -47,15 +47,15 @@ fn test_get_flag_state() {
 /// Function to set a particular flag
 pub fn set_flag(reg: &mut u16, flag: Flags) {
     match flag {
-        Flags::OVERFLOW => *reg = *reg | FLAG_OVERFLOW,
-        Flags::DIRECTION => *reg = *reg | FLAG_DIRECTION,
-        Flags::INTERRUPT => *reg = *reg | FLAG_INTERRUPT,
-        Flags::TRAP => *reg = *reg | FLAG_TRAP,
-        Flags::SIGN => *reg = *reg | FLAG_SIGN,
-        Flags::ZERO => *reg = *reg | FLAG_ZERO,
-        Flags::AUX_CARRY => *reg = *reg | FLAG_AUX_CARRY,
-        Flags::PARITY => *reg = *reg | FLAG_PARITY,
-        Flags::CARRY => *reg = *reg | FLAG_CARRY,
+        Flags::OVERFLOW => *reg |= FLAG_OVERFLOW,
+        Flags::DIRECTION => *reg |= FLAG_DIRECTION,
+        Flags::INTERRUPT => *reg |= FLAG_INTERRUPT,
+        Flags::TRAP => *reg |= FLAG_TRAP,
+        Flags::SIGN => *reg |= FLAG_SIGN,
+        Flags::ZERO => *reg |= FLAG_ZERO,
+        Flags::AUX_CARRY => *reg |= FLAG_AUX_CARRY,
+        Flags::PARITY => *reg |= FLAG_PARITY,
+        Flags::CARRY => *reg |= FLAG_CARRY,
     };
 }
 
@@ -73,15 +73,15 @@ fn test_set_flag() {
 /// Function to unset particular flag
 pub fn unset_flag(reg: &mut u16, flag: Flags) {
     match flag {
-        Flags::OVERFLOW => *reg = *reg & !FLAG_OVERFLOW,
-        Flags::DIRECTION => *reg = *reg & !FLAG_DIRECTION,
-        Flags::INTERRUPT => *reg = *reg & !FLAG_INTERRUPT,
-        Flags::TRAP => *reg = *reg & !FLAG_TRAP,
-        Flags::SIGN => *reg = *reg & !FLAG_SIGN,
-        Flags::ZERO => *reg = *reg & !FLAG_ZERO,
-        Flags::AUX_CARRY => *reg = *reg & !FLAG_AUX_CARRY,
-        Flags::PARITY => *reg = *reg & !FLAG_PARITY,
-        Flags::CARRY => *reg = *reg & !FLAG_CARRY,
+        Flags::OVERFLOW => *reg &= !FLAG_OVERFLOW,
+        Flags::DIRECTION => *reg &= !FLAG_DIRECTION,
+        Flags::INTERRUPT => *reg &= !FLAG_INTERRUPT,
+        Flags::TRAP => *reg &= !FLAG_TRAP,
+        Flags::SIGN => *reg &= !FLAG_SIGN,
+        Flags::ZERO => *reg &= !FLAG_ZERO,
+        Flags::AUX_CARRY => *reg &= !FLAG_AUX_CARRY,
+        Flags::PARITY => *reg &= !FLAG_PARITY,
+        Flags::CARRY => *reg &= !FLAG_CARRY,
     };
 }
 

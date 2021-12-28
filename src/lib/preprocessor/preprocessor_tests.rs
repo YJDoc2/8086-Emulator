@@ -46,7 +46,6 @@ fn test_macro_directives() {
         &mut out,
         "macro mcname (a) ->DB [a]<- \nmcname(5)",
     );
-    eprintln!("{:?}",o);
     assert!(o.is_ok());
     assert_eq!(out.data.len(), 1);
     out.clear();
@@ -58,7 +57,7 @@ fn test_macro_directives() {
     );
     assert!(o.is_err());
     assert_eq!(out.data.len(), 0);
-    
+
     out.clear();
     ctx.clear();
     let o = p.parse(
@@ -356,7 +355,6 @@ fn test_segment_override() {
     let mut out = crate::util::preprocessor_util::Output::default();
     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
     let o = p.parse(&mut ctx, &mut out, "mov ax,word es[bp]");
-    println!("{:?}", o);
     assert!(o.is_ok());
     let o = p.parse(&mut ctx, &mut out, "mov ax,word ss[5]");
     assert!(o.is_ok());
