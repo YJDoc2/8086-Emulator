@@ -1,13 +1,15 @@
-// auto-generated: "lalrpop 0.19.1"
-// sha256: 835bfbf79129e774617127bf2841a6f186cc4172e36e8c3bed93dc93372934e
+// auto-generated: "lalrpop 0.19.6"
+// sha3: 1b6fc4e9feb68ff09369c4716a13e4df4ce09ce8d64ba99cc8798117bfbd65ba
 use emulator_8086_lib as lib;
-use lalrpop_util::ParseError;
-use lib::vm::{MB, VM};
+use lib::vm::{VM,MB};
 use lib::{get_flag_state, Flags};
+use lalrpop_util::ParseError;
 #[allow(unused_extern_crates)]
 extern crate lalrpop_util as __lalrpop_util;
 #[allow(unused_imports)]
 use self::__lalrpop_util::state_machine as __state_machine;
+extern crate core;
+extern crate alloc;
 
 #[cfg_attr(rustfmt, rustfmt_skip)]
 mod __parse__Print {
@@ -21,9 +23,11 @@ mod __parse__Print {
     extern crate lalrpop_util as __lalrpop_util;
     #[allow(unused_imports)]
     use self::__lalrpop_util::state_machine as __state_machine;
+    extern crate core;
+    extern crate alloc;
     use self::__lalrpop_util::lexer::Token;
     #[allow(dead_code)]
-    pub enum __Symbol<'input>
+    pub(crate) enum __Symbol<'input>
      {
         Variant0(&'input str),
         Variant1(usize),
@@ -104,7 +108,7 @@ mod __parse__Print {
             _ => 0,
         }
     }
-    fn __expected_tokens(__state: i8) -> Vec<::std::string::String> {
+    fn __expected_tokens(__state: i8) -> alloc::vec::Vec<alloc::string::String> {
         const __TERMINAL: &[&str] = &[
             r###""->""###,
             r###"":""###,
@@ -119,16 +123,16 @@ mod __parse__Print {
             if next_state == 0 {
                 None
             } else {
-                Some(terminal.to_string())
+                Some(alloc::string::ToString::to_string(terminal))
             }
         }).collect()
     }
-    pub struct __StateMachine<'input, 's, '__2>
+    pub(crate) struct __StateMachine<'input, 's, '__2>
     where 
     {
         vm: &'__2 VM,
         input: &'input str,
-        __phantom: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __phantom: core::marker::PhantomData<(&'input (), &'s ())>,
     }
     impl<'input, 's, '__2> __state_machine::ParserDefinition for __StateMachine<'input, 's, '__2>
     where 
@@ -156,7 +160,7 @@ mod __parse__Print {
 
         #[inline]
         fn token_to_index(&self, token: &Self::Token) -> Option<usize> {
-            __token_to_integer(token, ::std::marker::PhantomData::<(&(), &())>)
+            __token_to_integer(token, core::marker::PhantomData::<(&(), &())>)
         }
 
         #[inline]
@@ -180,10 +184,10 @@ mod __parse__Print {
         }
 
         fn token_to_symbol(&self, token_index: usize, token: Self::Token) -> Self::Symbol {
-            __token_to_symbol(token_index, token, ::std::marker::PhantomData::<(&(), &())>)
+            __token_to_symbol(token_index, token, core::marker::PhantomData::<(&(), &())>)
         }
 
-        fn expected_tokens(&self, state: i8) -> Vec<String> {
+        fn expected_tokens(&self, state: i8) -> alloc::vec::Vec<alloc::string::String> {
             __expected_tokens(state)
         }
 
@@ -204,8 +208,8 @@ mod __parse__Print {
             &mut self,
             action: i8,
             start_location: Option<&Self::Location>,
-            states: &mut Vec<i8>,
-            symbols: &mut Vec<__state_machine::SymbolTriple<Self>>,
+            states: &mut alloc::vec::Vec<i8>,
+            symbols: &mut alloc::vec::Vec<__state_machine::SymbolTriple<Self>>,
         ) -> Option<__state_machine::ParseResult<Self>> {
             __reduce(
                 self.vm,
@@ -214,7 +218,7 @@ mod __parse__Print {
                 start_location,
                 states,
                 symbols,
-                ::std::marker::PhantomData::<(&(), &())>,
+                core::marker::PhantomData::<(&(), &())>,
             )
         }
 
@@ -227,7 +231,7 @@ mod __parse__Print {
         's,
     >(
         __token: &Token<'input>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> Option<usize>
     {
         match *__token {
@@ -247,7 +251,7 @@ mod __parse__Print {
     >(
         __token_index: usize,
         __token: Token<'input>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> __Symbol<'input>
     {
         match __token_index {
@@ -287,7 +291,7 @@ mod __parse__Print {
                 __StateMachine {
                     vm,
                     input,
-                    __phantom: ::std::marker::PhantomData::<(&(), &())>,
+                    __phantom: core::marker::PhantomData::<(&(), &())>,
                 },
                 __tokens,
             )
@@ -301,26 +305,26 @@ mod __parse__Print {
         input: &'input str,
         __action: i8,
         __lookahead_start: Option<&usize>,
-        __states: &mut ::std::vec::Vec<i8>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __states: &mut alloc::vec::Vec<i8>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> Option<Result<(),__lalrpop_util::ParseError<usize, Token<'input>, &'static str>>>
     {
         let (__pop_states, __nonterminal) = match __action {
             0 => {
-                __reduce0(vm, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce0(vm, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             1 => {
-                __reduce1(vm, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce1(vm, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             2 => {
-                __reduce2(vm, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce2(vm, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             3 => {
-                __reduce3(vm, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce3(vm, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             4 => {
-                __reduce4(vm, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce4(vm, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             5 => {
                 // Print = "print", "mem", raw_addr, ":", raw_addr => ActionFn(4);
@@ -340,7 +344,7 @@ mod __parse__Print {
                 (5, 2)
             }
             6 => {
-                __reduce6(vm, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce6(vm, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             7 => {
                 // __Print = Print => ActionFn(0);
@@ -378,7 +382,7 @@ mod __parse__Print {
     fn __pop_Variant2<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, (), usize)
      {
         match __symbols.pop() {
@@ -389,7 +393,7 @@ mod __parse__Print {
     fn __pop_Variant1<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, usize, usize)
      {
         match __symbols.pop() {
@@ -400,7 +404,7 @@ mod __parse__Print {
     fn __pop_Variant0<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, &'input str, usize)
      {
         match __symbols.pop() {
@@ -415,8 +419,8 @@ mod __parse__Print {
         vm: &VM,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // @L =  => ActionFn(8);
@@ -433,8 +437,8 @@ mod __parse__Print {
         vm: &VM,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // @R =  => ActionFn(7);
@@ -451,8 +455,8 @@ mod __parse__Print {
         vm: &VM,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Print = "print", "flags" => ActionFn(1);
@@ -472,8 +476,8 @@ mod __parse__Print {
         vm: &VM,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Print = "print", "reg" => ActionFn(2);
@@ -493,8 +497,8 @@ mod __parse__Print {
         vm: &VM,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Print = "print", "mem", raw_addr, "->", raw_addr => ActionFn(3);
@@ -517,8 +521,8 @@ mod __parse__Print {
         vm: &VM,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Print = "print", "mem", ":", raw_addr => ActionFn(5);
@@ -546,6 +550,8 @@ mod __intern_token {
     extern crate lalrpop_util as __lalrpop_util;
     #[allow(unused_imports)]
     use self::__lalrpop_util::state_machine as __state_machine;
+    extern crate core;
+    extern crate alloc;
     pub fn new_builder() -> __lalrpop_util::lexer::MatcherBuilder {
         let __strs: &[(&str, bool)] = &[
             ("^([0-9]+)", false),
@@ -560,20 +566,32 @@ mod __intern_token {
         __lalrpop_util::lexer::MatcherBuilder::new(__strs.iter().copied()).unwrap()
     }
 }
-pub use self::__lalrpop_util::lexer::Token;
+pub(crate) use self::__lalrpop_util::lexer::Token;
 
 #[allow(unused_variables)]
-fn __action0<'input, 's>(vm: &VM, input: &'input str, (_, __0, _): (usize, (), usize)) -> () {
+fn __action0<
+    'input,
+    's,
+>(
+    vm: &VM,
+    input: &'input str,
+    (_, __0, _): (usize, (), usize),
+) -> ()
+{
     ()
 }
 
 #[allow(unused_variables)]
-fn __action1<'input, 's>(
+fn __action1<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> () {
+) -> ()
+{
     {
         let of = get_flag_state(vm.arch.flag, Flags::OVERFLOW) as u8;
         let df = get_flag_state(vm.arch.flag, Flags::DIRECTION) as u8;
@@ -593,25 +611,32 @@ fn __action1<'input, 's>(
 }
 
 #[allow(unused_variables)]
-fn __action2<'input, 's>(
+fn __action2<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     (_, __0, _): (usize, &'input str, usize),
     (_, __1, _): (usize, &'input str, usize),
-) -> () {
+) -> ()
+{
     {
-        println!("AX : 0x{:04X}\t\tSP : 0x{:04X}", vm.arch.ax, vm.arch.sp);
-        println!("BX : 0x{:04X}\t\tBP : 0x{:04X}", vm.arch.bx, vm.arch.bp);
-        println!("CX : 0x{:04X}\t\tSI : 0x{:04X}", vm.arch.cx, vm.arch.si);
-        println!("DX : 0x{:04X}\t\tDI : 0x{:04X}", vm.arch.dx, vm.arch.di);
+        println!("AX : 0x{:04X}\t\tSP : 0x{:04X}",vm.arch.ax,vm.arch.sp);
+        println!("BX : 0x{:04X}\t\tBP : 0x{:04X}",vm.arch.bx,vm.arch.bp);
+        println!("CX : 0x{:04X}\t\tSI : 0x{:04X}",vm.arch.cx,vm.arch.si);
+        println!("DX : 0x{:04X}\t\tDI : 0x{:04X}",vm.arch.dx,vm.arch.di);
         println!();
-        println!("CS : 0x{:04X}\t\tSS : 0x{:04X}", vm.arch.cs, vm.arch.ss);
-        println!("DS : 0x{:04X}\t\tES : 0x{:04X}", vm.arch.ds, vm.arch.es);
+        println!("CS : 0x{:04X}\t\tSS : 0x{:04X}",vm.arch.cs,vm.arch.ss);
+        println!("DS : 0x{:04X}\t\tES : 0x{:04X}",vm.arch.ds,vm.arch.es);
     }
 }
 
 #[allow(unused_variables)]
-fn __action3<'input, 's>(
+fn __action3<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
@@ -619,25 +644,23 @@ fn __action3<'input, 's>(
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> () {
+) -> ()
+{
     {
-        if start > end {
-            println!(
-                "Starting address is less than end address : {} > {}",
-                start, end
-            );
+        if start > end{
+            println!("Starting address is less than end address : {} > {}",start,end);
             return;
         }
         let mut ctr = 0;
-        for i in start..=end {
-            print!("{:02X}\t", vm.mem[i]);
-            if (ctr + 1) % 8 == 0 {
+        for i in start..=end{
+            print!("{:02X}\t",vm.mem[i]);
+            if (ctr+1)%8 ==0{
                 print!("\t");
             }
-            if (ctr + 1) % 16 == 0 {
+            if (ctr+1)%16 ==0{
                 println!();
             }
-            ctr = (ctr + 1) % 16;
+            ctr = (ctr+1)%16;
         }
         if ctr != 0 {
             println!();
@@ -646,7 +669,10 @@ fn __action3<'input, 's>(
 }
 
 #[allow(unused_variables)]
-fn __action4<'input, 's>(
+fn __action4<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
@@ -654,25 +680,25 @@ fn __action4<'input, 's>(
     (_, start, _): (usize, usize, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, offset, _): (usize, usize, usize),
-) -> Result<(), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     {
         let end = start + offset;
-        if end >= MB as usize {
+        if end >= MB as usize{
             return Err(ParseError::UnrecognizedToken {
-                token: (start, Token(0, ""), end),
-                expected: vec!["Internal Error : start + offset > 1048576".to_owned()],
-            });
+                token: (start, Token(0, ""), end),expected: vec!["Internal Error : start + offset > 1048576".to_owned()]
+                })
         }
         let mut ctr = 0;
-        for i in start..=end {
-            print!("{:02X}\t", vm.mem[i]);
-            if (ctr + 1) % 8 == 0 {
+        for i in start..=end{
+            print!("{:02X}\t",vm.mem[i]);
+            if (ctr+1)%8 ==0{
                 print!("\t");
             }
-            if (ctr + 1) % 16 == 0 {
+            if (ctr+1)%16 ==0{
                 println!();
             }
-            ctr = (ctr + 1) % 16;
+            ctr = (ctr+1)%16;
         }
         if ctr != 0 {
             println!();
@@ -682,135 +708,160 @@ fn __action4<'input, 's>(
 }
 
 #[allow(unused_variables)]
-fn __action5<'input, 's>(
+fn __action5<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, offset, _): (usize, usize, usize),
-) -> () {
+) -> ()
+{
     {
         let start = vm.arch.ds as usize * 0x10;
         let end = start + offset;
-        if end >= MB as usize {
-            println!(
-                "Error : End address overflowing memory space : DS * 0x10 =  {}, end address = {}",
-                start, end
-            );
+        if end >= MB as usize{
+            println!("Error : End address overflowing memory space : DS * 0x10 =  {}, end address = {}",start,end);
             return;
         }
         let mut ctr = 0;
-        for i in start..=end {
-            print!("{:02X}\t", vm.mem[i]);
-            if (ctr + 1) % 8 == 0 {
+        for i in start..=end{
+            print!("{:02X}\t",vm.mem[i]);
+            if (ctr+1)%8 ==0{
                 print!("\t");
             }
-            if (ctr + 1) % 16 == 0 {
+            if (ctr+1)%16 ==0{
                 println!();
             }
-            ctr = (ctr + 1) % 16;
+            ctr = (ctr+1)%16;
         }
         if ctr != 0 {
             println!();
         }
+        
     }
 }
 
 #[allow(unused_variables)]
-fn __action6<'input, 's>(
+fn __action6<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<usize, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<usize,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     {
-        match usize::from_str_radix(n, 10) {
-            Ok(v) => Ok(v % MB as usize),
+        match usize::from_str_radix(n,10){
+            Ok(v) => Ok(v%MB as usize),
             Err(_) => Err(ParseError::UnrecognizedToken {
-                token: (start, Token(0, ""), end),
-                expected: vec![
-                    "Internal Error : Invalid Value, must be between 0-1048576".to_owned()
-                ],
-            }),
+                token: (start, Token(0, ""), end),expected: vec!["Internal Error : Invalid Value, must be between 0-1048576".to_owned()]
+                }),
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action7<'input, 's>(
+fn __action7<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize {
+) -> usize
+{
     __lookbehind.clone()
 }
 
 #[allow(unused_variables)]
-fn __action8<'input, 's>(
+fn __action8<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize {
+) -> usize
+{
     __lookahead.clone()
 }
 
 #[allow(unused_variables)]
-fn __action9<'input, 's>(
+fn __action9<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<usize, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<usize,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action8(vm, input, &__start0, &__end0);
+    let __temp0 = __action8(
+        vm,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action6(vm, input, __temp0, __0, __1)
+    __action6(
+        vm,
+        input,
+        __temp0,
+        __0,
+        __1,
+    )
 }
 
 #[allow(unused_variables)]
-fn __action10<'input, 's>(
+fn __action10<
+    'input,
+    's,
+>(
     vm: &VM,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<usize, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<usize,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action7(vm, input, &__start0, &__end0);
+    let __temp0 = __action7(
+        vm,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action9(vm, input, __0, __temp0)
+    __action9(
+        vm,
+        input,
+        __0,
+        __temp0,
+    )
 }
 
-pub trait __ToTriple<'input, 's> {
-    fn to_triple(
-        value: Self,
-    ) -> Result<
-        (usize, Token<'input>, usize),
-        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
-    >;
+pub trait __ToTriple<'input, 's, > {
+    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>>;
 }
 
-impl<'input, 's> __ToTriple<'input, 's> for (usize, Token<'input>, usize) {
-    fn to_triple(
-        value: Self,
-    ) -> Result<
-        (usize, Token<'input>, usize),
-        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
-    > {
+impl<'input, 's, > __ToTriple<'input, 's, > for (usize, Token<'input>, usize) {
+    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
         Ok(value)
     }
 }
-impl<'input, 's> __ToTriple<'input, 's> for Result<(usize, Token<'input>, usize), &'static str> {
-    fn to_triple(
-        value: Self,
-    ) -> Result<
-        (usize, Token<'input>, usize),
-        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
-    > {
+impl<'input, 's, > __ToTriple<'input, 's, > for Result<(usize, Token<'input>, usize), &'static str> {
+    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
         match value {
             Ok(v) => Ok(v),
             Err(error) => Err(__lalrpop_util::ParseError::User { error }),

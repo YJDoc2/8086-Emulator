@@ -1,13 +1,15 @@
-// auto-generated: "lalrpop 0.19.1"
-// sha256: 343fe112a32cced8d01b96e3fae44fbd133a0a5afacdf923022cbf589a6e4f
-use crate::error;
-use crate::util::{address::*, data_util::separate_bytes};
+// auto-generated: "lalrpop 0.19.6"
+// sha3: 91a27955dfc9fa45d53db8163aee9916fcaada896134dca69c2142198ec08ee0
+use crate::util::{address::*,data_util::separate_bytes};
 use crate::vm::VM;
+use crate::error;
 use lalrpop_util::ParseError;
 #[allow(unused_extern_crates)]
 extern crate lalrpop_util as __lalrpop_util;
 #[allow(unused_imports)]
 use self::__lalrpop_util::state_machine as __state_machine;
+extern crate core;
+extern crate alloc;
 
 #[cfg_attr(rustfmt, rustfmt_skip)]
 mod __parse__Data {
@@ -21,9 +23,11 @@ mod __parse__Data {
     extern crate lalrpop_util as __lalrpop_util;
     #[allow(unused_imports)]
     use self::__lalrpop_util::state_machine as __state_machine;
+    extern crate core;
+    extern crate alloc;
     use self::__lalrpop_util::lexer::Token;
     #[allow(dead_code)]
-    pub enum __Symbol<'input>
+    pub(crate) enum __Symbol<'input>
      {
         Variant0(&'input str),
         Variant1(usize),
@@ -202,7 +206,7 @@ mod __parse__Data {
             _ => 0,
         }
     }
-    fn __expected_tokens(__state: i8) -> Vec<::std::string::String> {
+    fn __expected_tokens(__state: i8) -> alloc::vec::Vec<alloc::string::String> {
         const __TERMINAL: &[&str] = &[
             r###"",""###,
             r###""[""###,
@@ -219,17 +223,17 @@ mod __parse__Data {
             if next_state == 0 {
                 None
             } else {
-                Some(terminal.to_string())
+                Some(alloc::string::ToString::to_string(terminal))
             }
         }).collect()
     }
-    pub struct __StateMachine<'input, 's, '__2>
+    pub(crate) struct __StateMachine<'input, 's, '__2>
     where 
     {
         vm: &'s mut VM,
         counter: &'__2 mut usize,
         input: &'input str,
-        __phantom: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __phantom: core::marker::PhantomData<(&'input (), &'s ())>,
     }
     impl<'input, 's, '__2> __state_machine::ParserDefinition for __StateMachine<'input, 's, '__2>
     where 
@@ -257,7 +261,7 @@ mod __parse__Data {
 
         #[inline]
         fn token_to_index(&self, token: &Self::Token) -> Option<usize> {
-            __token_to_integer(token, ::std::marker::PhantomData::<(&(), &())>)
+            __token_to_integer(token, core::marker::PhantomData::<(&(), &())>)
         }
 
         #[inline]
@@ -281,10 +285,10 @@ mod __parse__Data {
         }
 
         fn token_to_symbol(&self, token_index: usize, token: Self::Token) -> Self::Symbol {
-            __token_to_symbol(token_index, token, ::std::marker::PhantomData::<(&(), &())>)
+            __token_to_symbol(token_index, token, core::marker::PhantomData::<(&(), &())>)
         }
 
-        fn expected_tokens(&self, state: i8) -> Vec<String> {
+        fn expected_tokens(&self, state: i8) -> alloc::vec::Vec<alloc::string::String> {
             __expected_tokens(state)
         }
 
@@ -305,8 +309,8 @@ mod __parse__Data {
             &mut self,
             action: i8,
             start_location: Option<&Self::Location>,
-            states: &mut Vec<i8>,
-            symbols: &mut Vec<__state_machine::SymbolTriple<Self>>,
+            states: &mut alloc::vec::Vec<i8>,
+            symbols: &mut alloc::vec::Vec<__state_machine::SymbolTriple<Self>>,
         ) -> Option<__state_machine::ParseResult<Self>> {
             __reduce(
                 self.vm,
@@ -316,7 +320,7 @@ mod __parse__Data {
                 start_location,
                 states,
                 symbols,
-                ::std::marker::PhantomData::<(&(), &())>,
+                core::marker::PhantomData::<(&(), &())>,
             )
         }
 
@@ -329,7 +333,7 @@ mod __parse__Data {
         's,
     >(
         __token: &Token<'input>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> Option<usize>
     {
         match *__token {
@@ -351,7 +355,7 @@ mod __parse__Data {
     >(
         __token_index: usize,
         __token: Token<'input>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> __Symbol<'input>
     {
         match __token_index {
@@ -393,7 +397,7 @@ mod __parse__Data {
                     vm,
                     counter,
                     input,
-                    __phantom: ::std::marker::PhantomData::<(&(), &())>,
+                    __phantom: core::marker::PhantomData::<(&(), &())>,
                 },
                 __tokens,
             )
@@ -408,26 +412,26 @@ mod __parse__Data {
         input: &'input str,
         __action: i8,
         __lookahead_start: Option<&usize>,
-        __states: &mut ::std::vec::Vec<i8>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __states: &mut alloc::vec::Vec<i8>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> Option<Result<(),__lalrpop_util::ParseError<usize, Token<'input>, &'static str>>>
     {
         let (__pop_states, __nonterminal) = match __action {
             0 => {
-                __reduce0(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce0(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             1 => {
-                __reduce1(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce1(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             2 => {
-                __reduce2(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce2(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             3 => {
-                __reduce3(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce3(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             4 => {
-                __reduce4(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce4(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             5 => {
                 // __Data = Data => ActionFn(0);
@@ -438,28 +442,28 @@ mod __parse__Data {
                 return Some(Ok(__nt));
             }
             6 => {
-                __reduce6(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce6(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             7 => {
-                __reduce7(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce7(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             8 => {
-                __reduce8(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce8(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             9 => {
-                __reduce9(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce9(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             10 => {
-                __reduce10(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce10(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             11 => {
-                __reduce11(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce11(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             12 => {
-                __reduce12(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce12(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             13 => {
-                __reduce13(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce13(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             14 => {
                 // s_byte_num = r#"-[0-9]+"# => ActionFn(25);
@@ -474,7 +478,7 @@ mod __parse__Data {
                 (1, 6)
             }
             15 => {
-                __reduce15(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce15(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             16 => {
                 // s_word_num = r#"-[0-9]+"# => ActionFn(26);
@@ -489,10 +493,10 @@ mod __parse__Data {
                 (1, 7)
             }
             17 => {
-                __reduce17(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce17(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             18 => {
-                __reduce18(vm, counter, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce18(vm, counter, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             19 => {
                 // u_byte_num = r#"[0-9]+"# => ActionFn(27);
@@ -534,7 +538,7 @@ mod __parse__Data {
     fn __pop_Variant2<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, (), usize)
      {
         match __symbols.pop() {
@@ -545,7 +549,7 @@ mod __parse__Data {
     fn __pop_Variant4<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, i16, usize)
      {
         match __symbols.pop() {
@@ -556,7 +560,7 @@ mod __parse__Data {
     fn __pop_Variant3<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, i8, usize)
      {
         match __symbols.pop() {
@@ -567,7 +571,7 @@ mod __parse__Data {
     fn __pop_Variant6<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, u16, usize)
      {
         match __symbols.pop() {
@@ -578,7 +582,7 @@ mod __parse__Data {
     fn __pop_Variant5<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, u8, usize)
      {
         match __symbols.pop() {
@@ -589,7 +593,7 @@ mod __parse__Data {
     fn __pop_Variant1<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, usize, usize)
      {
         match __symbols.pop() {
@@ -600,7 +604,7 @@ mod __parse__Data {
     fn __pop_Variant0<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, &'input str, usize)
      {
         match __symbols.pop() {
@@ -616,8 +620,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // @L =  => ActionFn(20);
@@ -635,8 +639,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // @R =  => ActionFn(19);
@@ -654,8 +658,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Data = set => ActionFn(1);
@@ -674,8 +678,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Data = db => ActionFn(2);
@@ -694,8 +698,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Data = dw => ActionFn(3);
@@ -714,8 +718,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db = "db", s_byte_num => ActionFn(5);
@@ -736,8 +740,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db = "db", "[", u_word_num, "]" => ActionFn(6);
@@ -760,8 +764,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db = "db", "[", s_byte_num, ",", u_word_num, "]" => ActionFn(7);
@@ -786,8 +790,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db = "db", r#"\"[[:ascii:]]*\""# => ActionFn(8);
@@ -808,8 +812,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw = "dw", s_word_num => ActionFn(9);
@@ -830,8 +834,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw = "dw", "[", u_word_num, "]" => ActionFn(10);
@@ -854,8 +858,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw = "dw", "[", s_word_num, ",", u_word_num, "]" => ActionFn(11);
@@ -880,8 +884,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw = "dw", r#"\"[[:ascii:]]*\""# => ActionFn(12);
@@ -902,8 +906,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // s_byte_num = u_byte_num => ActionFn(18);
@@ -922,8 +926,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // s_word_num = u_word_num => ActionFn(16);
@@ -942,8 +946,8 @@ mod __parse__Data {
         counter: &mut usize,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // set = "set", u_word_num => ActionFn(4);
@@ -969,6 +973,8 @@ mod __intern_token {
     extern crate lalrpop_util as __lalrpop_util;
     #[allow(unused_imports)]
     use self::__lalrpop_util::state_machine as __state_machine;
+    extern crate core;
+    extern crate alloc;
     pub fn new_builder() -> __lalrpop_util::lexer::MatcherBuilder {
         let __strs: &[(&str, bool)] = &[
             ("^(\"[\u{0}-\u{7f}]*\")", false),
@@ -985,79 +991,106 @@ mod __intern_token {
         __lalrpop_util::lexer::MatcherBuilder::new(__strs.iter().copied()).unwrap()
     }
 }
-pub use self::__lalrpop_util::lexer::Token;
+pub(crate) use self::__lalrpop_util::lexer::Token;
 
 #[allow(unused_variables)]
-fn __action0<'input, 's>(
+fn __action0<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> () {
+) -> ()
+{
     ()
 }
 
 #[allow(unused_variables)]
-fn __action1<'input, 's>(
+fn __action1<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> () {
+) -> ()
+{
     ()
 }
 
 #[allow(unused_variables)]
-fn __action2<'input, 's>(
+fn __action2<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> () {
+) -> ()
+{
     ()
 }
 
 #[allow(unused_variables)]
-fn __action3<'input, 's>(
+fn __action3<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> () {
+) -> ()
+{
     ()
 }
 
 #[allow(unused_variables)]
-fn __action4<'input, 's>(
+fn __action4<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
-) -> () {
+) -> ()
+{
     {
         vm.arch.ds = n;
-        *counter = 0;
+        *counter =0;
     }
 }
 
 #[allow(unused_variables)]
-fn __action5<'input, 's>(
+fn __action5<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i8, usize),
-) -> () {
-    {
-        let addr = Address::calculate_from_offset(vm.arch.ds, *counter);
+) -> ()
+{
+    { 
+        let addr = Address::calculate_from_offset(vm.arch.ds,*counter);
         vm.mem[addr] = n as u8;
         *counter += 1;
     }
 }
 
 #[allow(unused_variables)]
-fn __action6<'input, 's>(
+fn __action6<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
@@ -1065,19 +1098,23 @@ fn __action6<'input, 's>(
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> () {
+) -> ()
+{
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
-        for _ in 0..n {
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        for _ in 0..n{
             vm.mem[addr] = 0;
-            addr = inc_addr(addr, 1);
+            addr = inc_addr(addr,1);
         }
         *counter += n as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action7<'input, 's>(
+fn __action7<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
@@ -1087,55 +1124,67 @@ fn __action7<'input, 's>(
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> () {
+) -> ()
+{
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
-        for _ in 0..n {
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        for _ in 0..n{
             vm.mem[addr] = v as u8;
-            addr = inc_addr(addr, 1);
+            addr = inc_addr(addr,1);
         }
         *counter += n as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action8<'input, 's>(
+fn __action8<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, q, _): (usize, &'input str, usize),
-) -> () {
+) -> ()
+{
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
         // the slice skips the quotes
-        for i in (&q[1..q.len() - 1]).bytes() {
+        for i in (&q[1..q.len()-1]).bytes(){
             vm.mem[addr] = i;
-            addr = inc_addr(addr, 1);
+            addr =inc_addr(addr,1);
         }
-        *counter += q.len() - 2;
+        *counter += q.len() -2;
     }
 }
 
 #[allow(unused_variables)]
-fn __action9<'input, 's>(
+fn __action9<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, i16, usize),
-) -> () {
+) -> ()
+{
     {
-        let addr = Address::calculate_from_offset(vm.arch.ds, *counter);
-        let (hb, lb) = separate_bytes(n);
+        let addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        let (hb,lb) = separate_bytes(n); 
         vm.mem[addr] = lb;
-        vm.mem[inc_addr(addr, 1)] = hb;
+        vm.mem[inc_addr(addr,1)] = hb;
         *counter += 2 as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action10<'input, 's>(
+fn __action10<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
@@ -1143,19 +1192,23 @@ fn __action10<'input, 's>(
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> () {
+) -> ()
+{
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
-        for _ in 0..2 * n {
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        for _ in 0..2*n{
             vm.mem[addr] = 0;
-            addr = inc_addr(addr, 1);
+            addr = inc_addr(addr,1);
         }
-        *counter += 2 * n as usize;
+        *counter += 2*n as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action11<'input, 's>(
+fn __action11<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
@@ -1165,309 +1218,447 @@ fn __action11<'input, 's>(
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
-) -> () {
+) -> ()
+{
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
-        let (hb, lb) = separate_bytes(v);
-        for _ in 0..n {
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
+        let (hb,lb) = separate_bytes(v); 
+        for _ in 0..n{
             vm.mem[addr] = lb;
-            addr = inc_addr(addr, 1);
+            addr = inc_addr(addr,1);
             vm.mem[addr] = hb;
-            addr = inc_addr(addr, 1);
+            addr = inc_addr(addr,1);
         }
-        *counter += 2 * n as usize;
+        *counter += 2*n as usize;
     }
 }
 
 #[allow(unused_variables)]
-fn __action12<'input, 's>(
+fn __action12<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, _, _): (usize, &'input str, usize),
     (_, q, _): (usize, &'input str, usize),
-) -> () {
+) -> ()
+{
     {
-        let mut addr = Address::calculate_from_offset(vm.arch.ds, *counter);
+        let mut addr = Address::calculate_from_offset(vm.arch.ds,*counter);
         // the slice skips the quotes
-        for i in (&q[1..q.len() - 1]).bytes() {
+        for i in (&q[1..q.len()-1]).bytes(){
             vm.mem[addr] = i;
-            addr = inc_addr(addr, 1);
+            addr = inc_addr(addr,1);
             vm.mem[addr] = 0;
-            addr = inc_addr(addr, 1);
+            addr = inc_addr(addr,1);
         }
-        *counter += 2 * (q.len() - 2);
+        *counter += 2*(q.len()-2);
     }
 }
 
 #[allow(unused_variables)]
-fn __action13<'input, 's>(
+fn __action13<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     {
-        match u16::from_str_radix(n, 10) {
+        match u16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => error!(
-                start,
-                end,
-                "Invalid Value, must be between 0-65535".to_owned()
-            ),
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action14<'input, 's>(
+fn __action14<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     {
-        match u8::from_str_radix(n, 10) {
+        match u8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => error!(
-                start,
-                end,
-                "Invalid Value, must be between 0-255".to_owned()
-            ),
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action15<'input, 's>(
+fn __action15<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     {
-        match i16::from_str_radix(n, 10) {
+        match i16::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => error!(
-                start,
-                end,
-                "Invalid Value, must be between 0-65535".to_owned()
-            ),
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-65535".to_owned())
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action16<'input, 's>(
+fn __action16<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, n, _): (usize, u16, usize),
-) -> i16 {
+) -> i16
+{
     n as i16
 }
 
 #[allow(unused_variables)]
-fn __action17<'input, 's>(
+fn __action17<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
     (_, n, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
-) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     {
-        match i8::from_str_radix(n, 10) {
+        match i8::from_str_radix(n,10){
             Ok(v) => Ok(v),
-            Err(_) => error!(
-                start,
-                end,
-                "Invalid Value, must be between 0-255".to_owned()
-            ),
+            Err(_) => error!(start,end,"Invalid Value, must be between 0-255".to_owned())
         }
     }
 }
 
 #[allow(unused_variables)]
-fn __action18<'input, 's>(
+fn __action18<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     (_, n, _): (usize, u8, usize),
-) -> i8 {
+) -> i8
+{
     n as i8
 }
 
 #[allow(unused_variables)]
-fn __action19<'input, 's>(
+fn __action19<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize {
+) -> usize
+{
     __lookbehind.clone()
 }
 
 #[allow(unused_variables)]
-fn __action20<'input, 's>(
+fn __action20<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> usize {
+) -> usize
+{
     __lookahead.clone()
 }
 
 #[allow(unused_variables)]
-fn __action21<'input, 's>(
+fn __action21<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action20(vm, counter, input, &__start0, &__end0);
+    let __temp0 = __action20(
+        vm,
+        counter,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action17(vm, counter, input, __temp0, __0, __1)
+    __action17(
+        vm,
+        counter,
+        input,
+        __temp0,
+        __0,
+        __1,
+    )
 }
 
 #[allow(unused_variables)]
-fn __action22<'input, 's>(
+fn __action22<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action20(vm, counter, input, &__start0, &__end0);
+    let __temp0 = __action20(
+        vm,
+        counter,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action15(vm, counter, input, __temp0, __0, __1)
+    __action15(
+        vm,
+        counter,
+        input,
+        __temp0,
+        __0,
+        __1,
+    )
 }
 
 #[allow(unused_variables)]
-fn __action23<'input, 's>(
+fn __action23<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action20(vm, counter, input, &__start0, &__end0);
+    let __temp0 = __action20(
+        vm,
+        counter,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action14(vm, counter, input, __temp0, __0, __1)
+    __action14(
+        vm,
+        counter,
+        input,
+        __temp0,
+        __0,
+        __1,
+    )
 }
 
 #[allow(unused_variables)]
-fn __action24<'input, 's>(
+fn __action24<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, usize, usize),
-) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action20(vm, counter, input, &__start0, &__end0);
+    let __temp0 = __action20(
+        vm,
+        counter,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action13(vm, counter, input, __temp0, __0, __1)
+    __action13(
+        vm,
+        counter,
+        input,
+        __temp0,
+        __0,
+        __1,
+    )
 }
 
 #[allow(unused_variables)]
-fn __action25<'input, 's>(
+fn __action25<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<i8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<i8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action19(vm, counter, input, &__start0, &__end0);
+    let __temp0 = __action19(
+        vm,
+        counter,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action21(vm, counter, input, __0, __temp0)
+    __action21(
+        vm,
+        counter,
+        input,
+        __0,
+        __temp0,
+    )
 }
 
 #[allow(unused_variables)]
-fn __action26<'input, 's>(
+fn __action26<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<i16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<i16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action19(vm, counter, input, &__start0, &__end0);
+    let __temp0 = __action19(
+        vm,
+        counter,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action22(vm, counter, input, __0, __temp0)
+    __action22(
+        vm,
+        counter,
+        input,
+        __0,
+        __temp0,
+    )
 }
 
 #[allow(unused_variables)]
-fn __action27<'input, 's>(
+fn __action27<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u8, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<u8,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action19(vm, counter, input, &__start0, &__end0);
+    let __temp0 = __action19(
+        vm,
+        counter,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action23(vm, counter, input, __0, __temp0)
+    __action23(
+        vm,
+        counter,
+        input,
+        __0,
+        __temp0,
+    )
 }
 
 #[allow(unused_variables)]
-fn __action28<'input, 's>(
+fn __action28<
+    'input,
+    's,
+>(
     vm: &'s mut VM,
     counter: &mut usize,
     input: &'input str,
     __0: (usize, &'input str, usize),
-) -> Result<u16, __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
+) -> Result<u16,__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
+{
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action19(vm, counter, input, &__start0, &__end0);
+    let __temp0 = __action19(
+        vm,
+        counter,
+        input,
+        &__start0,
+        &__end0,
+    );
     let __temp0 = (__start0, __temp0, __end0);
-    __action24(vm, counter, input, __0, __temp0)
+    __action24(
+        vm,
+        counter,
+        input,
+        __0,
+        __temp0,
+    )
 }
 
-pub trait __ToTriple<'input, 's> {
-    fn to_triple(
-        value: Self,
-    ) -> Result<
-        (usize, Token<'input>, usize),
-        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
-    >;
+pub trait __ToTriple<'input, 's, > {
+    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>>;
 }
 
-impl<'input, 's> __ToTriple<'input, 's> for (usize, Token<'input>, usize) {
-    fn to_triple(
-        value: Self,
-    ) -> Result<
-        (usize, Token<'input>, usize),
-        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
-    > {
+impl<'input, 's, > __ToTriple<'input, 's, > for (usize, Token<'input>, usize) {
+    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
         Ok(value)
     }
 }
-impl<'input, 's> __ToTriple<'input, 's> for Result<(usize, Token<'input>, usize), &'static str> {
-    fn to_triple(
-        value: Self,
-    ) -> Result<
-        (usize, Token<'input>, usize),
-        __lalrpop_util::ParseError<usize, Token<'input>, &'static str>,
-    > {
+impl<'input, 's, > __ToTriple<'input, 's, > for Result<(usize, Token<'input>, usize), &'static str> {
+    fn to_triple(value: Self) -> Result<(usize,Token<'input>,usize), __lalrpop_util::ParseError<usize, Token<'input>, &'static str>> {
         match value {
             Ok(v) => Ok(v),
             Err(error) => Err(__lalrpop_util::ParseError::User { error }),
