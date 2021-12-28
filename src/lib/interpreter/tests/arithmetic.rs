@@ -188,7 +188,7 @@ fn test_unary_arithmetic() {
     assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
 
     // imul
-    vm.mem[base] = -4 as i8 as u8;
+    vm.mem[base] = -4_i8 as u8;
     vm.arch.ax = 0x0004;
     let o = p.parse(1, &mut vm, &mut context, "imul byte l1");
     assert!(o.is_ok());
@@ -225,7 +225,7 @@ fn test_unary_arithmetic() {
     assert_eq!(vm.arch.dx, 0x0003);
 
     // idiv
-    vm.mem[base] = -4 as i16 as u8;
+    vm.mem[base] = -4_i16 as u8;
     vm.arch.ax = 0x0006;
     let o = p.parse(1, &mut vm, &mut context, "idiv byte l1");
     assert!(o.is_ok());

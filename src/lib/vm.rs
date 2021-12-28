@@ -42,5 +42,4 @@ fn test_vm_init() {
     // This test is for checking if the vm is successfully created ,
     // as there are records of large array in box generating stack overflow
     let _ = VM::new();
-    assert!(true);
 }
