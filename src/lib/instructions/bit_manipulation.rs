@@ -32,7 +32,7 @@ pub fn byte_and(vm: &mut VM, dest: u8, source: u8) -> u8 {
         res == 0,
         has_even_parity(res),
     );
-    return res;
+    res
 }
 
 pub fn byte_or(vm: &mut VM, dest: u8, source: u8) -> u8 {
@@ -46,7 +46,7 @@ pub fn byte_or(vm: &mut VM, dest: u8, source: u8) -> u8 {
         has_even_parity(res),
     );
 
-    return res;
+    res
 }
 
 pub fn byte_xor(vm: &mut VM, dest: u8, source: u8) -> u8 {
@@ -59,7 +59,7 @@ pub fn byte_xor(vm: &mut VM, dest: u8, source: u8) -> u8 {
         res == 0,
         has_even_parity(res),
     );
-    return res;
+    res
 }
 
 pub fn byte_test(vm: &mut VM, dest: u8, source: u8) -> u8 {
@@ -72,7 +72,7 @@ pub fn byte_test(vm: &mut VM, dest: u8, source: u8) -> u8 {
         res == 0,
         has_even_parity(res),
     );
-    return dest;
+    dest
 }
 
 pub fn word_and(vm: &mut VM, dest: u16, source: u16) -> u16 {
@@ -85,7 +85,7 @@ pub fn word_and(vm: &mut VM, dest: u16, source: u16) -> u16 {
         res == 0,
         has_even_parity(res as u8),
     );
-    return res;
+    res
 }
 
 pub fn word_or(vm: &mut VM, dest: u16, source: u16) -> u16 {
@@ -98,7 +98,7 @@ pub fn word_or(vm: &mut VM, dest: u16, source: u16) -> u16 {
         res == 0,
         has_even_parity(res as u8),
     );
-    return res;
+    res
 }
 
 pub fn word_xor(vm: &mut VM, dest: u16, source: u16) -> u16 {
@@ -111,7 +111,7 @@ pub fn word_xor(vm: &mut VM, dest: u16, source: u16) -> u16 {
         res == 0,
         has_even_parity(res as u8),
     );
-    return res;
+    res
 }
 
 pub fn word_test(vm: &mut VM, dest: u16, source: u16) -> u16 {
@@ -124,7 +124,7 @@ pub fn word_test(vm: &mut VM, dest: u16, source: u16) -> u16 {
         res == 0,
         has_even_parity(res as u8),
     );
-    return dest;
+    dest
 }
 
 pub fn byte_sal(vm: &mut VM, val: u8, num: u8) -> u8 {
@@ -159,7 +159,7 @@ pub fn byte_sal(vm: &mut VM, val: u8, num: u8) -> u8 {
         res == 0,
         has_even_parity(res),
     );
-    return res;
+    res
 }
 
 pub fn byte_sar(vm: &mut VM, val: u8, num: u8) -> u8 {
@@ -182,11 +182,11 @@ pub fn byte_sar(vm: &mut VM, val: u8, num: u8) -> u8 {
         }
     } else {
         // instead of loop if msb is 1, shift the u8 max and OR it with number
-        res = val >> num | if msb == 0 { 0 } else { u8::MAX << 8 - num };
+        res = val >> num | if msb == 0 { 0 } else { u8::MAX << (8 - num) };
         // as the carry flag is set according to last bit
         // shifted out, we subtract 1 from num, and test
         // that bit
-        if val >> num - 1 & 1 == 1 {
+        if (val >> (num - 1)) & 1 == 1 {
             set_flag(&mut vm.arch.flag, Flags::CARRY);
         } else {
             unset_flag(&mut vm.arch.flag, Flags::CARRY);
@@ -199,7 +199,7 @@ pub fn byte_sar(vm: &mut VM, val: u8, num: u8) -> u8 {
         res == 0,
         has_even_parity(res),
     );
-    return res;
+    res
 }
 
 pub fn byte_shr(vm: &mut VM, val: u8, num: u8) -> u8 {
@@ -224,7 +224,7 @@ pub fn byte_shr(vm: &mut VM, val: u8, num: u8) -> u8 {
         // as the carry flag is set according to last bit
         // shifted out, we subtract 1 from num, and test
         // that bit
-        if val >> num - 1 & 1 == 1 {
+        if (val >> (num - 1)) & 1 == 1 {
             set_flag(&mut vm.arch.flag, Flags::CARRY);
         } else {
             unset_flag(&mut vm.arch.flag, Flags::CARRY);
@@ -237,7 +237,7 @@ pub fn byte_shr(vm: &mut VM, val: u8, num: u8) -> u8 {
         res == 0,
         has_even_parity(res),
     );
-    return res;
+    res
 }
 
 pub fn byte_rol(vm: &mut VM, val: u8, num: u8) -> u8 {
@@ -253,7 +253,7 @@ pub fn byte_rol(vm: &mut VM, val: u8, num: u8) -> u8 {
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    return res;
+    res
 }
 
 pub fn byte_ror(vm: &mut VM, val: u8, num: u8) -> u8 {
@@ -269,7 +269,7 @@ pub fn byte_ror(vm: &mut VM, val: u8, num: u8) -> u8 {
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    return res;
+    res
 }
 
 pub fn byte_rcl(vm: &mut VM, val: u8, num: u8) -> u8 {
@@ -277,7 +277,7 @@ pub fn byte_rcl(vm: &mut VM, val: u8, num: u8) -> u8 {
     let v = val as u16 | (vm.arch.flag & FLAG_CARRY) << 8; // add carry as the 9th bit
     let mask = u16::MAX << num;
     let rotated_part = v & mask;
-    let res = v << num | rotated_part >> 9 - num;
+    let res = v << num | rotated_part >> (9 - num);
     if res & 1 << 8 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
@@ -289,7 +289,7 @@ pub fn byte_rcl(vm: &mut VM, val: u8, num: u8) -> u8 {
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    return res;
+    res
 }
 
 pub fn byte_rcr(vm: &mut VM, val: u8, num: u8) -> u8 {
@@ -297,7 +297,7 @@ pub fn byte_rcr(vm: &mut VM, val: u8, num: u8) -> u8 {
     let v = val as u16 | (vm.arch.flag & FLAG_CARRY) << 8; // add carry as the 9th bit
     let mask = u16::MAX >> num;
     let rotated_part = v & mask;
-    let res = v >> num | rotated_part << 9 - num;
+    let res = v >> num | rotated_part << (9 - num);
     if res & 1 << 8 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
@@ -309,7 +309,7 @@ pub fn byte_rcr(vm: &mut VM, val: u8, num: u8) -> u8 {
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    return res;
+    res
 }
 
 pub fn word_sal(vm: &mut VM, val: u16, num: u16) -> u16 {
@@ -339,7 +339,7 @@ pub fn word_sal(vm: &mut VM, val: u16, num: u16) -> u16 {
         res == 0,
         has_even_parity(res as u8),
     );
-    return res;
+    res
 }
 
 pub fn word_sar(vm: &mut VM, val: u16, num: u16) -> u16 {
@@ -359,11 +359,11 @@ pub fn word_sar(vm: &mut VM, val: u16, num: u16) -> u16 {
             unset_flag(&mut vm.arch.flag, Flags::CARRY);
         }
     } else {
-        res = val >> num | if msb == 0 { 0 } else { u16::MAX << 16 - num };
+        res = val >> num | if msb == 0 { 0 } else { u16::MAX << (16 - num) };
         // as the carry flag is set according to last bit
         // shifted out, we subtract 1 from num, and test
         // that bit
-        if val >> num - 1 & 1 == 1 {
+        if (val >> (num - 1)) & 1 == 1 {
             set_flag(&mut vm.arch.flag, Flags::CARRY);
         } else {
             unset_flag(&mut vm.arch.flag, Flags::CARRY);
@@ -376,7 +376,7 @@ pub fn word_sar(vm: &mut VM, val: u16, num: u16) -> u16 {
         res == 0,
         has_even_parity(res as u8),
     );
-    return res;
+    res
 }
 
 pub fn word_shr(vm: &mut VM, val: u16, num: u16) -> u16 {
@@ -411,7 +411,7 @@ pub fn word_shr(vm: &mut VM, val: u16, num: u16) -> u16 {
         res == 0,
         has_even_parity(res as u8),
     );
-    return res;
+    res
 }
 
 pub fn word_rol(vm: &mut VM, val: u16, num: u16) -> u16 {
@@ -427,7 +427,7 @@ pub fn word_rol(vm: &mut VM, val: u16, num: u16) -> u16 {
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    return res;
+    res
 }
 
 pub fn word_ror(vm: &mut VM, val: u16, num: u16) -> u16 {
@@ -443,7 +443,7 @@ pub fn word_ror(vm: &mut VM, val: u16, num: u16) -> u16 {
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    return res;
+    res
 }
 
 pub fn word_rcl(vm: &mut VM, val: u16, num: u16) -> u16 {
@@ -451,7 +451,7 @@ pub fn word_rcl(vm: &mut VM, val: u16, num: u16) -> u16 {
     let v = val as u32 | ((vm.arch.flag & FLAG_CARRY) as u32) << 16;
     let mask = u32::MAX << num;
     let rotated_part = v & mask;
-    let res = v << num | rotated_part >> 17 - num;
+    let res = v << num | rotated_part >> (17 - num);
     if res & 1 << 16 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
@@ -463,7 +463,7 @@ pub fn word_rcl(vm: &mut VM, val: u16, num: u16) -> u16 {
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    return res;
+    res
 }
 
 pub fn word_rcr(vm: &mut VM, val: u16, num: u16) -> u16 {
@@ -471,7 +471,7 @@ pub fn word_rcr(vm: &mut VM, val: u16, num: u16) -> u16 {
     let v = val as u32 | ((vm.arch.flag & FLAG_CARRY) as u32) << 16;
     let mask = u32::MAX >> num;
     let rotated_part = v & mask;
-    let res = v >> num | rotated_part << 17 - num;
+    let res = v >> num | rotated_part << (17 - num);
     if res & 1 << 16 != 0 {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
     } else {
@@ -483,5 +483,5 @@ pub fn word_rcr(vm: &mut VM, val: u16, num: u16) -> u16 {
     } else {
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
     }
-    return res;
+    res
 }

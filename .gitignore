@@ -1,2 +1,6 @@
 /target
 Cargo.lock
+src/driver/print.rs
+src/lib/data_parser/data_parser.rs
+src/lib/interpreter/interpreter.rs
+src/lib/preprocessor/preprocessor.rs

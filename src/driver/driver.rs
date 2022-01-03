@@ -25,10 +25,10 @@ impl CMDDriver {
     /// ip is the program string
     /// interpreted is flag check to display user prompt after every instruction
     pub fn new(ip: String, interpreted: bool) -> Self {
-        return CMDDriver {
+        CMDDriver {
             input: ip,
-            interpreted: interpreted,
-        };
+            interpreted,
+        }
     }
 
     /// This method will compile the program then create vm, initialize it and run the interpreter
@@ -96,7 +96,7 @@ impl CMDDriver {
         // now we can set the data and run the code
         let source_map = mapper.get_source_map();
         let mut ictx = InterpreterContext {
-            fn_map: fn_map,
+            fn_map,
             label_map: lmap,
             call_stack: Vec::new(),
         };

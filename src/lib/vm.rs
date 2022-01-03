@@ -3,7 +3,7 @@ use std::boxed::Box;
 
 /// MB is defined here and should be imported to all other places from here
 /// so we can change size of memory from here
-pub const MB: u32 = 1 * 1024 * 1024;
+pub const MB: u32 = 1024 * 1024;
 
 // check https://retrocomputing.stackexchange.com/questions/2927/did-the-intel-8086-8088-not-guarantee-the-value-of-sssp-immediately-after-reset
 pub const DEFAULT_FLAG: u16 = 0xF000;
@@ -14,6 +14,12 @@ pub const CODE_SEG: u16 = 0xFFFF;
 pub struct VM {
     pub arch: i8086,
     pub mem: Box<[u8; MB as usize]>,
+}
+
+impl Default for VM {
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 impl VM {
@@ -27,7 +33,7 @@ impl VM {
         // Set default values for registers and flags
         ret.arch.flag = DEFAULT_FLAG;
         ret.arch.cs = CODE_SEG;
-        return ret;
+        ret
     }
 }
 
@@ -36,5 +42,4 @@ fn test_vm_init() {
     // This test is for checking if the vm is successfully created ,
     // as there are records of large array in box generating stack overflow
     let _ = VM::new();
-    assert!(true);
 }

@@ -32,7 +32,7 @@ pub fn preprocess(
                 let (line, lstart, lend) = get_err_pos(&helper, *start);
                 let pos_str = format!("{}:{} : {}", line, start - lstart, &input[lstart..lend]);
 
-                if token.1 == "" {
+                if token.1.is_empty() {
                     // error is custom, piggybacked on UnrecognizedToken type
                     return Err(format!("Syntax Error at {} :\n{}", pos_str, expected[0]));
                 } else {
@@ -47,8 +47,6 @@ pub fn preprocess(
                 return Err(format!("Syntax Error :\n{}", e));
             };
         }
-        Ok(_) => {
-            return Ok((helper, ctx, out));
-        }
+        Ok(_) => Ok((helper, ctx, out)),
     }
 }

@@ -35,7 +35,7 @@ impl LexerHelper {
             }
         }
         let max = self.newline_list.len();
-        return (max, self.newline_list[max - 1]);
+        (max, self.newline_list[max - 1])
     }
 
     /// get bounds of line containing the given position
@@ -51,11 +51,11 @@ impl LexerHelper {
         }
         // error on first line, so we return 0-> first newline
         if i == 0 {
-            return (0, self.newline_list[0]);
+            (0, self.newline_list[0])
         } else {
             // else we return from the last newline char position + 1 -> newline char at error line position
             // 1 is added to last newline position to skip the newline char itself
-            return (self.newline_list[i - 1] + 1, self.newline_list[i]);
+            (self.newline_list[i - 1] + 1, self.newline_list[i])
         }
     }
 }

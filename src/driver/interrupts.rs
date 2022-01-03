@@ -42,10 +42,7 @@ pub fn int_21(vm: &mut VM, ah: u8) {
             }
         };
         // take the first byte, if nothing read, default to 0
-        let byte = match input.bytes().nth(0) {
-            Some(a) => a,
-            None => 0,
-        };
+        let byte = *input.as_bytes().get(0).unwrap_or(&0);
         set_byte_reg(vm, ByteReg::AL, byte);
     }
     // to print a single char
@@ -80,10 +77,8 @@ pub fn int_21(vm: &mut VM, ah: u8) {
             vm.mem[start + 1] = max;
         }
         // store the characters
-        let mut ctr = 0;
-        for i in input.bytes() {
+        for (ctr, i) in input.bytes().enumerate() {
             vm.mem[start + 2 + ctr] = i;
-            ctr += 1;
         }
     }
 }
