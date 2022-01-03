@@ -160,10 +160,10 @@ fn test_unary_arithmetic() {
     vm.arch.bx = 0x00FF;
     let o = p.parse(1, &mut vm, &mut context, "neg bl");
     assert!(o.is_ok());
-    assert_eq!(vm.arch.bx, 0x0000);
-    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert_eq!(vm.arch.bx, 0x0001);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
     assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
-    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
     let o = p.parse(1, &mut vm, &mut context, "neg bx");
     assert!(o.is_ok());
     assert_eq!(vm.arch.bx, 0xFFFF);
