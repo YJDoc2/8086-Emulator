@@ -1,5 +1,5 @@
-// auto-generated: "lalrpop 0.19.1"
-// sha256: 9244637057316e92ce826f9a49d6eff4c0dcc66b7d908bd1c73bacfd1ec60
+// auto-generated: "lalrpop 0.19.6"
+// sha3: 4e2e1a896c331dbc9a7f46215bceee804144fa5dda1934e5315b1df195d2bcb
 use crate::util::preprocessor_util as util;
 use util::{Label,LabelType};
 use crate::vm::MB;
@@ -10,6 +10,8 @@ use lalrpop_util::ParseError;
 extern crate lalrpop_util as __lalrpop_util;
 #[allow(unused_imports)]
 use self::__lalrpop_util::state_machine as __state_machine;
+extern crate core;
+extern crate alloc;
 
 #[cfg_attr(rustfmt, rustfmt_skip)]
 mod __parse__Preprocessor {
@@ -25,19 +27,21 @@ mod __parse__Preprocessor {
     extern crate lalrpop_util as __lalrpop_util;
     #[allow(unused_imports)]
     use self::__lalrpop_util::state_machine as __state_machine;
+    extern crate core;
+    extern crate alloc;
     use self::__lalrpop_util::lexer::Token;
     #[allow(dead_code)]
-    pub enum __Symbol<'input>
+    pub(crate) enum __Symbol<'input>
      {
         Variant0(&'input str),
         Variant1(i16),
-        Variant2(::std::option::Option<i16>),
+        Variant2(core::option::Option<i16>),
         Variant3(String),
-        Variant4(::std::vec::Vec<String>),
-        Variant5(::std::option::Option<String>),
+        Variant4(alloc::vec::Vec<String>),
+        Variant5(core::option::Option<String>),
         Variant6(usize),
         Variant7(()),
-        Variant8(::std::option::Option<()>),
+        Variant8(core::option::Option<()>),
         Variant9(Vec<String>),
         Variant10(u16),
         Variant11(u32),
@@ -3419,7 +3423,7 @@ mod __parse__Preprocessor {
             _ => 0,
         }
     }
-    fn __expected_tokens(__state: i16) -> Vec<::std::string::String> {
+    fn __expected_tokens(__state: i16) -> alloc::vec::Vec<alloc::string::String> {
         const __TERMINAL: &[&str] = &[
             r###""(""###,
             r###"")""###,
@@ -3730,17 +3734,17 @@ mod __parse__Preprocessor {
             if next_state == 0 {
                 None
             } else {
-                Some(terminal.to_string())
+                Some(alloc::string::ToString::to_string(terminal))
             }
         }).collect()
     }
-    pub struct __StateMachine<'input, 's>
+    pub(crate) struct __StateMachine<'input, 's>
     where 
     {
         context: &'s mut util::Context,
         out: &'s mut util::Output,
         input: &'input str,
-        __phantom: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __phantom: core::marker::PhantomData<(&'input (), &'s ())>,
     }
     impl<'input, 's> __state_machine::ParserDefinition for __StateMachine<'input, 's>
     where 
@@ -3768,7 +3772,7 @@ mod __parse__Preprocessor {
 
         #[inline]
         fn token_to_index(&self, token: &Self::Token) -> Option<usize> {
-            __token_to_integer(token, ::std::marker::PhantomData::<(&(), &())>)
+            __token_to_integer(token, core::marker::PhantomData::<(&(), &())>)
         }
 
         #[inline]
@@ -3792,10 +3796,10 @@ mod __parse__Preprocessor {
         }
 
         fn token_to_symbol(&self, token_index: usize, token: Self::Token) -> Self::Symbol {
-            __token_to_symbol(token_index, token, ::std::marker::PhantomData::<(&(), &())>)
+            __token_to_symbol(token_index, token, core::marker::PhantomData::<(&(), &())>)
         }
 
-        fn expected_tokens(&self, state: i16) -> Vec<String> {
+        fn expected_tokens(&self, state: i16) -> alloc::vec::Vec<alloc::string::String> {
             __expected_tokens(state)
         }
 
@@ -3816,8 +3820,8 @@ mod __parse__Preprocessor {
             &mut self,
             action: i16,
             start_location: Option<&Self::Location>,
-            states: &mut Vec<i16>,
-            symbols: &mut Vec<__state_machine::SymbolTriple<Self>>,
+            states: &mut alloc::vec::Vec<i16>,
+            symbols: &mut alloc::vec::Vec<__state_machine::SymbolTriple<Self>>,
         ) -> Option<__state_machine::ParseResult<Self>> {
             __reduce(
                 self.context,
@@ -3827,7 +3831,7 @@ mod __parse__Preprocessor {
                 start_location,
                 states,
                 symbols,
-                ::std::marker::PhantomData::<(&(), &())>,
+                core::marker::PhantomData::<(&(), &())>,
             )
         }
 
@@ -3840,7 +3844,7 @@ mod __parse__Preprocessor {
         's,
     >(
         __token: &Token<'input>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> Option<usize>
     {
         match *__token {
@@ -4156,7 +4160,7 @@ mod __parse__Preprocessor {
     >(
         __token_index: usize,
         __token: Token<'input>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> __Symbol<'input>
     {
         match __token_index {
@@ -4198,7 +4202,7 @@ mod __parse__Preprocessor {
                     context,
                     out,
                     input,
-                    __phantom: ::std::marker::PhantomData::<(&(), &())>,
+                    __phantom: core::marker::PhantomData::<(&(), &())>,
                 },
                 __tokens,
             )
@@ -4213,137 +4217,137 @@ mod __parse__Preprocessor {
         input: &'input str,
         __action: i16,
         __lookahead_start: Option<&usize>,
-        __states: &mut ::std::vec::Vec<i16>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __states: &mut alloc::vec::Vec<i16>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> Option<Result<(),__lalrpop_util::ParseError<usize, Token<'input>, &'static str>>>
     {
         let (__pop_states, __nonterminal) = match __action {
             0 => {
-                __reduce0(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce0(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             1 => {
-                __reduce1(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce1(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             2 => {
-                __reduce2(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce2(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             3 => {
-                __reduce3(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce3(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             4 => {
-                __reduce4(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce4(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             5 => {
-                __reduce5(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce5(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             6 => {
-                __reduce6(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce6(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             7 => {
-                __reduce7(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce7(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             8 => {
-                __reduce8(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce8(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             9 => {
-                __reduce9(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce9(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             10 => {
-                __reduce10(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce10(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             11 => {
-                __reduce11(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce11(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             12 => {
-                __reduce12(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce12(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             13 => {
-                __reduce13(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce13(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             14 => {
-                __reduce14(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce14(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             15 => {
-                __reduce15(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce15(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             16 => {
-                __reduce16(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce16(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             17 => {
-                __reduce17(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce17(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             18 => {
-                __reduce18(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce18(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             19 => {
-                __reduce19(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce19(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             20 => {
-                __reduce20(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce20(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             21 => {
-                __reduce21(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce21(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             22 => {
-                __reduce22(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce22(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             23 => {
-                __reduce23(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce23(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             24 => {
-                __reduce24(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce24(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             25 => {
-                __reduce25(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce25(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             26 => {
-                __reduce26(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce26(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             27 => {
-                __reduce27(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce27(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             28 => {
-                __reduce28(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce28(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             29 => {
-                __reduce29(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce29(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             30 => {
-                __reduce30(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce30(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             31 => {
-                __reduce31(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce31(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             32 => {
-                __reduce32(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce32(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             33 => {
-                __reduce33(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce33(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             34 => {
-                __reduce34(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce34(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             35 => {
-                __reduce35(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce35(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             36 => {
-                __reduce36(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce36(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             37 => {
-                __reduce37(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce37(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             38 => {
-                __reduce38(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce38(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             39 => {
-                __reduce39(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce39(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             40 => {
-                __reduce40(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce40(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             41 => {
-                __reduce41(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce41(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             42 => {
                 // __Preprocessor = Preprocessor => ActionFn(0);
@@ -4354,136 +4358,136 @@ mod __parse__Preprocessor {
                 return Some(Ok(__nt));
             }
             43 => {
-                __reduce43(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce43(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             44 => {
-                __reduce44(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce44(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             45 => {
-                __reduce45(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce45(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             46 => {
-                __reduce46(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce46(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             47 => {
-                __reduce47(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce47(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             48 => {
-                __reduce48(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce48(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             49 => {
-                __reduce49(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce49(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             50 => {
-                __reduce50(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce50(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             51 => {
-                __reduce51(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce51(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             52 => {
-                __reduce52(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce52(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             53 => {
-                __reduce53(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce53(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             54 => {
-                __reduce54(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce54(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             55 => {
-                __reduce55(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce55(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             56 => {
-                __reduce56(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce56(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             57 => {
-                __reduce57(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce57(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             58 => {
-                __reduce58(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce58(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             59 => {
-                __reduce59(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce59(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             60 => {
-                __reduce60(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce60(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             61 => {
-                __reduce61(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce61(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             62 => {
-                __reduce62(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce62(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             63 => {
-                __reduce63(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce63(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             64 => {
-                __reduce64(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce64(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             65 => {
-                __reduce65(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce65(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             66 => {
-                __reduce66(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce66(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             67 => {
-                __reduce67(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce67(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             68 => {
-                __reduce68(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce68(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             69 => {
-                __reduce69(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce69(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             70 => {
-                __reduce70(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce70(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             71 => {
-                __reduce71(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce71(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             72 => {
-                __reduce72(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce72(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             73 => {
-                __reduce73(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce73(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             74 => {
-                __reduce74(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce74(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             75 => {
-                __reduce75(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce75(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             76 => {
-                __reduce76(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce76(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             77 => {
-                __reduce77(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce77(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             78 => {
-                __reduce78(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce78(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             79 => {
-                __reduce79(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce79(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             80 => {
-                __reduce80(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce80(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             81 => {
-                __reduce81(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce81(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             82 => {
-                __reduce82(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce82(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             83 => {
-                __reduce83(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce83(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             84 => {
-                __reduce84(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce84(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             85 => {
-                __reduce85(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce85(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             86 => {
-                __reduce86(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce86(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             87 => {
                 // byte_label = quote_byte_length, name_string => ActionFn(720);
@@ -4514,19 +4518,19 @@ mod __parse__Preprocessor {
                 (2, 25)
             }
             89 => {
-                __reduce89(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce89(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             90 => {
-                __reduce90(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce90(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             91 => {
-                __reduce91(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce91(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             92 => {
-                __reduce92(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce92(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             93 => {
-                __reduce93(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce93(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             94 => {
                 // control_unsupported = quote_control_unsuppoted => ActionFn(722);
@@ -4541,79 +4545,79 @@ mod __parse__Preprocessor {
                 (1, 29)
             }
             95 => {
-                __reduce95(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce95(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             96 => {
-                __reduce96(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce96(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             97 => {
-                __reduce97(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce97(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             98 => {
-                __reduce98(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce98(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             99 => {
-                __reduce99(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce99(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             100 => {
-                __reduce100(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce100(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             101 => {
-                __reduce101(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce101(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             102 => {
-                __reduce102(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce102(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             103 => {
-                __reduce103(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce103(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             104 => {
-                __reduce104(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce104(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             105 => {
-                __reduce105(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce105(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             106 => {
-                __reduce106(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce106(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             107 => {
-                __reduce107(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce107(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             108 => {
-                __reduce108(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce108(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             109 => {
-                __reduce109(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce109(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             110 => {
-                __reduce110(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce110(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             111 => {
-                __reduce111(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce111(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             112 => {
-                __reduce112(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce112(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             113 => {
-                __reduce113(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce113(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             114 => {
-                __reduce114(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce114(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             115 => {
-                __reduce115(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce115(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             116 => {
-                __reduce116(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce116(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             117 => {
-                __reduce117(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce117(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             118 => {
-                __reduce118(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce118(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             119 => {
-                __reduce119(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce119(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             120 => {
                 // db_directive = label, quote_db, r#"\"[[:ascii:]]*\""# => ActionFn(763);
@@ -4645,22 +4649,22 @@ mod __parse__Preprocessor {
                 (2, 34)
             }
             122 => {
-                __reduce122(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce122(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             123 => {
-                __reduce123(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce123(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             124 => {
-                __reduce124(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce124(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             125 => {
-                __reduce125(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce125(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             126 => {
-                __reduce126(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce126(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             127 => {
-                __reduce127(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce127(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             128 => {
                 // dw_directive = label, quote_dw, r#"\"[[:ascii:]]*\""# => ActionFn(771);
@@ -4692,124 +4696,124 @@ mod __parse__Preprocessor {
                 (2, 35)
             }
             130 => {
-                __reduce130(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce130(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             131 => {
-                __reduce131(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce131(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             132 => {
-                __reduce132(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce132(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             133 => {
-                __reduce133(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce133(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             134 => {
-                __reduce134(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce134(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             135 => {
-                __reduce135(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce135(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             136 => {
-                __reduce136(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce136(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             137 => {
-                __reduce137(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce137(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             138 => {
-                __reduce138(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce138(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             139 => {
-                __reduce139(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce139(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             140 => {
-                __reduce140(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce140(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             141 => {
-                __reduce141(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce141(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             142 => {
-                __reduce142(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce142(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             143 => {
-                __reduce143(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce143(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             144 => {
-                __reduce144(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce144(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             145 => {
-                __reduce145(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce145(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             146 => {
-                __reduce146(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce146(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             147 => {
-                __reduce147(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce147(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             148 => {
-                __reduce148(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce148(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             149 => {
-                __reduce149(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce149(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             150 => {
-                __reduce150(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce150(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             151 => {
-                __reduce151(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce151(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             152 => {
-                __reduce152(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce152(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             153 => {
-                __reduce153(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce153(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             154 => {
-                __reduce154(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce154(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             155 => {
-                __reduce155(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce155(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             156 => {
-                __reduce156(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce156(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             157 => {
-                __reduce157(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce157(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             158 => {
-                __reduce158(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce158(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             159 => {
-                __reduce159(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce159(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             160 => {
-                __reduce160(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce160(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             161 => {
-                __reduce161(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce161(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             162 => {
-                __reduce162(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce162(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             163 => {
-                __reduce163(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce163(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             164 => {
-                __reduce164(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce164(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             165 => {
-                __reduce165(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce165(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             166 => {
-                __reduce166(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce166(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             167 => {
-                __reduce167(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce167(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             168 => {
-                __reduce168(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce168(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             169 => {
-                __reduce169(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce169(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             170 => {
                 // int = quote_int, u_byte_num => ActionFn(725);
@@ -4864,16 +4868,16 @@ mod __parse__Preprocessor {
                 (1, 45)
             }
             174 => {
-                __reduce174(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce174(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             175 => {
-                __reduce175(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce175(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             176 => {
-                __reduce176(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce176(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             177 => {
-                __reduce177(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce177(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             178 => {
                 // load_ptr = quote_load_ptr, gen_reg, ",", memory_addr => ActionFn(625);
@@ -4892,7 +4896,7 @@ mod __parse__Preprocessor {
                 (4, 48)
             }
             179 => {
-                __reduce179(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce179(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             180 => {
                 // macro_use = r#"[_a-zA-Z][_a-zA-Z0-9]*"#, "(", CommaSepList<general_string>, ")" => ActionFn(728);
@@ -4911,136 +4915,136 @@ mod __parse__Preprocessor {
                 (4, 50)
             }
             181 => {
-                __reduce181(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce181(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             182 => {
-                __reduce182(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce182(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             183 => {
-                __reduce183(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce183(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             184 => {
-                __reduce184(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce184(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             185 => {
-                __reduce185(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce185(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             186 => {
-                __reduce186(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce186(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             187 => {
-                __reduce187(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce187(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             188 => {
-                __reduce188(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce188(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             189 => {
-                __reduce189(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce189(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             190 => {
-                __reduce190(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce190(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             191 => {
-                __reduce191(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce191(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             192 => {
-                __reduce192(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce192(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             193 => {
-                __reduce193(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce193(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             194 => {
-                __reduce194(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce194(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             195 => {
-                __reduce195(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce195(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             196 => {
-                __reduce196(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce196(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             197 => {
-                __reduce197(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce197(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             198 => {
-                __reduce198(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce198(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             199 => {
-                __reduce199(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce199(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             200 => {
-                __reduce200(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce200(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             201 => {
-                __reduce201(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce201(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             202 => {
-                __reduce202(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce202(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             203 => {
-                __reduce203(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce203(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             204 => {
-                __reduce204(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce204(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             205 => {
-                __reduce205(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce205(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             206 => {
-                __reduce206(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce206(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             207 => {
-                __reduce207(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce207(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             208 => {
-                __reduce208(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce208(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             209 => {
-                __reduce209(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce209(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             210 => {
-                __reduce210(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce210(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             211 => {
-                __reduce211(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce211(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             212 => {
-                __reduce212(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce212(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             213 => {
-                __reduce213(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce213(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             214 => {
-                __reduce214(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce214(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             215 => {
-                __reduce215(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce215(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             216 => {
-                __reduce216(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce216(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             217 => {
-                __reduce217(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce217(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             218 => {
-                __reduce218(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce218(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             219 => {
-                __reduce219(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce219(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             220 => {
-                __reduce220(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce220(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             221 => {
-                __reduce221(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce221(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             222 => {
-                __reduce222(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce222(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             223 => {
-                __reduce223(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce223(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             224 => {
-                __reduce224(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce224(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             225 => {
                 // offset = quote_offset, name_string => ActionFn(729);
@@ -5121,61 +5125,61 @@ mod __parse__Preprocessor {
                 (4, 59)
             }
             230 => {
-                __reduce230(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce230(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             231 => {
-                __reduce231(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce231(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             232 => {
-                __reduce232(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce232(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             233 => {
-                __reduce233(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce233(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             234 => {
-                __reduce234(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce234(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             235 => {
-                __reduce235(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce235(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             236 => {
-                __reduce236(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce236(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             237 => {
-                __reduce237(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce237(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             238 => {
-                __reduce238(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce238(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             239 => {
-                __reduce239(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce239(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             240 => {
-                __reduce240(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce240(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             241 => {
-                __reduce241(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce241(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             242 => {
-                __reduce242(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce242(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             243 => {
-                __reduce243(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce243(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             244 => {
-                __reduce244(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce244(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             245 => {
-                __reduce245(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce245(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             246 => {
-                __reduce246(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce246(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             247 => {
-                __reduce247(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce247(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             248 => {
-                __reduce248(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce248(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             249 => {
                 // print_stmt = quote_print, quote_mem, raw_addr, ":", raw_addr => ActionFn(730);
@@ -5195,19 +5199,19 @@ mod __parse__Preprocessor {
                 (5, 63)
             }
             250 => {
-                __reduce250(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce250(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             251 => {
-                __reduce251(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce251(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             252 => {
-                __reduce252(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce252(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             253 => {
-                __reduce253(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce253(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             254 => {
-                __reduce254(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce254(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             255 => {
                 // proc_def = quote_proc, name_string => ActionFn(731);
@@ -5224,751 +5228,751 @@ mod __parse__Preprocessor {
                 (2, 65)
             }
             256 => {
-                __reduce256(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce256(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             257 => {
-                __reduce257(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce257(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             258 => {
-                __reduce258(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce258(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             259 => {
-                __reduce259(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce259(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             260 => {
-                __reduce260(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce260(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             261 => {
-                __reduce261(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce261(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             262 => {
-                __reduce262(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce262(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             263 => {
-                __reduce263(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce263(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             264 => {
-                __reduce264(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce264(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             265 => {
-                __reduce265(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce265(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             266 => {
-                __reduce266(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce266(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             267 => {
-                __reduce267(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce267(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             268 => {
-                __reduce268(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce268(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             269 => {
-                __reduce269(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce269(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             270 => {
-                __reduce270(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce270(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             271 => {
-                __reduce271(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce271(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             272 => {
-                __reduce272(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce272(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             273 => {
-                __reduce273(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce273(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             274 => {
-                __reduce274(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce274(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             275 => {
-                __reduce275(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce275(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             276 => {
-                __reduce276(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce276(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             277 => {
-                __reduce277(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce277(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             278 => {
-                __reduce278(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce278(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             279 => {
-                __reduce279(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce279(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             280 => {
-                __reduce280(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce280(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             281 => {
-                __reduce281(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce281(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             282 => {
-                __reduce282(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce282(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             283 => {
-                __reduce283(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce283(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             284 => {
-                __reduce284(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce284(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             285 => {
-                __reduce285(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce285(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             286 => {
-                __reduce286(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce286(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             287 => {
-                __reduce287(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce287(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             288 => {
-                __reduce288(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce288(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             289 => {
-                __reduce289(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce289(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             290 => {
-                __reduce290(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce290(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             291 => {
-                __reduce291(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce291(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             292 => {
-                __reduce292(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce292(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             293 => {
-                __reduce293(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce293(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             294 => {
-                __reduce294(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce294(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             295 => {
-                __reduce295(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce295(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             296 => {
-                __reduce296(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce296(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             297 => {
-                __reduce297(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce297(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             298 => {
-                __reduce298(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce298(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             299 => {
-                __reduce299(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce299(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             300 => {
-                __reduce300(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce300(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             301 => {
-                __reduce301(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce301(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             302 => {
-                __reduce302(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce302(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             303 => {
-                __reduce303(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce303(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             304 => {
-                __reduce304(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce304(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             305 => {
-                __reduce305(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce305(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             306 => {
-                __reduce306(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce306(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             307 => {
-                __reduce307(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce307(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             308 => {
-                __reduce308(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce308(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             309 => {
-                __reduce309(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce309(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             310 => {
-                __reduce310(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce310(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             311 => {
-                __reduce311(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce311(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             312 => {
-                __reduce312(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce312(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             313 => {
-                __reduce313(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce313(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             314 => {
-                __reduce314(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce314(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             315 => {
-                __reduce315(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce315(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             316 => {
-                __reduce316(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce316(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             317 => {
-                __reduce317(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce317(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             318 => {
-                __reduce318(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce318(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             319 => {
-                __reduce319(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce319(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             320 => {
-                __reduce320(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce320(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             321 => {
-                __reduce321(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce321(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             322 => {
-                __reduce322(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce322(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             323 => {
-                __reduce323(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce323(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             324 => {
-                __reduce324(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce324(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             325 => {
-                __reduce325(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce325(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             326 => {
-                __reduce326(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce326(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             327 => {
-                __reduce327(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce327(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             328 => {
-                __reduce328(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce328(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             329 => {
-                __reduce329(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce329(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             330 => {
-                __reduce330(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce330(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             331 => {
-                __reduce331(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce331(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             332 => {
-                __reduce332(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce332(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             333 => {
-                __reduce333(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce333(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             334 => {
-                __reduce334(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce334(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             335 => {
-                __reduce335(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce335(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             336 => {
-                __reduce336(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce336(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             337 => {
-                __reduce337(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce337(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             338 => {
-                __reduce338(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce338(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             339 => {
-                __reduce339(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce339(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             340 => {
-                __reduce340(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce340(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             341 => {
-                __reduce341(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce341(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             342 => {
-                __reduce342(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce342(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             343 => {
-                __reduce343(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce343(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             344 => {
-                __reduce344(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce344(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             345 => {
-                __reduce345(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce345(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             346 => {
-                __reduce346(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce346(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             347 => {
-                __reduce347(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce347(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             348 => {
-                __reduce348(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce348(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             349 => {
-                __reduce349(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce349(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             350 => {
-                __reduce350(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce350(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             351 => {
-                __reduce351(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce351(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             352 => {
-                __reduce352(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce352(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             353 => {
-                __reduce353(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce353(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             354 => {
-                __reduce354(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce354(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             355 => {
-                __reduce355(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce355(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             356 => {
-                __reduce356(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce356(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             357 => {
-                __reduce357(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce357(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             358 => {
-                __reduce358(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce358(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             359 => {
-                __reduce359(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce359(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             360 => {
-                __reduce360(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce360(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             361 => {
-                __reduce361(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce361(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             362 => {
-                __reduce362(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce362(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             363 => {
-                __reduce363(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce363(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             364 => {
-                __reduce364(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce364(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             365 => {
-                __reduce365(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce365(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             366 => {
-                __reduce366(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce366(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             367 => {
-                __reduce367(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce367(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             368 => {
-                __reduce368(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce368(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             369 => {
-                __reduce369(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce369(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             370 => {
-                __reduce370(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce370(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             371 => {
-                __reduce371(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce371(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             372 => {
-                __reduce372(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce372(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             373 => {
-                __reduce373(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce373(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             374 => {
-                __reduce374(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce374(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             375 => {
-                __reduce375(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce375(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             376 => {
-                __reduce376(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce376(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             377 => {
-                __reduce377(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce377(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             378 => {
-                __reduce378(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce378(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             379 => {
-                __reduce379(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce379(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             380 => {
-                __reduce380(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce380(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             381 => {
-                __reduce381(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce381(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             382 => {
-                __reduce382(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce382(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             383 => {
-                __reduce383(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce383(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             384 => {
-                __reduce384(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce384(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             385 => {
-                __reduce385(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce385(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             386 => {
-                __reduce386(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce386(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             387 => {
-                __reduce387(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce387(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             388 => {
-                __reduce388(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce388(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             389 => {
-                __reduce389(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce389(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             390 => {
-                __reduce390(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce390(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             391 => {
-                __reduce391(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce391(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             392 => {
-                __reduce392(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce392(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             393 => {
-                __reduce393(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce393(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             394 => {
-                __reduce394(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce394(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             395 => {
-                __reduce395(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce395(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             396 => {
-                __reduce396(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce396(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             397 => {
-                __reduce397(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce397(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             398 => {
-                __reduce398(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce398(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             399 => {
-                __reduce399(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce399(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             400 => {
-                __reduce400(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce400(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             401 => {
-                __reduce401(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce401(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             402 => {
-                __reduce402(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce402(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             403 => {
-                __reduce403(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce403(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             404 => {
-                __reduce404(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce404(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             405 => {
-                __reduce405(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce405(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             406 => {
-                __reduce406(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce406(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             407 => {
-                __reduce407(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce407(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             408 => {
-                __reduce408(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce408(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             409 => {
-                __reduce409(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce409(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             410 => {
-                __reduce410(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce410(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             411 => {
-                __reduce411(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce411(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             412 => {
-                __reduce412(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce412(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             413 => {
-                __reduce413(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce413(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             414 => {
-                __reduce414(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce414(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             415 => {
-                __reduce415(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce415(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             416 => {
-                __reduce416(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce416(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             417 => {
-                __reduce417(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce417(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             418 => {
-                __reduce418(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce418(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             419 => {
-                __reduce419(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce419(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             420 => {
-                __reduce420(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce420(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             421 => {
-                __reduce421(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce421(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             422 => {
-                __reduce422(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce422(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             423 => {
-                __reduce423(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce423(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             424 => {
-                __reduce424(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce424(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             425 => {
-                __reduce425(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce425(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             426 => {
-                __reduce426(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce426(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             427 => {
-                __reduce427(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce427(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             428 => {
-                __reduce428(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce428(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             429 => {
-                __reduce429(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce429(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             430 => {
-                __reduce430(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce430(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             431 => {
-                __reduce431(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce431(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             432 => {
-                __reduce432(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce432(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             433 => {
-                __reduce433(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce433(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             434 => {
-                __reduce434(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce434(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             435 => {
-                __reduce435(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce435(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             436 => {
-                __reduce436(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce436(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             437 => {
-                __reduce437(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce437(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             438 => {
-                __reduce438(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce438(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             439 => {
-                __reduce439(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce439(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             440 => {
-                __reduce440(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce440(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             441 => {
-                __reduce441(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce441(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             442 => {
-                __reduce442(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce442(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             443 => {
-                __reduce443(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce443(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             444 => {
-                __reduce444(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce444(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             445 => {
-                __reduce445(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce445(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             446 => {
-                __reduce446(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce446(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             447 => {
-                __reduce447(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce447(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             448 => {
-                __reduce448(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce448(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             449 => {
-                __reduce449(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce449(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             450 => {
-                __reduce450(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce450(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             451 => {
-                __reduce451(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce451(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             452 => {
-                __reduce452(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce452(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             453 => {
-                __reduce453(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce453(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             454 => {
-                __reduce454(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce454(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             455 => {
-                __reduce455(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce455(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             456 => {
-                __reduce456(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce456(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             457 => {
-                __reduce457(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce457(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             458 => {
-                __reduce458(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce458(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             459 => {
-                __reduce459(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce459(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             460 => {
-                __reduce460(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce460(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             461 => {
-                __reduce461(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce461(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             462 => {
-                __reduce462(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce462(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             463 => {
-                __reduce463(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce463(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             464 => {
-                __reduce464(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce464(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             465 => {
-                __reduce465(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce465(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             466 => {
-                __reduce466(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce466(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             467 => {
-                __reduce467(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce467(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             468 => {
-                __reduce468(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce468(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             469 => {
-                __reduce469(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce469(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             470 => {
-                __reduce470(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce470(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             471 => {
-                __reduce471(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce471(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             472 => {
-                __reduce472(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce472(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             473 => {
-                __reduce473(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce473(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             474 => {
-                __reduce474(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce474(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             475 => {
-                __reduce475(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce475(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             476 => {
-                __reduce476(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce476(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             477 => {
-                __reduce477(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce477(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             478 => {
-                __reduce478(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce478(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             479 => {
-                __reduce479(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce479(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             480 => {
-                __reduce480(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce480(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             481 => {
-                __reduce481(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce481(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             482 => {
-                __reduce482(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce482(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             483 => {
-                __reduce483(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce483(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             484 => {
-                __reduce484(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce484(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             485 => {
-                __reduce485(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce485(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             486 => {
-                __reduce486(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce486(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             487 => {
-                __reduce487(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce487(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             488 => {
-                __reduce488(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce488(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             489 => {
-                __reduce489(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce489(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             490 => {
-                __reduce490(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce490(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             491 => {
-                __reduce491(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce491(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             492 => {
-                __reduce492(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce492(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             493 => {
-                __reduce493(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce493(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             494 => {
-                __reduce494(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce494(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             495 => {
-                __reduce495(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce495(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             496 => {
-                __reduce496(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce496(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             497 => {
-                __reduce497(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce497(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             498 => {
-                __reduce498(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce498(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             499 => {
-                __reduce499(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce499(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             500 => {
-                __reduce500(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce500(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             501 => {
-                __reduce501(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce501(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             502 => {
-                __reduce502(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce502(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             503 => {
-                __reduce503(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce503(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             504 => {
-                __reduce504(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce504(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             505 => {
                 // raw_addr = r#"[0-9]+"# => ActionFn(733);
@@ -6007,16 +6011,16 @@ mod __parse__Preprocessor {
                 (1, 106)
             }
             508 => {
-                __reduce508(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce508(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             509 => {
-                __reduce509(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce509(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             510 => {
-                __reduce510(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce510(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             511 => {
-                __reduce511(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce511(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             512 => {
                 // s_byte_num = r#"-[0-9]+"# => ActionFn(737);
@@ -6031,7 +6035,7 @@ mod __parse__Preprocessor {
                 (1, 109)
             }
             513 => {
-                __reduce513(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce513(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             514 => {
                 // s_word_num = r#"-[0-9]+"# => ActionFn(738);
@@ -6046,112 +6050,112 @@ mod __parse__Preprocessor {
                 (1, 110)
             }
             515 => {
-                __reduce515(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce515(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             516 => {
-                __reduce516(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce516(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             517 => {
-                __reduce517(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce517(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             518 => {
-                __reduce518(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce518(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             519 => {
-                __reduce519(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce519(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             520 => {
-                __reduce520(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce520(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             521 => {
-                __reduce521(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce521(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             522 => {
-                __reduce522(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce522(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             523 => {
-                __reduce523(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce523(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             524 => {
-                __reduce524(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce524(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             525 => {
-                __reduce525(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce525(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             526 => {
-                __reduce526(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce526(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             527 => {
-                __reduce527(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce527(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             528 => {
-                __reduce528(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce528(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             529 => {
-                __reduce529(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce529(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             530 => {
-                __reduce530(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce530(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             531 => {
-                __reduce531(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce531(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             532 => {
-                __reduce532(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce532(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             533 => {
-                __reduce533(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce533(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             534 => {
-                __reduce534(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce534(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             535 => {
-                __reduce535(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce535(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             536 => {
-                __reduce536(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce536(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             537 => {
-                __reduce537(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce537(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             538 => {
-                __reduce538(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce538(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             539 => {
-                __reduce539(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce539(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             540 => {
-                __reduce540(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce540(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             541 => {
-                __reduce541(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce541(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             542 => {
-                __reduce542(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce542(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             543 => {
-                __reduce543(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce543(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             544 => {
-                __reduce544(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce544(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             545 => {
-                __reduce545(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce545(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             546 => {
-                __reduce546(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce546(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             547 => {
-                __reduce547(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce547(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             548 => {
-                __reduce548(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce548(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             549 => {
-                __reduce549(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce549(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             550 => {
-                __reduce550(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce550(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             551 => {
                 // u_byte_num = r#"[0-9]+"# => ActionFn(739);
@@ -6238,22 +6242,22 @@ mod __parse__Preprocessor {
                 (1, 123)
             }
             558 => {
-                __reduce558(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce558(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             559 => {
-                __reduce559(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce559(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             560 => {
-                __reduce560(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce560(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             561 => {
-                __reduce561(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce561(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             562 => {
-                __reduce562(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce562(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             563 => {
-                __reduce563(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce563(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             564 => {
                 // word_label = quote_word_length, name_string => ActionFn(746);
@@ -6270,34 +6274,34 @@ mod __parse__Preprocessor {
                 (2, 125)
             }
             565 => {
-                __reduce565(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce565(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             566 => {
-                __reduce566(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce566(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             567 => {
-                __reduce567(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce567(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             568 => {
-                __reduce568(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce568(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             569 => {
-                __reduce569(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce569(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             570 => {
-                __reduce570(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce570(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             571 => {
-                __reduce571(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce571(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             572 => {
-                __reduce572(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce572(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             573 => {
-                __reduce573(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce573(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             574 => {
-                __reduce574(context, out, input, __lookahead_start, __symbols, ::std::marker::PhantomData::<(&(), &())>)
+                __reduce574(context, out, input, __lookahead_start, __symbols, core::marker::PhantomData::<(&(), &())>)
             }
             _ => panic!("invalid action code {}", __action)
         };
@@ -6315,7 +6319,7 @@ mod __parse__Preprocessor {
     fn __pop_Variant7<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, (), usize)
      {
         match __symbols.pop() {
@@ -6326,7 +6330,7 @@ mod __parse__Preprocessor {
     fn __pop_Variant3<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, String, usize)
      {
         match __symbols.pop() {
@@ -6337,7 +6341,7 @@ mod __parse__Preprocessor {
     fn __pop_Variant9<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, Vec<String>, usize)
      {
         match __symbols.pop() {
@@ -6345,10 +6349,54 @@ mod __parse__Preprocessor {
             _ => __symbol_type_mismatch()
         }
     }
+    fn __pop_Variant4<
+      'input,
+    >(
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
+    ) -> (usize, alloc::vec::Vec<String>, usize)
+     {
+        match __symbols.pop() {
+            Some((__l, __Symbol::Variant4(__v), __r)) => (__l, __v, __r),
+            _ => __symbol_type_mismatch()
+        }
+    }
+    fn __pop_Variant8<
+      'input,
+    >(
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
+    ) -> (usize, core::option::Option<()>, usize)
+     {
+        match __symbols.pop() {
+            Some((__l, __Symbol::Variant8(__v), __r)) => (__l, __v, __r),
+            _ => __symbol_type_mismatch()
+        }
+    }
+    fn __pop_Variant5<
+      'input,
+    >(
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
+    ) -> (usize, core::option::Option<String>, usize)
+     {
+        match __symbols.pop() {
+            Some((__l, __Symbol::Variant5(__v), __r)) => (__l, __v, __r),
+            _ => __symbol_type_mismatch()
+        }
+    }
+    fn __pop_Variant2<
+      'input,
+    >(
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
+    ) -> (usize, core::option::Option<i16>, usize)
+     {
+        match __symbols.pop() {
+            Some((__l, __Symbol::Variant2(__v), __r)) => (__l, __v, __r),
+            _ => __symbol_type_mismatch()
+        }
+    }
     fn __pop_Variant1<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, i16, usize)
      {
         match __symbols.pop() {
@@ -6359,7 +6407,7 @@ mod __parse__Preprocessor {
     fn __pop_Variant12<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, i8, usize)
      {
         match __symbols.pop() {
@@ -6370,7 +6418,7 @@ mod __parse__Preprocessor {
     fn __pop_Variant10<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, u16, usize)
      {
         match __symbols.pop() {
@@ -6381,7 +6429,7 @@ mod __parse__Preprocessor {
     fn __pop_Variant11<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, u32, usize)
      {
         match __symbols.pop() {
@@ -6392,7 +6440,7 @@ mod __parse__Preprocessor {
     fn __pop_Variant13<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, u8, usize)
      {
         match __symbols.pop() {
@@ -6403,7 +6451,7 @@ mod __parse__Preprocessor {
     fn __pop_Variant6<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, usize, usize)
      {
         match __symbols.pop() {
@@ -6411,54 +6459,10 @@ mod __parse__Preprocessor {
             _ => __symbol_type_mismatch()
         }
     }
-    fn __pop_Variant8<
-      'input,
-    >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
-    ) -> (usize, ::std::option::Option<()>, usize)
-     {
-        match __symbols.pop() {
-            Some((__l, __Symbol::Variant8(__v), __r)) => (__l, __v, __r),
-            _ => __symbol_type_mismatch()
-        }
-    }
-    fn __pop_Variant5<
-      'input,
-    >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
-    ) -> (usize, ::std::option::Option<String>, usize)
-     {
-        match __symbols.pop() {
-            Some((__l, __Symbol::Variant5(__v), __r)) => (__l, __v, __r),
-            _ => __symbol_type_mismatch()
-        }
-    }
-    fn __pop_Variant2<
-      'input,
-    >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
-    ) -> (usize, ::std::option::Option<i16>, usize)
-     {
-        match __symbols.pop() {
-            Some((__l, __Symbol::Variant2(__v), __r)) => (__l, __v, __r),
-            _ => __symbol_type_mismatch()
-        }
-    }
-    fn __pop_Variant4<
-      'input,
-    >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
-    ) -> (usize, ::std::vec::Vec<String>, usize)
-     {
-        match __symbols.pop() {
-            Some((__l, __Symbol::Variant4(__v), __r)) => (__l, __v, __r),
-            _ => __symbol_type_mismatch()
-        }
-    }
     fn __pop_Variant0<
       'input,
     >(
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>
     ) -> (usize, &'input str, usize)
      {
         match __symbols.pop() {
@@ -6474,8 +6478,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // ("," <s_word_num>) = ",", s_word_num => ActionFn(523);
@@ -6496,8 +6500,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // ("," <s_word_num>)? = ",", s_word_num => ActionFn(551);
@@ -6518,8 +6522,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // ("," <s_word_num>)? =  => ActionFn(522);
@@ -6537,8 +6541,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<general_string> ",") = general_string, "," => ActionFn(546);
@@ -6559,8 +6563,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<general_string> ",")* =  => ActionFn(544);
@@ -6578,8 +6582,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<general_string> ",")* = (<general_string> ",")+ => ActionFn(545);
@@ -6598,8 +6602,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<general_string> ",")+ = general_string, "," => ActionFn(554);
@@ -6620,8 +6624,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<general_string> ",")+ = (<general_string> ",")+, general_string, "," => ActionFn(555);
@@ -6643,8 +6647,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<name_string> ",") = name_string, "," => ActionFn(541);
@@ -6665,8 +6669,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<name_string> ",")* =  => ActionFn(539);
@@ -6684,8 +6688,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<name_string> ",")* = (<name_string> ",")+ => ActionFn(540);
@@ -6704,8 +6708,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<name_string> ",")+ = name_string, "," => ActionFn(558);
@@ -6726,8 +6730,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<name_string> ",")+ = (<name_string> ",")+, name_string, "," => ActionFn(559);
@@ -6749,8 +6753,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<seg_reg>) = seg_reg => ActionFn(526);
@@ -6769,8 +6773,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<seg_reg>)? = seg_reg => ActionFn(562);
@@ -6789,8 +6793,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // (<seg_reg>)? =  => ActionFn(525);
@@ -6808,8 +6812,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // @L =  => ActionFn(532);
@@ -6827,8 +6831,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // @R =  => ActionFn(529);
@@ -6846,8 +6850,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = code_directives => ActionFn(2);
@@ -6866,8 +6870,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = label => ActionFn(3);
@@ -6886,8 +6890,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = opcodes => ActionFn(4);
@@ -6906,8 +6910,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = procedure => ActionFn(5);
@@ -6926,8 +6930,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = print_stmt => ActionFn(6);
@@ -6946,8 +6950,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = Code, code_directives => ActionFn(7);
@@ -6968,8 +6972,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = Code, opcodes => ActionFn(8);
@@ -6990,8 +6994,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = Code, procedure => ActionFn(9);
@@ -7012,8 +7016,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = Code, print_stmt => ActionFn(10);
@@ -7034,8 +7038,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code = Code, label => ActionFn(11);
@@ -7056,8 +7060,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code? = Code => ActionFn(533);
@@ -7076,8 +7080,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Code? =  => ActionFn(534);
@@ -7095,8 +7099,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // CommaSepList<general_string> = general_string => ActionFn(753);
@@ -7115,8 +7119,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // CommaSepList<general_string> =  => ActionFn(754);
@@ -7134,8 +7138,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // CommaSepList<general_string> = (<general_string> ",")+, general_string => ActionFn(755);
@@ -7156,8 +7160,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // CommaSepList<general_string> = (<general_string> ",")+ => ActionFn(756);
@@ -7176,8 +7180,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // CommaSepList<name_string> = name_string => ActionFn(773);
@@ -7196,8 +7200,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // CommaSepList<name_string> =  => ActionFn(774);
@@ -7215,8 +7219,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // CommaSepList<name_string> = (<name_string> ",")+, name_string => ActionFn(775);
@@ -7237,8 +7241,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // CommaSepList<name_string> = (<name_string> ",")+ => ActionFn(776);
@@ -7257,8 +7261,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Preprocessor = data_directives, Code => ActionFn(749);
@@ -7279,8 +7283,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Preprocessor = Code => ActionFn(750);
@@ -7299,8 +7303,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Preprocessor = data_directives => ActionFn(751);
@@ -7319,8 +7323,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // Preprocessor =  => ActionFn(752);
@@ -7338,8 +7342,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // arithmetic = binary_arithmetic => ActionFn(189);
@@ -7358,8 +7362,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // arithmetic = unary_arithmetic => ActionFn(190);
@@ -7378,8 +7382,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // arithmetic = singleton_arithmetic => ActionFn(191);
@@ -7398,8 +7402,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // base_index_reg = base_reg => ActionFn(483);
@@ -7418,8 +7422,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // base_index_reg = index_reg => ActionFn(484);
@@ -7438,8 +7442,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // base_reg = "BX" => ActionFn(485);
@@ -7458,8 +7462,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // base_reg = "bx" => ActionFn(486);
@@ -7478,8 +7482,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // base_reg = "BP" => ActionFn(487);
@@ -7498,8 +7502,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // base_reg = "bp" => ActionFn(488);
@@ -7518,8 +7522,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, gen_byte_reg, ",", gen_byte_reg => ActionFn(575);
@@ -7542,8 +7546,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, gen_word_reg, ",", gen_word_reg => ActionFn(576);
@@ -7566,8 +7570,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, gen_byte_reg, ",", quote_byte_length, memory_addr => ActionFn(577);
@@ -7591,8 +7595,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, gen_word_reg, ",", quote_word_length, memory_addr => ActionFn(578);
@@ -7616,8 +7620,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, gen_byte_reg, ",", byte_label => ActionFn(579);
@@ -7640,8 +7644,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, gen_word_reg, ",", word_label => ActionFn(580);
@@ -7664,8 +7668,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, quote_byte_length, memory_addr, ",", gen_byte_reg => ActionFn(581);
@@ -7689,8 +7693,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, quote_word_length, memory_addr, ",", gen_word_reg => ActionFn(582);
@@ -7714,8 +7718,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, byte_label, ",", gen_byte_reg => ActionFn(583);
@@ -7738,8 +7742,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, word_label, ",", gen_word_reg => ActionFn(584);
@@ -7762,8 +7766,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, gen_byte_reg, ",", s_byte_num => ActionFn(585);
@@ -7786,8 +7790,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, gen_word_reg, ",", s_word_num => ActionFn(586);
@@ -7810,8 +7814,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, quote_byte_length, memory_addr, ",", s_byte_num => ActionFn(587);
@@ -7835,8 +7839,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, quote_word_length, memory_addr, ",", s_word_num => ActionFn(588);
@@ -7860,8 +7864,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, byte_label, ",", s_byte_num => ActionFn(589);
@@ -7884,8 +7888,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_arithmetic = quote_binary_arithmetic, word_label, ",", s_word_num => ActionFn(590);
@@ -7908,8 +7912,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, gen_byte_reg, ",", gen_byte_reg => ActionFn(591);
@@ -7932,8 +7936,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, gen_word_reg, ",", gen_word_reg => ActionFn(592);
@@ -7956,8 +7960,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, gen_byte_reg, ",", quote_byte_length, memory_addr => ActionFn(593);
@@ -7981,8 +7985,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, gen_word_reg, ",", quote_word_length, memory_addr => ActionFn(594);
@@ -8006,8 +8010,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, gen_byte_reg, ",", byte_label => ActionFn(595);
@@ -8030,8 +8034,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, gen_word_reg, ",", word_label => ActionFn(596);
@@ -8054,8 +8058,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, quote_byte_length, memory_addr, ",", gen_byte_reg => ActionFn(597);
@@ -8079,8 +8083,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, quote_word_length, memory_addr, ",", gen_word_reg => ActionFn(598);
@@ -8104,8 +8108,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, byte_label, ",", gen_byte_reg => ActionFn(599);
@@ -8128,8 +8132,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, word_label, ",", gen_word_reg => ActionFn(600);
@@ -8152,8 +8156,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, gen_byte_reg, ",", u_byte_num => ActionFn(601);
@@ -8176,8 +8180,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, gen_word_reg, ",", u_word_num => ActionFn(602);
@@ -8200,8 +8204,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, quote_byte_length, memory_addr, ",", u_byte_num => ActionFn(603);
@@ -8225,8 +8229,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, quote_word_length, memory_addr, ",", u_word_num => ActionFn(604);
@@ -8250,8 +8254,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, byte_label, ",", u_byte_num => ActionFn(605);
@@ -8274,8 +8278,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // binary_logical = quote_binary_logical, word_label, ",", u_word_num => ActionFn(606);
@@ -8298,8 +8302,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // bit_manipulation = not => ActionFn(254);
@@ -8318,8 +8322,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // bit_manipulation = binary_logical => ActionFn(255);
@@ -8338,8 +8342,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // bit_manipulation = shift_rotate => ActionFn(256);
@@ -8358,8 +8362,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // code_directives = macro_def => ActionFn(33);
@@ -8378,8 +8382,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // code_directives = macro_use => ActionFn(34);
@@ -8398,8 +8402,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // control = control_supported => ActionFn(407);
@@ -8418,8 +8422,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // control = control_unsupported, nop => ActionFn(408);
@@ -8440,8 +8444,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // control_supported = quote_control_supported => ActionFn(609);
@@ -8460,8 +8464,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // cs_reg = "CS" => ActionFn(146);
@@ -8480,8 +8484,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // cs_reg = "cs" => ActionFn(147);
@@ -8500,8 +8504,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_directives = set_directive => ActionFn(12);
@@ -8520,8 +8524,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_directives = db_directive => ActionFn(13);
@@ -8540,8 +8544,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_directives = dw_directive => ActionFn(14);
@@ -8560,8 +8564,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_directives = data_directives, set_directive => ActionFn(15);
@@ -8582,8 +8586,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_directives = data_directives, db_directive => ActionFn(16);
@@ -8604,8 +8608,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_directives = data_directives, dw_directive => ActionFn(17);
@@ -8626,8 +8630,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_directives? = data_directives => ActionFn(535);
@@ -8646,8 +8650,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_directives? =  => ActionFn(536);
@@ -8665,8 +8669,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_transfer = singleton_data_transfer => ActionFn(66);
@@ -8685,8 +8689,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_transfer = xchg => ActionFn(67);
@@ -8705,8 +8709,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_transfer = op_in => ActionFn(68);
@@ -8725,8 +8729,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_transfer = op_out => ActionFn(69);
@@ -8745,8 +8749,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_transfer = pop => ActionFn(70);
@@ -8765,8 +8769,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_transfer = push => ActionFn(71);
@@ -8785,8 +8789,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_transfer = load_ptr => ActionFn(72);
@@ -8805,8 +8809,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_transfer = lea => ActionFn(73);
@@ -8825,8 +8829,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // data_transfer = mov => ActionFn(74);
@@ -8845,8 +8849,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db_directive = label, quote_db, s_byte_num => ActionFn(757);
@@ -8868,8 +8872,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db_directive = quote_db, s_byte_num => ActionFn(758);
@@ -8890,8 +8894,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db_directive = label, quote_db, "[", u_word_num, "]" => ActionFn(759);
@@ -8915,8 +8919,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db_directive = quote_db, "[", u_word_num, "]" => ActionFn(760);
@@ -8939,8 +8943,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db_directive = label, quote_db, "[", s_byte_num, ",", u_word_num, "]" => ActionFn(761);
@@ -8966,8 +8970,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // db_directive = quote_db, "[", s_byte_num, ",", u_word_num, "]" => ActionFn(762);
@@ -8992,8 +8996,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw_directive = label, quote_dw, s_word_num => ActionFn(765);
@@ -9015,8 +9019,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw_directive = quote_dw, s_word_num => ActionFn(766);
@@ -9037,8 +9041,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw_directive = label, quote_dw, "[", u_word_num, "]" => ActionFn(767);
@@ -9062,8 +9066,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw_directive = quote_dw, "[", u_word_num, "]" => ActionFn(768);
@@ -9086,8 +9090,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw_directive = label, quote_dw, "[", s_word_num, ",", u_word_num, "]" => ActionFn(769);
@@ -9113,8 +9117,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // dw_directive = quote_dw, "[", s_word_num, ",", u_word_num, "]" => ActionFn(770);
@@ -9139,8 +9143,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "AH" => ActionFn(457);
@@ -9159,8 +9163,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "ah" => ActionFn(458);
@@ -9179,8 +9183,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "AL" => ActionFn(459);
@@ -9199,8 +9203,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "al" => ActionFn(460);
@@ -9219,8 +9223,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "BH" => ActionFn(461);
@@ -9239,8 +9243,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "bh" => ActionFn(462);
@@ -9259,8 +9263,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "BL" => ActionFn(463);
@@ -9279,8 +9283,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "bl" => ActionFn(464);
@@ -9299,8 +9303,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "CH" => ActionFn(465);
@@ -9319,8 +9323,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "ch" => ActionFn(466);
@@ -9339,8 +9343,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = reg_cl => ActionFn(467);
@@ -9359,8 +9363,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "DH" => ActionFn(468);
@@ -9379,8 +9383,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "dh" => ActionFn(469);
@@ -9399,8 +9403,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "DL" => ActionFn(470);
@@ -9419,8 +9423,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_byte_reg = "dl" => ActionFn(471);
@@ -9439,8 +9443,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_reg = gen_byte_reg => ActionFn(455);
@@ -9459,8 +9463,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_reg = gen_word_reg => ActionFn(456);
@@ -9479,8 +9483,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_word_reg = "AX" => ActionFn(474);
@@ -9499,8 +9503,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_word_reg = "ax" => ActionFn(475);
@@ -9519,8 +9523,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_word_reg = base_index_reg => ActionFn(476);
@@ -9539,8 +9543,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_word_reg = "sp" => ActionFn(477);
@@ -9559,8 +9563,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_word_reg = "SP" => ActionFn(478);
@@ -9579,8 +9583,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_word_reg = "CX" => ActionFn(479);
@@ -9599,8 +9603,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_word_reg = "cx" => ActionFn(480);
@@ -9619,8 +9623,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_word_reg = "DX" => ActionFn(481);
@@ -9639,8 +9643,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // gen_word_reg = "dx" => ActionFn(482);
@@ -9659,8 +9663,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string = name_string => ActionFn(513);
@@ -9679,8 +9683,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string = gen_reg => ActionFn(514);
@@ -9699,8 +9703,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string = seg_reg => ActionFn(515);
@@ -9719,8 +9723,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string = quote_byte_length, memory_addr => ActionFn(516);
@@ -9741,8 +9745,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string = quote_word_length, memory_addr => ActionFn(517);
@@ -9763,8 +9767,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string = byte_label => ActionFn(518);
@@ -9783,8 +9787,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string = word_label => ActionFn(519);
@@ -9803,8 +9807,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string = u_word_num => ActionFn(520);
@@ -9823,8 +9827,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string? = general_string => ActionFn(542);
@@ -9843,8 +9847,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // general_string? =  => ActionFn(543);
@@ -9862,8 +9866,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // index_reg = "SI" => ActionFn(489);
@@ -9882,8 +9886,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // index_reg = "si" => ActionFn(490);
@@ -9902,8 +9906,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // index_reg = "DI" => ActionFn(491);
@@ -9922,8 +9926,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // index_reg = "di" => ActionFn(492);
@@ -9942,8 +9946,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // label? = label => ActionFn(530);
@@ -9962,8 +9966,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // label? =  => ActionFn(531);
@@ -9981,8 +9985,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // lea = quote_lea, gen_word_reg, ",", quote_word_length, memory_addr => ActionFn(623);
@@ -10006,8 +10010,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // lea = quote_lea, gen_word_reg, ",", word_label => ActionFn(624);
@@ -10030,8 +10034,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // macro_def = quote_macro, name_string, "(", CommaSepList<name_string>, ")", "->", r#"[_a-zA-Z0-9\\[\\]\\(\\), ]*<-"# => ActionFn(35);
@@ -10057,8 +10061,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = seg_reg, "[", u_word_num, "]" => ActionFn(563);
@@ -10081,8 +10085,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = "[", u_word_num, "]" => ActionFn(564);
@@ -10104,8 +10108,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = seg_reg, "[", base_index_reg, "]" => ActionFn(565);
@@ -10128,8 +10132,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = "[", base_index_reg, "]" => ActionFn(566);
@@ -10151,8 +10155,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = seg_reg, "[", base_reg, ",", s_word_num, "]" => ActionFn(567);
@@ -10177,8 +10181,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = "[", base_reg, ",", s_word_num, "]" => ActionFn(568);
@@ -10202,8 +10206,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = seg_reg, "[", index_reg, ",", s_word_num, "]" => ActionFn(569);
@@ -10228,8 +10232,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = "[", index_reg, ",", s_word_num, "]" => ActionFn(570);
@@ -10253,8 +10257,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = seg_reg, "[", base_reg, ",", index_reg, ",", s_word_num, "]" => ActionFn(571);
@@ -10281,8 +10285,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = "[", base_reg, ",", index_reg, ",", s_word_num, "]" => ActionFn(572);
@@ -10308,8 +10312,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = seg_reg, "[", base_reg, ",", index_reg, "]" => ActionFn(573);
@@ -10334,8 +10338,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // memory_addr = "[", base_reg, ",", index_reg, "]" => ActionFn(574);
@@ -10359,8 +10363,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, gen_byte_reg, ",", gen_byte_reg => ActionFn(627);
@@ -10383,8 +10387,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, gen_word_reg, ",", gen_word_reg => ActionFn(628);
@@ -10407,8 +10411,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, gen_byte_reg, ",", quote_byte_length, memory_addr => ActionFn(629);
@@ -10432,8 +10436,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, gen_word_reg, ",", quote_word_length, memory_addr => ActionFn(630);
@@ -10457,8 +10461,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, gen_byte_reg, ",", byte_label => ActionFn(631);
@@ -10481,8 +10485,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, gen_word_reg, ",", word_label => ActionFn(632);
@@ -10505,8 +10509,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, quote_byte_length, memory_addr, ",", gen_byte_reg => ActionFn(633);
@@ -10530,8 +10534,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, quote_word_length, memory_addr, ",", gen_word_reg => ActionFn(634);
@@ -10555,8 +10559,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, byte_label, ",", gen_byte_reg => ActionFn(635);
@@ -10579,8 +10583,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, word_label, ",", gen_word_reg => ActionFn(636);
@@ -10603,8 +10607,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, gen_byte_reg, ",", s_byte_num => ActionFn(637);
@@ -10627,8 +10631,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, gen_word_reg, ",", s_word_num => ActionFn(638);
@@ -10651,8 +10655,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, quote_byte_length, memory_addr, ",", s_byte_num => ActionFn(639);
@@ -10676,8 +10680,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, quote_word_length, memory_addr, ",", s_word_num => ActionFn(640);
@@ -10701,8 +10705,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, byte_label, ",", s_byte_num => ActionFn(641);
@@ -10725,8 +10729,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, word_label, ",", s_word_num => ActionFn(642);
@@ -10749,8 +10753,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, seg_reg, ",", gen_word_reg => ActionFn(643);
@@ -10773,8 +10777,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, gen_word_reg, ",", seg_reg => ActionFn(644);
@@ -10797,8 +10801,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, quote_word_length, memory_addr, ",", seg_reg => ActionFn(645);
@@ -10822,8 +10826,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, word_label, ",", seg_reg => ActionFn(646);
@@ -10846,8 +10850,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, seg_reg, ",", quote_word_length, memory_addr => ActionFn(647);
@@ -10871,8 +10875,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // mov = quote_mov, seg_reg, ",", word_label => ActionFn(648);
@@ -10895,8 +10899,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // name_string = r#"[_a-zA-Z][_a-zA-Z0-9]*"# => ActionFn(512);
@@ -10915,8 +10919,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // name_string? = name_string => ActionFn(537);
@@ -10935,8 +10939,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // name_string? =  => ActionFn(538);
@@ -10954,8 +10958,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // nop = "NOP" => ActionFn(649);
@@ -10974,8 +10978,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // nop = "nop" => ActionFn(650);
@@ -10994,8 +10998,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // not = quote_not, gen_reg => ActionFn(651);
@@ -11016,8 +11020,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // not = quote_not, quote_byte_length, memory_addr => ActionFn(652);
@@ -11039,8 +11043,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // not = quote_not, quote_word_length, memory_addr => ActionFn(653);
@@ -11062,8 +11066,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // not = quote_not, word_label => ActionFn(654);
@@ -11084,8 +11088,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // not = quote_not, byte_label => ActionFn(655);
@@ -11106,8 +11110,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // opcodes = control => ActionFn(60);
@@ -11126,8 +11130,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // opcodes = transfer => ActionFn(61);
@@ -11146,8 +11150,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // opcodes = bit_manipulation => ActionFn(62);
@@ -11166,8 +11170,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // opcodes = arithmetic => ActionFn(63);
@@ -11186,8 +11190,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // opcodes = string => ActionFn(64);
@@ -11206,8 +11210,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // opcodes = data_transfer => ActionFn(65);
@@ -11226,8 +11230,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop = quote_pop, pop_reg => ActionFn(661);
@@ -11248,8 +11252,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop = quote_pop, "word", memory_addr => ActionFn(662);
@@ -11271,8 +11275,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop = quote_pop, word_label => ActionFn(663);
@@ -11293,8 +11297,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop_reg = gen_word_reg => ActionFn(139);
@@ -11313,8 +11317,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop_reg = "ES" => ActionFn(140);
@@ -11333,8 +11337,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop_reg = "es" => ActionFn(141);
@@ -11353,8 +11357,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop_reg = "DS" => ActionFn(142);
@@ -11373,8 +11377,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop_reg = "ds" => ActionFn(143);
@@ -11393,8 +11397,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop_reg = "SS" => ActionFn(144);
@@ -11413,8 +11417,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // pop_reg = "ss" => ActionFn(145);
@@ -11433,8 +11437,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // print_stmt = quote_print, quote_flags => ActionFn(664);
@@ -11455,8 +11459,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // print_stmt = quote_print, quote_reg => ActionFn(665);
@@ -11477,8 +11481,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // print_stmt = quote_print, quote_mem, raw_addr, "->", raw_addr => ActionFn(666);
@@ -11502,8 +11506,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // print_stmt = quote_print, quote_mem, ":", raw_addr => ActionFn(668);
@@ -11526,8 +11530,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // proc_contents = opcodes => ActionFn(41);
@@ -11546,8 +11550,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // proc_contents = macro_use => ActionFn(42);
@@ -11566,8 +11570,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // proc_contents = proc_contents, opcodes => ActionFn(43);
@@ -11588,8 +11592,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // proc_contents = proc_contents, macro_use => ActionFn(44);
@@ -11610,8 +11614,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // procedure = proc_def, "{", proc_contents, "}" => ActionFn(732);
@@ -11634,8 +11638,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // push = quote_push, pop_reg => ActionFn(671);
@@ -11656,8 +11660,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // push = quote_push, cs_reg => ActionFn(672);
@@ -11678,8 +11682,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // push = quote_push, quote_word_length, memory_addr => ActionFn(673);
@@ -11701,8 +11705,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // push = quote_push, word_label => ActionFn(674);
@@ -11723,8 +11727,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "ADD" => ActionFn(208);
@@ -11743,8 +11747,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "add" => ActionFn(209);
@@ -11763,8 +11767,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "ADC" => ActionFn(210);
@@ -11783,8 +11787,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "adc" => ActionFn(211);
@@ -11803,8 +11807,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "SUB" => ActionFn(212);
@@ -11823,8 +11827,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "sub" => ActionFn(213);
@@ -11843,8 +11847,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "SBB" => ActionFn(214);
@@ -11863,8 +11867,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "sbb" => ActionFn(215);
@@ -11883,8 +11887,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "CMP" => ActionFn(216);
@@ -11903,8 +11907,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_arithmetic = "cmp" => ActionFn(217);
@@ -11923,8 +11927,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_logical = "AND" => ActionFn(280);
@@ -11943,8 +11947,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_logical = "and" => ActionFn(281);
@@ -11963,8 +11967,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_logical = "OR" => ActionFn(282);
@@ -11983,8 +11987,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_logical = "or" => ActionFn(283);
@@ -12003,8 +12007,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_logical = "XOR" => ActionFn(284);
@@ -12023,8 +12027,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_logical = "xor" => ActionFn(285);
@@ -12043,8 +12047,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_logical = "TEST" => ActionFn(286);
@@ -12063,8 +12067,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_binary_logical = "test" => ActionFn(287);
@@ -12083,8 +12087,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_byte_length = "BYTE" => ActionFn(508);
@@ -12103,8 +12107,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_byte_length = "byte" => ActionFn(509);
@@ -12123,8 +12127,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_call = "CALL" => ActionFn(319);
@@ -12143,8 +12147,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_call = "call" => ActionFn(320);
@@ -12163,8 +12167,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat = "REPE" => ActionFn(167);
@@ -12183,8 +12187,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat = "repe" => ActionFn(168);
@@ -12203,8 +12207,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat = "REPZ" => ActionFn(169);
@@ -12223,8 +12227,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat = "repz" => ActionFn(170);
@@ -12243,8 +12247,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat = "REPNE" => ActionFn(171);
@@ -12263,8 +12267,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat = "repne" => ActionFn(172);
@@ -12283,8 +12287,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat = "REPNZ" => ActionFn(173);
@@ -12303,8 +12307,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat = "repnz" => ActionFn(174);
@@ -12323,8 +12327,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat_opcode = "CMPS" => ActionFn(179);
@@ -12343,8 +12347,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat_opcode = "cmps" => ActionFn(180);
@@ -12363,8 +12367,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat_opcode = "SCAS" => ActionFn(181);
@@ -12383,8 +12387,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_condition_repeat_opcode = "scas" => ActionFn(182);
@@ -12403,8 +12407,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "STC" => ActionFn(410);
@@ -12423,8 +12427,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "stc" => ActionFn(411);
@@ -12443,8 +12447,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "CLC" => ActionFn(412);
@@ -12463,8 +12467,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "clc" => ActionFn(413);
@@ -12483,8 +12487,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "CMC" => ActionFn(414);
@@ -12503,8 +12507,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "cmc" => ActionFn(415);
@@ -12523,8 +12527,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "STD" => ActionFn(416);
@@ -12543,8 +12547,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "std" => ActionFn(417);
@@ -12563,8 +12567,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "CLD" => ActionFn(418);
@@ -12583,8 +12587,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "cld" => ActionFn(419);
@@ -12603,8 +12607,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "STI" => ActionFn(420);
@@ -12623,8 +12627,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "sti" => ActionFn(421);
@@ -12643,8 +12647,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "CLI" => ActionFn(422);
@@ -12663,8 +12667,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "cli" => ActionFn(423);
@@ -12683,8 +12687,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "HLT" => ActionFn(424);
@@ -12703,8 +12707,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_supported = "hlt" => ActionFn(425);
@@ -12723,8 +12727,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_unsuppoted = "WAIT" => ActionFn(427);
@@ -12743,8 +12747,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_unsuppoted = "wait" => ActionFn(428);
@@ -12763,8 +12767,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_unsuppoted = "ESC" => ActionFn(429);
@@ -12783,8 +12787,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_unsuppoted = "esc" => ActionFn(430);
@@ -12803,8 +12807,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_unsuppoted = "LOCK" => ActionFn(431);
@@ -12823,8 +12827,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_control_unsuppoted = "lock" => ActionFn(432);
@@ -12843,8 +12847,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_db = "DB" => ActionFn(25);
@@ -12863,8 +12867,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_db = "db" => ActionFn(26);
@@ -12883,8 +12887,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_dw = "dw" => ActionFn(31);
@@ -12903,8 +12907,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_dw = "DW" => ActionFn(32);
@@ -12923,8 +12927,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_flags = "FLAGS" => ActionFn(54);
@@ -12943,8 +12947,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_flags = "flags" => ActionFn(55);
@@ -12963,8 +12967,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_in = "IN" => ActionFn(126);
@@ -12983,8 +12987,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_in = "in" => ActionFn(127);
@@ -13003,8 +13007,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_int = "INT" => ActionFn(325);
@@ -13023,8 +13027,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_int = "int" => ActionFn(326);
@@ -13043,8 +13047,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_into_iret = "INTO" => ActionFn(328);
@@ -13063,8 +13067,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_into_iret = "into" => ActionFn(329);
@@ -13083,8 +13087,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_into_iret = "IRET" => ActionFn(330);
@@ -13103,8 +13107,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_into_iret = "iret" => ActionFn(331);
@@ -13123,8 +13127,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JMP" => ActionFn(333);
@@ -13143,8 +13147,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jmp" => ActionFn(334);
@@ -13163,8 +13167,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JA" => ActionFn(335);
@@ -13183,8 +13187,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "ja" => ActionFn(336);
@@ -13203,8 +13207,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNBE" => ActionFn(337);
@@ -13223,8 +13227,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jnbe" => ActionFn(338);
@@ -13243,8 +13247,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JAE" => ActionFn(339);
@@ -13263,8 +13267,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jae" => ActionFn(340);
@@ -13283,8 +13287,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNB" => ActionFn(341);
@@ -13303,8 +13307,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jnb" => ActionFn(342);
@@ -13323,8 +13327,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JB" => ActionFn(343);
@@ -13343,8 +13347,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jb" => ActionFn(344);
@@ -13363,8 +13367,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNAE" => ActionFn(345);
@@ -13383,8 +13387,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jnae" => ActionFn(346);
@@ -13403,8 +13407,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JBE" => ActionFn(347);
@@ -13423,8 +13427,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jbe" => ActionFn(348);
@@ -13443,8 +13447,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNA" => ActionFn(349);
@@ -13463,8 +13467,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jna" => ActionFn(350);
@@ -13483,8 +13487,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JC" => ActionFn(351);
@@ -13503,8 +13507,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jc" => ActionFn(352);
@@ -13523,8 +13527,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JE" => ActionFn(353);
@@ -13543,8 +13547,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "je" => ActionFn(354);
@@ -13563,8 +13567,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JZ" => ActionFn(355);
@@ -13583,8 +13587,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jz" => ActionFn(356);
@@ -13603,8 +13607,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JG" => ActionFn(357);
@@ -13623,8 +13627,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jg" => ActionFn(358);
@@ -13643,8 +13647,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNLE" => ActionFn(359);
@@ -13663,8 +13667,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jnle" => ActionFn(360);
@@ -13683,8 +13687,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JGE" => ActionFn(361);
@@ -13703,8 +13707,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jge" => ActionFn(362);
@@ -13723,8 +13727,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNL" => ActionFn(363);
@@ -13743,8 +13747,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jnl" => ActionFn(364);
@@ -13763,8 +13767,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JL" => ActionFn(365);
@@ -13783,8 +13787,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jl" => ActionFn(366);
@@ -13803,8 +13807,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNGE" => ActionFn(367);
@@ -13823,8 +13827,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jnge" => ActionFn(368);
@@ -13843,8 +13847,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JLE" => ActionFn(369);
@@ -13863,8 +13867,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jle" => ActionFn(370);
@@ -13883,8 +13887,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNG" => ActionFn(371);
@@ -13903,8 +13907,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jng" => ActionFn(372);
@@ -13923,8 +13927,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNC" => ActionFn(373);
@@ -13943,8 +13947,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jnc" => ActionFn(374);
@@ -13963,8 +13967,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNE" => ActionFn(375);
@@ -13983,8 +13987,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jne" => ActionFn(376);
@@ -14003,8 +14007,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNZ" => ActionFn(377);
@@ -14023,8 +14027,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jnz" => ActionFn(378);
@@ -14043,8 +14047,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNO" => ActionFn(379);
@@ -14063,8 +14067,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jno" => ActionFn(380);
@@ -14083,8 +14087,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNP" => ActionFn(381);
@@ -14103,8 +14107,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jnp" => ActionFn(382);
@@ -14123,8 +14127,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JPO" => ActionFn(383);
@@ -14143,8 +14147,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jpo" => ActionFn(384);
@@ -14163,8 +14167,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JNS" => ActionFn(385);
@@ -14183,8 +14187,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jns" => ActionFn(386);
@@ -14203,8 +14207,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JO" => ActionFn(387);
@@ -14223,8 +14227,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jo" => ActionFn(388);
@@ -14243,8 +14247,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JP" => ActionFn(389);
@@ -14263,8 +14267,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jp" => ActionFn(390);
@@ -14283,8 +14287,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JPE" => ActionFn(391);
@@ -14303,8 +14307,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jpe" => ActionFn(392);
@@ -14323,8 +14327,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JS" => ActionFn(393);
@@ -14343,8 +14347,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "js" => ActionFn(394);
@@ -14363,8 +14367,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "JCXZ" => ActionFn(395);
@@ -14383,8 +14387,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "jcxz" => ActionFn(396);
@@ -14403,8 +14407,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "LOOP" => ActionFn(397);
@@ -14423,8 +14427,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "loop" => ActionFn(398);
@@ -14443,8 +14447,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "LOOPE" => ActionFn(399);
@@ -14463,8 +14467,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "loope" => ActionFn(400);
@@ -14483,8 +14487,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "LOOPZ" => ActionFn(401);
@@ -14503,8 +14507,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "loopz" => ActionFn(402);
@@ -14523,8 +14527,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "LOOPNE" => ActionFn(403);
@@ -14543,8 +14547,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "loopne" => ActionFn(404);
@@ -14563,8 +14567,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "LOOPNZ" => ActionFn(405);
@@ -14583,8 +14587,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_jmps_loops = "loopnz" => ActionFn(406);
@@ -14603,8 +14607,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_lea = "LEA" => ActionFn(157);
@@ -14623,8 +14627,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_lea = "lea" => ActionFn(158);
@@ -14643,8 +14647,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_load_ptr = "LDS" => ActionFn(151);
@@ -14663,8 +14667,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_load_ptr = "lds" => ActionFn(152);
@@ -14683,8 +14687,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_load_ptr = "LES" => ActionFn(153);
@@ -14703,8 +14707,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_load_ptr = "les" => ActionFn(154);
@@ -14723,8 +14727,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_macro = "MACRO" => ActionFn(36);
@@ -14743,8 +14747,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_macro = "macro" => ActionFn(37);
@@ -14763,8 +14767,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_mem = "MEM" => ActionFn(58);
@@ -14783,8 +14787,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_mem = "mem" => ActionFn(59);
@@ -14803,8 +14807,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_mov = "MOV" => ActionFn(97);
@@ -14823,8 +14827,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_mov = "mov" => ActionFn(98);
@@ -14843,8 +14847,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_not = "NOT" => ActionFn(262);
@@ -14863,8 +14867,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_not = "not" => ActionFn(263);
@@ -14883,8 +14887,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_offset = "OFFSET" => ActionFn(453);
@@ -14903,8 +14907,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_offset = "offset" => ActionFn(454);
@@ -14923,8 +14927,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_out = "OUT" => ActionFn(128);
@@ -14943,8 +14947,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_out = "out" => ActionFn(129);
@@ -14963,8 +14967,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_pop = "POP" => ActionFn(133);
@@ -14983,8 +14987,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_pop = "pop" => ActionFn(134);
@@ -15003,8 +15007,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_print = "PRINT" => ActionFn(52);
@@ -15023,8 +15027,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_print = "print" => ActionFn(53);
@@ -15043,8 +15047,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_proc = "def" => ActionFn(45);
@@ -15063,8 +15067,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_proc = "DEF" => ActionFn(46);
@@ -15083,8 +15087,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_push = "PUSH" => ActionFn(148);
@@ -15103,8 +15107,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_push = "push" => ActionFn(149);
@@ -15123,8 +15127,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_reg = "REG" => ActionFn(56);
@@ -15143,8 +15147,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_reg = "reg" => ActionFn(57);
@@ -15163,8 +15167,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_repeat = "REP" => ActionFn(165);
@@ -15183,8 +15187,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_repeat = "rep" => ActionFn(166);
@@ -15203,8 +15207,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_repeat_opcode = "MOVS" => ActionFn(183);
@@ -15223,8 +15227,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_repeat_opcode = "movs" => ActionFn(184);
@@ -15243,8 +15247,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_repeat_opcode = "LODS" => ActionFn(185);
@@ -15263,8 +15267,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_repeat_opcode = "lods" => ActionFn(186);
@@ -15283,8 +15287,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_repeat_opcode = "STOS" => ActionFn(187);
@@ -15303,8 +15307,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_repeat_opcode = "stos" => ActionFn(188);
@@ -15323,8 +15327,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_ret = "RET" => ActionFn(322);
@@ -15343,8 +15347,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_ret = "ret" => ActionFn(323);
@@ -15363,8 +15367,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_set = "set" => ActionFn(19);
@@ -15383,8 +15387,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_set = "SET" => ActionFn(20);
@@ -15403,8 +15407,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "SAL" => ActionFn(298);
@@ -15423,8 +15427,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "sal" => ActionFn(299);
@@ -15443,8 +15447,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "SHL" => ActionFn(300);
@@ -15463,8 +15467,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "shl" => ActionFn(301);
@@ -15483,8 +15487,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "SAR" => ActionFn(302);
@@ -15503,8 +15507,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "sar" => ActionFn(303);
@@ -15523,8 +15527,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "SHR" => ActionFn(304);
@@ -15543,8 +15547,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "shr" => ActionFn(305);
@@ -15563,8 +15567,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "ROL" => ActionFn(306);
@@ -15583,8 +15587,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "rol" => ActionFn(307);
@@ -15603,8 +15607,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "ROR" => ActionFn(308);
@@ -15623,8 +15627,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "ror" => ActionFn(309);
@@ -15643,8 +15647,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "RCL" => ActionFn(310);
@@ -15663,8 +15667,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "rcl" => ActionFn(311);
@@ -15683,8 +15687,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "RCR" => ActionFn(312);
@@ -15703,8 +15707,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_shift_rotate = "rcr" => ActionFn(313);
@@ -15723,8 +15727,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "AAA" => ActionFn(219);
@@ -15743,8 +15747,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "aaa" => ActionFn(220);
@@ -15763,8 +15767,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "AAD" => ActionFn(221);
@@ -15783,8 +15787,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "aad" => ActionFn(222);
@@ -15803,8 +15807,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "AAM" => ActionFn(223);
@@ -15823,8 +15827,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "aam" => ActionFn(224);
@@ -15843,8 +15847,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "AAS" => ActionFn(225);
@@ -15863,8 +15867,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "aas" => ActionFn(226);
@@ -15883,8 +15887,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "DAA" => ActionFn(227);
@@ -15903,8 +15907,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "daa" => ActionFn(228);
@@ -15923,8 +15927,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "DAS" => ActionFn(229);
@@ -15943,8 +15947,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "das" => ActionFn(230);
@@ -15963,8 +15967,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "CBW" => ActionFn(231);
@@ -15983,8 +15987,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "cbw" => ActionFn(232);
@@ -16003,8 +16007,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "CWD" => ActionFn(233);
@@ -16023,8 +16027,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_arithmetic = "cwd" => ActionFn(234);
@@ -16043,8 +16047,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "LAHF" => ActionFn(100);
@@ -16063,8 +16067,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "lahf" => ActionFn(101);
@@ -16083,8 +16087,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "SAHF" => ActionFn(102);
@@ -16103,8 +16107,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "sahf" => ActionFn(103);
@@ -16123,8 +16127,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "PUSHF" => ActionFn(104);
@@ -16143,8 +16147,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "pushf" => ActionFn(105);
@@ -16163,8 +16167,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "POPF" => ActionFn(106);
@@ -16183,8 +16187,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "popf" => ActionFn(107);
@@ -16203,8 +16207,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "XLAT" => ActionFn(108);
@@ -16223,8 +16227,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_singleton_transfer = "xlat" => ActionFn(109);
@@ -16243,8 +16247,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "DEC" => ActionFn(240);
@@ -16263,8 +16267,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "dec" => ActionFn(241);
@@ -16283,8 +16287,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "INC" => ActionFn(242);
@@ -16303,8 +16307,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "inc" => ActionFn(243);
@@ -16323,8 +16327,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "NEG" => ActionFn(244);
@@ -16343,8 +16347,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "neg" => ActionFn(245);
@@ -16363,8 +16367,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "MUL" => ActionFn(246);
@@ -16383,8 +16387,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "mul" => ActionFn(247);
@@ -16403,8 +16407,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "IMUL" => ActionFn(248);
@@ -16423,8 +16427,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "imul" => ActionFn(249);
@@ -16443,8 +16447,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "DIV" => ActionFn(250);
@@ -16463,8 +16467,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "div" => ActionFn(251);
@@ -16483,8 +16487,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "IDIV" => ActionFn(252);
@@ -16503,8 +16507,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_unary_arithmetic = "idiv" => ActionFn(253);
@@ -16523,8 +16527,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_word_length = "WORD" => ActionFn(510);
@@ -16543,8 +16547,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_word_length = "word" => ActionFn(511);
@@ -16563,8 +16567,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_xchg = "XCHG" => ActionFn(120);
@@ -16583,8 +16587,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // quote_xchg = "xchg" => ActionFn(121);
@@ -16603,8 +16607,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // raw_addr = offset => ActionFn(451);
@@ -16623,8 +16627,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // reg_cl = "CL" => ActionFn(472);
@@ -16643,8 +16647,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // reg_cl = "cl" => ActionFn(473);
@@ -16663,8 +16667,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // ret = quote_ret => ActionFn(736);
@@ -16683,8 +16687,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // s_byte_num = u_byte_num => ActionFn(447);
@@ -16703,8 +16707,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // s_word_num = u_word_num => ActionFn(445);
@@ -16723,8 +16727,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // seg_reg = "ES" => ActionFn(493);
@@ -16743,8 +16747,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // seg_reg = "es" => ActionFn(494);
@@ -16763,8 +16767,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // seg_reg = "DS" => ActionFn(495);
@@ -16783,8 +16787,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // seg_reg = "ds" => ActionFn(496);
@@ -16803,8 +16807,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // seg_reg = "SS" => ActionFn(497);
@@ -16823,8 +16827,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // seg_reg = "ss" => ActionFn(498);
@@ -16843,8 +16847,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // seg_reg = "CS" => ActionFn(499);
@@ -16863,8 +16867,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // seg_reg = "cs" => ActionFn(500);
@@ -16883,8 +16887,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // set_directive = quote_set, u_word_num => ActionFn(18);
@@ -16905,8 +16909,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, gen_reg, ",", u_byte_num => ActionFn(681);
@@ -16929,8 +16933,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, gen_reg, ",", reg_cl => ActionFn(682);
@@ -16953,8 +16957,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, quote_byte_length, memory_addr, ",", u_byte_num => ActionFn(683);
@@ -16978,8 +16982,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, quote_byte_length, memory_addr, ",", reg_cl => ActionFn(684);
@@ -17003,8 +17007,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, quote_word_length, memory_addr, ",", u_byte_num => ActionFn(685);
@@ -17028,8 +17032,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, quote_word_length, memory_addr, ",", reg_cl => ActionFn(686);
@@ -17053,8 +17057,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, byte_label, ",", u_byte_num => ActionFn(687);
@@ -17077,8 +17081,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, word_label, ",", u_byte_num => ActionFn(688);
@@ -17101,8 +17105,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, byte_label, ",", reg_cl => ActionFn(689);
@@ -17125,8 +17129,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // shift_rotate = quote_shift_rotate, word_label, ",", reg_cl => ActionFn(690);
@@ -17149,8 +17153,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // singleton_arithmetic = quote_singleton_arithmetic => ActionFn(691);
@@ -17169,8 +17173,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // singleton_data_transfer = quote_singleton_transfer => ActionFn(692);
@@ -17189,8 +17193,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string = string_condition_repeat_opcode => ActionFn(693);
@@ -17209,8 +17213,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string = string_repeat_opcode => ActionFn(694);
@@ -17229,8 +17233,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string = string_repeat => ActionFn(161);
@@ -17249,8 +17253,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string = string_condition_repeat => ActionFn(162);
@@ -17269,8 +17273,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string_condition_repeat = quote_condition_repeat, string_condition_repeat_opcode => ActionFn(695);
@@ -17291,8 +17295,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string_condition_repeat_opcode = quote_condition_repeat_opcode, quote_byte_length => ActionFn(175);
@@ -17313,8 +17317,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string_condition_repeat_opcode = quote_condition_repeat_opcode, quote_word_length => ActionFn(176);
@@ -17335,8 +17339,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string_repeat = quote_repeat, string_repeat_opcode => ActionFn(696);
@@ -17357,8 +17361,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string_repeat_opcode = quote_repeat_opcode, quote_byte_length => ActionFn(177);
@@ -17379,8 +17383,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // string_repeat_opcode = quote_repeat_opcode, quote_word_length => ActionFn(178);
@@ -17401,8 +17405,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // transfer = call => ActionFn(314);
@@ -17421,8 +17425,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // transfer = ret => ActionFn(315);
@@ -17441,8 +17445,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // transfer = jmps_loops => ActionFn(316);
@@ -17461,8 +17465,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // transfer = int => ActionFn(317);
@@ -17481,8 +17485,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // u_word_num = offset => ActionFn(439);
@@ -17501,8 +17505,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // unary_arithmetic = quote_unary_arithmetic, gen_reg => ActionFn(704);
@@ -17523,8 +17527,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // unary_arithmetic = quote_unary_arithmetic, quote_byte_length, memory_addr => ActionFn(705);
@@ -17546,8 +17550,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // unary_arithmetic = quote_unary_arithmetic, quote_word_length, memory_addr => ActionFn(706);
@@ -17569,8 +17573,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // unary_arithmetic = quote_unary_arithmetic, byte_label => ActionFn(707);
@@ -17591,8 +17595,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // unary_arithmetic = quote_unary_arithmetic, word_label => ActionFn(708);
@@ -17613,8 +17617,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, gen_byte_reg, ",", gen_byte_reg => ActionFn(710);
@@ -17637,8 +17641,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, gen_word_reg, ",", gen_word_reg => ActionFn(711);
@@ -17661,8 +17665,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, quote_byte_length, memory_addr, ",", gen_byte_reg => ActionFn(712);
@@ -17686,8 +17690,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, gen_byte_reg, ",", quote_byte_length, memory_addr => ActionFn(713);
@@ -17711,8 +17715,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, gen_word_reg, ",", quote_word_length, memory_addr => ActionFn(714);
@@ -17736,8 +17740,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, quote_word_length, memory_addr, ",", gen_word_reg => ActionFn(715);
@@ -17761,8 +17765,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, byte_label, ",", gen_byte_reg => ActionFn(716);
@@ -17785,8 +17789,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, gen_byte_reg, ",", byte_label => ActionFn(717);
@@ -17809,8 +17813,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, word_label, ",", gen_word_reg => ActionFn(718);
@@ -17833,8 +17837,8 @@ mod __parse__Preprocessor {
         out: &'s mut util::Output,
         input: &'input str,
         __lookahead_start: Option<&usize>,
-        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
-        _: ::std::marker::PhantomData<(&'input (), &'s ())>,
+        __symbols: &mut alloc::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: core::marker::PhantomData<(&'input (), &'s ())>,
     ) -> (usize, usize)
     {
         // xchg = quote_xchg, gen_word_reg, ",", word_label => ActionFn(719);
@@ -17864,6 +17868,8 @@ mod __intern_token {
     extern crate lalrpop_util as __lalrpop_util;
     #[allow(unused_imports)]
     use self::__lalrpop_util::state_machine as __state_machine;
+    extern crate core;
+    extern crate alloc;
     pub fn new_builder() -> __lalrpop_util::lexer::MatcherBuilder {
         let __strs: &[(&str, bool)] = &[
             ("^(\"[\u{0}-\u{7f}]*\")", false),
@@ -18174,7 +18180,7 @@ mod __intern_token {
         __lalrpop_util::lexer::MatcherBuilder::new(__strs.iter().copied()).unwrap()
     }
 }
-pub use self::__lalrpop_util::lexer::Token;
+pub(crate) use self::__lalrpop_util::lexer::Token;
 
 #[allow(unused_variables)]
 fn __action0<
@@ -18198,8 +18204,8 @@ fn __action1<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, __0, _): (usize, ::std::option::Option<()>, usize),
-    (_, __1, _): (usize, ::std::option::Option<()>, usize),
+    (_, __0, _): (usize, core::option::Option<()>, usize),
+    (_, __1, _): (usize, core::option::Option<()>, usize),
 ) -> ()
 {
     ()
@@ -18492,7 +18498,7 @@ fn __action21<
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, l, _): (usize, ::std::option::Option<String>, usize),
+    (_, l, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, i8, usize),
 ) -> ()
@@ -18516,7 +18522,7 @@ fn __action22<
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, l, _): (usize, ::std::option::Option<String>, usize),
+    (_, l, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
@@ -18542,7 +18548,7 @@ fn __action23<
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, l, _): (usize, ::std::option::Option<String>, usize),
+    (_, l, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, &'input str, usize),
     (_, v, _): (usize, i8, usize),
@@ -18570,7 +18576,7 @@ fn __action24<
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, l, _): (usize, ::std::option::Option<String>, usize),
+    (_, l, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, q, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
@@ -18627,7 +18633,7 @@ fn __action27<
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, l, _): (usize, ::std::option::Option<String>, usize),
+    (_, l, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, n, _): (usize, i16, usize),
 ) -> ()
@@ -18651,7 +18657,7 @@ fn __action28<
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, l, _): (usize, ::std::option::Option<String>, usize),
+    (_, l, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
@@ -18677,7 +18683,7 @@ fn __action29<
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, l, _): (usize, ::std::option::Option<String>, usize),
+    (_, l, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, _, _): (usize, &'input str, usize),
     (_, v, _): (usize, i16, usize),
@@ -18705,7 +18711,7 @@ fn __action30<
     out: &'s mut util::Output,
     input: &'input str,
     (_, start, _): (usize, usize, usize),
-    (_, l, _): (usize, ::std::option::Option<String>, usize),
+    (_, l, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, (), usize),
     (_, q, _): (usize, &'input str, usize),
     (_, end, _): (usize, usize, usize),
@@ -26306,7 +26312,7 @@ fn __action501<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, sr, _): (usize, ::std::option::Option<String>, usize),
+    (_, sr, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, n, _): (usize, u16, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -26329,7 +26335,7 @@ fn __action502<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, sr, _): (usize, ::std::option::Option<String>, usize),
+    (_, sr, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -26352,7 +26358,7 @@ fn __action503<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, sr, _): (usize, ::std::option::Option<String>, usize),
+    (_, sr, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -26377,7 +26383,7 @@ fn __action504<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, sr, _): (usize, ::std::option::Option<String>, usize),
+    (_, sr, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, r, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
@@ -26402,12 +26408,12 @@ fn __action505<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, sr, _): (usize, ::std::option::Option<String>, usize),
+    (_, sr, _): (usize, core::option::Option<String>, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, b, _): (usize, String, usize),
     (_, _, _): (usize, &'input str, usize),
     (_, i, _): (usize, String, usize),
-    (_, k, _): (usize, ::std::option::Option<i16>, usize),
+    (_, k, _): (usize, core::option::Option<i16>, usize),
     (_, _, _): (usize, &'input str, usize),
 ) -> String
 {
@@ -26677,7 +26683,7 @@ fn __action521<
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, i16, usize),
-) -> ::std::option::Option<i16>
+) -> core::option::Option<i16>
 {
     Some(__0)
 }
@@ -26692,7 +26698,7 @@ fn __action522<
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<i16>
+) -> core::option::Option<i16>
 {
     None
 }
@@ -26721,7 +26727,7 @@ fn __action524<
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::option::Option<String>
+) -> core::option::Option<String>
 {
     Some(__0)
 }
@@ -26736,7 +26742,7 @@ fn __action525<
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<String>
+) -> core::option::Option<String>
 {
     None
 }
@@ -26763,8 +26769,8 @@ fn __action527<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, v, _): (usize, ::std::vec::Vec<String>, usize),
-    (_, e, _): (usize, ::std::option::Option<String>, usize),
+    (_, v, _): (usize, alloc::vec::Vec<String>, usize),
+    (_, e, _): (usize, core::option::Option<String>, usize),
 ) -> Vec<String>
 {
     match e {
@@ -26785,8 +26791,8 @@ fn __action528<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, v, _): (usize, ::std::vec::Vec<String>, usize),
-    (_, e, _): (usize, ::std::option::Option<String>, usize),
+    (_, v, _): (usize, alloc::vec::Vec<String>, usize),
+    (_, e, _): (usize, core::option::Option<String>, usize),
 ) -> Vec<String>
 {
     match e {
@@ -26823,7 +26829,7 @@ fn __action530<
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::option::Option<String>
+) -> core::option::Option<String>
 {
     Some(__0)
 }
@@ -26838,7 +26844,7 @@ fn __action531<
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<String>
+) -> core::option::Option<String>
 {
     None
 }
@@ -26867,7 +26873,7 @@ fn __action533<
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ::std::option::Option<()>
+) -> core::option::Option<()>
 {
     Some(__0)
 }
@@ -26882,7 +26888,7 @@ fn __action534<
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<()>
+) -> core::option::Option<()>
 {
     None
 }
@@ -26896,7 +26902,7 @@ fn __action535<
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, (), usize),
-) -> ::std::option::Option<()>
+) -> core::option::Option<()>
 {
     Some(__0)
 }
@@ -26911,7 +26917,7 @@ fn __action536<
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<()>
+) -> core::option::Option<()>
 {
     None
 }
@@ -26925,7 +26931,7 @@ fn __action537<
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::option::Option<String>
+) -> core::option::Option<String>
 {
     Some(__0)
 }
@@ -26940,7 +26946,7 @@ fn __action538<
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<String>
+) -> core::option::Option<String>
 {
     None
 }
@@ -26955,9 +26961,9 @@ fn __action539<
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
-    vec![]
+    alloc::vec![]
 }
 
 #[allow(unused_variables)]
@@ -26968,8 +26974,8 @@ fn __action540<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, v, _): (usize, ::std::vec::Vec<String>, usize),
-) -> ::std::vec::Vec<String>
+    (_, v, _): (usize, alloc::vec::Vec<String>, usize),
+) -> alloc::vec::Vec<String>
 {
     v
 }
@@ -26998,7 +27004,7 @@ fn __action542<
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::option::Option<String>
+) -> core::option::Option<String>
 {
     Some(__0)
 }
@@ -27013,7 +27019,7 @@ fn __action543<
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::option::Option<String>
+) -> core::option::Option<String>
 {
     None
 }
@@ -27028,9 +27034,9 @@ fn __action544<
     input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
-    vec![]
+    alloc::vec![]
 }
 
 #[allow(unused_variables)]
@@ -27041,8 +27047,8 @@ fn __action545<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, v, _): (usize, ::std::vec::Vec<String>, usize),
-) -> ::std::vec::Vec<String>
+    (_, v, _): (usize, alloc::vec::Vec<String>, usize),
+) -> alloc::vec::Vec<String>
 {
     v
 }
@@ -27071,9 +27077,9 @@ fn __action547<
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
-    vec![__0]
+    alloc::vec![__0]
 }
 
 #[allow(unused_variables)]
@@ -27084,9 +27090,9 @@ fn __action548<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, v, _): (usize, ::std::vec::Vec<String>, usize),
+    (_, v, _): (usize, alloc::vec::Vec<String>, usize),
     (_, e, _): (usize, String, usize),
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
     { let mut v = v; v.push(e); v }
 }
@@ -27100,9 +27106,9 @@ fn __action549<
     out: &'s mut util::Output,
     input: &'input str,
     (_, __0, _): (usize, String, usize),
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
-    vec![__0]
+    alloc::vec![__0]
 }
 
 #[allow(unused_variables)]
@@ -27113,9 +27119,9 @@ fn __action550<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    (_, v, _): (usize, ::std::vec::Vec<String>, usize),
+    (_, v, _): (usize, alloc::vec::Vec<String>, usize),
     (_, e, _): (usize, String, usize),
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
     { let mut v = v; v.push(e); v }
 }
@@ -27130,7 +27136,7 @@ fn __action551<
     input: &'input str,
     __0: (usize, &'input str, usize),
     __1: (usize, i16, usize),
-) -> ::std::option::Option<i16>
+) -> core::option::Option<i16>
 {
     let __start0 = __0.0.clone();
     let __end0 = __1.2.clone();
@@ -27158,7 +27164,7 @@ fn __action552<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
@@ -27200,7 +27206,7 @@ fn __action553<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, &'input str, usize),
     __2: (usize, String, usize),
     __3: (usize, &'input str, usize),
@@ -27242,7 +27248,7 @@ fn __action554<
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, &'input str, usize),
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
     let __start0 = __0.0.clone();
     let __end0 = __1.2.clone();
@@ -27270,10 +27276,10 @@ fn __action555<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::vec::Vec<String>, usize),
+    __0: (usize, alloc::vec::Vec<String>, usize),
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
     let __start0 = __1.0.clone();
     let __end0 = __2.2.clone();
@@ -27302,7 +27308,7 @@ fn __action556<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
 ) -> Vec<String>
 {
     let __start0 = __0.0.clone();
@@ -27332,8 +27338,8 @@ fn __action557<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::vec::Vec<String>, usize),
-    __1: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, alloc::vec::Vec<String>, usize),
+    __1: (usize, core::option::Option<String>, usize),
 ) -> Vec<String>
 {
     let __start0 = __0.0.clone();
@@ -27364,7 +27370,7 @@ fn __action558<
     input: &'input str,
     __0: (usize, String, usize),
     __1: (usize, &'input str, usize),
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
     let __start0 = __0.0.clone();
     let __end0 = __1.2.clone();
@@ -27392,10 +27398,10 @@ fn __action559<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::vec::Vec<String>, usize),
+    __0: (usize, alloc::vec::Vec<String>, usize),
     __1: (usize, String, usize),
     __2: (usize, &'input str, usize),
-) -> ::std::vec::Vec<String>
+) -> alloc::vec::Vec<String>
 {
     let __start0 = __1.0.clone();
     let __end0 = __2.2.clone();
@@ -27424,7 +27430,7 @@ fn __action560<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
 ) -> Vec<String>
 {
     let __start0 = __0.0.clone();
@@ -27454,8 +27460,8 @@ fn __action561<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::vec::Vec<String>, usize),
-    __1: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, alloc::vec::Vec<String>, usize),
+    __1: (usize, core::option::Option<String>, usize),
 ) -> Vec<String>
 {
     let __start0 = __0.0.clone();
@@ -27485,7 +27491,7 @@ fn __action562<
     out: &'s mut util::Output,
     input: &'input str,
     __0: (usize, String, usize),
-) -> ::std::option::Option<String>
+) -> core::option::Option<String>
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.2.clone();
@@ -29266,7 +29272,7 @@ fn __action611<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, i8, usize),
 ) -> ()
@@ -29300,7 +29306,7 @@ fn __action612<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
@@ -29338,7 +29344,7 @@ fn __action613<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i8, usize),
@@ -29380,7 +29386,7 @@ fn __action614<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
@@ -29416,7 +29422,7 @@ fn __action615<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, i16, usize),
 ) -> ()
@@ -29450,7 +29456,7 @@ fn __action616<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
     __3: (usize, u16, usize),
@@ -29488,7 +29494,7 @@ fn __action617<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
     __3: (usize, i16, usize),
@@ -29530,7 +29536,7 @@ fn __action618<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
     __3: (usize, usize, usize),
@@ -33160,7 +33166,7 @@ fn __action723<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
 ) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
@@ -33194,7 +33200,7 @@ fn __action724<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<String>, usize),
+    __0: (usize, core::option::Option<String>, usize),
     __1: (usize, (), usize),
     __2: (usize, &'input str, usize),
 ) -> Result<(),__lalrpop_util::ParseError<usize,Token<'input>,&'static str>>
@@ -33918,7 +33924,7 @@ fn __action747<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<()>, usize),
+    __0: (usize, core::option::Option<()>, usize),
     __1: (usize, (), usize),
 ) -> ()
 {
@@ -33948,7 +33954,7 @@ fn __action748<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::option::Option<()>, usize),
+    __0: (usize, core::option::Option<()>, usize),
 ) -> ()
 {
     let __start0 = __0.2.clone();
@@ -34154,7 +34160,7 @@ fn __action755<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::vec::Vec<String>, usize),
+    __0: (usize, alloc::vec::Vec<String>, usize),
     __1: (usize, String, usize),
 ) -> Vec<String>
 {
@@ -34184,7 +34190,7 @@ fn __action756<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::vec::Vec<String>, usize),
+    __0: (usize, alloc::vec::Vec<String>, usize),
 ) -> Vec<String>
 {
     let __start0 = __0.2.clone();
@@ -34832,7 +34838,7 @@ fn __action775<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::vec::Vec<String>, usize),
+    __0: (usize, alloc::vec::Vec<String>, usize),
     __1: (usize, String, usize),
 ) -> Vec<String>
 {
@@ -34862,7 +34868,7 @@ fn __action776<
     context: &'s mut util::Context,
     out: &'s mut util::Output,
     input: &'input str,
-    __0: (usize, ::std::vec::Vec<String>, usize),
+    __0: (usize, alloc::vec::Vec<String>, usize),
 ) -> Vec<String>
 {
     let __start0 = __0.2.clone();
