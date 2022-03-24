@@ -230,7 +230,7 @@ pub fn byte_dec(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
 
 #[inline]
 pub fn byte_inc(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
-    let res = *val as u16 + 1;
+    let res = (*val as u16).wrapping_add(1);
     set_flag_helper(
         &mut vm.arch.flag,
         res as u8 >= 1 << 7,
@@ -254,22 +254,34 @@ pub fn byte_inc(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
 
 #[inline]
 pub fn byte_neg(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
-    let res = !*val + 1;
+    let res;
+    if *val as i8 == -128 {
+        res = *val;
+        set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
+    } else {
+        res = (!*val).wrapping_add(1);
+        unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
+    }
+    if (*val & 0xF) + 1 > 0x0F {
+        // auxillary borrow will only set if lower nibble generates carry
+        set_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
+    } else {
+        unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
+    }
+    let sign_change;
+    if *val == 0 {
+        sign_change = get_flag_state(vm.arch.flag, Flags::SIGN);
+        unset_flag(&mut vm.arch.flag, Flags::CARRY);
+    } else {
+        sign_change = res >= 1 << 7;
+        set_flag(&mut vm.arch.flag, Flags::CARRY);
+    }
     set_flag_helper(
         &mut vm.arch.flag,
-        res >= 1 << 7,
+        sign_change,
         res == 0,
         has_even_parity(res),
     );
-    if *val == 0 {
-        unset_flag(&mut vm.arch.flag, Flags::CARRY);
-    } else {
-        set_flag(&mut vm.arch.flag, Flags::CARRY);
-    }
-    // as we are just negating the byte, it will not overflow
-    unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    // auxillary is not changed, even when it is said in specification,
-    // as it does not make sense
     *val = res;
     Ok(())
 }
@@ -358,7 +370,7 @@ pub fn word_dec(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
 
 #[inline]
 pub fn word_inc(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
-    let res = *val as u32 + 1;
+    let res = (*val as u32).wrapping_add(1);
     set_flag_helper(
         &mut vm.arch.flag,
         res as u16 >= 1 << 15,
@@ -382,22 +394,35 @@ pub fn word_inc(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
 
 #[inline]
 pub fn word_neg(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
-    let res = !*val + 1;
+    let res;
+    if *val as i16 == -32768 {
+        res = *val;
+        set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
+    } else {
+        res = (!*val).wrapping_add(1);
+        unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
+    }
+    if (*val & 0xF) + 1 > 0x0F {
+        // auxillary borrow will only set if lower nibble generates carry
+        set_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
+    } else {
+        unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
+    }
+    let sign_change;
+    if *val == 0 {
+        sign_change = get_flag_state(vm.arch.flag, Flags::SIGN);
+        unset_flag(&mut vm.arch.flag, Flags::CARRY);
+    } else {
+        sign_change = res >= 1 << 15;
+        set_flag(&mut vm.arch.flag, Flags::CARRY);
+    }
     set_flag_helper(
         &mut vm.arch.flag,
-        res >= 1 << 15,
+        sign_change,
         res == 0,
         has_even_parity(res as u8),
     );
-    if *val == 0 {
-        unset_flag(&mut vm.arch.flag, Flags::CARRY);
-    } else {
-        set_flag(&mut vm.arch.flag, Flags::CARRY);
-    }
-    // as we are just negating the byte, it will not overflow
-    unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    // auxillary is not changed, even when it is said in specification,
-    // as it does not make sense
+
     *val = res;
     Ok(())
 }

@@ -164,12 +164,46 @@ fn test_unary_arithmetic() {
     assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
     assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
     assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
+    vm.arch.bx = 0;
+    let o = p.parse(1, &mut vm, &mut context, "neg bl");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.bx, 0);
+    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+    vm.arch.bx = -128_i8 as u8 as u16;
+    let o = p.parse(1, &mut vm, &mut context, "neg bl");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.bx, -128_i8 as u8 as u16);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+    println!("{:x}", vm.arch.bx);
+    assert!(!get_flag_state(vm.arch.flag, Flags::PARITY));
+    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    vm.arch.bx = 1;
     let o = p.parse(1, &mut vm, &mut context, "neg bx");
     assert!(o.is_ok());
     assert_eq!(vm.arch.bx, 0xFFFF);
     assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
     assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
     assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    vm.arch.bx = 0;
+    let o = p.parse(1, &mut vm, &mut context, "neg bx");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.bx, 0);
+    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+
+    vm.arch.bx = -32768_i16 as u16;
+    let o = p.parse(1, &mut vm, &mut context, "neg bx");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.bx, -32768_i16 as u16);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+    assert!(get_flag_state(vm.arch.flag, Flags::PARITY));
+    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
 
     // mul
     vm.mem[base] = 4;
