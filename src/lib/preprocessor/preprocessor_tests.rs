@@ -114,6 +114,17 @@ fn test_procedures() {
     let o = p.parse(&mut ctx, &mut out, "def f { STI CMC } CALL f");
     assert!(o.is_ok());
     assert_eq!(out.code.len(), 4); // One extra for added ret
+    out.clear();
+    ctx.clear();
+    let o = p.parse(
+        &mut ctx,
+        &mut out,
+        "def f { SUB AX,BX back: CMP AX,0 JNZ back ret }",
+    );
+    assert!(o.is_ok());
+    assert_eq!(out.code.len(), 5); // One extra for added ret
+    assert!(ctx.label_map.contains_key("back"));
+    assert_eq!(ctx.label_map.get("back").unwrap().map, 1); // index is 0 based, and back label maps to second instr, first index
 }
 
 #[test]

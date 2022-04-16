@@ -258,8 +258,10 @@ proc_def:() = {
 proc_contents:() = {
     opcodes,
     macro_use,
+    label,
     proc_contents opcodes,
     proc_contents macro_use,
+    proc_contents label,
 }
 
 quote_proc:()={
