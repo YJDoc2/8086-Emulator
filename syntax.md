@@ -148,7 +148,7 @@ Code directives and opcodes
         <li>print reg   : This will print the value of registers.</li>
         <li>print mem start -> end : This will print the value of memory, from start to end, both inclusive. the start and end are unsigned number, in range 0 ->1048575</li>
         <li>print mem start:offset : This will print the value of memory from start, to start+offset. Value of start and start+offset must lie in 0 -> 1048575</li>
-        <li>print :offset : This will print the value of memory from start of current data segment till offset, both inclusive.</li>
+        <li>print mem :offset : This will print the value of memory from start of current data segment till offset, both inclusive.</li>
     </ul>
   </div>
 </details>
