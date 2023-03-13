@@ -206,49 +206,13 @@ pub fn cwd(vm: &mut VM) {
 
 #[inline]
 pub fn byte_dec(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
-    let res = *val as i8 as i16 - 1;
-    set_flag_helper(
-        &mut vm.arch.flag,
-        res as u8 >= 1 << 7,
-        res == 0,
-        has_even_parity(res as u8),
-    );
-    if res < i8::MIN as i16 {
-        set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    } else {
-        unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    }
-    if *val & 0xF == 0 {
-        // auxillary borrow will only set if lower nibble is 0
-        set_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
-    } else {
-        unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
-    }
-    *val = res as i8 as u8;
+    *val = byte_sub(vm, *val, 1);
     Ok(())
 }
 
 #[inline]
 pub fn byte_inc(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
-    let res = (*val as u16).wrapping_add(1);
-    set_flag_helper(
-        &mut vm.arch.flag,
-        res as u8 >= 1 << 7,
-        res == 0,
-        has_even_parity(res as u8),
-    );
-    if res > u8::MAX as u16 {
-        set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    } else {
-        unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    }
-    if (*val & 0xF) + 1 > 0x0F {
-        // auxillary borrow will only set if lower nibble generates carry
-        set_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
-    } else {
-        unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
-    }
-    *val = res as i8 as u8;
+    *val = byte_add(vm, *val, 1);
     Ok(())
 }
 
@@ -346,49 +310,13 @@ pub fn byte_idiv(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
 
 #[inline]
 pub fn word_dec(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
-    let res = *val as i16 as i32 - 1;
-    set_flag_helper(
-        &mut vm.arch.flag,
-        res as u16 >= 1 << 15,
-        res == 0,
-        has_even_parity((res & 0xFF) as u8),
-    );
-    if res < i16::MIN as i32 {
-        set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    } else {
-        unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    }
-    if *val & 0xF == 0 {
-        // auxillary borrow will only set if lower nibble is 0
-        set_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
-    } else {
-        unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
-    }
-    *val = res as i16 as u16;
+    *val = word_sub(vm, *val, 1);
     Ok(())
 }
 
 #[inline]
 pub fn word_inc(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
-    let res = (*val as u32).wrapping_add(1);
-    set_flag_helper(
-        &mut vm.arch.flag,
-        res as u16 >= 1 << 15,
-        res == 0,
-        has_even_parity((res & 0xFF) as u8),
-    );
-    if res > u16::MAX as u32 {
-        set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    } else {
-        unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
-    }
-    if (*val & 0xF) + 1 > 0x0F {
-        // auxillary borrow will only set if lower nibble generates carry
-        set_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
-    } else {
-        unset_flag(&mut vm.arch.flag, Flags::AUX_CARRY);
-    }
-    *val = res as u16;
+    *val = word_add(vm, *val, 1);
     Ok(())
 }
 
@@ -488,74 +416,91 @@ pub fn word_idiv(vm: &mut VM, val: &mut u16) -> Result<(), DivByZero> {
 }
 
 pub fn byte_add(vm: &mut VM, op1: u8, op2: u8) -> u8 {
-    let res = op1 as u16 + op2 as u16;
+    let temp = op1 as u16 + op2 as u16;
+    let res = temp as u8;
+    let seventh_carry = (op1 & 0x7f) + (op2 & 0x7f) > 0x7f;
+    let eighth_carry = temp > u8::MAX as u16;
     set_all_flags(
         vm,
         FlagsToSet {
             zero: res == 0,
-            overflow: res > u8::MAX as u16,
-            parity: has_even_parity(res as u8),
-            sign: res & 1 << 7 != 0,
-            carry: res > u8::MAX as u16,
-            auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
+            overflow: seventh_carry ^ eighth_carry,
+            parity: has_even_parity(res),
+            sign: res & 0x80 != 0,
+            carry: eighth_carry,
+            auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0x0F,
         },
     );
-    res as u8
+    res
 }
 
 pub fn byte_adc(vm: &mut VM, op1: u8, op2: u8) -> u8 {
-    let mut res = op1 as u16 + op2 as u16;
+    let mut temp = op1 as u16 + op2 as u16;
+    let mut carry = 0;
     if get_flag_state(vm.arch.flag, Flags::CARRY) {
-        res += 1;
+        temp += 1;
+        carry = 1;
     }
+    let seventh_carry = (op1 & 0x7f).wrapping_add(op2 & 0x7f).wrapping_add(carry) > 0x7f;
+    let eighth_carry = temp > u8::MAX as u16;
+    let res = temp as u8;
+
     set_all_flags(
         vm,
         FlagsToSet {
             zero: res == 0,
-            overflow: res > u8::MAX as u16,
-            parity: has_even_parity(res as u8),
-            sign: res as u8 >= 1 << 7,
-            carry: res > u8::MAX as u16,
-            auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
+            overflow: seventh_carry ^ eighth_carry,
+            parity: has_even_parity(res),
+            sign: res & 0x80 != 0,
+            carry: eighth_carry,
+            auxillary: ((op1 & 0xF) + (op2 & 0xF) + carry) > 0xF,
         },
     );
 
-    res as u8
+    res
 }
 
 pub fn byte_sub(vm: &mut VM, op1: u8, op2: u8) -> u8 {
-    let res = op1 as i16 - op2 as i16;
+    let temp = op1 as i16 - op2 as i16;
+    let res = temp as u16 as u8;
+    let seventh_borrow = op1 & 0x7F < op2 & 0x7F;
+    let eighth_borrow = op1 < op2;
     set_all_flags(
         vm,
         FlagsToSet {
             zero: res == 0,
-            overflow: res < i8::MIN as i16,
-            parity: has_even_parity(res as u8),
-            sign: res as u16 as u8 >= 1 << 7,
-            carry: op1 < op2,
+            overflow: seventh_borrow ^ eighth_borrow,
+            parity: has_even_parity(res),
+            sign: res & 0x80 != 0,
+            carry: eighth_borrow,
             auxillary: (op1 & 0xF) < (op2 & 0xF),
         },
     );
-    res as u16 as u8
+    res
 }
 
 pub fn byte_sbb(vm: &mut VM, op1: u8, op2: u8) -> u8 {
-    let mut res = op1 as i16 - op2 as i16;
+    let mut temp = op1 as i16 - op2 as i16;
+    let mut borrow = 0;
     if get_flag_state(vm.arch.flag, Flags::CARRY) {
-        res -= 1;
+        temp -= 1;
+        borrow = 1;
     }
+    let res = temp as u16 as u8;
+    let seventh_borrow = op1 & 0x7F < (op2 & 0x7F) + borrow;
+    let eighth_borrow = op1 < op2.wrapping_add(borrow);
     set_all_flags(
         vm,
         FlagsToSet {
             zero: res == 0,
-            overflow: res < i8::MIN as i16,
-            parity: has_even_parity(res as u8),
-            sign: res as u16 >= 1 << 7,
-            carry: op1 < op2,
-            auxillary: (op1 & 0xF) < (op2 & 0xF) + 1,
+            overflow: seventh_borrow ^ eighth_borrow,
+            parity: has_even_parity(res),
+            sign: res & 0x80 != 0,
+            carry: eighth_borrow,
+            auxillary: (op1 & 0xF) < (op2.wrapping_add(borrow)) & 0xF,
         },
     );
-    res as u16 as u8
+    res
 }
 
 pub fn byte_cmp(vm: &mut VM, op1: u8, op2: u8) -> u8 {
@@ -577,73 +522,92 @@ pub fn byte_cmp(vm: &mut VM, op1: u8, op2: u8) -> u8 {
 // ---- WORD
 
 pub fn word_add(vm: &mut VM, op1: u16, op2: u16) -> u16 {
-    let res = op1 as u32 + op2 as u32;
+    let temp = op1 as u32 + op2 as u32;
+    let res = temp as u16;
+    let fifteenth_carry = (op1 & 0x7fff).wrapping_add(op2 & 0x7fff) > 0x7fff;
+    let sixteenth_carry = temp > u16::MAX as u32;
     set_all_flags(
         vm,
         FlagsToSet {
             zero: res == 0,
-            overflow: res > u16::MAX as u32,
+            overflow: fifteenth_carry ^ sixteenth_carry,
             parity: has_even_parity(res as u8),
-            sign: res >= 1 << 15,
-            carry: res > u16::MAX as u32,
-            auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
+            sign: res & 0x8000 != 0,
+            carry: sixteenth_carry,
+            auxillary: (op1 & 0xF).wrapping_add(op2 & 0xF) > 0xF,
         },
     );
-    res as u16
+    res
 }
 
 pub fn word_adc(vm: &mut VM, op1: u16, op2: u16) -> u16 {
-    let mut res = op1 as u32 + op2 as u32;
+    let mut temp = op1 as u32 + op2 as u32;
+    let mut carry = 0;
     if get_flag_state(vm.arch.flag, Flags::CARRY) {
-        res += 1;
+        temp += 1;
+        carry = 1;
     }
+    let res = temp as u16;
+    let fifteenth_carry = (op1 & 0x7fff)
+        .wrapping_add(op2 & 0x7fff)
+        .wrapping_add(carry)
+        > 0x7fff;
+    let sixteenth_carry = temp > u16::MAX as u32;
     set_all_flags(
         vm,
         FlagsToSet {
             zero: res == 0,
-            overflow: res > u16::MAX as u32,
+            overflow: fifteenth_carry ^ sixteenth_carry,
             parity: has_even_parity(res as u8),
-            sign: res as u16 >= 1 << 15,
-            carry: res > u16::MAX as u32,
-            auxillary: ((op1 & 0xF) + (op2 & 0xF)) > 0xF,
+            sign: res & 0x8000 != 0,
+            carry: sixteenth_carry,
+            auxillary: (op1 & 0xF).wrapping_add(op2 & 0xF).wrapping_add(carry) > 0xF,
         },
     );
-    res as u16
+    res
 }
 
 pub fn word_sub(vm: &mut VM, op1: u16, op2: u16) -> u16 {
-    let res = op1 as i32 - op2 as i32;
+    let temp = op1 as i32 - op2 as i32;
+    let res = temp as u32 as u16;
+    let fifteenth_borrow = (op1 & 0x7fff) < (op2 & 0x7fff);
+    let sixteenth_borrow = op1 < op2;
     set_all_flags(
         vm,
         FlagsToSet {
             zero: res == 0,
-            overflow: res < i16::MIN as i32,
+            overflow: fifteenth_borrow ^ sixteenth_borrow,
             parity: has_even_parity(res as u8),
-            sign: res as i16 as u16 >= 1 << 15,
-            carry: op1 < op2,
+            sign: res & 0x8000 != 0,
+            carry: sixteenth_borrow,
             auxillary: op1 & 0xF < op2 & 0xF,
         },
     );
-    res as u32 as u16
+    res
 }
 
 pub fn word_sbb(vm: &mut VM, op1: u16, op2: u16) -> u16 {
-    let mut res = op1 as i32 - op2 as i32;
+    let mut temp = op1 as i32 - op2 as i32;
+    let mut borrow = 0;
     if get_flag_state(vm.arch.flag, Flags::CARRY) {
-        res -= 1;
+        temp -= 1;
+        borrow = 1;
     }
+    let res = temp as u32 as u16;
+    let fifteenth_borrow = (op1 & 0x7fff) < (op2 & 0x7fff) + borrow;
+    let sixteenth_borrow = op1 < op2.wrapping_add(borrow);
     set_all_flags(
         vm,
         FlagsToSet {
             zero: res == 0,
-            overflow: res < i16::MIN as i32,
+            overflow: fifteenth_borrow ^ sixteenth_borrow,
             parity: has_even_parity(res as u8),
-            sign: res as i16 as u16 >= 1 << 15,
+            sign: res & 0x8000 != 0,
             carry: op1 < op2,
-            auxillary: op1 & 0xF < op2 & 0xF,
+            auxillary: op1 & 0xF < (op2.wrapping_add(borrow) & 0xF),
         },
     );
-    res as u32 as u16
+    res
 }
 
 pub fn word_cmp(vm: &mut VM, op1: u16, op2: u16) -> u16 {

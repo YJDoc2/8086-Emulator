@@ -143,8 +143,9 @@ fn test_unary_arithmetic() {
     // inc 255
     assert!(o.is_ok());
     assert_eq!(vm.mem[base], 0x00);
-    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
-    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
     assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
     assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
     // inc 0xFF00
@@ -306,8 +307,8 @@ fn test_binary_arithmetic() {
     assert_eq!(o.unwrap(), State::NEXT);
     assert_eq!(get_byte_reg(&vm, ByteReg::AL), 0);
     assert_eq!(vm.arch.bx, 1);
-    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
-    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
     assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
     assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
     assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
@@ -333,10 +334,23 @@ fn test_binary_arithmetic() {
     assert!(o.is_ok());
     assert_eq!(vm.mem[base], 2);
     assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
-    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
     assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
     assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
     assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    // for negative
+    vm.arch.ax = 0x007F;
+    vm.mem[base] = 2;
+    set_flag(&mut vm.arch.flag, Flags::CARRY);
+    let o = p.parse(1, &mut vm, &mut context, "adc byte l1,al");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], 0x82);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(!get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
 
     vm.arch.ax = 0x0101;
     vm.arch.bx = 0xFFFF;
@@ -346,12 +360,39 @@ fn test_binary_arithmetic() {
     assert_eq!(vm.arch.ax, 0x0101);
     assert_eq!(vm.arch.bx, 0x0101);
     assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
-    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(!get_flag_state(vm.arch.flag, Flags::OVERFLOW));
     assert!(get_flag_state(vm.arch.flag, Flags::CARRY));
     assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
     assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
 
+    // adc for neg numbers
+    vm.arch.ax = 0x7FFF; // 32,767
+    vm.arch.bx = 0x0001; //
+    set_flag(&mut vm.arch.flag, Flags::CARRY);
+    let o = p.parse(1, &mut vm, &mut context, "adc bx,ax");
+    assert!(o.is_ok());
+    assert_eq!(vm.arch.ax, 0x7FFF);
+    assert_eq!(vm.arch.bx, 0x8001);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(!get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::SIGN));
+
     // sub
+    vm.arch.ax = 0x0080;
+    vm.mem[base] = 1;
+    let o = p.parse(1, &mut vm, &mut context, "sub al,byte [0]");
+    assert!(o.is_ok());
+    assert_eq!(vm.mem[base], 1);
+    assert_eq!(vm.arch.ax, 0x007f);
+    assert!(!get_flag_state(vm.arch.flag, Flags::ZERO));
+    assert!(get_flag_state(vm.arch.flag, Flags::OVERFLOW));
+    assert!(!get_flag_state(vm.arch.flag, Flags::CARRY));
+    assert!(get_flag_state(vm.arch.flag, Flags::AUX_CARRY));
+    assert!(!get_flag_state(vm.arch.flag, Flags::SIGN));
+
+    // for neg
     vm.arch.ax = 0x0000;
     vm.mem[base] = 1;
     let o = p.parse(1, &mut vm, &mut context, "sub al,byte [0]");
