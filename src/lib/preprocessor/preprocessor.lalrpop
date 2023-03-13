@@ -92,7 +92,7 @@ db_directive:() = {
         context.data_counter += n;
     },
     // set string
-    <start:@L> <l:label?> quote_db <q:r#""[[:ascii:]]*""#> <end:@R> =>?{
+    <start:@L> <l:label?> quote_db <q:r#""[[:print:]]*""#> <end:@R> =>?{
         if q.len() > (u16::MAX-10) as usize{ // 10 is arbitrary
             return error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",u16::MAX-10));
         }
@@ -141,7 +141,7 @@ dw_directive:() = {
         context.data_counter += 2*n;
     },
     //set string
-    <start:@L> <l:label?> quote_dw <q:r#""[[:ascii:]]*""#> <end:@R> =>?{
+    <start:@L> <l:label?> quote_dw <q:r#""[[:print:]]*""#> <end:@R> =>?{
         if q.len() > ((u16::MAX/2)-10) as usize { // 10 is arbitrary
             return error!(start,end,format!("Single string can have at most {} characters, overflowing this would set the labels incorrectly, consider splitting string and using set to change location counter",(u16::MAX/2)-10));
         }
