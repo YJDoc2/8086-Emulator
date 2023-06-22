@@ -1,28 +1,31 @@
-use std::{fmt::Display, iter::FromIterator};
 use super::asm;
+use std::{fmt::Display, iter::FromIterator};
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum NumberKind {
     Decimal,
     Hexadecimal,
+    Binary,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum NumberType {
     U8,
     U16,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum TokenType {
     LeftParen,
     RightParen,
     Colon,
-    DB,
-    DW,
     Asm(String),
     Label(String),
     Identifier(String), // for macro params
+    // Data directives
+    DB,
+    DW,
+    Set,
     Print,
     // next three are specific to print
     Mem,
@@ -45,11 +48,11 @@ pub enum TokenType {
     EOF,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub struct Token {
-    offset: usize,
-    line: usize,
-    typ: TokenType,
+    pub offset: usize,
+    pub line: usize,
+    pub typ: TokenType,
 }
 
 pub struct LexingError {
@@ -109,8 +112,8 @@ impl Lexer {
 
     pub fn lex(mut self) -> Result<Vec<Token>, Vec<LexingError>> {
         while !self.is_at_end() {
-            self.start = self.current;
             self.scan_token();
+            self.start = self.current;
         }
         self.add_token(TokenType::EOF);
         if !self.errors.is_empty() {
@@ -195,6 +198,10 @@ impl Lexer {
             kind = NumberKind::Hexadecimal;
             digit_validator = Box::new(|c| matches!(c,'0'..='9'|'a'..='f'|'A'..='F'));
             self.advance(); // skip the x
+        } else if start_char == '0' && self.peek() == Some('b') {
+            kind = NumberKind::Binary;
+            digit_validator = Box::new(|c| matches!(c, '0' | '1'));
+            self.advance(); // skip the b
         } else {
             kind = NumberKind::Decimal;
             digit_validator = Box::new(|c| matches!(c, '0'..='9'));
@@ -212,6 +219,7 @@ impl Lexer {
         match kind {
             NumberKind::Decimal => radix = 10,
             NumberKind::Hexadecimal => radix = 16,
+            NumberKind::Binary => radix = 2,
         }
 
         match u16::from_str_radix(&str, radix) {
@@ -242,7 +250,7 @@ impl Lexer {
             if matches!(next,'_'|'a'..='z'|'A'..='Z'|'0'..='9') {
                 temp.push(next);
                 self.advance();
-            }else{
+            } else {
                 break;
             }
         }
@@ -296,25 +304,28 @@ impl Lexer {
             }
             '_' | 'a'..='z' | 'A'..='Z' => {
                 let token = self.consume_and_return_identifier(c);
-                if self.peek() == Some(':'){
+                if self.peek() == Some(':') {
                     self.add_token(TokenType::Label(token));
                     self.advance();
-                }else if asm::INSTRUCTIONS.contains(token.to_ascii_lowercase().as_str()){
+                } else if asm::INSTRUCTIONS.contains(token.to_ascii_lowercase().as_str()) {
                     self.add_token(TokenType::Asm(token));
-                } // we need to specifically check for next strings, as they have to be separate tokens
-                else if token.to_ascii_lowercase() == "db"{
+                }
+                // we need to specifically check for next strings, as they have to be separate tokens
+                else if token.to_ascii_lowercase() == "db" {
                     self.add_token(TokenType::DB);
-                }else if token.to_ascii_lowercase() == "dw"{
+                } else if token.to_ascii_lowercase() == "dw" {
                     self.add_token(TokenType::DW);
-                }else if token.to_ascii_lowercase() == "print"{
+                } else if token.to_ascii_lowercase() == "set" {
+                    self.add_token(TokenType::Set);
+                } else if token.to_ascii_lowercase() == "print" {
                     self.add_token(TokenType::Print);
-                }else if token.to_ascii_lowercase() == "mem"{
+                } else if token.to_ascii_lowercase() == "mem" {
                     self.add_token(TokenType::Mem);
-                }else if token.to_ascii_lowercase() == "reg"{
+                } else if token.to_ascii_lowercase() == "reg" {
                     self.add_token(TokenType::Reg);
-                }else if token.to_ascii_lowercase() == "flags"{
+                } else if token.to_ascii_lowercase() == "flags" {
                     self.add_token(TokenType::Flags);
-                }else{
+                } else {
                     self.add_token(TokenType::Identifier(token));
                 }
             }
