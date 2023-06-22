@@ -277,7 +277,7 @@ fn test_print_lexing() {
 }
 
 #[test]
-fn test_comment_lexing(){
+fn test_comment_lexing() {
     let o = lex!("db ;abcdee\n;111;111\nDW ;");
     assert!(o.is_ok());
     let out = o.unwrap();
@@ -287,4 +287,62 @@ fn test_comment_lexing(){
     assert_eq!(out[2], token!(2, 9, TokenType::EOL));
     assert_eq!(out[3], token!(3, 1, TokenType::DW));
     assert_eq!(out[4], token!(3, 5, TokenType::EOF));
+}
+
+#[test]
+fn test_negative_number_lexing() {
+    let o = lex!("-0xFFFF");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 2);
+    assert_eq!(
+        out[0],
+        token!(
+            1,
+            1,
+            TokenType::Number {
+                value: 1,
+                kind: NumberKind::Hexadecimal,
+                typ: NumberType::U16
+            }
+        )
+    );
+
+    let o = lex!("-0b1010");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 2);
+    assert_eq!(
+        out[0],
+        token!(
+            1,
+            1,
+            TokenType::Number {
+                value: 0xFFF6,
+                kind: NumberKind::Binary,
+                typ: NumberType::U8
+            }
+        )
+    );
+}
+
+#[test]
+fn test_lexer_errors() {
+    let o = lex!("0xer");
+    assert!(o.is_err());
+    let err = o.unwrap_err();
+    assert_eq!(err.len(), 1);
+    assert!(err[0].to_string().contains("error in parsing number 'er'"));
+
+    let o = lex!("あ");
+    assert!(o.is_err());
+    let err = o.unwrap_err();
+    assert_eq!(err.len(), 1);
+    assert!(err[0].to_string().contains("unexpected character 'あ'"));
+
+    let o = lex!("--");
+    assert!(o.is_err());
+    let err = o.unwrap_err();
+    assert_eq!(err.len(), 2); // both - generate their own errors
+    assert!(err[0].to_string().contains("unexpected '-'"));
 }

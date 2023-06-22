@@ -210,22 +210,19 @@ impl Lexer {
     fn consume_number(&mut self, start_char: char) {
         let kind;
         let mut temp: Vec<char> = vec![start_char]; // even if it is hex, starting 0 doesn't matter
-        let digit_validator: Box<dyn Fn(char) -> bool>;
         if start_char == '0' && self.peek() == Some('x') {
             kind = NumberKind::Hexadecimal;
-            digit_validator = Box::new(|c| matches!(c,'0'..='9'|'a'..='f'|'A'..='F'));
+            temp.pop();
             self.advance(); // skip the x
         } else if start_char == '0' && self.peek() == Some('b') {
             kind = NumberKind::Binary;
-            digit_validator = Box::new(|c| matches!(c, '0' | '1'));
+            temp.pop();
             self.advance(); // skip the b
         } else {
             kind = NumberKind::Decimal;
-            digit_validator = Box::new(|c| matches!(c, '0'..='9'));
         }
         while self.peek() != None {
-            if !digit_validator(self.peek().unwrap()) {
-                // next character is not a digit, so the number is over
+            if !self.peek().unwrap().is_ascii_alphanumeric() {
                 break;
             } else {
                 temp.push(self.advance());
@@ -250,11 +247,11 @@ impl Lexer {
                     value: val,
                     kind,
                     typ,
-                })
+                });
             }
-            Err(e) => {
+            Err(_) => {
                 self.error(format!(
-                    "error in parsing number '{str}' : {e}Note that only 0->65535 can be used"
+                    "error in parsing number '{str}'. Note that only 0->65535 can be used"
                 ));
             }
         }
@@ -298,7 +295,28 @@ impl Lexer {
                 if self.consume_if_matches('>') {
                     self.add_token(TokenType::MacroStart);
                 } else {
-                    self.error(format!("unexpected '-'"));
+                    // potentially a negative number
+                    let next = self.peek();
+                    // if next char is digit, it should be negative, for hex and binary starting 0 also falls here
+                    if next.is_some() && matches!(next.unwrap(), '0'..='9') {
+                        let next = self.advance();
+                        self.consume_number(next);
+                        // because the way consume number is, we first consume number,
+                        // then edit it to set it as negative
+                        let mut last = self.tokens.last_mut().unwrap();
+                        if let TokenType::Number { value, kind, typ } = last.typ {
+                            let _temp = value as u32 as i32;
+                            last.typ = TokenType::Number {
+                                value: (-_temp) as u32 as u16,
+                                kind,
+                                typ,
+                            }
+                        } else {
+                            unreachable!();
+                        }
+                    } else {
+                        self.error(format!("unexpected '-'"));
+                    }
                 }
             }
             '<' => {
