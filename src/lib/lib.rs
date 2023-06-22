@@ -5,6 +5,7 @@ pub mod interpreter;
 pub mod preprocessor;
 pub mod util;
 pub mod vm;
+pub mod parser;
 
 pub use data_parser::data_parser::DataParser;
 pub use interpreter::interpreter::InterpreterParser as Interpreter;
