@@ -2,7 +2,7 @@ use super::lexer;
 use crate::parser::lexer::{NumberKind, NumberType, Token, TokenType};
 
 // TODO
-// add test in parser for label defined twice
+// do original lexer test into parser + assembler
 
 macro_rules! lex {
     ($str:expr) => {{
@@ -22,7 +22,7 @@ macro_rules! token {
 }
 
 #[test]
-fn test_data_directives() {
+fn test_basic_lexing() {
     let o = lex!("set 0x45 SET 6");
     assert!(o.is_ok());
     let out = o.unwrap();
@@ -69,6 +69,38 @@ fn test_data_directives() {
             TokenType::Number {
                 value: 5,
                 kind: NumberKind::Decimal,
+                typ: NumberType::U8
+            }
+        )
+    );
+
+    let o = lex!("DB 5\nDW 0x5");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 6);
+    assert_eq!(out[0], token!(1, 1, TokenType::DB));
+    assert_eq!(
+        out[1],
+        token!(
+            1,
+            4,
+            TokenType::Number {
+                value: 5,
+                kind: NumberKind::Decimal,
+                typ: NumberType::U8
+            }
+        )
+    );
+    assert_eq!(out[2], token!(1, 5, TokenType::EOL));
+    assert_eq!(out[3], token!(2, 1, TokenType::DW));
+    assert_eq!(
+        out[4],
+        token!(
+            2,
+            4,
+            TokenType::Number {
+                value: 5,
+                kind: NumberKind::Hexadecimal,
                 typ: NumberType::U8
             }
         )
@@ -149,341 +181,110 @@ fn test_data_directives() {
     assert_eq!(out[6], token!(1, 15, TokenType::RightBracket));
 }
 
-// #[test]
-// fn test_macro_directives() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "macro mcname (a) ->DB [a]<- \nmcname(5)",
-//     );
-//     assert!(o.is_ok());
-//     assert_eq!(out.data.len(), 1);
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "macro mcname (a) -> DB [a] <-\nmcname(hello)",
-//     );
-//     assert!(o.is_err());
-//     assert_eq!(out.data.len(), 0);
+#[test]
+fn test_lexing_spaces() {
+    let o = lex!("  mov al,bl\n set 05  \n");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 9);
+    assert_eq!(out[0], token!(1, 3, TokenType::Asm("mov".to_string())));
+    assert_eq!(
+        out[1],
+        token!(1, 7, TokenType::Identifier("al".to_string()))
+    );
+    assert_eq!(out[2], token!(1, 9, TokenType::Comma));
+    assert_eq!(
+        out[3],
+        token!(1, 10, TokenType::Identifier("bl".to_string()))
+    );
+    assert_eq!(out[4], token!(1, 12, TokenType::EOL));
+    assert_eq!(out[5], token!(2, 2, TokenType::Set));
+    assert_eq!(
+        out[6],
+        token!(
+            2,
+            6,
+            TokenType::Number {
+                value: 5,
+                kind: NumberKind::Decimal,
+                typ: NumberType::U8
+            }
+        )
+    );
+    assert_eq!(out[7], token!(2, 10, TokenType::EOL));
+    assert_eq!(out[8], token!(3, 1, TokenType::EOF));
+}
 
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "macro clear (a) -> MOV a, 0<-\n macro test_seg (a) -> mov a, AX <-\nclear(AX)\nclear(bl)\nclear(SI)\nclear(byte [0])\ntest_seg(DS)",
-//     );
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 5);
-// }
+#[test]
+fn test_macro_lexing() {
+    let o = lex!("macro mcname (a) ->DB [a]<- \nmcname(5)");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 17);
+    assert_eq!(out[0], token!(1, 1, TokenType::Macro));
+    assert_eq!(
+        out[1],
+        token!(1, 7, TokenType::Identifier("mcname".to_string()))
+    );
+    assert_eq!(out[2], token!(1, 14, TokenType::LeftParen));
+    assert_eq!(
+        out[3],
+        token!(1, 15, TokenType::Identifier("a".to_string()))
+    );
+    assert_eq!(out[4], token!(1, 16, TokenType::RightParen));
+    assert_eq!(out[5], token!(1, 18, TokenType::MacroStart));
+    assert_eq!(out[6], token!(1, 20, TokenType::DB));
+    assert_eq!(out[7], token!(1, 23, TokenType::LeftBracket));
+    assert_eq!(
+        out[8],
+        token!(1, 24, TokenType::Identifier("a".to_string()))
+    );
+    assert_eq!(out[9], token!(1, 25, TokenType::RightBracket));
+    assert_eq!(out[10], token!(1, 26, TokenType::MacroEnd));
+    assert_eq!(out[11], token!(1, 29, TokenType::EOL));
+    assert_eq!(
+        out[12],
+        token!(2, 1, TokenType::Identifier("mcname".to_owned()))
+    );
+    assert_eq!(out[13], token!(2, 7, TokenType::LeftParen));
+    assert_eq!(
+        out[14],
+        token!(
+            2,
+            8,
+            TokenType::Number {
+                value: 5,
+                kind: NumberKind::Decimal,
+                typ: NumberType::U8
+            }
+        )
+    );
+    assert_eq!(out[15], token!(2, 9, TokenType::RightParen));
+    assert_eq!(out[16], token!(2, 10, TokenType::EOF));
+}
 
-// #[test]
-// fn test_control_opcode() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "stc CMC HLT");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 3);
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(&mut ctx, &mut out, "ESC LOCK");
-//     assert!(o.is_err());
-// }
+#[test]
+fn test_print_lexing() {
+    let o = lex!("print mem \nreg flags");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 6);
+    assert_eq!(out[0], token!(1, 1, TokenType::Print));
+    assert_eq!(out[1], token!(1, 7, TokenType::Mem));
+    assert_eq!(out[2], token!(1, 11, TokenType::EOL));
+    assert_eq!(out[3], token!(2, 1, TokenType::Reg));
+    assert_eq!(out[4], token!(2, 5, TokenType::Flags));
+}
 
-// #[test]
-// fn test_transfer_opcode() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "JMP _test JGE go");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 2);
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(&mut ctx, &mut out, "RET INTO");
-//     assert!(o.is_err());
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(&mut ctx, &mut out, "fault:DB 0 JMP fault");
-//     assert!(o.is_err());
-// }
-
-// #[test]
-// fn test_procedures() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "def f { STI CMC }");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 3); // One extra for added ret
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(&mut ctx, &mut out, "def f { STI CMC } CALL f");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 4); // One extra for added ret
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "def f { SUB AX,BX back: CMP AX,0 JNZ back ret }",
-//     );
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 5); // One extra for added ret
-//     assert!(ctx.label_map.contains_key("back"));
-//     assert_eq!(ctx.label_map.get("back").unwrap().map, 1); // index is 0 based, and back label maps to second instr, first index
-// }
-
-// #[test]
-// fn test_offset() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "DB [0,5] name: DB [2] DB OFFSET name");
-//     assert!(o.is_ok());
-//     assert_eq!(out.data.len(), 3);
-//     assert_eq!(out.data[2], "db 5");
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(&mut ctx, &mut out, "def f { STI CMC } DB offset f");
-//     assert!(o.is_err());
-// }
-
-// #[test]
-// fn test_not() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "NOT AX NOT byte [BX]");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 2);
-//     let o = p.parse(&mut ctx, &mut out, "NOT byte [BP,SI] not word [bx,DI,-6]");
-//     assert!(o.is_ok());
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(&mut ctx, &mut out, "l:DB 5 NOT BYTE l");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 1);
-// }
-
-// #[test]
-// fn test_binary_logical() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "AND AX,CX OR AL, BYTE [BX] XOR WORD [BP], AX",
-//     );
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 3);
-
-//     let o = p.parse(&mut ctx, &mut out, "OR AX,0x52");
-//     assert!(o.is_ok());
-//     let o = p.parse(&mut ctx, &mut out, "l:DB 8 OR BYTE l,0x52");
-//     assert!(o.is_ok());
-
-//     let o = p.parse(&mut ctx, &mut out, "OR AL,[BX]");
-//     assert!(o.is_err());
-//     let o = p.parse(&mut ctx, &mut out, "OR [BP],[BX]");
-//     assert!(o.is_err());
-// }
-
-// #[test]
-// fn test_shift_rotate() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "l:DB 6 SAL AX,5 SHL CX,CL SAR byte [BP],CL SHR BYTE l, 0b1101",
-//     );
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 4);
-// }
-
-// #[test]
-// fn test_print() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "l:DB [7,0] _t:DB 0 print flags print reg print mem 0x0FFFF-> 0x100FF print mem 0xFFF00:50 print mem : offset _t",
-//     );
-//     assert!(o.is_ok());
-//     assert_eq!(out.data.len(), 2);
-//     assert_eq!(out.code.len(), 5);
-//     let o = p.parse(&mut ctx, &mut out, "print mem 0xFFFFF:50");
-//     assert!(o.is_err());
-// }
-
-// #[test]
-// fn test_arithmetic() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "l:DB [7,0] _t:DB 0 ADD AX , -5 IMUL CX DIV byte l DAA CBW",
-//     );
-//     assert!(o.is_ok());
-//     assert_eq!(out.data.len(), 2);
-//     assert_eq!(out.code.len(), 5);
-// }
-
-// #[test]
-// fn test_string_instructions() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "MOVS byte REP LODS word");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 2);
-//     let o = p.parse(&mut ctx, &mut out, "MOVS byte REP LODS word rep cmps byte");
-//     assert!(o.is_err());
-//     let o = p.parse(&mut ctx, &mut out, "REPZ cmps byte");
-//     assert!(o.is_ok());
-// }
-
-// #[test]
-// fn test_data_transfer_unary() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "LAHF popf xlat");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 3);
-// }
-
-// #[test]
-// fn test_data_transfer_load() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "l:DW 0 LEA AX , word l lea dx , word [SI,7]",
-//     );
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 2);
-//     let o = p.parse(&mut ctx, &mut out, "LES");
-//     assert!(o.is_err());
-//     let o = p.parse(&mut ctx, &mut out, "LDS");
-//     assert!(o.is_err());
-// }
-
-// #[test]
-// fn test_data_transfer_push_pop() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "l:DW [5,7] push CS push word l");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 2);
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(&mut ctx, &mut out, "l:DW [5,7] pop ES pop word l");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 2);
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(&mut ctx, &mut out, "pop CS");
-//     assert!(o.is_err());
-// }
-
-// #[test]
-// fn test_data_transfer_xchg_in_out() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "l:DW 5 xchg AL,CL xchg word l, si");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 2);
-//     out.clear();
-//     ctx.clear();
-//     let o = p.parse(&mut ctx, &mut out, "in AX,0x51");
-//     assert!(o.is_err());
-//     let o = p.parse(&mut ctx, &mut out, "out 0x51,AX");
-//     assert!(o.is_err());
-// }
-
-// #[test]
-// fn test_data_transfer_mov() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "l:DW 5 mov AX,CX mov DL,CL mov DX,word l",
-//     );
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 3);
-//     out.clear();
-//     ctx.clear();
-
-//     let o = p.parse(&mut ctx, &mut out, "l:DW 5 mov word l, 0x5FFF");
-//     assert!(o.is_ok());
-//     assert_eq!(out.code.len(), 1);
-//     out.clear();
-//     ctx.clear();
-// }
-
-// #[test]
-// fn test_macro() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "MACRO a(_)-> c(_) <- MACRO b(_) ->c(_)<- macro c(_) ->a(_)b(_)<- c(_)",
-//     );
-//     assert!(o.is_err());
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "MACRO a(q)-> ADD AX,q <- MACRO b(k,q) -> k (q)<- b(b,5)",
-//     );
-//     assert!(o.is_err());
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "MACRO a(q)-> ADD AX,q <- MACRO b(k) ->a(k)<- b(5)",
-//     );
-//     assert!(o.is_ok());
-
-//     let o = p.parse(
-//         &mut ctx,
-//         &mut out,
-//         "MACRO a(q)-> ADD AX,q <- MACRO b(k,q) -> k (q)<- b(a,5)",
-//     );
-//     assert!(o.is_ok());
-// }
-
-// #[test]
-// fn test_segment_override() {
-//     let mut ctx = crate::util::preprocessor_util::Context::default();
-//     let mut out = crate::util::preprocessor_util::Output::default();
-//     let p = crate::preprocessor::preprocessor::PreprocessorParser::new();
-//     let o = p.parse(&mut ctx, &mut out, "mov ax,word es[bp]");
-//     assert!(o.is_ok());
-//     let o = p.parse(&mut ctx, &mut out, "mov ax,word ss[5]");
-//     assert!(o.is_ok());
-//     let o = p.parse(&mut ctx, &mut out, "mov ax,word ds[bp,SI]");
-//     assert!(o.is_ok());
-//     let o = p.parse(&mut ctx, &mut out, "mov ax,word CS[bx,di,6]");
-//     assert!(o.is_ok());
-// }
+#[test]
+fn test_comment_lexing(){
+    let o = lex!("db ;abcdee\n;111;111\nDW ;");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 5);
+    assert_eq!(out[0], token!(1, 1, TokenType::DB));
+    assert_eq!(out[1], token!(1, 11, TokenType::EOL));
+    assert_eq!(out[2], token!(2, 9, TokenType::EOL));
+    assert_eq!(out[3], token!(3, 1, TokenType::DW));
+    assert_eq!(out[4], token!(3, 5, TokenType::EOF));
+}

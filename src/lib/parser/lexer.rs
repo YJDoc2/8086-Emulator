@@ -1,24 +1,25 @@
 use super::asm;
+use lazy_static::lazy_static;
+use std::collections::HashMap;
 use std::{fmt::Display, iter::FromIterator};
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum NumberKind {
     Decimal,
     Hexadecimal,
     Binary,
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum NumberType {
     U8,
     U16,
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub enum TokenType {
     LeftParen,
     RightParen,
-    Colon,
     Asm(String),
     Label(String),
     Identifier(String), // for macro params
@@ -33,6 +34,7 @@ pub enum TokenType {
     Flags,
 
     Size,
+    Macro,
     MacroStart,
     MacroEnd,
     RightBracket,
@@ -81,6 +83,21 @@ impl LexingError {
             error: err.into(),
         }
     }
+}
+
+lazy_static! {
+    pub static ref KEYWORDS: HashMap<&'static str, TokenType> = {
+        let mut hm = HashMap::new();
+        hm.insert("print", TokenType::Print);
+        hm.insert("mem", TokenType::Mem);
+        hm.insert("reg", TokenType::Reg);
+        hm.insert("flags", TokenType::Flags);
+        hm.insert("set", TokenType::Set);
+        hm.insert("db", TokenType::DB);
+        hm.insert("dw", TokenType::DW);
+        hm.insert("macro", TokenType::Macro);
+        hm
+    };
 }
 
 pub struct Lexer {
@@ -273,7 +290,6 @@ impl Lexer {
             '[' => self.add_token(TokenType::LeftBracket),
             ']' => self.add_token(TokenType::RightBracket),
             ',' => self.add_token(TokenType::Comma),
-            ':' => self.add_token(TokenType::Colon),
             '\n' => {
                 self.add_token(TokenType::EOL);
                 self.advance_line_data();
@@ -309,22 +325,12 @@ impl Lexer {
                     self.advance();
                 } else if asm::INSTRUCTIONS.contains(token.to_ascii_lowercase().as_str()) {
                     self.add_token(TokenType::Asm(token));
-                }
-                // we need to specifically check for next strings, as they have to be separate tokens
-                else if token.to_ascii_lowercase() == "db" {
-                    self.add_token(TokenType::DB);
-                } else if token.to_ascii_lowercase() == "dw" {
-                    self.add_token(TokenType::DW);
-                } else if token.to_ascii_lowercase() == "set" {
-                    self.add_token(TokenType::Set);
-                } else if token.to_ascii_lowercase() == "print" {
-                    self.add_token(TokenType::Print);
-                } else if token.to_ascii_lowercase() == "mem" {
-                    self.add_token(TokenType::Mem);
-                } else if token.to_ascii_lowercase() == "reg" {
-                    self.add_token(TokenType::Reg);
-                } else if token.to_ascii_lowercase() == "flags" {
-                    self.add_token(TokenType::Flags);
+                } else if KEYWORDS.contains_key(token.to_ascii_lowercase().as_str()) {
+                    let typ = KEYWORDS
+                        .get(token.to_ascii_lowercase().as_str())
+                        .unwrap()
+                        .clone();
+                    self.add_token(typ);
                 } else {
                     self.add_token(TokenType::Identifier(token));
                 }
