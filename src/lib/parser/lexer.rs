@@ -288,7 +288,13 @@ impl Lexer {
             ']' => self.add_token(TokenType::RightBracket),
             ',' => self.add_token(TokenType::Comma),
             '\n' => {
-                self.add_token(TokenType::EOL);
+                if let Some(Token { offset:_, line:_, typ:TokenType::EOL }) =  self.tokens.last(){
+                    // Do not add extra EOL token if we have already added one
+                    // We add EOL for error recovery in parser, so we can ignore 
+                    // this is there was already a newline just before
+                }else{
+                    self.add_token(TokenType::EOL);
+                }
                 self.advance_line_data();
             }
             '-' => {

@@ -281,12 +281,11 @@ fn test_comment_lexing() {
     let o = lex!("db ;abcdee\n;111;111\nDW ;");
     assert!(o.is_ok());
     let out = o.unwrap();
-    assert_eq!(out.len(), 5);
+    assert_eq!(out.len(), 4);
     assert_eq!(out[0], token!(1, 1, TokenType::DB));
     assert_eq!(out[1], token!(1, 11, TokenType::EOL));
-    assert_eq!(out[2], token!(2, 9, TokenType::EOL));
-    assert_eq!(out[3], token!(3, 1, TokenType::DW));
-    assert_eq!(out[4], token!(3, 5, TokenType::EOF));
+    assert_eq!(out[2], token!(3, 1, TokenType::DW));
+    assert_eq!(out[3], token!(3, 5, TokenType::EOF));
 }
 
 #[test]
@@ -345,4 +344,30 @@ fn test_lexer_errors() {
     let err = o.unwrap_err();
     assert_eq!(err.len(), 2); // both - generate their own errors
     assert!(err[0].to_string().contains("unexpected '-'"));
+}
+
+#[test]
+fn test_multiple_newline_skip() {
+    let o = lex!(";abcd\n\n\nDB 5");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 4);
+    assert_eq!(out[0],token!(1,6,TokenType::EOL));
+    assert_eq!(out[1],token!(4,1,TokenType::DB));
+
+    let o = lex!(";abcd\n;abcd  \nDB 5");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 4);
+    assert_eq!(out[0],token!(1,6,TokenType::EOL));
+    assert_eq!(out[1],token!(3,1,TokenType::DB));
+
+    let o = lex!(";abcd\nset \nDB 5");
+    assert!(o.is_ok());
+    let out = o.unwrap();
+    assert_eq!(out.len(), 6);
+    assert_eq!(out[0],token!(1,6,TokenType::EOL));
+    assert_eq!(out[1],token!(2,1,TokenType::Set));
+    assert_eq!(out[2],token!(2,5,TokenType::EOL));
+    assert_eq!(out[3],token!(3,1,TokenType::DB));
 }
