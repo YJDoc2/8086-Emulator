@@ -20,9 +20,9 @@ pub enum NumberType {
 pub enum TokenType {
     LeftParen,
     RightParen,
-    Asm(String),
-    Label(String),
-    Identifier(String), // for macro params
+    Asm,
+    Label,
+    Identifier, // for macro params
     // Data directives
     DB,
     DW,
@@ -40,14 +40,41 @@ pub enum TokenType {
     RightBracket,
     LeftBracket,
     Comma,
+    String,
+    Number,
+    EOL,
+    EOF,
+}
+
+// This was separated from TokenType enum's corresponding values,
+// as I wanted the TokenType to be passable around and directly comparable,
+// i.e. to be a dumb enum. So be careful when extracting values using method,
+// as they will panic if value is of different type.
+#[derive(Debug, PartialEq, Eq)]
+pub enum TokenValue {
     String(String),
     Number {
         value: u16,
         kind: NumberKind,
         typ: NumberType,
     },
-    EOL,
-    EOF,
+    None,
+}
+
+impl TokenValue {
+    pub fn number(&self) -> (u16, NumberKind, NumberType) {
+        match self {
+            Self::Number { value, kind, typ } => (*value, *kind, *typ),
+            _ => panic!("tried to extract number value from non number"),
+        }
+    }
+
+    pub fn string(&self) -> String {
+        match self {
+            Self::String(s) => s.clone(),
+            _ => panic!("tried to extract string value from non string"),
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -55,6 +82,7 @@ pub struct Token {
     pub offset: usize,
     pub line: usize,
     pub typ: TokenType,
+    pub value: TokenValue,
 }
 
 pub struct LexingError {
@@ -140,12 +168,12 @@ impl Lexer {
         }
     }
 
-    #[inline]
+    #[inline(always)]
     fn is_at_end(&self) -> bool {
         self.current >= self.src_length
     }
 
-    #[inline]
+    #[inline(always)]
     fn get_offset(&self) -> usize {
         // index starts at 0, but we want offset starting at 1,  hence +1
         self.start - self.line_pos + 1
@@ -204,7 +232,7 @@ impl Lexer {
         }
         self.advance(); // for ending "
         let str: String = String::from_iter(temp.into_iter());
-        self.add_token(TokenType::String(str));
+        self.add_token_with_value(TokenType::String, TokenValue::String(str));
     }
 
     fn consume_number(&mut self, start_char: char) {
@@ -243,11 +271,14 @@ impl Lexer {
                 } else {
                     NumberType::U16
                 };
-                self.add_token(TokenType::Number {
-                    value: val,
-                    kind,
-                    typ,
-                });
+                self.add_token_with_value(
+                    TokenType::Number,
+                    TokenValue::Number {
+                        value: val,
+                        kind,
+                        typ,
+                    },
+                );
             }
             Err(_) => {
                 self.error(format!(
@@ -276,6 +307,16 @@ impl Lexer {
             offset: self.get_offset(),
             line: self.line,
             typ,
+            value: TokenValue::None,
+        })
+    }
+
+    fn add_token_with_value(&mut self, typ: TokenType, value: TokenValue) {
+        self.tokens.push(Token {
+            offset: self.get_offset(),
+            line: self.line,
+            typ,
+            value,
         })
     }
 
@@ -288,11 +329,17 @@ impl Lexer {
             ']' => self.add_token(TokenType::RightBracket),
             ',' => self.add_token(TokenType::Comma),
             '\n' => {
-                if let Some(Token { offset:_, line:_, typ:TokenType::EOL }) =  self.tokens.last(){
+                if let Some(Token {
+                    offset: _,
+                    line: _,
+                    typ: TokenType::EOL,
+                    value: _,
+                }) = self.tokens.last()
+                {
                     // Do not add extra EOL token if we have already added one
-                    // We add EOL for error recovery in parser, so we can ignore 
+                    // We add EOL for error recovery in parser, so we can ignore
                     // this is there was already a newline just before
-                }else{
+                } else {
                     self.add_token(TokenType::EOL);
                 }
                 self.advance_line_data();
@@ -310,9 +357,10 @@ impl Lexer {
                         // because the way consume number is, we first consume number,
                         // then edit it to set it as negative
                         let mut last = self.tokens.last_mut().unwrap();
-                        if let TokenType::Number { value, kind, typ } = last.typ {
+                        if last.typ == TokenType::Number {
+                            let (value, kind, typ) = last.value.number();
                             let _temp = value as u32 as i32;
-                            last.typ = TokenType::Number {
+                            last.value = TokenValue::Number {
                                 value: (-_temp) as u32 as u16,
                                 kind,
                                 typ,
@@ -345,10 +393,10 @@ impl Lexer {
             '_' | 'a'..='z' | 'A'..='Z' => {
                 let token = self.consume_and_return_identifier(c);
                 if self.peek() == Some(':') {
-                    self.add_token(TokenType::Label(token));
+                    self.add_token_with_value(TokenType::Label, TokenValue::String(token));
                     self.advance();
                 } else if asm::INSTRUCTIONS.contains(token.to_ascii_lowercase().as_str()) {
-                    self.add_token(TokenType::Asm(token));
+                    self.add_token_with_value(TokenType::Asm, TokenValue::String(token));
                 } else if KEYWORDS.contains_key(token.to_ascii_lowercase().as_str()) {
                     let typ = KEYWORDS
                         .get(token.to_ascii_lowercase().as_str())
@@ -356,7 +404,7 @@ impl Lexer {
                         .clone();
                     self.add_token(typ);
                 } else {
-                    self.add_token(TokenType::Identifier(token));
+                    self.add_token_with_value(TokenType::Identifier, TokenValue::String(token));
                 }
             }
             other => {

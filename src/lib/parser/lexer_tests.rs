@@ -1,5 +1,5 @@
 use super::lexer;
-use crate::parser::lexer::{NumberKind, NumberType, Token, TokenType};
+use crate::parser::lexer::{NumberKind, NumberType, Token, TokenType, TokenValue};
 
 // TODO
 // do original lexer test into parser + assembler
@@ -17,6 +17,15 @@ macro_rules! token {
             offset: $offset,
             line: $line,
             typ: $typ,
+            value: TokenValue::None,
+        }
+    };
+    ($line:expr,$offset:expr,$typ:expr,$val:expr) => {
+        Token {
+            offset: $offset,
+            line: $line,
+            typ: $typ,
+            value: $val,
         }
     };
 }
@@ -33,7 +42,8 @@ fn test_basic_lexing() {
         token!(
             1,
             5,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 69,
                 kind: NumberKind::Hexadecimal,
                 typ: NumberType::U8
@@ -46,7 +56,8 @@ fn test_basic_lexing() {
         token!(
             1,
             14,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 6,
                 kind: NumberKind::Decimal,
                 typ: NumberType::U8
@@ -59,14 +70,23 @@ fn test_basic_lexing() {
     assert!(o.is_ok());
     let out = o.unwrap();
     assert_eq!(out.len(), 4);
-    assert_eq!(out[0], token!(1, 1, TokenType::Label("test".to_string())));
+    assert_eq!(
+        out[0],
+        token!(
+            1,
+            1,
+            TokenType::Label,
+            TokenValue::String("test".to_string())
+        )
+    );
     assert_eq!(out[1], token!(1, 7, TokenType::DB));
     assert_eq!(
         out[2],
         token!(
             1,
             10,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 5,
                 kind: NumberKind::Decimal,
                 typ: NumberType::U8
@@ -84,7 +104,8 @@ fn test_basic_lexing() {
         token!(
             1,
             4,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 5,
                 kind: NumberKind::Decimal,
                 typ: NumberType::U8
@@ -98,7 +119,8 @@ fn test_basic_lexing() {
         token!(
             2,
             4,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 5,
                 kind: NumberKind::Hexadecimal,
                 typ: NumberType::U8
@@ -116,7 +138,8 @@ fn test_basic_lexing() {
         token!(
             1,
             4,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 14,
                 kind: NumberKind::Binary,
                 typ: NumberType::U8
@@ -129,7 +152,15 @@ fn test_basic_lexing() {
     assert!(o.is_ok());
     let out = o.unwrap();
     assert_eq!(out.len(), 6);
-    assert_eq!(out[0], token!(1, 1, TokenType::Label("test".to_string())));
+    assert_eq!(
+        out[0],
+        token!(
+            1,
+            1,
+            TokenType::Label,
+            TokenValue::String("test".to_string())
+        )
+    );
     assert_eq!(out[1], token!(1, 7, TokenType::DB));
     assert_eq!(out[2], token!(1, 10, TokenType::LeftBracket));
     assert_eq!(
@@ -137,7 +168,8 @@ fn test_basic_lexing() {
         token!(
             1,
             11,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 5,
                 kind: NumberKind::Decimal,
                 typ: NumberType::U8
@@ -150,7 +182,15 @@ fn test_basic_lexing() {
     assert!(o.is_ok());
     let out = o.unwrap();
     assert_eq!(out.len(), 8);
-    assert_eq!(out[0], token!(1, 1, TokenType::Label("test".to_string())));
+    assert_eq!(
+        out[0],
+        token!(
+            1,
+            1,
+            TokenType::Label,
+            TokenValue::String("test".to_string())
+        )
+    );
     assert_eq!(out[1], token!(1, 7, TokenType::DB));
     assert_eq!(out[2], token!(1, 10, TokenType::LeftBracket));
     assert_eq!(
@@ -158,7 +198,8 @@ fn test_basic_lexing() {
         token!(
             1,
             11,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 58,
                 kind: NumberKind::Decimal,
                 typ: NumberType::U8
@@ -171,7 +212,8 @@ fn test_basic_lexing() {
         token!(
             1,
             14,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 6,
                 kind: NumberKind::Decimal,
                 typ: NumberType::U8
@@ -187,15 +229,28 @@ fn test_lexing_spaces() {
     assert!(o.is_ok());
     let out = o.unwrap();
     assert_eq!(out.len(), 9);
-    assert_eq!(out[0], token!(1, 3, TokenType::Asm("mov".to_string())));
+    assert_eq!(
+        out[0],
+        token!(1, 3, TokenType::Asm, TokenValue::String("mov".to_string()))
+    );
     assert_eq!(
         out[1],
-        token!(1, 7, TokenType::Identifier("al".to_string()))
+        token!(
+            1,
+            7,
+            TokenType::Identifier,
+            TokenValue::String("al".to_string())
+        )
     );
     assert_eq!(out[2], token!(1, 9, TokenType::Comma));
     assert_eq!(
         out[3],
-        token!(1, 10, TokenType::Identifier("bl".to_string()))
+        token!(
+            1,
+            10,
+            TokenType::Identifier,
+            TokenValue::String("bl".to_string())
+        )
     );
     assert_eq!(out[4], token!(1, 12, TokenType::EOL));
     assert_eq!(out[5], token!(2, 2, TokenType::Set));
@@ -204,7 +259,8 @@ fn test_lexing_spaces() {
         token!(
             2,
             6,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 5,
                 kind: NumberKind::Decimal,
                 typ: NumberType::U8
@@ -224,12 +280,22 @@ fn test_macro_lexing() {
     assert_eq!(out[0], token!(1, 1, TokenType::Macro));
     assert_eq!(
         out[1],
-        token!(1, 7, TokenType::Identifier("mcname".to_string()))
+        token!(
+            1,
+            7,
+            TokenType::Identifier,
+            TokenValue::String("mcname".to_string())
+        )
     );
     assert_eq!(out[2], token!(1, 14, TokenType::LeftParen));
     assert_eq!(
         out[3],
-        token!(1, 15, TokenType::Identifier("a".to_string()))
+        token!(
+            1,
+            15,
+            TokenType::Identifier,
+            TokenValue::String("a".to_string())
+        )
     );
     assert_eq!(out[4], token!(1, 16, TokenType::RightParen));
     assert_eq!(out[5], token!(1, 18, TokenType::MacroStart));
@@ -237,14 +303,24 @@ fn test_macro_lexing() {
     assert_eq!(out[7], token!(1, 23, TokenType::LeftBracket));
     assert_eq!(
         out[8],
-        token!(1, 24, TokenType::Identifier("a".to_string()))
+        token!(
+            1,
+            24,
+            TokenType::Identifier,
+            TokenValue::String("a".to_string())
+        )
     );
     assert_eq!(out[9], token!(1, 25, TokenType::RightBracket));
     assert_eq!(out[10], token!(1, 26, TokenType::MacroEnd));
     assert_eq!(out[11], token!(1, 29, TokenType::EOL));
     assert_eq!(
         out[12],
-        token!(2, 1, TokenType::Identifier("mcname".to_owned()))
+        token!(
+            2,
+            1,
+            TokenType::Identifier,
+            TokenValue::String("mcname".to_owned())
+        )
     );
     assert_eq!(out[13], token!(2, 7, TokenType::LeftParen));
     assert_eq!(
@@ -252,7 +328,8 @@ fn test_macro_lexing() {
         token!(
             2,
             8,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 5,
                 kind: NumberKind::Decimal,
                 typ: NumberType::U8
@@ -299,7 +376,8 @@ fn test_negative_number_lexing() {
         token!(
             1,
             1,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 1,
                 kind: NumberKind::Hexadecimal,
                 typ: NumberType::U16
@@ -316,7 +394,8 @@ fn test_negative_number_lexing() {
         token!(
             1,
             1,
-            TokenType::Number {
+            TokenType::Number,
+            TokenValue::Number {
                 value: 0xFFF6,
                 kind: NumberKind::Binary,
                 typ: NumberType::U8
@@ -352,22 +431,22 @@ fn test_multiple_newline_skip() {
     assert!(o.is_ok());
     let out = o.unwrap();
     assert_eq!(out.len(), 4);
-    assert_eq!(out[0],token!(1,6,TokenType::EOL));
-    assert_eq!(out[1],token!(4,1,TokenType::DB));
+    assert_eq!(out[0], token!(1, 6, TokenType::EOL));
+    assert_eq!(out[1], token!(4, 1, TokenType::DB));
 
     let o = lex!(";abcd\n;abcd  \nDB 5");
     assert!(o.is_ok());
     let out = o.unwrap();
     assert_eq!(out.len(), 4);
-    assert_eq!(out[0],token!(1,6,TokenType::EOL));
-    assert_eq!(out[1],token!(3,1,TokenType::DB));
+    assert_eq!(out[0], token!(1, 6, TokenType::EOL));
+    assert_eq!(out[1], token!(3, 1, TokenType::DB));
 
     let o = lex!(";abcd\nset \nDB 5");
     assert!(o.is_ok());
     let out = o.unwrap();
     assert_eq!(out.len(), 6);
-    assert_eq!(out[0],token!(1,6,TokenType::EOL));
-    assert_eq!(out[1],token!(2,1,TokenType::Set));
-    assert_eq!(out[2],token!(2,5,TokenType::EOL));
-    assert_eq!(out[3],token!(3,1,TokenType::DB));
+    assert_eq!(out[0], token!(1, 6, TokenType::EOL));
+    assert_eq!(out[1], token!(2, 1, TokenType::Set));
+    assert_eq!(out[2], token!(2, 5, TokenType::EOL));
+    assert_eq!(out[3], token!(3, 1, TokenType::DB));
 }
