@@ -52,7 +52,7 @@ pub enum TokenType {
 // as I wanted the TokenType to be passable around and directly comparable,
 // i.e. to be a dumb enum. So be careful when extracting values using method,
 // as they will panic if value is of different type.
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub enum TokenValue {
     String(String),
     Reg(Register),
@@ -92,13 +92,13 @@ pub enum Register{
     ES,CS,DS,SS
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum Size {
     Word,
     Byte,
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct Token {
     pub offset: usize,
     pub line: usize,
