@@ -22,7 +22,9 @@ pub enum TokenType {
     RightParen,
     Asm,
     Label,
+    Register,
     Identifier, // for macro params
+
     // Data directives
     DB,
     DW,
@@ -53,6 +55,8 @@ pub enum TokenType {
 #[derive(Debug, PartialEq, Eq)]
 pub enum TokenValue {
     String(String),
+    Reg(Register),
+    Size(Size),
     Number {
         value: u16,
         kind: NumberKind,
@@ -75,6 +79,23 @@ impl TokenValue {
             _ => panic!("tried to extract string value from non string"),
         }
     }
+}
+
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
+#[rustfmt::skip]
+pub enum Register{
+    AL,AH,AX,
+    BL,BH,BX,
+    CL,CH,CX,
+    DL,DH,DX,
+    BP,SP,SI,DI,
+    ES,CS,DS,SS
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub enum Size {
+    Word,
+    Byte,
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -113,6 +134,12 @@ impl LexingError {
     }
 }
 
+macro_rules! reg {
+    ($hm:ident,$rg:ident) => {
+        $hm.insert(stringify!($rg), Register::$rg);
+    };
+}
+
 lazy_static! {
     pub static ref KEYWORDS: HashMap<&'static str, TokenType> = {
         let mut hm = HashMap::new();
@@ -124,6 +151,30 @@ lazy_static! {
         hm.insert("db", TokenType::DB);
         hm.insert("dw", TokenType::DW);
         hm.insert("macro", TokenType::Macro);
+        hm
+    };
+    pub static ref REGISTERS: HashMap<&'static str, Register> = {
+        let mut hm = HashMap::new();
+        reg!(hm, AX);
+        reg!(hm, AL);
+        reg!(hm, AH);
+        reg!(hm, BX);
+        reg!(hm, BL);
+        reg!(hm, BH);
+        reg!(hm, CX);
+        reg!(hm, CL);
+        reg!(hm, CH);
+        reg!(hm, DX);
+        reg!(hm, DL);
+        reg!(hm, DH);
+        reg!(hm, BP);
+        reg!(hm, SP);
+        reg!(hm, SI);
+        reg!(hm, DI);
+        reg!(hm, CS);
+        reg!(hm, SS);
+        reg!(hm, DS);
+        reg!(hm, ES);
         hm
     };
 }
@@ -403,6 +454,17 @@ impl Lexer {
                         .unwrap()
                         .clone();
                     self.add_token(typ);
+                } else if REGISTERS.contains_key(token.to_ascii_uppercase().as_str()) {
+                    self.add_token_with_value(
+                        TokenType::Register,
+                        TokenValue::Reg(
+                            *REGISTERS.get(token.to_ascii_uppercase().as_str()).unwrap(),
+                        ),
+                    )
+                } else if token.to_ascii_lowercase() == "byte" {
+                    self.add_token_with_value(TokenType::Size, TokenValue::Size(Size::Byte))
+                } else if token.to_ascii_lowercase() == "word" {
+                    self.add_token_with_value(TokenType::Size, TokenValue::Size(Size::Word))
                 } else {
                     self.add_token_with_value(TokenType::Identifier, TokenValue::String(token));
                 }

@@ -225,10 +225,10 @@ fn test_basic_lexing() {
 
 #[test]
 fn test_lexing_spaces() {
-    let o = lex!("  mov al,bl\n set 05  \n");
+    let o = lex!("  mov byte al,bl\n set 05  \n");
     assert!(o.is_ok());
     let out = o.unwrap();
-    assert_eq!(out.len(), 9);
+    assert_eq!(out.len(), 10);
     assert_eq!(
         out[0],
         token!(1, 3, TokenType::Asm, TokenValue::String("mov".to_string()))
@@ -238,24 +238,33 @@ fn test_lexing_spaces() {
         token!(
             1,
             7,
-            TokenType::Identifier,
-            TokenValue::String("al".to_string())
+            TokenType::Size,
+            TokenValue::Size(lexer::Size::Byte)
         )
     );
-    assert_eq!(out[2], token!(1, 9, TokenType::Comma));
     assert_eq!(
-        out[3],
+        out[2],
         token!(
             1,
-            10,
-            TokenType::Identifier,
-            TokenValue::String("bl".to_string())
+            12,
+            TokenType::Register,
+            TokenValue::Reg(lexer::Register::AL)
         )
     );
-    assert_eq!(out[4], token!(1, 12, TokenType::EOL));
-    assert_eq!(out[5], token!(2, 2, TokenType::Set));
+    assert_eq!(out[3], token!(1, 14, TokenType::Comma));
     assert_eq!(
-        out[6],
+        out[4],
+        token!(
+            1,
+            15,
+            TokenType::Register,
+            TokenValue::Reg(lexer::Register::BL)
+        )
+    );
+    assert_eq!(out[5], token!(1, 17, TokenType::EOL));
+    assert_eq!(out[6], token!(2, 2, TokenType::Set));
+    assert_eq!(
+        out[7],
         token!(
             2,
             6,
@@ -267,8 +276,8 @@ fn test_lexing_spaces() {
             }
         )
     );
-    assert_eq!(out[7], token!(2, 10, TokenType::EOL));
-    assert_eq!(out[8], token!(3, 1, TokenType::EOF));
+    assert_eq!(out[8], token!(2, 10, TokenType::EOL));
+    assert_eq!(out[9], token!(3, 1, TokenType::EOF));
 }
 
 #[test]
