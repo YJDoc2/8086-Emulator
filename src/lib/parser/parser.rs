@@ -1,16 +1,17 @@
-use super::lexer::{Token, TokenType};
-use std::fmt::Display;
-
-type ParseResult = Result<(), Vec<ParsingError>>;
+use super::{
+    ir::IR,
+    lexer::{Token, TokenType},
+};
+use std::{collections::HashMap, fmt::Display};
 
 #[derive(Default)]
 pub(super) struct ParserContext {
-    pub(super) macros: Vec<MacroDef>,
+    pub(super) macros: HashMap<String, MacroDef>,
 }
 
 #[derive(Debug)]
 pub(super) struct MacroDef {
-    pub(super) name: String,
+    pub(super) name: Token,
     pub(super) params: Vec<String>,
     pub(super) code: Vec<Token>,
 }
@@ -62,11 +63,14 @@ impl Parser {
         }
     }
 
-    pub fn parse(&mut self) -> ParseResult {
+    pub fn parse(&mut self) -> Result<Vec<IR>, Vec<ParsingError>> {
         let mut errs = Vec::new();
+        let mut ir = Vec::new();
         while !self.is_at_end() {
             match self.handle_parse() {
-                Ok(_) => {}
+                Ok(v) => {
+                    ir.extend(v.into_iter());
+                }
                 Err(e) => {
                     errs.push(e);
                     self.sync();
@@ -76,17 +80,21 @@ impl Parser {
         if !errs.is_empty() {
             Err(errs)
         } else {
-            Ok(())
+            Ok(ir)
         }
     }
 
-    fn handle_parse(&mut self) -> Result<(), ParsingError> {
+    fn handle_parse(&mut self) -> Result<Vec<IR>, ParsingError> {
         match self.peek() {
-            TokenType::Macro => self.macro_def(),
+            TokenType::Macro => {
+                self.macro_def()?;
+                Ok(Vec::new())
+            }
             TokenType::EOF | TokenType::EOL => {
                 self.current += 1;
-                Ok(())
+                Ok(Vec::new())
             }
+            TokenType::Identifier => self.macro_use(),
             other => Err(ParsingError::new(
                 self.source[self.current].clone(),
                 format!(
@@ -150,7 +158,8 @@ impl Parser {
 
     fn macro_def(&mut self) -> Result<(), ParsingError> {
         self.consume_if(TokenType::Macro)?;
-        let macro_name = self.consume_if(TokenType::Identifier)?;
+        let macro_name_token = self.consume_if(TokenType::Identifier)?;
+        let macro_name = macro_name_token.value.string();
         self.consume_if(TokenType::LeftParen)?;
 
         // identifiers
@@ -177,13 +186,93 @@ impl Parser {
             code.push(t);
         }
         self.consume_if(TokenType::MacroEnd)?;
+
+        let param_set: std::collections::HashSet<String> =
+            params.iter().map(|p| p.value.string()).collect();
+
+        for id in code.iter().filter(|t| t.typ == TokenType::Identifier) {
+            if !param_set.contains(&id.value.string()) {
+                return Err(ParsingError::new(
+                    id.clone(),
+                    format!(
+                        "non-parameter identifier {} found in macro body",
+                        id.value.string()
+                    ),
+                ));
+            }
+        }
+
         let m = MacroDef {
-            name: macro_name.value.string(),
+            name: macro_name_token,
             params: params.into_iter().map(|p| p.value.string()).collect(),
             code,
         };
-        println!("{:?}", m);
-        self.ctx.macros.push(m);
+        self.ctx.macros.insert(macro_name, m);
         Ok(())
+    }
+
+    fn macro_use(&mut self) -> Result<Vec<IR>, ParsingError> {
+        // we know tha tit is a macro use, so can simply unwrap
+        let macro_name_token = self.consume_if(TokenType::Identifier).unwrap();
+        let macro_name = macro_name_token.value.string();
+
+        self.consume_if(TokenType::LeftParen)?;
+        // params
+        let mut params = Vec::new();
+        while !self.check(&TokenType::RightParen) {
+            let mut tokens = Vec::new();
+            while !self.check(&TokenType::Comma) && !self.check(&TokenType::RightParen) {
+                tokens.push(self.consume());
+            }
+            let _ = self.consume_if(TokenType::Comma); // can possibly be left paran, so we ignore result
+            params.push(tokens);
+        }
+        self.consume_if(TokenType::RightParen)?;
+
+        let macro_def = match self.ctx.macros.get(&macro_name) {
+            Some(m) => m,
+            None => {
+                return Err(ParsingError::new(
+                    macro_name_token,
+                    format!("no macro with name {} defined", macro_name),
+                ));
+            }
+        };
+
+        if params.len() != macro_def.params.len() {
+            return Err(ParsingError::new(
+                macro_name_token,
+                format!(
+                    "parameter count mismatch : expected {} as per definition, found {} instead",
+                    macro_def.params.len(),
+                    params.len()
+                ),
+            ));
+        }
+
+        let mut expanded_tokens: Vec<Token> = Vec::new();
+        for token in macro_def.code.clone() {
+            if token.typ == TokenType::Identifier {
+                let id_name = token.value.string();
+                if let Some(idx) = macro_def.params.iter().position(|p| **p == id_name) {
+                    for t in &params[idx] {
+                        expanded_tokens.push(t.clone());
+                    }
+                }
+            } else {
+                expanded_tokens.push(token);
+            }
+        }
+
+        let mut parser = Self::new(expanded_tokens);
+        match parser.parse() {
+            Err(e) => {
+                return Err(ParsingError::new(
+                    macro_name_token,
+                    format!("Error in expanding macro : {:?}", e),
+                ));
+            }
+            Ok(v) => Ok(v),
+        }
     }
 }

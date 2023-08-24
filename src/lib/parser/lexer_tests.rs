@@ -1,3 +1,4 @@
+use super::ir::{Register, Size};
 use super::lexer;
 use crate::parser::lexer::{NumberKind, NumberType, Token, TokenType, TokenValue};
 
@@ -235,31 +236,16 @@ fn test_lexing_spaces() {
     );
     assert_eq!(
         out[1],
-        token!(
-            1,
-            7,
-            TokenType::Size,
-            TokenValue::Size(lexer::Size::Byte)
-        )
+        token!(1, 7, TokenType::Size, TokenValue::Size(Size::Byte))
     );
     assert_eq!(
         out[2],
-        token!(
-            1,
-            12,
-            TokenType::Register,
-            TokenValue::Reg(lexer::Register::AL)
-        )
+        token!(1, 12, TokenType::Register, TokenValue::Reg(Register::AL))
     );
     assert_eq!(out[3], token!(1, 14, TokenType::Comma));
     assert_eq!(
         out[4],
-        token!(
-            1,
-            15,
-            TokenType::Register,
-            TokenValue::Reg(lexer::Register::BL)
-        )
+        token!(1, 15, TokenType::Register, TokenValue::Reg(Register::BL))
     );
     assert_eq!(out[5], token!(1, 17, TokenType::EOL));
     assert_eq!(out[6], token!(2, 2, TokenType::Set));

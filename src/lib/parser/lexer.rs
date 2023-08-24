@@ -1,4 +1,4 @@
-use super::asm;
+use super::{asm, ir::Register, ir::Size};
 use lazy_static::lazy_static;
 use std::collections::HashMap;
 use std::{fmt::Display, iter::FromIterator};
@@ -79,23 +79,6 @@ impl TokenValue {
             _ => panic!("tried to extract string value from non string"),
         }
     }
-}
-
-#[derive(Debug, PartialEq, Eq, Copy, Clone)]
-#[rustfmt::skip]
-pub enum Register{
-    AL,AH,AX,
-    BL,BH,BX,
-    CL,CH,CX,
-    DL,DH,DX,
-    BP,SP,SI,DI,
-    ES,CS,DS,SS
-}
-
-#[derive(Debug, PartialEq, Eq, Clone, Copy)]
-pub enum Size {
-    Word,
-    Byte,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone)]
