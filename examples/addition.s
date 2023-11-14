@@ -11,4 +11,4 @@ CLC                     ; clear the carry flag
 ADD AX, BX              ; add BX to AX
 MOV DI, OFFSET RESULT   ; move offset of result to DI
 MOV word [DI], AX       ; store result
-print reg               ; preint result
+print reg               ; print result
