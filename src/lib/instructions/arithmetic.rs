@@ -253,7 +253,7 @@ pub fn byte_neg(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
 pub fn byte_mul(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
     let al = get_byte_reg(vm, ByteReg::AL);
     let res = al as u16 * (*val as u16);
-    let ah = get_byte_reg(vm, ByteReg::AH);
+    let ah = ((res & 0xFF00) >> 8) as u8;
     if ah == 0 {
         unset_flag(&mut vm.arch.flag, Flags::CARRY);
         unset_flag(&mut vm.arch.flag, Flags::OVERFLOW);
@@ -267,8 +267,8 @@ pub fn byte_mul(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
 
 pub fn byte_imul(vm: &mut VM, val: &mut u8) -> Result<(), DivByZero> {
     let al = get_byte_reg(vm, ByteReg::AL);
-    let res = al as u16 as i16 * (*val as i8 as i16);
-    let ah = get_byte_reg(vm, ByteReg::AH);
+    let res = al as i8 as i16 * (*val as i8 as i16);
+    let ah = ((res as u16 & 0xFF00) >> 8) as u8;
     if ah != u8::MAX {
         set_flag(&mut vm.arch.flag, Flags::CARRY);
         set_flag(&mut vm.arch.flag, Flags::OVERFLOW);
