@@ -1083,13 +1083,13 @@ jumps_condition:bool = {
    "jg" => !get_flag_state(vm.arch.flag,Flags::ZERO) && get_flag_state(vm.arch.flag,Flags::SIGN) == get_flag_state(vm.arch.flag,Flags::OVERFLOW),
    
    // sf = of
-   "jge" => get_flag_state(vm.arch.flag,Flags::SIGN) == get_flag_state(vm.arch.flag,Flags::OVERFLOW),
+   "jge" => get_flag_state(vm.arch.flag,Flags::ZERO) || get_flag_state(vm.arch.flag,Flags::SIGN) == get_flag_state(vm.arch.flag,Flags::OVERFLOW),
 
    // sf != of
    "jl" => get_flag_state(vm.arch.flag,Flags::SIGN) != get_flag_state(vm.arch.flag,Flags::OVERFLOW),
    
    // sf != of and zf = 1
-   "jle" => get_flag_state(vm.arch.flag,Flags::ZERO) && get_flag_state(vm.arch.flag,Flags::SIGN) != get_flag_state(vm.arch.flag,Flags::OVERFLOW),
+   "jle" => get_flag_state(vm.arch.flag,Flags::ZERO) || get_flag_state(vm.arch.flag,Flags::SIGN) != get_flag_state(vm.arch.flag,Flags::OVERFLOW),
    
    // cf = 0
    "jnc" => !get_flag_state(vm.arch.flag,Flags::CARRY),
